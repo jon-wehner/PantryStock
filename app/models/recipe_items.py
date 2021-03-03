@@ -1,29 +1,14 @@
 from .db import db
 
 
-recipe_items = db.Table(
-    "recipe_items",
-    db.Column(
-        "recipe_id",
-        db.Integer,
-        db.ForeignKey("recipes.id"),
-        primary_key=True
-    )
-    db.Column(
-        "item_id",
-        db.Integer,
-        db.ForeignKey("items.id"),
-        primary_key=True
-    )
-    db.Column(
-        "quantity",
-        db.Float,
-        nullable=False
-    )
-    db.Column(
-        "measurement_id",
-        db.Integer,
-        db.ForeignKey("measurements.id"),
-        nullable=False
-    )
-)
+class RecipeItems(db.Model):
+    __tablename__ = "recipe_items"
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"))
+    item_id = db.Column(db.Integer, db.ForeignKey("items.id"))
+    quantity = db.Column(db.Float, nullable=False)
+    measurement_id = db.Column("measurement_id", db.Integer,
+                               db.ForeignKey("measurements.id"),
+                               nullable=False)
+    recipe = db.relationship("Recipe",
+                             back_populates="recipe_items")
+    item = db.relationship("Item", back_populates="recipe_items")

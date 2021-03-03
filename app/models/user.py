@@ -13,11 +13,7 @@ class User(db.Model, UserMixin):
 
     recipes = db.relationship('Recipe', back_populates='user')
 
-    items = db.relationship(
-        "Item",
-        secondary=user_items,
-        back_populates="users"
-    )
+    user_items = db.relationship("UserItem", back_populates="user")
 
     @property
     def password(self):

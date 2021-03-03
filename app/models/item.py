@@ -14,13 +14,6 @@ class Item(db.Model):
         secondary=recipe_items
         back_populates="items"
     )
-    shopping_lists = db.relationship(
-        "Shopping_List",
-        secondary=shopping_list_items
-        back_populates="items"
-    )
-    users = db.relationship(
-        "User",
-        secondary=user_items
-        back_populates="items"
-    )
+    shopping_list = db.relationship("ShoppingList",
+                                    back_populates="shopping_list_items")
+    user_items = db.relationship("UserItem", back_populates="item")

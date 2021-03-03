@@ -5,5 +5,5 @@ from .measurement import Measurement
 from .shopping_list import Shopping_List
 from .recipe import Recipe
 from .user_items import UserItems
-from .shopping_list_items import shopping_list_items
-from .recipe_items import recipe_items
+from .shopping_list_items import ShoppingListItems
+from .recipe_items import RecipeItems

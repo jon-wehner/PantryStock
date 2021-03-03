@@ -10,3 +10,7 @@ class ShoppingListItems(db.Model):
     quantity = db.Column(db.Float, nullable=False)
     measurement_id = db.Column(db.Integer, db.ForeignKey("measurements.id"),
                                nullable=False)
+
+    shopping_list = db.relationship("ShoppingList",
+                                    back_populates="shopping_list_items")
+    item = db.relationship("Item", back_populates="shopping_list_items")
