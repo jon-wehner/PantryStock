@@ -13,6 +13,12 @@ class User(db.Model, UserMixin):
 
     recipes = db.relationship('Recipe', back_populates='user')
 
+    items = db.relationship(
+        "Item",
+        secondary=user_items,
+        back_populates="users"
+    )
+
     @property
     def password(self):
         return self.hashed_password

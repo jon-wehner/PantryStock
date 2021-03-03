@@ -10,3 +10,9 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     user = db.relationship('User', back_populates='recipes')
+
+    items = db.relationship(
+        "Item",
+        secondary=recipe_items,
+        back_populates="recipes"
+    )

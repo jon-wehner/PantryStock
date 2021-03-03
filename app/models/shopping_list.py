@@ -9,3 +9,9 @@ class Shopping_List(db.Model):
     user_id = db.Column(db.Integer, nullable=False, db.ForeignKey("users.id"))
 
     user = db.relationship("User", back_populates="shopping_lists")
+
+    items = db.relationship(
+        "Item",
+        secondary=shopping_list_items,
+        back_populates="shopping_lists"
+    )

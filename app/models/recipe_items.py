@@ -1,12 +1,12 @@
 from .db import db
 
 
-shopping_list_items = db.Table(
-    "shopping_list_items",
+recipe_items = db.Table(
+    "recipe_items",
     db.Column(
-        "user_id",
+        "recipe_id",
         db.Integer,
-        db.ForeignKey("users.id"),
+        db.ForeignKey("recipes.id"),
         primary_key=True
     )
     db.Column(
