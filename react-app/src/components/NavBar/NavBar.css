@@ -1,3 +1,9 @@
+@media (min-width: 768px) {
+  .navlinks-toggle {
+    display: none;
+  }
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -16,4 +22,9 @@
   font-weight: 700;
   font-size: 1.5rem;
   margin-left: 1rem;
+}
+
+.navlinks-toggle {
+  display: inline-block;
+  align-items: flex-start;
 }

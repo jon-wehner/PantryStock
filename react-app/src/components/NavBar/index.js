@@ -5,6 +5,7 @@ const NavBar = ({ setAuthenticated }) => {
   return (
     <nav className="navbar">
       <h1 className="navbar__logo">PantryStock</h1>
+      <i className="fas fa-bars navlinks-toggle" />
       <div className="navbar__navlinks">
         <h2 className="navlink">Nav</h2>
         <h2 className="navlink">Links</h2>
