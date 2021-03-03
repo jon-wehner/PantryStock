@@ -1,5 +1,4 @@
 import React from 'react';
-import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
 const NavBar = ({ setAuthenticated }) => {

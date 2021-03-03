@@ -1,1 +1,8 @@
-/* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Hind+Siliguri&family=Yantramanav&display=swap');
+
+body {
+  margin: 0;
+}
+#root {
+  width:100%
+}
