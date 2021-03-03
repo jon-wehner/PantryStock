@@ -11,8 +11,4 @@ class Recipe(db.Model):
 
     user = db.relationship('User', back_populates='recipes')
 
-    items = db.relationship(
-        "Item",
-        secondary=recipe_items,
-        back_populates="recipes"
-    )
+    recipe_items = db.relationship("RecipeItem", back_populates="recipe")

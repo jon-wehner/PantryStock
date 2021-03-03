@@ -9,11 +9,7 @@ class Item(db.Model):
     aisle = db.Column(db.String(), nullable=False)
     storage = db.Column(db.String(), nullable=False)
 
-    recipes = db.relationship(
-        "Recipe",
-        secondary=recipe_items
-        back_populates="items"
-    )
-    shopping_list = db.relationship("ShoppingList",
-                                    back_populates="shopping_list_items")
+    recipe_items = db.relationship("RecipeItem", back_populates="item")
+    shopping_list_items = db.relationship("ShoppingListItem",
+                                          back_populates="item")
     user_items = db.relationship("UserItem", back_populates="item")
