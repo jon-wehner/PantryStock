@@ -1,29 +1,12 @@
 from .db import db
 
 
-shopping_list_items = db.Table(
-    "shopping_list_items",
-    db.Column(
-        "user_id",
-        db.Integer,
-        db.ForeignKey("users.id"),
-        primary_key=True
-    )
-    db.Column(
-        "item_id",
-        db.Integer,
-        db.ForeignKey("items.id"),
-        primary_key=True
-    )
-    db.Column(
-        "quantity",
-        db.Float,
-        nullable=False
-    )
-    db.Column(
-        "measurement_id",
-        db.Integer,
-        db.ForeignKey("measurements.id"),
-        nullable=False
-    )
-)
+class ShoppingListItems(db.Model):
+    __tablename__ = "shopping_list_items"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    item_id = db.Column("item_id", db.Integer, db.ForeignKey("items.id"))
+    quantity = db.Column(db.Float, nullable=False)
+    measurement_id = db.Column(db.Integer, db.ForeignKey("measurements.id"),
+                               nullable=False)
