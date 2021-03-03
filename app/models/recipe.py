@@ -1,7 +1,7 @@
 from .db import db
 
 
-class Recipe(db.model):
+class Recipe(db.Model):
     __tablename__ = 'recipes'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -9,4 +9,4 @@ class Recipe(db.model):
     description = db.Column(db.Text, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    user = db.Relationship('User', back_populates='recipes')
+    user = db.relationship('User', back_populates='recipes')
