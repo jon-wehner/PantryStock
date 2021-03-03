@@ -1,6 +1,7 @@
 from .db import db
 
-user_items = db.Table(
+
+shopping_list_items = db.Table(
     "user_items",
     db.Column(
         "user_id",
@@ -13,16 +14,6 @@ user_items = db.Table(
         db.Integer,
         db.ForeignKey("items.id"),
         primary_key=True
-    )
-    db.Column(
-        "expiration_date",
-        db.DateTime,
-        nullable=False
-    )
-    db.Column(
-        "date_created",
-        db.DateTime,
-        default=datetime.utcnow
     )
     db.Column(
         "quantity",
