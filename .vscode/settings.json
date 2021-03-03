@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/jonw/app-academy/mypantry/.venv/bin/python3.8",
+    "python.pythonPath": "/home/jonw/app-academy/pantrystock/.venv/bin/python3.8",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true
