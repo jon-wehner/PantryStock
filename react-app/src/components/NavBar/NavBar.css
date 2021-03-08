@@ -1,12 +1,8 @@
-@media (min-width: 768px) {
-  .navlinks-toggle {
-    display: none;
-  }
-}
-
 .navbar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid #1E1E24;
   background-color: #BDFFFD;
   font-family: "Heebo", sans-serif
@@ -27,4 +23,22 @@
 .navlinks-toggle {
   display: inline-block;
   align-items: flex-start;
+}
+
+.navbar__navlinks {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .navbar__navlinks {
+    display: inline-block;
+  }
+  .navlinks-toggle {
+    display: none;
+  }
 }

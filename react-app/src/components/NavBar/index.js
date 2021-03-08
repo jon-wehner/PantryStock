@@ -1,11 +1,13 @@
-import React from 'react';
 import './NavBar.css'
 
 const NavBar = ({ setAuthenticated }) => {
+  const toggleNavLinks = () => {
+    return null
+  }
   return (
     <nav className="navbar">
       <h1 className="navbar__logo">PantryStock</h1>
-      <i className="fas fa-bars navlinks-toggle" />
+      <i className="fas fa-bars navlinks-toggle" onClick={toggleNavLinks}/>
       <div className="navbar__navlinks">
         <h2 className="navlink">Nav</h2>
         <h2 className="navlink">Links</h2>
