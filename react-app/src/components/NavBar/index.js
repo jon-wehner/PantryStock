@@ -8,12 +8,12 @@ const NavBar = ({ setAuthenticated }) => {
     <nav className="navbar">
       <h1 className="navbar__logo">PantryStock</h1>
       <i className="fas fa-bars navlinks-toggle" onClick={toggleNavLinks}/>
-      <div className="navbar__navlinks">
-        <h2 className="navlink">Nav</h2>
-        <h2 className="navlink">Links</h2>
-        <h2 className="navlink">Go</h2>
-        <h2 className="navlink">Here</h2>
-      </div>
+      <ul className="navbar__navlinks">
+        <li className="navlink">Nav</li>
+        <li className="navlink">Links</li>
+        <li className="navlink">Go</li>
+        <li className="navlink">Here</li>
+      </ul>
     </nav>
   );
 }
