@@ -7,7 +7,7 @@ const NavBar = ({ setAuthenticated }) => {
     setShowNavLinks(!showNavLinks)
   }
   return (
-    <nav className={"navbar" + (showNavLinks ? " navbar-active" : "")}>
+    <nav className="navbar" style={{ height: showNavLinks ? '12rem' : '3rem'}}>
       <div className="navbar__mobile">
         <h1 className="navbar__logo">PantryStock</h1>
         <i className="fas fa-bars navlinks-toggle" onClick={toggleNavLinks}/>
