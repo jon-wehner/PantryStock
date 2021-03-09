@@ -1,3 +1,5 @@
+import produce from './images/produce.jpg'
+import './LandingPage.css'
 export default function LandingPage() {
   return (
     <>
@@ -13,7 +15,7 @@ export default function LandingPage() {
         <button className="signup__button  button">Get Started</button>
       </div>
       <div className="landpage__imagecontainer">
-        <img id="splashImage" classname="landpage__image" src="" alt="landing page main image" />
+        <img id="splashImage" classname="landpage__image" src={produce} alt="landing page main image" />
         <img id="detailImage" className="landpage__image" src="" alt="landing page secondary image" />
       </div>
     </>
