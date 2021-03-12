@@ -1,6 +1,19 @@
+import { useState } from 'react'
+import { useHistory } from 'react-router'
 import produce from './images/produce2.jpg'
 import './LandingPage.css'
-export default function LandingPage() {
+
+export default function LandingPage({authenticated, setAuthenticated}) {
+  const [email, setEmail] = useState("")
+  const history = useHistory()
+  const startSignup = (e) => {
+    history.push({
+      pathname: '/sign-up',
+      state: {
+        tempEmail: email
+      }
+    })
+  }
   return (
     <>
       <div className="landpage__textbox">
@@ -8,14 +21,14 @@ export default function LandingPage() {
         <p className="landpage__text">Reducing food waste tracking your food from the grocery store shelves to your plate</p>
       </div>
       <div className="landingpage__signup">
-        <div classname="fieldset__container">
+        <div className="fieldset__container">
           <label>Take control today!</label>
-          <input classname="form__textfield" placeholder="Enter Email"/>
+          <input className="form__textfield" placeholder="Enter Email" onChange={e => setEmail(e.target.value)}/>
         </div>
-        <button className="signup__button  button">Get Started</button>
+        <button className="signup__button  button" onClick={startSignup}>Get Started</button>
       </div>
       <div className="landpage__imagecontainer">
-        <img id="splashImage" classname="landpage__image" src={produce} alt="produce on store shelves" />
+        <img id="splashImage" className="landpage__image" src={produce} alt="produce on store shelves" />
 
       </div>
     </>

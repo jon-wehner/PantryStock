@@ -39,6 +39,25 @@ export const logout = () => async (dispatch) => {
   return await response.json();
 };
 
+export const signUp = (username, email, password) => async (dispatch)  => {
+  const response = await fetch("/api/auth/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+    }),
+  });
+  const user =  await response.json();
+  if (!user.errors) {
+    dispatch(setUser(user))
+  }
+  return user
+}
+
 const initialState = {user : null}
 
 const sessionReducer = (state = initialState, action) => {
