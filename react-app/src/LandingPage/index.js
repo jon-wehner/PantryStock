@@ -2,12 +2,17 @@ import { useState } from 'react'
 import { useHistory } from 'react-router'
 import produce from './images/produce2.jpg'
 import './LandingPage.css'
-export default function LandingPage() {
-  const [email, setEmail] = useState()
+
+export default function LandingPage({authenticated, setAuthenticated}) {
+  const [email, setEmail] = useState("")
   const history = useHistory()
   const startSignup = (e) => {
-    console.log(email)
-    history.push('/sign-up', email)
+    history.push({
+      pathname: '/sign-up',
+      state: {
+        tempEmail: email
+      }
+    })
   }
   return (
     <>

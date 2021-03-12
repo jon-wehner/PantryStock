@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Redirect, useLocation } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 
-const SignUpForm = ({authenticated, setAuthenticated, }) => {
+const SignUpForm = ({authenticated, setAuthenticated}) => {
+  const location = useLocation()
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(location.state.tempEmail);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  console.log(email)
+
 
   const onSignUp = async (e) => {
     e.preventDefault();

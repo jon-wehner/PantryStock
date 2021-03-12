@@ -47,7 +47,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
-          {authenticated ? <h1>Authenticated</h1> : <LandingPage />}
+          {authenticated ? <h1>Authenticated</h1> : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>}
         </Route>
       </Switch>
     </>
