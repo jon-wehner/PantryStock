@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useDispatch } from 'react-redux'
 import { Redirect, useLocation } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import { signUp } from '../../store/session'
 import './SignUpForm.css'
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
+  const dispatch = useDispatch()
   const location = useLocation()
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(location.state.tempEmail);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await dispatch(signUp(username, email, password));
       if (!user.errors) {
         setAuthenticated(true);
       }
