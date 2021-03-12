@@ -1,5 +1,6 @@
 .navbar {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -14,12 +15,13 @@
   display: flex;
   align-items: center;
 }
-.navlink {
+.navlink button {
   display: inline-block;
-  color: #474747 ;
-  margin-right: 1rem;
+  font-family: "Heebo";
+  font-size: 1.2rem;
   font-weight: 700;
-  font-size: 1.25rem;
+  color: rgb(71,71,71);
+  margin-right: 1rem;
 }
 .navbar__logo {
   font-family: "Heebo", sans-serif;
