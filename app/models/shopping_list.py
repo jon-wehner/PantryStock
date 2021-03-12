@@ -9,5 +9,5 @@ class ShoppingList(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     user = db.relationship("User", back_populates="shopping_lists")
-    shopping_list_items = db.relationship("UserItem",
+    shopping_list_items = db.relationship("ShoppingListItem",
                                           back_populates="shopping_list")
