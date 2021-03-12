@@ -17,7 +17,15 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       setErrors(user.errors);
     }
   };
-
+  const signInDemo = async (e) => {
+    e.preventDefault(e)
+    const user = await login('demo@aa.io', 'password')
+    if (!user.errors) {
+      setAuthenticated(true);
+    } else {
+      setErrors(user.errors);
+    }
+  }
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -57,7 +65,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updatePassword}
         />
       </div>
+      <div className="login__buttonContainer">
         <button type="submit">Login</button>
+        <button id="demoLogin" type="none" onClick={signInDemo}>Demo User</button>
+      </div>
     </form>
   );
 };
