@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
+import { login } from "../../store/session";
+import { useDispatch } from 'react-redux'
 import "./LoginForm.css"
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
+  const dispatch = useDispatch()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
+    const user = await dispatch(login(email, password));
     if (!user.errors) {
       setAuthenticated(true);
     } else {
@@ -19,12 +21,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
   const signInDemo = async (e) => {
     e.preventDefault(e)
-    const user = await login('demo@aa.io', 'password')
-    if (!user.errors) {
-      setAuthenticated(true);
-    } else {
-      setErrors(user.errors);
-    }
+    setEmail('demo@aa.io')
+    setPassword('password')
+    onLogin()
   }
   const updateEmail = (e) => {
     setEmail(e.target.value);
