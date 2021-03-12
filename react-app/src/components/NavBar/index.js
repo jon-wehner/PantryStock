@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = ({ authenticated, setAuthenticated }) => {
   const [showNavLinks, setShowNavLinks] = useState(false)
   const toggleNavLinks = () => {
     setShowNavLinks(!showNavLinks)
@@ -16,7 +17,7 @@ const NavBar = ({ setAuthenticated }) => {
         <li className="navlink">Nav</li>
         <li className="navlink">Links</li>
         <li className="navlink">Go</li>
-        <li className="navlink">Here</li>
+        {authenticated && < LogoutButton setAuthenticated={setAuthenticated} />}
       </ul>
     </nav>
   );
