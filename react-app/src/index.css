@@ -4,6 +4,18 @@ body {
   margin: 0;
   font-size: 62.5%;
 }
+* {
+  box-sizing: border-box;
+  outline: none;
+}
 #root {
   width:100%
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  background-color: transparent;
+  padding: 0;
 }
