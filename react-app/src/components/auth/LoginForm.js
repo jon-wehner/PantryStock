@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
+import { login } from "../../store/session";
+import { useDispatch } from 'react-redux'
 import "./LoginForm.css"
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
