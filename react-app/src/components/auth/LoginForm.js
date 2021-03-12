@@ -21,9 +21,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
   const signInDemo = async (e) => {
     e.preventDefault(e)
-    setEmail('demo@aa.io')
-    setPassword('password')
-    onLogin()
+    const user = await dispatch(login('demo@aa.io', 'password'))
+    setAuthenticated(true)
   }
   const updateEmail = (e) => {
     setEmail(e.target.value);
