@@ -45,6 +45,7 @@
     animation: reveal 1s;
     animation-delay: .2s;
     animation-fill-mode: forwards;
+    list-style: none;
   }
   .navlinks-active{
     display: flex;

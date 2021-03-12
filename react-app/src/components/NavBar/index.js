@@ -19,8 +19,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         <i className="fas fa-bars navlinks-toggle" onClick={toggleNavLinks}/>
       </div>
       <ul className={"navbar__navlinks" + (showNavLinks ? " navlinks-active" : "")} >
-        <li className="navlink"><button type="none" onClick={login}>Login</button></li>
-        {authenticated && < LogoutButton setAuthenticated={setAuthenticated} />}
+        {authenticated ? < LogoutButton setAuthenticated={setAuthenticated} /> : <li className="navlink"><button type="none" onClick={login}>Login</button></li>}
       </ul>
     </nav>
   );
