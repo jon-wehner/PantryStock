@@ -25,11 +25,23 @@ form {
 .formfield label {
   width: 8rem;
 }
+.login__buttonContainer {
+  display: flex;
+  justify-content: center;
+}
 form button {
   background-color: dodgerblue;
   color: #fff;
   font-family: "Hind Siliguri";
   font-size: 1.4rem;
   width: 5rem;
-  margin: 0 auto;
+  height: 2.7rem;
+}
+form button:hover {
+  background-color: #135CA3;
+}
+
+#demoLogin {
+  margin-left: .5rem;
+  width: 8rem;
 }
