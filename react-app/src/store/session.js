@@ -22,6 +22,9 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(setUser(user))
   return user
 }
+
+const initialState = {user : null}
+
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
