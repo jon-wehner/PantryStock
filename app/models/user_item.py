@@ -1,7 +1,7 @@
 from .db import db
 
 
-class UserItems(db.Model):
+class UserItem(db.Model):
     __tablename__ = "user_items"
     id = db.Column(db.Integer, primary_key=True)
     item_id = db.Column(db.Integer, db.ForeignKey("items.id"), nullable=False)

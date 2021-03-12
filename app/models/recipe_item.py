@@ -1,7 +1,7 @@
 from .db import db
 
 
-class RecipeItems(db.Model):
+class RecipeItem(db.Model):
     __tablename__ = "recipe_items"
     id = db.Column(db.Integer, primary_key=True)
     recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"))
