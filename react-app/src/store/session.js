@@ -1,4 +1,5 @@
 const SET_USER = 'session/setUser'
+const REMOVE_USER = 'session/removeUser'
 
 const setUser = (user) => {
   return {
@@ -6,7 +7,12 @@ const setUser = (user) => {
     user
   }
 }
-
+const removeUser = () => {
+  return {
+    type: REMOVE_USER,
+    user: null
+  }
+}
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
     method: 'POST',
@@ -23,18 +29,32 @@ export const login = (email, password) => async (dispatch) => {
   return user
 }
 
+export const logout = () => async (dispatch) => {
+  const response = await fetch("/api/auth/logout", {
+    headers: {
+      "Content-Type": "application/json",
+    }
+  });
+  dispatch(removeUser())
+  return await response.json();
+};
+
 const initialState = {user : null}
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_USER:
-      newState = {...state}
-      newState.user = action.user
-      return newState
+      newState = {...state};
+      newState.user = action.user;
+      return newState;
+    case REMOVE_USER:
+      newState = {...state};
+      newState.user = action.user;
+      return newState;
     default:
-      return state
+      return state;
 }
   }
 
-  export default sessionReducer
+  export default sessionReducer;
