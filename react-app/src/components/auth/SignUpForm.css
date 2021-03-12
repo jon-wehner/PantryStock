@@ -1,0 +1,7 @@
+.signup__fieldset {
+  margin-bottom: 1rem;
+}
+.signup__fieldset label {
+  width: 12rem;
+  display: inline-block;
+}
