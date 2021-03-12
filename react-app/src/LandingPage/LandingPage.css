@@ -43,3 +43,40 @@
 .signup__button:hover {
   background-color: #1873CC;
 }
+
+@media screen and (max-width: 768px) {
+  img {
+    display: none;
+  }
+  label {
+    font-size: 1rem;
+    margin: 0 auto;
+  }
+  .landpage__textbox {
+    width: 100%;
+  }
+  .landpage__title {
+    font-size: 1.2rem;
+  }
+  .landpage__text {
+    font-size: 1rem;
+  }
+  .landingpage__signup {
+    flex-direction: column;
+    width: 100%;
+  }
+  .form__textfield {
+    margin: 0 auto;
+    width: 95%;
+  }
+  .signup__button {
+    margin: 0 auto;
+    margin-top: 1rem;
+  }
+  .fieldset__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
