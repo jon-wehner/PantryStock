@@ -1,0 +1,28 @@
+.error {
+  font-size: 1.2rem;
+  color: red;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.errors__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formfield {
+  display: flex;
+  justify-content: center;
+  margin-bottom: .5rem;
+}
+
+.formfield label {
+  width: 20rem;
+}
