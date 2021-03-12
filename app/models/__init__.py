@@ -2,8 +2,8 @@ from .db import db
 from .user import User
 from .item import Item
 from .measurement import Measurement
-from .shopping_list import Shopping_List
+from .shopping_list import ShoppingList
 from .recipe import Recipe
-from .user_items import UserItems
-from .shopping_list_items import ShoppingListItems
-from .recipe_items import RecipeItems
+from .user_item import UserItem
+from .shopping_list_item import ShoppingListItem
+from .recipe_item import RecipeItem

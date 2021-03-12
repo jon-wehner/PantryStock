@@ -1,7 +1,7 @@
 from .db import db
 
 
-class Shopping_List(db.Model):
+class ShoppingList(db.Model):
     __tablename__ = "shopping_lists"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -9,5 +9,5 @@ class Shopping_List(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     user = db.relationship("User", back_populates="shopping_lists")
-    shopping_list_items = db.relationship("UserItem",
+    shopping_list_items = db.relationship("ShoppingListItem",
                                           back_populates="shopping_list")

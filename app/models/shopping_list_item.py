@@ -1,12 +1,13 @@
 from .db import db
 
 
-class ShoppingListItems(db.Model):
+class ShoppingListItem(db.Model):
     __tablename__ = "shopping_list_items"
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    item_id = db.Column("item_id", db.Integer, db.ForeignKey("items.id"))
+    item_id = db.Column(db.Integer, db.ForeignKey("items.id"))
+    shopping_list_id = db.Column(db.Integer, db.ForeignKey("shopping_lists.id"))
     quantity = db.Column(db.Float, nullable=False)
     measurement_id = db.Column(db.Integer, db.ForeignKey("measurements.id"),
                                nullable=False)

@@ -7,7 +7,7 @@ class Measurement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     unit = db.Column(db.String(255), nullable=False, unique=True)
 
-    recipe_items = db.relationship("RecipeItem", back_populates="Measurement")
-    user_items = db.relationship("UserItem", back_populates="Measurement")
+    recipe_items = db.relationship("RecipeItem", back_populates="measurement")
+    user_items = db.relationship("UserItem", back_populates="measurement")
     shopping_list_items = db.relationship("ShoppingListItem",
-                                          back_populates="Measurement")
+                                          back_populates="measurement")
