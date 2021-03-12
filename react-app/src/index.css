@@ -18,6 +18,7 @@ button {
   font-family: inherit;
   background-color: transparent;
   padding: 0;
+  border-radius: .6rem;
 }
 button:active {
   transform: translateY(.1rem);
@@ -36,5 +37,5 @@ input {
   border: 2px solid #d5d5d5;
   margin-left: .7rem;
   font-family: "Hind Siliguri";
-  border-radius: .6rem;
+  border-radius: .7rem;
 }
