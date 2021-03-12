@@ -1,0 +1,50 @@
+.landingpage__signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.landpage__title {
+  font-family: 'Heebo';
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.landpage__text {
+  font-size: 1.4rem;
+  font-family: "Hind Siliguri";
+}
+
+.landpage__textbox {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+.landpage__imagecontainer {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  border-radius: .6rem;
+}
+
+.signup__button {
+  margin-left: .5rem;
+  background-color: dodgerblue;
+  color: #fff;
+  border-radius: .7rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,0,.2);
+  padding: .35rem;
+  outline: none;
+  font-family: "Hind Siliguri";
+  font-size: 1.4rem;
+}
+.signup__button:hover {
+  background-color: #135CA3;
+}
+.signup__button:active {
+  outline: none;
+  transform: translateY(.1rem);
+}
