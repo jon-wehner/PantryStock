@@ -9,10 +9,12 @@
 
 .landpage__title {
   font-family: 'Heebo';
+  font-size: 2.4rem;
+  font-weight: 700;
 }
 
 .landpage__text {
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-family: "Hind Siliguri";
 }
 
@@ -28,24 +30,16 @@
   border-radius: .6rem;
 }
 
-.form__label {
-  font-family: "Hind Siliguri";
-  font-size: 500rem;
-}
-.form__textfield {
-  margin-left: .5rem;
-  outline: none;
-}
-
 .signup__button {
-  margin-left: 1rem;
+  margin-left: .5rem;
   background-color: dodgerblue;
   color: #fff;
-  border-radius: .5rem;
+  border-radius: .7rem;
   box-shadow: 0 .3rem .5rem rgba(0,0,0,0,.2);
   padding: .35rem;
   outline: none;
   font-family: "Hind Siliguri";
+  font-size: 1.4rem;
 }
 .signup__button:hover {
   background-color: #135CA3;
