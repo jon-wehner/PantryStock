@@ -10,7 +10,7 @@ export default function ShoppingList() {
   }, [dispatch])
   return (
     <div className="shoppingList">
-
+      <p>Coming Soon!</p>
     </div>
   )
 }
