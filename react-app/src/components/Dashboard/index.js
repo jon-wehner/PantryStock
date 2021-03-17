@@ -12,6 +12,9 @@ export default function Dashboard() {
   }, [dispatch])
 
   return (
-    <h1>hi {user && user.username}!</h1>
+    <>
+      <h1>hi {user && user.username}!</h1>
+      <button className="stdbutton" >Create Shopping List</button>
+    </>
   )
 }

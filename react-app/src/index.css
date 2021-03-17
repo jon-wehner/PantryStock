@@ -39,3 +39,14 @@ input {
   font-family: "Hind Siliguri";
   border-radius: .7rem;
 }
+/* Global Style for buttons to make dev work easier */
+.stdbutton {
+  background-color: dodgerblue;
+  color: #fff;
+  font-family: "Hind Siliguri";
+  font-size: 1rem;
+  padding: .35rem;
+}
+.stdbutton:hover {
+  background-color: #135CA3;
+}
