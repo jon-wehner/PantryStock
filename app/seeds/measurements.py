@@ -27,5 +27,5 @@ def seed_measurements():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_measurements():
-    db.session.execute('TRUNCATE measurements CASCADE;')
+    db.session.execute('TRUNCATE measurements RESTART IDENTITY CASCADE;')
     db.session.commit()

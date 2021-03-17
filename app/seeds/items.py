@@ -64,5 +64,5 @@ def seed_items():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_items():
-    db.session.execute('TRUNCATE items CASCADE;')
+    db.session.execute('TRUNCATE items RESTART IDENTITY CASCADE;')
     db.session.commit()
