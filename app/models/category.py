@@ -8,3 +8,9 @@ class Category(db.Model):
     name = db.Column(db.String(), nullable=False, unique=True)
 
     items = db.relationship("Item", back_populates="category")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }

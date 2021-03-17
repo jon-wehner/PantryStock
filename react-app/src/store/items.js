@@ -1,4 +1,5 @@
 const SET_ITEMS = 'items/setItems'
+const SET_CATEGORIES = 'items/setCategories'
 
 const setItems = (items) => {
   return {
@@ -6,15 +7,32 @@ const setItems = (items) => {
     items
   }
 }
+
+const setCategories = (categories) => {
+  return {
+    type: SET_CATEGORIES,
+    categories
+  }
+}
 export const loadItems = () => async (dispatch) => {
   const res = await fetch('/api/items/');
   if (res.ok) {
     const items = await res.json();
-    console.log(items)
     dispatch(setItems(items));
   }
 };
-const initialState = { list: null}
+
+export const loadCategories = () => async (dispatch) => {
+  const res = await fetch('/api/items/categories/');
+  if (res.ok) {
+    const categories = await res.json();
+    dispatch(setCategories(categories))
+  }
+}
+const initialState = {
+                      list: null,
+                      categories: null,
+                    }
 const itemReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
@@ -22,6 +40,10 @@ const itemReducer = (state = initialState, action) => {
       newState = {...state};
       newState.list = action.items
       return newState
+    case SET_CATEGORIES:
+      newState = {...state};
+      newState.categories = action.categories;
+      return newState;
     default:
       return state;
   }

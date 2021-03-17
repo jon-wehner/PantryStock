@@ -20,6 +20,7 @@ class Item(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "category": self.category,
+            "category_id": self.category_id,
+            "category": self.category.name
             "fridge": self.fridge,
         }
