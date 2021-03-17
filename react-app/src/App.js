@@ -8,6 +8,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import LandingPage from "./LandingPage";
+import ShoppingList from "./components/ShoppingList";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -47,7 +48,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
-          {authenticated ? <h1>Authenticated</h1> : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>}
+          {authenticated ? <ShoppingList authenticated={authenticated}/> : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>}
         </Route>
       </Switch>
     </>

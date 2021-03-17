@@ -13,3 +13,11 @@ class Item(db.Model):
     shopping_list_items = db.relationship("ShoppingListItem",
                                           back_populates="item")
     user_items = db.relationship("UserItem", back_populates="item")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "aisle": self.aisle,
+            "fridge": self.fridge,
+        }
