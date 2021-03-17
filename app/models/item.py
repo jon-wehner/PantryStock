@@ -21,6 +21,6 @@ class Item(db.Model):
             "id": self.id,
             "name": self.name,
             "category_id": self.category_id,
-            "category": self.category.name
+            "category": self.category.name,
             "fridge": self.fridge,
         }

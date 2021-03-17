@@ -12,8 +12,8 @@ def items():
     return {item.id: item.to_dict() for item in items}
 
 
-@item_routes.route('/categories')
+@item_routes.route('/categories/')
 @login_required
 def categories():
     categories = Category.query.all()
-    return categories
+    return {category.id: category.to_dict() for category in categories}
