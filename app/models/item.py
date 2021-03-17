@@ -6,12 +6,12 @@ class Item(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False, unique=True)
-    category_id = db.Column(db.Integer(), nullable=False,
-                            db.ForeignKey("categories.id"))
+    category_id = db.Column(db.Integer(), db.ForeignKey("categories.id"),
+                            nullable=False)
     fridge = db.Column(db.Boolean(), nullable=False)
 
     recipe_items = db.relationship("RecipeItem", back_populates="item")
-    category = db.relationship("Aisle", back_populates="items")
+    category = db.relationship("Category", back_populates="items")
     shopping_list_items = db.relationship("ShoppingListItem",
                                           back_populates="item")
     user_items = db.relationship("UserItem", back_populates="item")
@@ -20,6 +20,6 @@ class Item(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "aisle": self.aisle,
+            "category": self.category,
             "fridge": self.fridge,
         }

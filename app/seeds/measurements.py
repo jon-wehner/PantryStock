@@ -1,7 +1,7 @@
 from app.models import db, Measurement
 
 
-# Adds a demo user, you can add other users here if you want
+# Adds measurements, you can add other users here if you want
 def seed_measurements():
     measurements = [Measurement(unit='Each'),
                     Measurement(unit='Pound'),
@@ -22,10 +22,10 @@ def seed_measurements():
     db.session.commit()
 
 
-# Uses a raw SQL query to TRUNCATE the users table.
+# Uses a raw SQL query to TRUNCATE the measurements table.
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_measurements():
-    db.session.execute('TRUNCATE measurements;')
+    db.session.execute('TRUNCATE measurements CASCADE;')
     db.session.commit()
