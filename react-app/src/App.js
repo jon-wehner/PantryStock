@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from "react";
 import {Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux"
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import { authenticate } from "./services/auth";
+import { authenticate } from "./store/session";
 import LandingPage from "./LandingPage";
-import ShoppingList from "./components/ShoppingList";
+import Dashboard from "./components/Dashboard";
 
 function App() {
+  const dispatch = useDispatch()
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     (async() => {
-      const user = await authenticate();
+      const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
       }
       setLoaded(true);
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -48,7 +50,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
-          {authenticated ? <ShoppingList authenticated={authenticated}/> : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>}
+          {authenticated ? <Dashboard authenticated={authenticated}/> : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>}
         </Route>
       </Switch>
     </>

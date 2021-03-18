@@ -58,6 +58,20 @@ export const signUp = (username, email, password) => async (dispatch)  => {
   return user
 }
 
+export const authenticate = () => async (dispatch) => {
+  const response = await fetch('/api/auth/',{
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (response.ok) {
+    const user = await response.json()
+    dispatch(setUser(user))
+    return user
+  }
+  return await response.json()
+}
+
 const initialState = {user : null}
 
 const sessionReducer = (state = initialState, action) => {

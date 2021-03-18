@@ -21,7 +21,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
   const signInDemo = async (e) => {
     e.preventDefault(e)
-    const user = await dispatch(login('demo@aa.io', 'password'))
+    await dispatch(login('demo@aa.io', 'password'))
     setAuthenticated(true)
   }
   const updateEmail = (e) => {
@@ -37,7 +37,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form className="loginForm" onSubmit={onLogin}>
       <div className="errors__container">
         {errors.map((error) => (
           <div className="error">{error}</div>
