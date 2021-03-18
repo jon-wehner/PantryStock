@@ -2,7 +2,7 @@
   font-size: 1.2rem;
   color: red;
 }
-form {
+.loginForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +29,7 @@ form {
   display: flex;
   justify-content: center;
 }
-form button {
+.loginform button {
   background-color: dodgerblue;
   color: #fff;
   font-family: "Hind Siliguri";
@@ -37,7 +37,7 @@ form button {
   width: 5rem;
   height: 2.7rem;
 }
-form button:hover {
+.loginform button:hover {
   background-color: #135CA3;
 }
 
