@@ -2,6 +2,7 @@ import { useState } from "react"
 
 export default function ShoppingListForm({setShowForm}) {
   const [name, setName] = useState("")
+  const [errors, setErrors] = useState("")
   const createShoppingList = (e) => {
     e.preventDefault();
   }

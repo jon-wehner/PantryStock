@@ -1,4 +1,3 @@
-const initialState = {}
 
 const createShoppingList = (name, userId) => async (dispatch) => {
   formData = new FormData()
@@ -25,6 +24,7 @@ const createShoppingList = (name, userId) => async (dispatch) => {
   }
 };
 
+const initialState = {}
 const shoppingListReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
