@@ -1,15 +1,16 @@
 import './Dashboard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import{ editShoppingList } from '../../store/shoppingList'
+import DeleteButton from './DeleteButton'
 
-export default function ShoppingList ({shoppingList}) {
+export default function ShoppingList ({list}) {
   const dispatch = useDispatch()
 
   const [edit, setEdit] = useState(false)
-  const [name, setName] = useState(shoppingList.name)
+  const [name, setName] = useState(list.name)
   const [errors, setErrors] = useState("")
 
 const showInput = e => {
@@ -27,9 +28,9 @@ const handleEnter = e => {
   }
 }
 const saveShoppingList = async e => {
-  const newShoppingList =  await dispatch(editShoppingList(shoppingList.id, name, shoppingList.user_id))
-  if (newShoppingList.errors) {
-    setErrors(newShoppingList.errors)
+  const newList =  await dispatch(editShoppingList(list.id, name, list.user_id))
+  if (newList.errors) {
+    setErrors(newList.errors)
   } else {
     setEdit(false)
   }
@@ -39,10 +40,10 @@ const saveShoppingList = async e => {
     <div className="shoppingList">
       {errors && errors.map(error => <li key={error}>{error}</li>)}
       {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter}></input>
-        : <p>{shoppingList.name}</p>}
+        : <p>{list.name}</p>}
       <div style={{ marginLeft: '5rem'}}>
         <button className="shoppingList__buttons" onClick={edit ? saveShoppingList : showInput}><FontAwesomeIcon icon={edit ? faSave : faEdit} /></button>
-        <button style={{color : 'red'}}className="shoppingList__buttons"><FontAwesomeIcon icon={faTrashAlt} /></button>
+        <DeleteButton id={list.id} />
       </div>
 
     </div>
