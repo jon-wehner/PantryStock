@@ -21,8 +21,12 @@ const updateName = e => {
   setName(e.target.value)
 }
 
+const handleEnter = e => {
+  if (e.key === 'Enter') {
+    saveShoppingList(e)
+  }
+}
 const saveShoppingList = async e => {
-  e.preventDefault()
   const newShoppingList =  await dispatch(editShoppingList(shoppingList.id, name, shoppingList.user_id))
   if (newShoppingList.errors) {
     setErrors(newShoppingList.errors)
@@ -34,7 +38,8 @@ const saveShoppingList = async e => {
   return (
     <div className="shoppingList">
       {errors && errors.map(error => <li key={error}>{error}</li>)}
-      {edit ? <input value={name} onChange={updateName}></input> : <p>{shoppingList.name}</p>}
+      {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter}></input>
+        : <p>{shoppingList.name}</p>}
       <div style={{ marginLeft: '5rem'}}>
         <button className="shoppingList__buttons" onClick={edit ? saveShoppingList : showInput}><FontAwesomeIcon icon={edit ? faSave : faEdit} /></button>
         <button style={{color : 'red'}}className="shoppingList__buttons"><FontAwesomeIcon icon={faTrashAlt} /></button>
