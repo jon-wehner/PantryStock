@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { loadOneShoppingList } from "../../store/shoppingList"
@@ -10,7 +10,7 @@ export default function ShoppingList() {
 
   useEffect(() => {
     dispatch(loadOneShoppingList(id))
-  },[])
+  },[dispatch, id])
 
   return (
     <div className="shoppingList__container">
