@@ -1,3 +1,20 @@
+const SET_SHOPPING_LISTS = 'shoppingLists/set'
+
+const setShoppingLists = (shoppingLists) => {
+  return {
+    type: SET_SHOPPING_LISTS,
+    shoppingLists
+  }
+}
+
+export const loadShoppingLists = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/shopping-lists/`);
+  const shoppingLists = await res.json();
+  if (res.ok){
+    dispatch(setShoppingLists(shoppingLists.lists))
+  }
+  return shoppingLists
+}
 
 export const createShoppingList = (name, userId) => async (dispatch) => {
   const formData = new FormData()
@@ -12,7 +29,7 @@ export const createShoppingList = (name, userId) => async (dispatch) => {
     if (!res.ok) throw res
     const shoppingList = await res.json()
     if(!shoppingList.errors) {
-      dispatch()
+      dispatch(setShoppingLists([shoppingList]))
     }
     return shoppingList
   }
@@ -21,13 +38,18 @@ export const createShoppingList = (name, userId) => async (dispatch) => {
   }
 };
 
-const initialState = {}
+const initialState = {
+                      userLists: null
+                    }
 
 const shoppingListReducer = (state = initialState, action) => {
-  let newState;
+  let newState = {}
   switch(action.type) {
+    case SET_SHOPPING_LISTS:
+      newState.userLists = action.shoppingLists
+      return newState
     default:
-      return newState;
+      return state;
   }
 }
 
