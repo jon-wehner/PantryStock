@@ -7,6 +7,14 @@ from flask_login import login_required
 shopping_list_routes = Blueprint('shopping-lists', __name__)
 
 
+# Route to get one shopping list
+@shopping_list_routes.route('/<int:id>')
+@login_required
+def get_one_list(id):
+    shopping_list = ShoppingList.query.get(id)
+    return {shopping_list.id: shopping_list.to_dict()}
+
+
 # Route for users to create new shopping lists
 @shopping_list_routes.route('/', methods=['POST'])
 @login_required
@@ -24,6 +32,7 @@ def create_shopping_list():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
+# Combined route for editing and deleting one shopping list
 @shopping_list_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
 @login_required
 def edit_shopping_list(id):

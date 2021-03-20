@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadCategories, loadItems } from '../../store/items'
-import { loadShoppingLists } from "../../store/shoppingList"
+import { loadUserShoppingLists } from "../../store/shoppingList"
 import ShoppingListForm from './forms/ShoppingListForm'
 import ShoppingListDisplay from './ShoppingListDisplay'
 import './Dashboard.css'
@@ -16,7 +16,7 @@ export default function Dashboard() {
     if(user) {
       dispatch(loadItems())
       dispatch(loadCategories())
-      dispatch(loadShoppingLists(user.id))
+      dispatch(loadUserShoppingLists(user.id))
     }
   }, [user, dispatch])
 

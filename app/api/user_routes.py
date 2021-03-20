@@ -19,6 +19,7 @@ def user(id):
     return user.to_dict()
 
 
+# Gets all of the user's shopping lists
 @user_routes.route('/<int:id>/shopping-lists/')
 @login_required
 def load_shopping_lists(id):
