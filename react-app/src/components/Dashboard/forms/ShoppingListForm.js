@@ -20,6 +20,9 @@ export default function ShoppingListForm({setShowForm}) {
 
   return (
     <form onSubmit={handleSubmit}>
+      {errors &&
+        errors.map(error=> <li key={error}>{error}</li>)
+      }
       <input pleaceHolder="Enter Name..." onChange={(e) => setName(e.target.value)}></input>
       <button className="stdbutton">Create Shopping List</button>
     </form>
