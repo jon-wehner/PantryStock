@@ -1,5 +1,5 @@
 
-const createShoppingList = (name, userId) => async (dispatch) => {
+export const createShoppingList = (name, userId) => async (dispatch) => {
   formData = new FormData()
   formData.append('name', name)
   formData.append('user_id', userId)
@@ -25,6 +25,7 @@ const createShoppingList = (name, userId) => async (dispatch) => {
 };
 
 const initialState = {}
+
 const shoppingListReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
@@ -32,3 +33,5 @@ const shoppingListReducer = (state = initialState, action) => {
       return newState;
   }
 }
+
+export default shoppingListReducer
