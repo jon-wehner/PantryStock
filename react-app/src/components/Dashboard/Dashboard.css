@@ -1,0 +1,7 @@
+.shoppingList {
+  display: flex;
+  justify-content: row;
+}
+.shoppingList p {
+  display: inline-block;
+}

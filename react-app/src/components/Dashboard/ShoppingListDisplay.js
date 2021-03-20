@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import ShoppingList from "./ShoppingList"
 
 export default function ShoppingListDisplay() {
   const user = useSelector(state => state.session.user)
@@ -18,7 +19,7 @@ export default function ShoppingListDisplay() {
     <>
       <h1>Shopping Lists Go Here</h1>
       {Object.values(shoppingLists).map(shoppingList => {
-        return <li key={shoppingList.id}>{shoppingList.name}</li>
+        return <ShoppingList shoppingList={shoppingList} />
       })}
     </>
 
