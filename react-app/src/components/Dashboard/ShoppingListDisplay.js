@@ -16,12 +16,12 @@ export default function ShoppingListDisplay() {
 
   if (!loaded) return null
   return (
-    <>
-      <h1>Shopping Lists Go Here</h1>
+    <div className="dashboard__shoppingListContainer">
+      <h1>Your Shopping Lists</h1>
       {Object.values(shoppingLists).map(shoppingList => {
-        return <ShoppingList shoppingList={shoppingList} />
+        return <ShoppingList key={shoppingList.id} shoppingList={shoppingList} />
       })}
-    </>
+    </div>
 
   )
 }

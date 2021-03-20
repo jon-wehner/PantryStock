@@ -1,7 +1,19 @@
 .shoppingList {
   display: flex;
-  justify-content: row;
+  justify-content: space-between;
+
 }
 .shoppingList p {
   display: inline-block;
+  font-size: 1.2rem;
+}
+
+.dashboard__shoppingListContainer {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.shoppingList__buttons {
+  font-size: 1.2rem;
+  margin-left: 1rem;
 }
