@@ -29,7 +29,7 @@
   display: flex;
   justify-content: center;
 }
-.loginform button {
+.loginForm button {
   background-color: dodgerblue;
   color: #fff;
   font-family: "Hind Siliguri";
@@ -37,7 +37,7 @@
   width: 5rem;
   height: 2.7rem;
 }
-.loginform button:hover {
+.loginForm button:hover {
   background-color: #135CA3;
 }
 

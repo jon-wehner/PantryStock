@@ -30,9 +30,9 @@ label {
   font-size: 1.4rem;
 }
 input {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-family: inherit;
-  padding: .25rem .5rem;
+  padding: .25rem .35rem;
   background-color: #fff;
   border: 2px solid #d5d5d5;
   margin-left: .7rem;
