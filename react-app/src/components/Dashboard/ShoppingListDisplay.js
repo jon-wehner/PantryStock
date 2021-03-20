@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import ShoppingList from "./ShoppingList"
+import DisplayRow from "./DisplayRow"
 
 export default function ShoppingListDisplay() {
   const user = useSelector(state => state.session.user)
@@ -19,7 +19,7 @@ export default function ShoppingListDisplay() {
     <div className="dashboard__shoppingListContainer">
       <h1>Your Shopping Lists</h1>
       {Object.values(shoppingLists).map(shoppingList => {
-        return <ShoppingList key={shoppingList.id} shoppingList={shoppingList} />
+        return <DisplayRow key={shoppingList.id} shoppingList={shoppingList} />
       })}
     </div>
 

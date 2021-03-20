@@ -4,6 +4,7 @@ import { loadCategories, loadItems } from '../../store/items'
 import { loadShoppingLists } from "../../store/shoppingList"
 import ShoppingListForm from './forms/ShoppingListForm'
 import ShoppingListDisplay from './ShoppingListDisplay'
+import './Dashboard.css'
 
 export default function Dashboard() {
   const dispatch = useDispatch()

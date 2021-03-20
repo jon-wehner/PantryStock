@@ -3,9 +3,24 @@
   justify-content: space-between;
 
 }
-.shoppingList p {
+.shoppingList a {
   display: inline-block;
   font-size: 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: .75rem;
+}
+.shoppingList a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.shoppingList a:hover {
+  transform: translateY(.075rem);
+}
+
+.shoppingList a:active {
+  transform: translateY(.15rem);
 }
 
 .dashboard__shoppingListContainer {
@@ -16,4 +31,17 @@
 .shoppingList__buttons {
   font-size: 1.2rem;
   margin-left: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard__shoppingListContainer {
+    width: 100%;
+    margin: .5rem;
+  }
+  .shoppingList {
+    justify-content: center;
+  }
+  .shoppingList a {
+    width: 8rem;
+  }
 }
