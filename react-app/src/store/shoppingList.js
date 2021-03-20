@@ -5,9 +5,6 @@ export const createShoppingList = (name, userId) => async (dispatch) => {
   formData.append('user_id', userId)
   const options = {
     method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: formData,
   }
   try {
