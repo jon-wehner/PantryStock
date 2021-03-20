@@ -1,6 +1,6 @@
 from flask import Blueprint
 from app.models import ShoppingList
-from app.form import CreateShoppingListForm
+from app.forms import CreateShoppingListForm
 from app.utils import validation_errors_to_error_messages
 from flask_login import login_required
 

@@ -22,7 +22,7 @@ export default function Dashboard() {
   return (
     <>
       <h1>hi {user && user.username}!</h1>
-      {showShoppingListForm ? <ShoppingListForm /> : <button className="stdbutton" onClick={revealForm}>New Shopping List</button>}
+      {showShoppingListForm ? <ShoppingListForm setShowForm={setShowShoppingListForm}/> : <button className="stdbutton" onClick={revealForm}>New Shopping List</button>}
     </>
   )
 }

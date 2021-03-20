@@ -1,6 +1,6 @@
 
 export const createShoppingList = (name, userId) => async (dispatch) => {
-  formData = new FormData()
+  const formData = new FormData()
   formData.append('name', name)
   formData.append('user_id', userId)
   const options = {
