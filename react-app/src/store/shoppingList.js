@@ -1,3 +1,4 @@
+const ADD_SHOPPING_LIST = 'shoppingLists/add'
 const SET_SHOPPING_LISTS = 'shoppingLists/set'
 const EDIT_SHOPPING_LIST = 'shoppingLists/edit'
 const REMOVE_SHOPPING_LIST = 'shoppingLists/remove'
@@ -6,6 +7,13 @@ const setShoppingLists = (shoppingLists) => {
   return {
     type: SET_SHOPPING_LISTS,
     shoppingLists
+  }
+}
+
+const addShoppingList = (shoppingList) => {
+  return {
+    type: ADD_SHOPPING_LIST,
+    shoppingList
   }
 }
 
@@ -43,9 +51,9 @@ export const createShoppingList = (name, userId) => async (dispatch) => {
   try {
     const res = await fetch('/api/shopping-lists/', options);
     if (!res.ok) throw res
-    const shoppingList = await res.json()
+    let shoppingList = await res.json()
     if(!shoppingList.errors) {
-      dispatch(setShoppingLists([shoppingList]))
+      dispatch(addShoppingList(shoppingList))
     }
     return shoppingList
   }
@@ -100,15 +108,21 @@ const initialState = {
 const shoppingListReducer = (state = initialState, action) => {
   let newState = {}
   switch(action.type) {
+    case ADD_SHOPPING_LIST:
+      newState = {...state}
+      newState.userLists[action.shoppingList.id] = action.shoppingList
+      return newState
     case SET_SHOPPING_LISTS:
       newState.userLists = {...state.userLists, ...action.shoppingLists};
       return newState;
     case EDIT_SHOPPING_LIST:
       newState = {...state};
+      console.log(newState.userLists[action.shoppingList.id])
       newState.userLists[action.shoppingList.id] = action.shoppingList;
       return newState;
     case REMOVE_SHOPPING_LIST:
       newState = {...state};
+      console.log(newState.userLists[action.id])
       delete newState.userLists[action.id];
       return newState;
     default:

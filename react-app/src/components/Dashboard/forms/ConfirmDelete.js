@@ -1,7 +1,13 @@
-export default function ConfirmDelete({id}) {
-  const handleSubmit = e=>{
-    e.preventDefault()
+import { useDispatch } from 'react-redux'
+import { deleteShoppingList } from '../../../store/shoppingList'
 
+
+export default function ConfirmDelete({id, setShowModal}) {
+  const dispatch = useDispatch()
+  const handleSubmit = async (e) =>{
+    e.preventDefault()
+    await dispatch(deleteShoppingList(id));
+    setShowModal(false)
   }
   return (
     <form onSubmit={handleSubmit}>

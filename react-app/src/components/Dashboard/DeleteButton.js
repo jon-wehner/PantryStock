@@ -11,7 +11,7 @@ export default function DeleteButton({id}) {
       <button style={{color : 'red'}}className="shoppingList__buttons" onClick={ () => setShowModal(true)}><FontAwesomeIcon icon={faTrashAlt} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ConfirmDelete id={id}/>
+          <ConfirmDelete id={id} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
