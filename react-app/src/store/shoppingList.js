@@ -7,8 +7,13 @@ const setShoppingLists = (shoppingLists) => {
   }
 }
 
-export const loadShoppingLists = () => async (dispatch) => {
-  const res = await fetch('/api/shopping-lists/')
+export const loadShoppingLists = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/shopping-lists/`);
+  const shoppingLists = await res.json();
+  if (res.ok){
+    dispatch(setShoppingLists(shoppingLists.lists))
+  }
+  return shoppingLists
 }
 
 export const createShoppingList = (name, userId) => async (dispatch) => {
@@ -38,8 +43,11 @@ const initialState = {
                     }
 
 const shoppingListReducer = (state = initialState, action) => {
-  let newState;
+  let newState = {}
   switch(action.type) {
+    case SET_SHOPPING_LISTS:
+      newState.userLists = action.shoppingLists
+      return newState
     default:
       return state;
   }

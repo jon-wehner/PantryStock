@@ -15,7 +15,12 @@ export default function ShoppingListDisplay() {
 
   if (!loaded) return null
   return (
-    <h1>Shopping Lists Go Here</h1>
+    <>
+      <h1>Shopping Lists Go Here</h1>
+      {Object.values(shoppingLists).map(shoppingList => {
+        return <li key={shoppingList.id}>{shoppingList.name}</li>
+      })}
+    </>
 
   )
 }
