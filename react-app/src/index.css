@@ -33,7 +33,7 @@ input {
   font-size: 1rem;
   font-family: inherit;
   padding: .25rem .35rem;
-  background-color: #fff;
+  background-color: #F7F7FF;
   border: 2px solid #d5d5d5;
   margin-left: .7rem;
   font-family: "Hind Siliguri";
@@ -42,7 +42,7 @@ input {
 /* Global Style for buttons to make dev work easier */
 .stdbutton {
   background-color: dodgerblue;
-  color: #fff;
+  color: #F7F7FF;
   font-family: "Hind Siliguri";
   font-size: 1rem;
   padding: .35rem;

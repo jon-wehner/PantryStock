@@ -21,8 +21,14 @@ const removeList = (id) => {
     id
   }
 }
-
-export const loadShoppingLists = (userId) => async (dispatch) => {
+export const loadOneShoppingList = id => async (dispatch) => {
+  const res = await fetch(`/api/shopping-lists/${id}`)
+  if (res.ok) {
+    const shoppingList = await res.json()
+    dispatch(setShoppingLists(shoppingList))
+  }
+}
+export const loadUserShoppingLists = (userId) => async (dispatch) => {
   const res = await fetch(`/api/users/${userId}/shopping-lists/`);
   const shoppingLists = await res.json();
   if (res.ok){
@@ -92,23 +98,20 @@ export const deleteShoppingList = (id) => async (dispatch) => {
   }
 }
 
-const initialState = {
-                      userLists: null
-                    }
-
+const initialState = {}
 const shoppingListReducer = (state = initialState, action) => {
   let newState = {}
   switch(action.type) {
     case SET_SHOPPING_LISTS:
-      newState.userLists = {...state.userLists, ...action.shoppingLists};
+      newState = {...state, ...action.shoppingLists};
       return newState;
     case EDIT_SHOPPING_LIST:
-      newState.userLists = {...state.userLists};
-      newState.userLists[action.shoppingList.id] = action.shoppingList;
+      newState = {...state};
+      newState[action.shoppingList.id] = action.shoppingList;
       return newState;
     case REMOVE_SHOPPING_LIST:
-      newState.userLists = {...state.userLists};
-      delete newState.userLists[action.id];
+      newState = {...state};
+      delete newState[action.id];
       return newState;
     default:
       return state;

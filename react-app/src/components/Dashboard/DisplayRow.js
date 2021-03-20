@@ -1,12 +1,12 @@
-import './Dashboard.css'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import DeleteButton from './DeleteButton'
+import{ editShoppingList } from '../../store/shoppingList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import{ editShoppingList } from '../../store/shoppingList'
-import DeleteButton from './DeleteButton'
 
-export default function ShoppingList ({shoppingList}) {
+export default function DisplayRow ({shoppingList}) {
   const dispatch = useDispatch()
 
   const [edit, setEdit] = useState(false)
@@ -41,7 +41,7 @@ const saveShoppingList = async e => {
     <div className="shoppingList">
       {errors && errors.map(error => <li key={error}>{error}</li>)}
       {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter}></input>
-        : <p>{shoppingList.name}</p>}
+        : <Link to={`/shopping-lists/${shoppingList.id}`}>{shoppingList.name}</Link>}
       <div style={{ marginLeft: '5rem'}}>
         <button className="shoppingList__buttons" onClick={edit ? saveShoppingList : showInput}><FontAwesomeIcon icon={edit ? faSave : faEdit} /></button>
         <DeleteButton id={shoppingList.id} />
