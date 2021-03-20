@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux'
 import{ editShoppingList } from '../../store/shoppingList'
 import DeleteButton from './DeleteButton'
 
-export default function ShoppingList ({list}) {
+export default function ShoppingList ({shoppingList}) {
   const dispatch = useDispatch()
 
   const [edit, setEdit] = useState(false)
-  const [name, setName] = useState(list.name)
+  const [name, setName] = useState(shoppingList.name)
   const [errors, setErrors] = useState("")
 
 const showInput = e => {
@@ -28,7 +28,7 @@ const handleEnter = e => {
   }
 }
 const saveShoppingList = async e => {
-  const newList =  await dispatch(editShoppingList(list.id, name, list.user_id))
+  const newList =  await dispatch(editShoppingList(shoppingList.id, name, shoppingList.user_id))
   if (newList.errors) {
     setErrors(newList.errors)
   } else {
@@ -40,10 +40,10 @@ const saveShoppingList = async e => {
     <div className="shoppingList">
       {errors && errors.map(error => <li key={error}>{error}</li>)}
       {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter}></input>
-        : <p>{list.name}</p>}
+        : <p>{shoppingList.name}</p>}
       <div style={{ marginLeft: '5rem'}}>
         <button className="shoppingList__buttons" onClick={edit ? saveShoppingList : showInput}><FontAwesomeIcon icon={edit ? faSave : faEdit} /></button>
-        <DeleteButton id={list.id} />
+        <DeleteButton id={shoppingList.id} />
       </div>
 
     </div>
