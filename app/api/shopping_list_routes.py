@@ -20,7 +20,7 @@ def create_shopping_list():
         )
         db.session.add(shopping_list)
         db.session.commit()
-        return shopping_list.to_dict()
+        return {shopping_list.id: shopping_list.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
