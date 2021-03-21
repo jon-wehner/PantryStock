@@ -16,7 +16,6 @@ def items():
 @login_required
 def search_items():
     query = request.get_json()
-    print('111111111111111111111111111111111111111', query)
     items = Item.query.filter(Item.name.ilike(f'%{query}%'))
     return {item.id: item.to_dict() for item in items}
 

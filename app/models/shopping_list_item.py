@@ -7,7 +7,8 @@ class ShoppingListItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     item_id = db.Column(db.Integer, db.ForeignKey("items.id"))
-    shopping_list_id = db.Column(db.Integer, db.ForeignKey("shopping_lists.id"))
+    shopping_list_id = db.Column(db.Integer,
+                                 db.ForeignKey("shopping_lists.id"))
     quantity = db.Column(db.Float, nullable=False)
     measurement_id = db.Column(db.Integer, db.ForeignKey("measurements.id"),
                                nullable=False)
