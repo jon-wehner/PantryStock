@@ -52,7 +52,7 @@ def shopping_list(id):
 
 @shopping_list_routes.route('/<int:id>/items', methods=['POST'])
 @login_required
-def edit_shopping_list_items(id):
+def add_shopping_list_item(id):
     form = ShoppingListItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -67,4 +67,25 @@ def edit_shopping_list_items(id):
         db.session.add(shopping_list_item)
         db.session.commit()
         return {shopping_list.id: shopping_list.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+@shopping_list_routes.route('/<int:id>/items/<int:item_id>',
+                            methods=['PUT', 'DELETE'])
+@login_required
+def edit_shopping_list_items(id, item_id):
+    item = ShoppingListItem.query.get(item_id)
+    if method == 'PUT':
+        form = ShoppingListItemForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            shopping_list = ShoppingList.query.get(id)
+            item.measurement_id = form.data['measurement_id']
+            quantity = form.data['quantity']
+            db.session.add(item)
+            db.session.commit()
+            return {shopping_list.id: shopping_list.to_dict()}
+    if method == 'DELETE':
+        db.session.delete(item)
+        db.session.commit()
     return {'errors': validation_errors_to_error_messages(form.errors)}
