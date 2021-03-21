@@ -18,7 +18,20 @@ export default function ShoppingList() {
     <div className="shoppingList__container">
       <SearchBar />
     {list &&
-        <p>{list.name}</p>
+        <div>
+          <p>{list.name}</p>
+          <ul>
+            {list.items.map(el => {
+              return <li>
+                        <div>
+                          {el.quantity}
+                          {el.measurement.unit}
+                          {el.item.name}
+                        </div>
+                      </li>}
+              )}
+          </ul>
+        </div>
       }
     </div>
   )
