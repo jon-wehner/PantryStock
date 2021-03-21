@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { loadOneShoppingList } from "../../store/shoppingList"
 import SearchBar from "./SearchBar"
+import './styles/ShoppingList.css'
 
 export default function ShoppingList() {
   const dispatch = useDispatch()

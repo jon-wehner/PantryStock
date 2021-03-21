@@ -9,7 +9,7 @@ shopping_list_routes = Blueprint('shopping-lists', __name__)
 
 # Route to get one shopping list
 @shopping_list_routes.route('/<int:id>')
-@login_required
+# @login_required
 def get_one_list(id):
     shopping_list = ShoppingList.query.get(id)
     return {shopping_list.id: shopping_list.to_dict()}
@@ -53,3 +53,9 @@ def edit_shopping_list(id):
             db.session.commit()
             return 'Shopping List Deleted'
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+@shopping_list_routes.route('/<int:id>/items', methods=['POST'])
+# @login_required
+def edit_shopping_list(id):
+    shopping_list = ShoppingList.query.get(id)
