@@ -1,13 +1,18 @@
-import { useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useState } from 'react';
+import { Modal } from '../../context/Modal';
+import ShoppingListItem from './forms/ShoppingListItem';
 
 export default function SearchResult ({item}) {
-  const dispatch = useDispatch()
-  const { id } = useParams()
-  const addToList = () => {
-    // setShowForm(true)
-  }
+  const [showModal, setShowModal] = useState(false)
   return (
-    <li onClick={addToList}>{item.name}</li>
+    <>
+      <li onClick={() => setShowModal(true)}>{item.name}</li>
+      {showModal &&
+        <Modal onClose={() => setShowModal(false)}>
+          <ShoppingListItem item={item}/>
+        </Modal>
+      }
+    </>
+
   )
 }

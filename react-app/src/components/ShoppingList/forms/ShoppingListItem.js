@@ -1,30 +1,33 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
 
-export default function shoppingListItem({item}) {
-  const dispatch = useDispatch()
-  const shoppingListId = useParams()
+export default function ShoppingListItem({item}) {
+  const dispatch = useDispatch();
+  const shoppingListId = useParams();
+  const measurements = useSelector(state => state.items.measurements);
 
-  const measurements = useSelector(state => state.items.measurements)
-  const [measurementId, setMeasurementId]
+  const [loaded, setLoaded] = useState(false);
+  const [measurementId, setMeasurementId] = useState("");
+  const [quantity, setQuantity] = useState("");
+
   useEffect(() => {
     dispatch(loadMeasurements())
-    if (measurements) {
-      setLoaded(true)
-    }
-  },[dispatch, measurements, setLoaded])
+    setLoaded(true)
+  },[]);
+  if (!loaded) return null;
   return (
     <form>
+      <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
       <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>
-        {measurements.map(measurement => <option
+        {measurements && measurements.map(measurement => <option
                                           value={measurement.id}
                                           key={measurement.id}>
-                                            {measurement.name}
+                                            {measurement.unit}
                                           </option>)
                                           }
       </select>
     </form>
   )
-}
+};

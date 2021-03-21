@@ -45,9 +45,9 @@ export const loadCategories = () => async (dispatch) => {
 }
 
 export const loadMeasurements = () => async (dispatch) => {
-  const res = await fetch('/api/items/measurements');
+  const res = await fetch('/api/items/measurements/');
   if (res.ok) {
-    const measurements = await res.json();
+    const { measurements } = await res.json();
     dispatch(setMeasurements(measurements));
   }
 };
