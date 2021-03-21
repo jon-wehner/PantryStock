@@ -5,7 +5,7 @@ export default function SearchResult ({item}) {
   const dispatch = useDispatch()
   const { id } = useParams()
   const addToList = () => {
-    // dispatch(addToList)
+    // setShowForm(true)
   }
   return (
     <li onClick={addToList}>{item.name}</li>

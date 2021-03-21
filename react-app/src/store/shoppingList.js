@@ -98,6 +98,10 @@ export const deleteShoppingList = (id) => async (dispatch) => {
   }
 }
 
+export const addToList = (shoppingListItem) => {
+
+}
+
 const initialState = {}
 const shoppingListReducer = (state = initialState, action) => {
   let newState = {}
