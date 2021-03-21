@@ -121,6 +121,9 @@ export const addToList = (shoppingListItem) =>async (dispatch) => {
     return err
   }
 }
+export const editListItem = () => async (dispatch) => {
+  return null
+}
 
 const initialState = {}
 const shoppingListReducer = (state = initialState, action) => {

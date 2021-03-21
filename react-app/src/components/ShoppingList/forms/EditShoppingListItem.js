@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
 import { editListItem } from '../../../store/shoppingList'
 
-export default function ShoppingListItem({item, setShowModal}) {
+export default function ShoppingListItem({row, setShowModal}) {
   const dispatch = useDispatch();
   const { id: shoppingListId } = useParams();
   const measurements = useSelector(state => state.items.measurements);
@@ -26,7 +26,7 @@ export default function ShoppingListItem({item, setShowModal}) {
       measurementId,
       quantity,
       shoppingListId,
-      itemId: item.id
+      itemId: row.item.id
     }
     const res = await dispatch(editListItem(shoppingListItem))
     if (res.errors) {
@@ -36,13 +36,15 @@ export default function ShoppingListItem({item, setShowModal}) {
       setShowModal(false)
     }
   }
-
+  const deleteItem = e => {
+    return null
+  }
   if (!loaded) return null;
   return (
     <form style={{ display: 'flex', flexDirection: 'column'}} onSubmit={handleSubmit}>
       {errors && errors.map(error => <li key={error}>{error}</li>)}
-      {item.name}
-      {item.category}
+      {row.item.name}
+      {row.item.category}
       <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
       <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>
         {measurements && measurements.map(measurement => <option

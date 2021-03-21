@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Modal } from "../../context/Modal"
-import ShoppingListItem from "./forms/ShoppingListItem"
+import EditShoppingListItem from "./forms/EditShoppingListItem"
 
-export default function ShoppingListRow () {
+export default function ShoppingListRow ({row}) {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
@@ -15,7 +15,7 @@ export default function ShoppingListRow () {
       </li>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-
+          <EditShoppingListItem row={row}/>
         </Modal>
       }
     </>

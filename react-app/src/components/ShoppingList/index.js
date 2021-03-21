@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { loadOneShoppingList } from "../../store/shoppingList"
 import SearchBar from "./SearchBar"
+import ShoppingListRow from "./ShoppingListRow"
 import './styles/ShoppingList.css'
 
 export default function ShoppingList() {
@@ -17,19 +18,11 @@ export default function ShoppingList() {
   return (
     <div className="shoppingList__container">
       <SearchBar />
-    {list &&
+      {list &&
         <div>
           <p>{list.name}</p>
           <ul>
-            {list.items.map(el => {
-              return <li>
-                        <div>
-                          {el.quantity}
-                          {el.measurement.unit}
-                          {el.item.name}
-                        </div>
-                      </li>}
-              )}
+            {list.items.map(row => <ShoppingListRow key={row.id} row={row} />)}
           </ul>
         </div>
       }
