@@ -53,7 +53,6 @@ def shopping_list(id):
 # @login_required
 def edit_shopping_list_items(id):
     data = request.get_json()
-    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', data)
     shopping_list = ShoppingList.query.get(id)
     shopping_list_item = ShoppingListItem(
         user_id=shopping_list.user_id,
