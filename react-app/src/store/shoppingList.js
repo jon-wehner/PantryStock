@@ -100,7 +100,7 @@ export const deleteShoppingList = (id) => async (dispatch) => {
 
 export const addToList = (shoppingListItem) =>async (dispatch) => {
   const { measurementId, quantity, shoppingListId, itemId } = shoppingListItem;
-  const formData = new FormData;
+  const formData = new FormData();
   formData.append('item_id', itemId) ;
   formData.append('measurement_id', measurementId);
   formData.append('quantity', quantity);

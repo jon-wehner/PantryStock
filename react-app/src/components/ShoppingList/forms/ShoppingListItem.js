@@ -17,7 +17,7 @@ export default function ShoppingListItem({item, setShowModal}) {
   useEffect(() => {
     dispatch(loadMeasurements())
     setLoaded(true)
-  },[]);
+  },[dispatch]);
 
   const handleSubmit = async (e) => {
     setErrors("")
