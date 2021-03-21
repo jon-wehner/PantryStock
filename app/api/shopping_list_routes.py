@@ -64,4 +64,4 @@ def edit_shopping_list_items(id):
     )
     db.session.add(shopping_list_item)
     db.session.commit()
-    return {shopping_list.to_dict()}
+    return shopping_list.to_dict()

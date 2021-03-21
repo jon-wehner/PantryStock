@@ -11,3 +11,9 @@ class Measurement(db.Model):
     user_items = db.relationship("UserItem", back_populates="measurement")
     shopping_list_items = db.relationship("ShoppingListItem",
                                           back_populates="measurement")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "unit": self.unit
+        }
