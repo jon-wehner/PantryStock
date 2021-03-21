@@ -1,18 +1,11 @@
 from flask import Blueprint, request
-from app.models import ShoppingList, db
-from app.forms import ShoppingListForm, DeleteShoppingListForm
+from app.models import ShoppingList, Item, ShoppingListItem, db
+from app.forms import (ShoppingListForm, DeleteShoppingListForm,
+                       ShoppingListItemForm)
 from app.utils import validation_errors_to_error_messages
 from flask_login import login_required
 
 shopping_list_routes = Blueprint('shopping-lists', __name__)
-
-
-# Route to get one shopping list
-@shopping_list_routes.route('/<int:id>')
-@login_required
-def get_one_list(id):
-    shopping_list = ShoppingList.query.get(id)
-    return {shopping_list.id: shopping_list.to_dict()}
 
 
 # Route for users to create new shopping lists
@@ -33,11 +26,13 @@ def create_shopping_list():
 
 
 # Combined route for editing and deleting one shopping list
-@shopping_list_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
+@shopping_list_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 @login_required
-def edit_shopping_list(id):
+def shopping_list(id):
     shopping_list = ShoppingList.query.get(id)
-    if request.method == 'PUT':
+    if request.method == 'GET':
+        return {shopping_list.id: shopping_list.to_dict()}
+    elif request.method == 'PUT':
         form = ShoppingListForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
@@ -52,4 +47,24 @@ def edit_shopping_list(id):
             db.session.delete(shopping_list)
             db.session.commit()
             return 'Shopping List Deleted'
+    return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+@shopping_list_routes.route('/<int:id>/items', methods=['POST'])
+@login_required
+def edit_shopping_list_items(id):
+    form = ShoppingListItemForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        shopping_list = ShoppingList.query.get(id)
+        shopping_list_item = ShoppingListItem(
+            user_id=shopping_list.user_id,
+            item_id=form.data['item_id'],
+            shopping_list_id=id,
+            measurement_id=form.data['measurement_id'],
+            quantity=form.data['quantity']
+        )
+        db.session.add(shopping_list_item)
+        db.session.commit()
+        return {shopping_list.id: shopping_list.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}

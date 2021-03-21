@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Item, Category
+from app.models import Item, Measurement, Category
 from flask_login import login_required
 
 item_routes = Blueprint('items', __name__)
@@ -16,7 +16,6 @@ def items():
 @login_required
 def search_items():
     query = request.get_json()
-    print('111111111111111111111111111111111111111', query)
     items = Item.query.filter(Item.name.ilike(f'%{query}%'))
     return {item.id: item.to_dict() for item in items}
 
@@ -26,3 +25,11 @@ def search_items():
 def categories():
     categories = Category.query.all()
     return {category.id: category.to_dict() for category in categories}
+
+
+@item_routes.route('/measurements/')
+@login_required
+def measurements():
+    measurements = Measurement.query.all()
+    return {'measurements': [measurement.to_dict()
+            for measurement in measurements]}
