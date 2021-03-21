@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { loadOneShoppingList } from "../../store/shoppingList"
+import SearchBar from "./SearchBar"
 
 export default function ShoppingList() {
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ export default function ShoppingList() {
 
   return (
     <div className="shoppingList__container">
+      <SearchBar />
     {list &&
         <p>{list.name}</p>
       }
