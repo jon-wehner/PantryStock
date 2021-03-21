@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models import ShoppingList, Item, ShoppingListItem, db
-from app.forms import ShoppingListForm, DeleteShoppingListForm
+from app.forms import (ShoppingListForm, DeleteShoppingListForm,
+                       ShoppingListItemForm)
 from app.utils import validation_errors_to_error_messages
 from flask_login import login_required
 
@@ -26,7 +27,7 @@ def create_shopping_list():
 
 # Combined route for editing and deleting one shopping list
 @shopping_list_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
-# @login_required
+@login_required
 def shopping_list(id):
     shopping_list = ShoppingList.query.get(id)
     if request.method == 'GET':
@@ -50,17 +51,20 @@ def shopping_list(id):
 
 
 @shopping_list_routes.route('/<int:id>/items', methods=['POST'])
-# @login_required
+@login_required
 def edit_shopping_list_items(id):
-    data = request.get_json()
-    shopping_list = ShoppingList.query.get(id)
-    shopping_list_item = ShoppingListItem(
-        user_id=shopping_list.user_id,
-        item_id=data['item_id'],
-        shopping_list_id=id,
-        measurement_id=data['measurement_id'],
-        quantity=data['quantity']
-    )
-    db.session.add(shopping_list_item)
-    db.session.commit()
-    return shopping_list.to_dict()
+    form = ShoppingListItemForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        shopping_list = ShoppingList.query.get(id)
+        shopping_list_item = ShoppingListItem(
+            user_id=shopping_list.user_id,
+            item_id=form.data['item_id'],
+            shopping_list_id=id,
+            measurement_id=form.data['measurement_id'],
+            quantity=form.data['quantity']
+        )
+        db.session.add(shopping_list_item)
+        db.session.commit()
+        return shopping_list.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}
