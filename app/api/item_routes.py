@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Item, measurement
+from app.models import Item, Measurement, Category
 from flask_login import login_required
 
 item_routes = Blueprint('items', __name__)
@@ -31,5 +31,5 @@ def categories():
 @login_required
 def measurements():
     measurements = Measurement.query.all()
-    return {measurement.id: measurement.to_dict()
-            for measurement in measurements}
+    return {'measurements': [measurement.to_dict()
+            for measurement in measurements]}
