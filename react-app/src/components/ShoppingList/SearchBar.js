@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { searchItems } from  '../../store/items'
 
 export default function SearchBar() {
   const dispatch = useDispatch()
   const [query, setQuery] = useState("")
-  const [results, setResults] = ([])
+  const results = useSelector(state => state.items.results)
   const handleQuery = (e) => {
     setQuery(e.target.value)
   }
@@ -15,11 +15,9 @@ export default function SearchBar() {
       return () => clearTimeout(timeout)
       async function handleSearch() {
         const search = await dispatch(searchItems(query))
-        console.log(search)
-        // setResults(...search)
       }
     }
-  }, [query, dispatch, setResults])
+  }, [query, dispatch])
   return (
     <div>
       <input onChange={handleQuery}></input>

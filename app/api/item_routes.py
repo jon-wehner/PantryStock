@@ -15,9 +15,9 @@ def items():
 @item_routes.route('/', methods=['PUT'])
 @login_required
 def search_items():
-    query = request.args.get('query')
-    print(query)
-    items = Item.query.filter(Item.name.ilike('%{query}%'))
+    query = request.get_json()
+    print('111111111111111111111111111111111111111', query)
+    items = Item.query.filter(Item.name.ilike(f'%{query}%'))
     return {item.id: item.to_dict() for item in items}
 
 

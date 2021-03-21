@@ -39,11 +39,13 @@ export const loadCategories = () => async (dispatch) => {
 export const searchItems = (query) => async (dispatch) => {
   const options = {
     method: 'PUT',
-    body: query
+    headers: {
+      "Content-Type": "application/JSON",
+    },
+    body: JSON.stringify(query)
   }
   try {
     const res = await fetch('/api/items/', options)
-    console.log(res)
     if (!res.ok) throw res
     const items = await res.json()
     dispatch(setResults(items))
@@ -67,7 +69,7 @@ const itemReducer = (state = initialState, action) => {
       return newState
     case SET_RESULTS:
       newState= {...state};
-      newState.results = {...action.results};
+      newState.results = Object.values(action.items);
       return newState;
     case SET_CATEGORIES:
       newState = {...state};
