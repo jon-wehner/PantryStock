@@ -1,19 +1,25 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { searchItems } from  '../../store/items'
 
 export default function SearchBar() {
   const dispatch = useDispatch()
   const [query, setQuery] = useState("")
-  const [results, setResults] = ("")
-  const handleQuery = async (e) => {
+  const [results, setResults] = ([])
+  const handleQuery = (e) => {
     setQuery(e.target.value)
-    setTimeout(fetchResults(), 1000)
-
-    async function fetchResults() {
-      const search = await dispatch(searchItems(query))
-      setResults(search)
-    }
   }
+  useEffect(() => {
+    if(query) {
+      const timeout = setTimeout(handleSearch, 2000)
+      return () => clearTimeout(timeout)
+      async function handleSearch() {
+        const search = await dispatch(searchItems(query))
+        console.log(search)
+        // setResults(...search)
+      }
+    }
+  }, [query, dispatch, setResults])
   return (
     <div>
       <input onChange={handleQuery}></input>
