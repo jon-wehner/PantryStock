@@ -98,8 +98,28 @@ export const deleteShoppingList = (id) => async (dispatch) => {
   }
 }
 
-export const addToList = (shoppingListItem) => {
-
+export const addToList = (shoppingListItem) =>async (dispatch) => {
+  const { measurementId, quantity, shoppingListId, itemId } = shoppingListItem;
+  const formData = new FormData;
+  formData.append('item_id', itemId) ;
+  formData.append('measurement_id', measurementId);
+  formData.append('quantity', quantity);
+  const options = {
+    method: 'POST',
+    body: formData
+  };
+  try {
+    const res = await fetch(`/api/shopping-lists/${shoppingListId}/items`, options);
+    if (!res.ok) throw res;
+    const newShoppingList = await res.json()
+    if(!newShoppingList.errors) {
+      dispatch(setShoppingLists(newShoppingList))
+    }
+    return newShoppingList
+  }
+  catch (err) {
+    return err
+  }
 }
 
 const initialState = {}

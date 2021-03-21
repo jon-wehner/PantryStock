@@ -66,5 +66,5 @@ def edit_shopping_list_items(id):
         )
         db.session.add(shopping_list_item)
         db.session.commit()
-        return shopping_list.to_dict()
+        return {shopping_list.id: shopping_list.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}

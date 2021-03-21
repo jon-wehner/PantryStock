@@ -9,7 +9,7 @@ export default function SearchResult ({item}) {
       <li onClick={() => setShowModal(true)}>{item.name}</li>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          <ShoppingListItem item={item}/>
+          <ShoppingListItem item={item} setShowModal={setShowModal}/>
         </Modal>
       }
     </>
