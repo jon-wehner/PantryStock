@@ -1,6 +1,7 @@
 const SET_SHOPPING_LISTS = 'shoppingLists/set'
 const EDIT_SHOPPING_LIST = 'shoppingLists/edit'
 const REMOVE_SHOPPING_LIST = 'shoppingLists/remove'
+const DELETE_ITEM = 'shoppingLists/deleteItem'
 
 const setShoppingLists = (shoppingLists) => {
   return {
@@ -21,6 +22,14 @@ const removeList = (id) => {
     id
   }
 }
+
+const deleteItem = (id) => {
+  return {
+    type: DELETE_ITEM,
+    id
+  }
+}
+
 export const loadOneShoppingList = id => async (dispatch) => {
   const res = await fetch(`/api/shopping-lists/${id}`)
   if (res.ok) {
@@ -98,18 +107,25 @@ export const deleteShoppingList = (id) => async (dispatch) => {
   }
 }
 
-export const addToList = (shoppingListItem) =>async (dispatch) => {
-  const { measurementId, quantity, shoppingListId, itemId } = shoppingListItem;
+export const addEditShoppingListItem = (shoppingListItem) =>async (dispatch) => {
+  const { id, measurementId, quantity, shoppingListId, itemId, method } = shoppingListItem;
   const formData = new FormData();
   formData.append('item_id', itemId) ;
   formData.append('measurement_id', measurementId);
   formData.append('quantity', quantity);
   const options = {
-    method: 'POST',
+    method,
     body: formData
   };
+  let url;
+  if(method === 'POST') {
+    url = `/api/shopping-lists/${shoppingListId}/items`
+  } else {
+    url = `/api/shopping-lists/${shoppingListId}/items/${id}`
+  }
+
   try {
-    const res = await fetch(`/api/shopping-lists/${shoppingListId}/items`, options);
+    const res = await fetch(url, options);
     if (!res.ok) throw res;
     const newShoppingList = await res.json()
     if(!newShoppingList.errors) {
@@ -121,8 +137,21 @@ export const addToList = (shoppingListItem) =>async (dispatch) => {
     return err
   }
 }
-export const editListItem = () => async (dispatch) => {
-  return null
+
+export const deleteShoppingListItem = (id, shoppingListId) => async (dispatch) => {
+  const url = `/api/shopping-lists/${shoppingListId}/items/${id}`
+  const options = {
+    method: 'DELETE'
+  }
+  try {
+    const res = await fetch(url, options)
+    if (!res.ok) throw res
+    dispatch(deleteItem(id))
+    return await res.json()
+  }
+  catch (err) {
+    return err
+  }
 }
 
 const initialState = {}
@@ -137,6 +166,10 @@ const shoppingListReducer = (state = initialState, action) => {
       newState[action.shoppingList.id] = action.shoppingList;
       return newState;
     case REMOVE_SHOPPING_LIST:
+      newState = {...state};
+      delete newState[action.id];
+      return newState;
+    case DELETE_ITEM:
       newState = {...state};
       delete newState[action.id];
       return newState;

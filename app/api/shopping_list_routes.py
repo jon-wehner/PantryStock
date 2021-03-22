@@ -75,17 +75,17 @@ def add_shopping_list_item(id):
 @login_required
 def edit_shopping_list_items(id, item_id):
     item = ShoppingListItem.query.get(item_id)
-    if method == 'PUT':
+    if request.method == 'PUT':
         form = ShoppingListItemForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             shopping_list = ShoppingList.query.get(id)
             item.measurement_id = form.data['measurement_id']
-            quantity = form.data['quantity']
+            item.quantity = form.data['quantity']
             db.session.add(item)
             db.session.commit()
             return {shopping_list.id: shopping_list.to_dict()}
-    if method == 'DELETE':
+    if request.method == 'DELETE':
         db.session.delete(item)
-        db.session.commit()
+        return {'message': 'deleted'}
     return {'errors': validation_errors_to_error_messages(form.errors)}

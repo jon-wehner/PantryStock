@@ -15,7 +15,7 @@ export default function ShoppingListRow ({row}) {
       </li>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          <EditShoppingListItem row={row}/>
+          <EditShoppingListItem row={row} setShowModal={setShowModal}/>
         </Modal>
       }
     </>
