@@ -24,7 +24,7 @@ def add_item(user_id):
     if form.validate_on_submit():
         item = UserItem(
             item_id=form.data['item_id'],
-            user_id=form.data['user_id'],
+            user_id=user_id,
             expiration_date=form.data['expiration_date'],
             quantity=form.data['quantity'],
             measurment_id=form.data['measurement_id']
