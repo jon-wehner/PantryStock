@@ -1,5 +1,5 @@
 export default function Pantry() {
   return (
-    null
+    <h1>Welcome to your pantry!</h1>
   )
 }
