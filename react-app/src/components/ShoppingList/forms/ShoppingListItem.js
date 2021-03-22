@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
-import { addToList } from '../../../store/shoppingList'
+import { addEditShoppingListItem } from '../../../store/shoppingList'
 
 export default function ShoppingListItem({item, setShowModal}) {
   const dispatch = useDispatch();
@@ -26,9 +26,10 @@ export default function ShoppingListItem({item, setShowModal}) {
       measurementId,
       quantity,
       shoppingListId,
-      itemId: item.id
+      itemId: item.id,
+      method: 'POST'
     }
-    const res = await dispatch(addToList(shoppingListItem))
+    const res = await dispatch(addEditShoppingListItem(shoppingListItem))
     if (res.errors) {
       setErrors(res.errors)
     }

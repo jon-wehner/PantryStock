@@ -21,6 +21,7 @@ const removeList = (id) => {
     id
   }
 }
+
 export const loadOneShoppingList = id => async (dispatch) => {
   const res = await fetch(`/api/shopping-lists/${id}`)
   if (res.ok) {
@@ -98,24 +99,48 @@ export const deleteShoppingList = (id) => async (dispatch) => {
   }
 }
 
-export const addToList = (shoppingListItem) =>async (dispatch) => {
-  const { measurementId, quantity, shoppingListId, itemId } = shoppingListItem;
+export const addEditShoppingListItem = (shoppingListItem) =>async (dispatch) => {
+  const { id, measurementId, quantity, shoppingListId, itemId, method } = shoppingListItem;
   const formData = new FormData();
   formData.append('item_id', itemId) ;
   formData.append('measurement_id', measurementId);
   formData.append('quantity', quantity);
   const options = {
-    method: 'POST',
+    method,
     body: formData
   };
+  let url;
+  if(method === 'POST') {
+    url = `/api/shopping-lists/${shoppingListId}/items`
+  } else {
+    url = `/api/shopping-lists/${shoppingListId}/items/${id}`
+  }
+
   try {
-    const res = await fetch(`/api/shopping-lists/${shoppingListId}/items`, options);
+    const res = await fetch(url, options);
     if (!res.ok) throw res;
     const newShoppingList = await res.json()
     if(!newShoppingList.errors) {
       dispatch(setShoppingLists(newShoppingList))
     }
     return newShoppingList
+  }
+  catch (err) {
+    return err
+  }
+}
+
+export const deleteShoppingListItem = (id, shoppingListId) => async (dispatch) => {
+  const url = `/api/shopping-lists/${shoppingListId}/items/${id}`
+  const options = {
+    method: 'DELETE'
+  }
+  try {
+    const res = await fetch(url, options)
+    if (!res.ok) throw res
+    const shoppingList = await res.json()
+    dispatch(setShoppingLists(shoppingList))
+    return shoppingList
   }
   catch (err) {
     return err
