@@ -33,3 +33,12 @@ class User(db.Model, UserMixin):
             "username": self.username,
             "email": self.email
             }
+
+    def inventory(self):
+        return {
+            "id": self.id,
+            "fridge": [item.to_dict() for item in self.user_items
+                       if item.fridge is True],
+            "pantry": [item.to_dict() for item in self.user_items
+                       if item.fridge is False]
+        }
