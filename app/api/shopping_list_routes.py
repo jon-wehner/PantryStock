@@ -76,8 +76,8 @@ def add_shopping_list_item(id):
 def edit_shopping_list_items(id, item_id):
     item = ShoppingListItem.query.get(item_id)
     shopping_list = ShoppingList.query.get(id)
+    form = ShoppingListItemForm()
     if request.method == 'PUT':
-        form = ShoppingListItemForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             item.measurement_id = form.data['measurement_id']
