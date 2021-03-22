@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Modal } from '../../context/Modal'
 import EditShoppingListItem from './forms/EditShoppingListItem'
+import { addRemoveCart } from '../../store/shoppingList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 
 
@@ -24,7 +25,7 @@ export default function ShoppingListRow ({row}) {
           </p>
         </div>
       </li>
-      <FontAwesomeIcon icon={faShoppingBasket} onClick={toggleCart}/>
+      <FontAwesomeIcon icon={faShoppingCart} onClick={toggleCart}/>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
           <EditShoppingListItem row={row} setShowModal={setShowModal}/>

@@ -32,7 +32,8 @@ const saveShoppingList = async e => {
   const newList =  await dispatch(editShoppingList(shoppingList.id, name, shoppingList.userId))
   if (newList.errors) {
     setErrors(newList.errors)
-  } else {
+  }
+  else {
     setEdit(false)
   }
 }

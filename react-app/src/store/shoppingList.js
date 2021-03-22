@@ -112,7 +112,8 @@ export const addEditShoppingListItem = (shoppingListItem) =>async (dispatch) => 
   let url;
   if(method === 'POST') {
     url = `/api/shopping-lists/${shoppingListId}/items`
-  } else {
+  }
+  else {
     url = `/api/shopping-lists/${shoppingListId}/items/${id}`
   }
 
@@ -145,7 +146,24 @@ export const deleteShoppingListItem = (id, shoppingListId) => async (dispatch) =
   catch (err) {
     return err
   }
-}
+};
+
+export const addRemoveCart =(id, shoppingListId) => async (dispatch) => {
+  const url=`/api/shopping-lists/${shoppingListId}/items/${id}`
+  const options = {
+    method: 'PATCH',
+  }
+  try {
+    const res = await fetch(url, options)
+    if(!res.ok) throw res
+    const shoppingList = await res.json()
+    dispatch(setShoppingLists(shoppingList))
+    return shoppingList
+  }
+  catch (err) {
+    return err
+  }
+};
 
 const initialState = {}
 const shoppingListReducer = (state = initialState, action) => {

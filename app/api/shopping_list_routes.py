@@ -85,8 +85,7 @@ def edit_shopping_list_items(id, item_id):
             db.session.add(item)
     # PATCH Requests are solely for updating the in cart status
     if request.method == 'PATCH':
-        in_cart = request.get_json()
-        item.in_cart = in_cart
+        item.in_cart = not item.in_cart
         db.session.add(item)
     if request.method == 'DELETE':
         db.session.delete(item)
