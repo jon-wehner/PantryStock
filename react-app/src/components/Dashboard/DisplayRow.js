@@ -29,7 +29,7 @@ const handleEnter = e => {
 }
 const saveShoppingList = async e => {
   e.preventDefault()
-  const newList =  await dispatch(editShoppingList(shoppingList.id, name, shoppingList.user_id))
+  const newList =  await dispatch(editShoppingList(shoppingList.id, name, shoppingList.userId))
   if (newList.errors) {
     setErrors(newList.errors)
   } else {

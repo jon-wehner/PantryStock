@@ -23,7 +23,8 @@ class ShoppingListItem(db.Model):
         return {
             "id": self.id,
             "item": self.item.to_dict(),
-            "shopping_list_id": self.shopping_list_id,
+            "shoppingListId": self.shopping_list_id,
+            "inCart": self.in_cart,
             "quantity": self.quantity,
             "measurement": self.measurement.to_dict()
         }

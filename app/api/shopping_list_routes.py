@@ -71,7 +71,7 @@ def add_shopping_list_item(id):
 
 
 @shopping_list_routes.route('/<int:id>/items/<int:item_id>',
-                            methods=['PUT', 'DELETE'])
+                            methods=['PUT', 'DELETE', 'PATCH'])
 @login_required
 def edit_shopping_list_items(id, item_id):
     item = ShoppingListItem.query.get(item_id)
@@ -83,10 +83,15 @@ def edit_shopping_list_items(id, item_id):
             item.measurement_id = form.data['measurement_id']
             item.quantity = form.data['quantity']
             db.session.add(item)
-            db.session.commit()
-            return {shopping_list.id: shopping_list.to_dict()}
+    # PATCH Requests are solely for updating the in cart status
+    if request.method == 'PATCH':
+        in_cart = request.get_json()
+        item.in_cart = in_cart
+        db.session.add(item)
     if request.method == 'DELETE':
         db.session.delete(item)
+    if (form.errors):
+        return {'errors': validation_errors_to_error_messages(form.errors)}
+    else:
         db.session.commit()
         return {shopping_list.id: shopping_list.to_dict()}
-    return {'errors': validation_errors_to_error_messages(form.errors)}

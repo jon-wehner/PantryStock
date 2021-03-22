@@ -17,6 +17,6 @@ class ShoppingList(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "user_id": self.user_id,
+            "userId": self.user_id,
             "items": [item.to_dict() for item in self.shopping_list_items]
         }
