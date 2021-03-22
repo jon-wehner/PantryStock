@@ -1,7 +1,6 @@
 const SET_SHOPPING_LISTS = 'shoppingLists/set'
 const EDIT_SHOPPING_LIST = 'shoppingLists/edit'
 const REMOVE_SHOPPING_LIST = 'shoppingLists/remove'
-const DELETE_ITEM = 'shoppingLists/deleteItem'
 
 const setShoppingLists = (shoppingLists) => {
   return {
@@ -19,13 +18,6 @@ const updateShoppingList = (shoppingList) => {
 const removeList = (id) => {
   return {
     type: REMOVE_SHOPPING_LIST,
-    id
-  }
-}
-
-const deleteItem = (id) => {
-  return {
-    type: DELETE_ITEM,
     id
   }
 }
@@ -146,8 +138,9 @@ export const deleteShoppingListItem = (id, shoppingListId) => async (dispatch) =
   try {
     const res = await fetch(url, options)
     if (!res.ok) throw res
-    dispatch(deleteItem(id))
-    return await res.json()
+    const shoppingList = await res.json()
+    dispatch(setShoppingLists(shoppingList))
+    return shoppingList
   }
   catch (err) {
     return err
@@ -166,10 +159,6 @@ const shoppingListReducer = (state = initialState, action) => {
       newState[action.shoppingList.id] = action.shoppingList;
       return newState;
     case REMOVE_SHOPPING_LIST:
-      newState = {...state};
-      delete newState[action.id];
-      return newState;
-    case DELETE_ITEM:
       newState = {...state};
       delete newState[action.id];
       return newState;
