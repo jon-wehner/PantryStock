@@ -10,7 +10,7 @@ export default function SearchBar({pantry}) {
   const results = useSelector(state => state.items.results)
   useEffect(() => {
     if(query) {
-      const timeout = setTimeout(handleSearch, 2000)
+      const timeout = setTimeout(handleSearch, 500)
       return () => clearTimeout(timeout)
       async function handleSearch() {
         await dispatch(searchItems(query))
