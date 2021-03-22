@@ -11,6 +11,7 @@ export default function NewPantryItem({item, setShowModal}) {
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [expirationDate, setExpirationDate] = useState("")
   const [errors, setErrors] = useState("")
 
   useEffect(() => {
@@ -21,6 +22,13 @@ export default function NewPantryItem({item, setShowModal}) {
   const handleSubmit = async (e) => {
     setErrors("")
     e.preventDefault();
+    const pantryItem = {
+      itemId: item.id,
+      measurementId,
+      quantity,
+      userId,
+      expirationDate
+    }
   }
 
   if (!loaded) return null;
@@ -38,7 +46,8 @@ export default function NewPantryItem({item, setShowModal}) {
                                           </option>)
                                           }
       </select>
-      <button>Add To List</button>
+      <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/>
+      <button>Add To Pantry</button>
     </form>
   )
 };

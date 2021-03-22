@@ -10,9 +10,8 @@ export default function SearchResult ({item, pantry}) {
       <li onClick={() => setShowModal(true)}>{item.name}</li>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          {pantry ?
-          <ShoppingListItem item={item} setShowModal={setShowModal}/> : <NewPantryItem item={item} setShowModal={setShowModal} />
-          }
+          {pantry ? <NewPantryItem item={item} setShowModal={setShowModal} />:
+                    <ShoppingListItem item={item} setShowModal={setShowModal}/>          }
         </Modal>
       }
     </>
