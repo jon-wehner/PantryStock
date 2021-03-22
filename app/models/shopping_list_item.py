@@ -7,6 +7,7 @@ class ShoppingListItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     item_id = db.Column(db.Integer, db.ForeignKey("items.id"))
+    in_cart = db.Column(db.Boolean, default=False)
     shopping_list_id = db.Column(db.Integer,
                                  db.ForeignKey("shopping_lists.id"))
     quantity = db.Column(db.Float, nullable=False)
@@ -22,7 +23,8 @@ class ShoppingListItem(db.Model):
         return {
             "id": self.id,
             "item": self.item.to_dict(),
-            "shopping_list_id": self.shopping_list_id,
+            "shoppingListId": self.shopping_list_id,
+            "inCart": self.in_cart,
             "quantity": self.quantity,
             "measurement": self.measurement.to_dict()
         }

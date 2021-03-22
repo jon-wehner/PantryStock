@@ -13,7 +13,8 @@ export default function ShoppingListForm({setShowForm}) {
     const shoppingList = await dispatch(createShoppingList(name, user.id))
     if(!shoppingList.errors) {
       setShowForm(false);
-    } else {
+    }
+    else {
       setErrors(shoppingList.errors)
     }
   };
