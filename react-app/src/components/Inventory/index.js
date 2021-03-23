@@ -24,13 +24,13 @@ export default function Inventory() {
       <h2>Fridge</h2>
       {fridge &&
         <ul>
-          {fridge.map(item => <li key={item.id}>{item.name}</li>)}
+          {fridge.map(el => <li key={el.id}>{el.item.name}</li>)}
         </ul>
       }
       <h2>Pantry</h2>
         {pantry &&
           <ul>
-            {pantry.map(item => <li key={item.id}>{item.name}</li>)}
+            {pantry.map(el => <li key={el.id}>{el.item.name}</li>)}
           </ul>
         }
       <SearchBar inventory={true} />

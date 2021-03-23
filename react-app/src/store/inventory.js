@@ -42,7 +42,7 @@ export const addItemToInventory = (inventoryItem) => async (dispatch) => {
     if (!res.ok) throw res
     const inventory = await res.json()
     if(!inventory.errors) {
-      dispatch(setInventory(inventory))
+      dispatch(setInventory(inventory.inventory))
     }
     return inventory
   }
@@ -59,6 +59,7 @@ const inventoryReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_INVENTORY:
       newState = {...state};
+      console.log(action)
       newState.fridge = action.inventory.fridge;
       newState.pantry = action.inventory.pantry;
       return newState;
