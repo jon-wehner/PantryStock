@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadCategories, loadItems } from '../../store/items'
-import { loadUserShoppingLists } from "../../store/shoppingList"
+import { loadUserShoppingLists } from '../../store/shoppingList'
+import { getUserInventory } from '../../store/inventory'
 import ShoppingListForm from './forms/ShoppingListForm'
 import ShoppingListDisplay from './ShoppingListDisplay'
 import './Dashboard.css'
@@ -18,6 +19,7 @@ export default function Dashboard() {
       dispatch(loadItems())
       dispatch(loadCategories())
       dispatch(loadUserShoppingLists(user.id))
+      dispatch(getUserInventory(user.id))
     }
   }, [user, dispatch])
 
@@ -31,7 +33,7 @@ export default function Dashboard() {
       <h1>hi {user && user.username}!</h1>
       {showShoppingListForm ? <ShoppingListForm setShowForm={setShowShoppingListForm}/> : <button className="stdbutton" onClick={revealForm}>New Shopping List</button>}
       <ShoppingListDisplay />
-      <Link to={`/user/${user.id}/pantry`} >Your  Pantry</Link>
+      <Link to={`/user/${user.id}/inventory`} >Your  Pantry</Link>
     </>
   )
 }

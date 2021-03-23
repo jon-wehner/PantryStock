@@ -22,7 +22,7 @@ export default function NewInventoryItem({item, setShowModal}) {
   const handleSubmit = async (e) => {
     setErrors("")
     e.preventDefault();
-    const InventoryItem = {
+    const inventoryItem = {
       itemId: item.id,
       measurementId,
       quantity,

@@ -15,7 +15,7 @@ export const getUserInventory = (id) => async (dispatch) => {
     if(!res.ok) throw res;
     const inventory = await res.json();
     if (!res.errors) {
-      dispatch(setInventory(inventory))
+      dispatch(setInventory(inventory.inventory))
     }
     return inventory
   }
@@ -59,8 +59,8 @@ const inventoryReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_INVENTORY:
       newState = {...state};
-      newState.fridge = action.fridge;
-      newState.pantry = action.pantry;
+      newState.fridge = action.inventory.fridge;
+      newState.pantry = action.inventory.pantry;
       return newState;
     default:
       return state;
