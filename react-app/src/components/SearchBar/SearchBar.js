@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchItems } from  '../../store/items'
 import SearchResult from './SearchResult'
-import './styles/SearchBar.css'
+import './SearchBar.css'
 
-export default function SearchBar() {
+export default function SearchBar({inventory}) {
   const dispatch = useDispatch()
   const [query, setQuery] = useState("")
   const results = useSelector(state => state.items.results)
   useEffect(() => {
     if(query) {
-      const timeout = setTimeout(handleSearch, 2000)
+      const timeout = setTimeout(handleSearch, 500)
       return () => clearTimeout(timeout)
       async function handleSearch() {
         await dispatch(searchItems(query))
@@ -24,7 +24,7 @@ export default function SearchBar() {
     <div className="SearchBar">
       <input onChange={handleQuery}></input>
       <ul className="searchResults">
-        {results && results.map(result => <SearchResult key ={result.id} item={result} />)}
+        {results && results.map(result => <SearchResult key ={result.id} item={result} inventory={inventory}/>)}
       </ul>
     </div>
   )

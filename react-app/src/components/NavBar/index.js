@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
@@ -15,7 +15,9 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   return (
     <nav className="navbar" style={{ height: showNavLinks ? '12rem' : '3rem'}}>
       <div className="navbar__mobile">
-        <h1 className="navbar__logo">PantryStock</h1>
+        <Link to="/">
+          <h1 className="navbar__logo">PantryStock</h1>
+        </Link>
         <i className="fas fa-bars navlinks-toggle" onClick={toggleNavLinks}/>
       </div>
       <ul className={"navbar__navlinks" + (showNavLinks ? " navlinks-active" : "")} >

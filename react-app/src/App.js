@@ -9,6 +9,7 @@ import ShoppingList from "./components/ShoppingList"
 import { authenticate } from "./store/session";
 import LandingPage from "./LandingPage";
 import Dashboard from "./components/Dashboard";
+import Inventory from "./components/Inventory";
 
 function App() {
   const dispatch = useDispatch()
@@ -47,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
           {authenticated ? <Dashboard authenticated={authenticated}/> : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>}
+        </Route>
+        <Route path="/user/:id/inventory">
+          <Inventory />
         </Route>
       </Switch>
     </>

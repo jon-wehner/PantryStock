@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { loadOneShoppingList } from "../../store/shoppingList"
-import SearchBar from "./SearchBar"
+import SearchBar from "../SearchBar/SearchBar"
 import ShoppingListRow from "./ShoppingListRow"
 import './styles/ShoppingList.css'
 
@@ -17,7 +17,7 @@ export default function ShoppingList() {
 
   return (
     <div className="shoppingList__container">
-      <SearchBar />
+      <SearchBar pantry={false}/>
       {list &&
         <div>
           <p>{list.name}</p>
