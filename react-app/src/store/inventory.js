@@ -1,11 +1,29 @@
-const SET_inventory = 'inventory/set';
+const SET_INVENTORY = 'inventory/set';
 
 const setInventory = inventory => {
   return {
-    type: SET_PANTRY,
-    pantry
+    type: SET_INVENTORY,
+    inventory
   }
 };
+
+
+export const getUserInventory = (id) => async (dispatch) => {
+  const url = `/api/inventory/${id}`
+  try{
+    const res = await fetch(url);
+    if(!res.ok) throw res;
+    const inventory = await res.json();
+    if (!res.errors) {
+      dispatch(setInventory(inventory))
+    }
+    return inventory
+  }
+  catch (err) {
+    return err
+  }
+
+}
 
 export const addItemToInventory = (inventoryItem) => async (dispatch) => {
   const {itemId, measurementId, quantity, userId, expirationDate} = inventoryItem
@@ -36,10 +54,10 @@ export const addItemToInventory = (inventoryItem) => async (dispatch) => {
 const initialState = {fridge: null,
                       pantry: null,
                       }
-export default inventoryReducer = (state = initialState, action) => {
+const inventoryReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
-    case SET_PANTRY:
+    case SET_INVENTORY:
       newState = {...state};
       newState.fridge = action.fridge;
       newState.pantry = action.pantry;
@@ -48,3 +66,5 @@ export default inventoryReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default inventoryReducer

@@ -4,7 +4,7 @@ import { searchItems } from  '../../store/items'
 import SearchResult from './SearchResult'
 import './SearchBar.css'
 
-export default function SearchBar({pantry}) {
+export default function SearchBar({inventory}) {
   const dispatch = useDispatch()
   const [query, setQuery] = useState("")
   const results = useSelector(state => state.items.results)
@@ -24,7 +24,7 @@ export default function SearchBar({pantry}) {
     <div className="SearchBar">
       <input onChange={handleQuery}></input>
       <ul className="searchResults">
-        {results && results.map(result => <SearchResult key ={result.id} item={result} pantry={pantry}/>)}
+        {results && results.map(result => <SearchResult key ={result.id} item={result} inventory={inventory}/>)}
       </ul>
     </div>
   )

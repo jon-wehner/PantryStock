@@ -8,14 +8,18 @@ inventory_routes = Blueprint('inventory', __name__)
 
 
 # Get all of a user's Items
-@intentory_routes.route('/<int:user_id>')
+@inventory_routes.route('/<int:user_id>')
 @login_required
 def user_inventory(user_id):
-    return None
+    user = User.query.get(user_id)
+    if user:
+        return {"inventory": user.inventory()}
+    else:
+        return {"errors": "User Not Found"}
 
 
 # Add an item to a user intentory
-@intentory_routes.route('/<int:user_id>', methods=['POST'])
+@inventory_routes.route('/<int:user_id>', methods=['POST'])
 @login_required
 def add_item(user_id):
     user = User.query.get(user_id)

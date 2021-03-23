@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import ShoppingListItem from '../ShoppingList/forms/ShoppingListItem';
-import NewPantryItem from '../Pantry/forms/NewPantryItem'
+import NewInventoryItem from '../Inventory/forms/NewInventoryItem'
 
-export default function SearchResult ({item, pantry}) {
+export default function SearchResult ({item, inventory}) {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
       <li onClick={() => setShowModal(true)}>{item.name}</li>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          {pantry ? <NewPantryItem item={item} setShowModal={setShowModal} />:
+          {inventory ? <NewInventoryItem item={item} setShowModal={setShowModal} />:
                     <ShoppingListItem item={item} setShowModal={setShowModal}/>          }
         </Modal>
       }

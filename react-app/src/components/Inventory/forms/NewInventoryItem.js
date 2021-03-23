@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
 
-export default function NewPantryItem({item, setShowModal}) {
+export default function NewInventoryItem({item, setShowModal}) {
   const dispatch = useDispatch();
   const { id: userId } = useParams();
   const measurements = useSelector(state => state.items.measurements);
@@ -22,7 +22,7 @@ export default function NewPantryItem({item, setShowModal}) {
   const handleSubmit = async (e) => {
     setErrors("")
     e.preventDefault();
-    const pantryItem = {
+    const InventoryItem = {
       itemId: item.id,
       measurementId,
       quantity,
