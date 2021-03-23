@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { addItemToInventory } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items'
 
 export default function NewInventoryItem({item, setShowModal}) {
@@ -28,6 +29,13 @@ export default function NewInventoryItem({item, setShowModal}) {
       quantity,
       userId,
       expirationDate
+    }
+    const response = await dispatch(addItemToInventory(inventoryItem))
+    if (response.errors) {
+      setErrors(response.errors)
+    }
+    else {
+      setShowModal(false)
     }
   }
 

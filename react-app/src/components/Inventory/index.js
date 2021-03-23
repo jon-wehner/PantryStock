@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserInventory } from '../../store/inventory';
@@ -27,7 +27,7 @@ export default function Inventory() {
           {fridge.map(item => <li key={item.id}>{item.name}</li>)}
         </ul>
       }
-      <h2>pantry</h2>
+      <h2>Pantry</h2>
         {pantry &&
           <ul>
             {pantry.map(item => <li key={item.id}>{item.name}</li>)}

@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import UserItem, User
+from app.models import UserItem, User, db
 from app.forms import InventoryItemForm
 from flask_login import login_required
 from app.utils import validation_errors_to_error_messages
@@ -23,7 +23,7 @@ def user_inventory(user_id):
 @login_required
 def add_item(user_id):
     user = User.query.get(user_id)
-    form = PantryItemForm()
+    form = InventoryItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         item = UserItem(
@@ -31,11 +31,11 @@ def add_item(user_id):
             user_id=user_id,
             expiration_date=form.data['expiration_date'],
             quantity=form.data['quantity'],
-            measurment_id=form.data['measurement_id']
+            measurement_id=form.data['measurement_id']
         )
         db.session.add(item)
     if form.errors:
-        return {"errors": validation_errors_to_error_messages()}
+        return {"errors": validation_errors_to_error_messages(form.errors)}
     else:
         db.session.commit()
         return {"inventory": user.inventory()}
