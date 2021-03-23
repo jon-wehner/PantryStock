@@ -1,6 +1,15 @@
-export const addItemToPantry = (pantryItem) => async (dispatch) => {
-  const {itemId, measurementId, quantity, userId, expirationDate} = pantryItem
-  const url = `/api/pantry/${userId}`
+const SET_inventory = 'inventory/set';
+
+const setInventory = inventory => {
+  return {
+    type: SET_PANTRY,
+    pantry
+  }
+};
+
+export const addItemToInventory = (inventoryItem) => async (dispatch) => {
+  const {itemId, measurementId, quantity, userId, expirationDate} = inventoryItem
+  const url = `/api/inventory/${userId}`
   const formData = new FormData()
   formData.append('item_id', itemId)
   formData.append('measurement_id', measurementId)
@@ -22,17 +31,20 @@ export const addItemToPantry = (pantryItem) => async (dispatch) => {
   catch (err) {
     return err
   }
-}
+};
 
 const initialState = {fridge: null,
                       pantry: null,
                       }
-export default pantryReducer = (state = initialState, action) => {
+export default inventoryReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case SET_PANTRY:
       newState = {...state};
+      newState.fridge = action.fridge;
+      newState.pantry = action.pantry;
+      return newState;
     default:
       return state;
   }
-}
+};
