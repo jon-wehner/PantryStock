@@ -12,7 +12,7 @@ export default function ShoppingListItem({row, setShowModal}) {
   const measurements = useSelector(state => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);
-  const [measurementId, setMeasurementId] = useState(0);
+  const [measurementId, setMeasurementId] = useState(row.measurement.id);
   const [quantity, setQuantity] = useState(row.quantity);
   const [errors, setErrors] = useState("")
   useEffect(() => {

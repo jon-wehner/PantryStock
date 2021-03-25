@@ -26,7 +26,7 @@
   font-family: "Hind Siliguri";
   padding: .35rem;
   border-radius: .6rem;
-  width: 30rem;
+  max-width: 30rem;
 }
 
 .shoppingListItem:hover {
@@ -58,3 +58,17 @@
   margin-bottom: 1rem;
   width: 60%;
 }
+
+@media screen and (max-width: 768px) {
+  .shoppingList__container {
+    width:100%;
+  }
+  .shoppingListItem {
+    font-size: 1.2rem;
+    width:100%;
+  }
+  ul {
+    padding: 0;
+  }
+}
+
