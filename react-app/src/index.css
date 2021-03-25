@@ -49,7 +49,6 @@ a {
 a:visited {
   text-decoration: none;
 }
-/* Global Style for buttons to make dev work easier */
 .stdbutton {
   background-color: dodgerblue;
   color: #F7F7FF;

@@ -11,8 +11,6 @@
   transition: height .75s ease-in;
 }
 .navbar__mobile {
-  margin-top: .1rem;
-  position: absolute;
   display: flex;
   align-items: center;
 }
@@ -55,9 +53,14 @@
   }
   .navlinks-active{
     position: absolute;
-    top: 6.5rem;
+    top: 2.5rem;
     display: flex;
     flex-direction: column;
+  }
+  .navbar__mobile {
+    margin-top: .1rem;
+    position: absolute;
+    top: 0%;
   }
 }
 
