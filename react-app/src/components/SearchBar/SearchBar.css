@@ -1,3 +1,39 @@
+.searchBar {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 24rem;
+  margin-top: 1rem;
+  margin-left: 0;
+}
+.searchBar input {
+  width: 80%;
+  background-color: white;
+}
+.searchResults {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: .6rem;
+  padding: .5rem;
+  width: 80%;
+}
 .searchResults li {
   font-size: 1.2rem;
+  list-style: none;
+  margin-bottom: .5rem;
+  cursor: pointer;
+  width: 100%;
+  padding: .1rem;
+}
+
+.searchResults li:hover {
+  background-color: lightgray;
+}
+
+@media screen and (max-width: 800px) {
+  .searchBar {
+    width: 100%;
+  }
 }

@@ -34,12 +34,11 @@ label {
   font-size: 1.4rem;
 }
 input {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: inherit;
   padding: .25rem .35rem;
   background-color: #F7F7FF;
-  border: 2px solid #d5d5d5;
-  margin-left: .7rem;
+  border: 1px solid #d5d5d5;
   font-family: "Hind Siliguri";
   border-radius: .7rem;
 }

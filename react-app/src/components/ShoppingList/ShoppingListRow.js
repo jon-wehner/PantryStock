@@ -12,20 +12,21 @@ export default function ShoppingListRow ({row}) {
   const [showModal, setShowModal] = useState(false)
 
   const toggleCart = e => {
+    e.stopPropagation();
     dispatch(addRemoveCart(row.id, row.shoppingListId))
   }
   return (
     <>
-      <li onClick={() => setShowModal(true)}>
+      <li className="shoppingListItem" onClick={() => setShowModal(true)}>
         <div>
           <p style={row.inCart ? {textDecoration: 'line-through'} : null}>
             {row.quantity}
-            {row.measurement.unit}
+            {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
             {row.item.name}
           </p>
         </div>
+        <FontAwesomeIcon icon={faShoppingCart} onClick={toggleCart}/>
       </li>
-      <FontAwesomeIcon icon={faShoppingCart} onClick={toggleCart}/>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
           <EditShoppingListItem row={row} setShowModal={setShowModal}/>

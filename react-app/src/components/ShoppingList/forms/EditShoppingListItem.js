@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
 import { addEditShoppingListItem } from '../../../store/shoppingList'
 import { deleteShoppingListItem} from '../../../store/shoppingList'
+import './ShoppingListForms.css'
 
 export default function ShoppingListItem({row, setShowModal}) {
   const dispatch = useDispatch();
@@ -47,11 +48,17 @@ export default function ShoppingListItem({row, setShowModal}) {
   }
   if (!loaded) return null;
   return (
-    <>
-      <form style={{ display: 'flex', flexDirection: 'column'}} onSubmit={handleSubmit}>
-        {errors && errors.map(error => <li key={error}>{error}</li>)}
-        {row.item.name}
-        {row.item.category}
+    <div className="itemform__container">
+      <form className="shoppingListForm" onSubmit={handleSubmit}>
+        <ul className="errors">
+        {errors && errors.map(error => <li className="error"key={error}>{error}</li>)}
+        </ul>
+        <h2>
+          Item: {row.item.name}
+        </h2>
+        <h2>
+        Found In: {row.item.category}
+        </h2>
         <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
         <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>
           {measurements && measurements.map(measurement => <option
@@ -61,9 +68,9 @@ export default function ShoppingListItem({row, setShowModal}) {
                                             </option>)
                                             }
         </select>
-        <button>Edit</button>
+        <button className="stdbutton" >Edit</button>
       </form>
-      <button type="none" onClick={deleteItem}>Delete Item</button>
-    </>
+      <button type="none" className="stdbutton" id="deleteItem" onClick={deleteItem}>Delete Item</button>
+    </div>
   )
 };
