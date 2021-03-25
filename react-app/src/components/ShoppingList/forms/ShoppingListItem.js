@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
 import { addEditShoppingListItem } from '../../../store/shoppingList'
+import './ShoppingListForms.css'
 
-export default function ShoppingListItem({item, setShowModal}) {
+export default function ShoppingListItem({item, setShowModal, hideMenu}) {
   const dispatch = useDispatch();
   const { id: shoppingListId } = useParams();
   const measurements = useSelector(state => state.items.measurements);
@@ -35,12 +36,13 @@ export default function ShoppingListItem({item, setShowModal}) {
     }
     else {
       setShowModal(false)
+      hideMenu()
     }
   }
 
   if (!loaded) return null;
   return (
-    <form style={{ display: 'flex', flexDirection: 'column'}} onSubmit={handleSubmit}>
+    <form className="shoppingListForm" onSubmit={handleSubmit}>
       {errors && errors.map(error => <li key={error}>{error}</li>)}
       {item.name}
       {item.category}

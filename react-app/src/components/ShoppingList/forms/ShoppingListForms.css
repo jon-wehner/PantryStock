@@ -1,0 +1,20 @@
+.shoppingListForm {
+  display: flex;
+  flex-direction: column;
+  font-family: "Hind Siliguri";
+}
+.shoppingListForm h2 {
+  font-family: "Heebo";
+  margin-bottom: .2rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.shoppingListForm input {
+  margin-bottom: 1rem;
+}
+.shoppingListForm select {
+  margin-bottom: 1rem;
+}
+.shoppingListForm button {
+  margin-bottom: 1rem;
+}

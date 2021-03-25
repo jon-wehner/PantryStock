@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from 'react-redux'
 import "./AuthForm.css"

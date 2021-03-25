@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 85%;
+  min-height: 45rem;
   margin: 0 auto;
+  margin-top: 3rem;
   background-color: white;
 }
 
@@ -18,11 +20,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   font-size: 1.5rem;
   list-style: none;
   font-family: "Hind Siliguri";
   padding: .35rem;
   border-radius: .6rem;
+  width: 30rem;
 }
 
 .shoppingListItem:hover {
@@ -48,6 +52,9 @@
 
 #addToInv {
   display: block;
+  font-size: 1.2rem;
   margin: 0 auto;
   text-align: center;
+  margin-bottom: 1rem;
+  width: 60%;
 }

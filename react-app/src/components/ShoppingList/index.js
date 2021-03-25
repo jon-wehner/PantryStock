@@ -46,7 +46,13 @@ export default function ShoppingList() {
           <ul>
             {list.items.map(row => <ShoppingListRow key={row.id} row={row} />)}
           </ul>
-          <button id="addToInv" className="stdbutton" onClick={transferList}>Add to Inventory</button>
+          {list.items.length > 0 &&
+          <button id="addToInv"
+            className="stdbutton"
+            onClick={transferList}>
+            Add crossed items to Inventory
+            </button>
+          }
         </div>
       }
     </div>

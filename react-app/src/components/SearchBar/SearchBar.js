@@ -24,8 +24,9 @@ export default function SearchBar({inventory}) {
   }
 
   const hideMenu = (e) => {
-    setShowMenu(false)
     setQuery("")
+    console.log('hi')
+    setShowMenu(false)
   }
 
   return (
@@ -37,7 +38,7 @@ export default function SearchBar({inventory}) {
                                               key ={result.id}
                                               item={result}
                                               inventory={inventory}
-                                              onClick={hideMenu}
+                                              hideMenu={hideMenu}
                                               />)}
         </ul>
       }
