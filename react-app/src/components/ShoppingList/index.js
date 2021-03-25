@@ -42,11 +42,11 @@ export default function ShoppingList() {
       <SearchBar pantry={false}/>
       {list &&
         <div>
-          <p>{list.name}</p>
+          <p className="shoppingList__title" >{list.name}</p>
           <ul>
             {list.items.map(row => <ShoppingListRow key={row.id} row={row} />)}
           </ul>
-          <button onClick={transferList}>Add to Inventory</button>
+          <button id="addToInv" className="stdbutton" onClick={transferList}>Add to Inventory</button>
         </div>
       }
     </div>

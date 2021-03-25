@@ -1,8 +1,53 @@
 .shoppingList__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
   margin: 0 auto;
+  background-color: white;
 }
 
-.shoppingList__container p {
+.shoppingList__title {
   font-size: 2rem;
+  font-family: "Heebo";
+  font-weight: 700;
+  text-align: center;
+}
+
+.shoppingListItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.5rem;
+  list-style: none;
+  font-family: "Hind Siliguri";
+  padding: .35rem;
+  border-radius: .6rem;
+}
+
+.shoppingListItem:hover {
+  background-color: lightgray;
+}
+.shoppingListItem p {
+  margin: 0 auto;
+  padding: inherit;
+}
+
+.shoppingListItem svg {
+  font-size: 2rem;
+  margin-left: 1rem;
+  padding: inherit;
+}
+.shoppingListItem svg:hover {
+  font-size: 2.2rem;
+}
+
+.shoppingListItem svg:active {
+  transform: translateY(.2rem);
+}
+
+#addToInv {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
