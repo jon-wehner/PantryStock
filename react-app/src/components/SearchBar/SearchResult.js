@@ -3,11 +3,15 @@ import { Modal } from '../../context/Modal';
 import ShoppingListItem from '../ShoppingList/forms/ShoppingListItem';
 import NewInventoryItem from '../Inventory/forms/NewInventoryItem'
 
-export default function SearchResult ({item, inventory}) {
+export default function SearchResult ({item, inventory, onClick}) {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
-      <li onClick={() => setShowModal(true)}>{item.name}</li>
+      <li onClick={() => {
+        setShowModal(true)
+        onClick()
+      }
+        }>{item.name}</li>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
           {inventory ? <NewInventoryItem item={item} setShowModal={setShowModal} />:

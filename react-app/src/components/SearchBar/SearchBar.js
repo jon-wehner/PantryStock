@@ -7,6 +7,7 @@ import './SearchBar.css'
 export default function SearchBar({inventory}) {
   const dispatch = useDispatch()
   const [query, setQuery] = useState("")
+  const [showMenu, setShowMenu] = useState(false)
   const results = useSelector(state => state.items.results)
   useEffect(() => {
     if(query) {
@@ -14,19 +15,30 @@ export default function SearchBar({inventory}) {
       return () => clearTimeout(timeout)
       async function handleSearch() {
         await dispatch(searchItems(query))
+        setShowMenu(true)
       }
     }
-    setQuery("")
   }, [query, dispatch])
   const handleQuery = (e) => {
     setQuery(e.target.value)
   }
+
+  const hideMenu = (e) => {
+    setShowMenu(false)
+    setQuery("")
+  }
+
   return (
     <div className="searchBar">
       <input onChange={handleQuery}></input>
-      {results &&
+      {results && showMenu &&
         <ul className="searchResults">
-          {results && results.map(result => <SearchResult key ={result.id} item={result} inventory={inventory}/>)}
+          {results && results.map(result => <SearchResult
+                                              key ={result.id}
+                                              item={result}
+                                              inventory={inventory}
+                                              onClick={hideMenu}
+                                              />)}
         </ul>
       }
     </div>

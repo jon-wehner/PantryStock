@@ -1,9 +1,10 @@
 .searchBar {
-  width: 30%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 24rem;
 }
 .searchBar input {
   width: 80%;
@@ -20,14 +21,15 @@
   list-style: none;
   margin-bottom: .5rem;
   cursor: pointer;
-  margin-left: 1rem;
+  width: 100%;
+  padding: .1rem;
 }
 
 .searchResults li:hover {
   background-color: lightgray;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .searchBar {
     width: 100%;
   }
