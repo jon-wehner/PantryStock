@@ -41,6 +41,12 @@ input {
   font-family: "Hind Siliguri";
   border-radius: .7rem;
 }
+a {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
 /* Global Style for buttons to make dev work easier */
 .stdbutton {
   background-color: dodgerblue;
@@ -48,6 +54,8 @@ input {
   font-family: "Hind Siliguri";
   font-size: 1rem;
   padding: .35rem;
+  border-radius: .6rem;
+  width: 12rem;
 }
 .stdbutton:hover {
   background-color: #135CA3;

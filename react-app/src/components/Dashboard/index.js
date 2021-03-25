@@ -32,7 +32,7 @@ export default function Dashboard() {
       <h1 className="dashboard__title">hi {user && user.username}!</h1>
       {showShoppingListForm ? <ShoppingListForm setShowForm={setShowShoppingListForm}/> : <button className="stdbutton dashboard__button" onClick={revealForm}>New Shopping List</button>}
       <ShoppingListDisplay />
-      <Link to={`/user/${user.id}/inventory`} >Your  Pantry</Link>
+      <Link to={`/user/${user.id}/inventory`} className="pantryLink stdbutton">Your  Pantry</Link>
     </>
   )
 }

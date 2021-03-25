@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from 'react-redux'
 import "./LoginForm.css"
@@ -43,6 +43,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         {errors.map((error) => (
           <div className="error">{error}</div>
         ))}
+      </div>
+      <div className="signup__link">
+        <span>
+        Don't have an account? <Link to="/sign-up">Sign up.</Link>
+        </span>
       </div>
       <div className="formfield">
         <label htmlFor="email">Email</label>

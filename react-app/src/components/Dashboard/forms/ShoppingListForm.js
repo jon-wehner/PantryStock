@@ -21,7 +21,7 @@ export default function ShoppingListForm({setShowForm}) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="shoppingList__form" onSubmit={handleSubmit}>
       {errors &&
         <ul className="errors">
           {errors.map(error=> <li key={error}>{error}</li>)}

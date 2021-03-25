@@ -1,10 +1,10 @@
-form {
+.shoppingList__form {
   margin: 0 auto;
   width:15%;
   display: flex;
   flex-direction: column;
 }
-form button {
+.shoppingList__form button {
   width: 65%;
   margin: 0 auto;
   margin-top: 1rem;
@@ -16,4 +16,13 @@ form button {
 .errors li {
   font-size: 1rem;
   color: red;
+}
+
+@media screen and (max-width: 768px) {
+  form {
+    width:100%;
+  }
+  form button {
+    width: 80%;
+  }
 }
