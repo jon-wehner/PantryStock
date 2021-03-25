@@ -33,6 +33,7 @@ def add_item(user_id):
             quantity=form.data['quantity'],
             measurement_id=form.data['measurement_id']
         )
+        print('FOUND IT', item)
         db.session.add(item)
     if form.errors:
         return {"errors": validation_errors_to_error_messages(form.errors)}

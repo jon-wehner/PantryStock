@@ -26,13 +26,15 @@ export const getUserInventory = (id) => async (dispatch) => {
 }
 
 export const addItemToInventory = (inventoryItem) => async (dispatch) => {
-  const {itemId, measurementId, quantity, userId, expirationDate} = inventoryItem
+  const {itemId, measurementId, quantity, userId } = inventoryItem
   const url = `/api/inventory/${userId}`
   const formData = new FormData()
   formData.append('item_id', itemId)
   formData.append('measurement_id', measurementId)
   formData.append('quantity', quantity)
-  formData.append('expiration_date', expirationDate)
+  if(inventoryItem.expirationDate) {
+    formData.append('expiration_date', inventoryItem.expirationDate)
+  }
   const options = {
     method: 'POST',
     body: formData
@@ -41,6 +43,7 @@ export const addItemToInventory = (inventoryItem) => async (dispatch) => {
     const res = await fetch(url, options)
     if (!res.ok) throw res
     const inventory = await res.json()
+    console.log(inventory)
     if(!inventory.errors) {
       dispatch(setInventory(inventory.inventory))
     }
