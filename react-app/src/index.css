@@ -22,7 +22,9 @@ button {
 }
 button:active {
   transform: translateY(.1rem);
-
+}
+h1 {
+  font-family:   "Heebo";
 }
 
 label {

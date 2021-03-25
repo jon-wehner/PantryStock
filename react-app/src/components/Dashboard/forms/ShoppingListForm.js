@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createShoppingList } from '../../../store/shoppingList'
+import './ShoppingListForm.css'
 
 export default function ShoppingListForm({setShowForm}) {
   const dispatch = useDispatch();
@@ -22,7 +23,9 @@ export default function ShoppingListForm({setShowForm}) {
   return (
     <form onSubmit={handleSubmit}>
       {errors &&
-        errors.map(error=> <li key={error}>{error}</li>)
+        <ul className="errors">
+          {errors.map(error=> <li key={error}>{error}</li>)}
+        </ul>
       }
       <input pleaceholder="Enter Name..." onChange={(e) => setName(e.target.value)}></input>
       <button className="stdbutton">Create Shopping List</button>
