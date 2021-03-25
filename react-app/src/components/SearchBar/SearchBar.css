@@ -1,3 +1,34 @@
+.searchBar {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.searchBar input {
+  width: 80%;
+  background-color: white;
+}
+.searchResults {
+  background-color: white;
+  border-radius: .6rem;
+  padding: .5rem;
+  width: 90%;
+}
 .searchResults li {
   font-size: 1.2rem;
+  list-style: none;
+  margin-bottom: .5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.searchResults li:hover {
+  background-color: lightgray;
+}
+
+@media screen and (max-width: 768px) {
+  .searchBar {
+    width: 100%;
+  }
 }

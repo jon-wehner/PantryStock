@@ -16,16 +16,19 @@ export default function SearchBar({inventory}) {
         await dispatch(searchItems(query))
       }
     }
+    setQuery("")
   }, [query, dispatch])
   const handleQuery = (e) => {
     setQuery(e.target.value)
   }
   return (
-    <div className="SearchBar">
+    <div className="searchBar">
       <input onChange={handleQuery}></input>
-      <ul className="searchResults">
-        {results && results.map(result => <SearchResult key ={result.id} item={result} inventory={inventory}/>)}
-      </ul>
+      {results &&
+        <ul className="searchResults">
+          {results && results.map(result => <SearchResult key ={result.id} item={result} inventory={inventory}/>)}
+        </ul>
+      }
     </div>
   )
 }

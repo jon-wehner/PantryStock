@@ -1,6 +1,6 @@
 #modal {
   position: fixed;
-  top: 0;
+  top: -30rem;
   left: 0;
   right: 0;
   bottom: 0;
@@ -20,6 +20,12 @@
 
 #modal-content {
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background-color: #fff;
   border: 1px lightgray;
+  border-radius: .6rem;
+  padding: 3rem;
 }
