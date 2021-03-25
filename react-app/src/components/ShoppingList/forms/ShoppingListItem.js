@@ -11,7 +11,7 @@ export default function ShoppingListItem({item, setShowModal, hideMenu}) {
   const measurements = useSelector(state => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);
-  const [measurementId, setMeasurementId] = useState("");
+  const [measurementId, setMeasurementId] = useState(1);
   const [quantity, setQuantity] = useState("");
   const [errors, setErrors] = useState("")
 

@@ -11,7 +11,6 @@
   transition: height .75s ease-in;
 }
 .navbar__mobile {
-  margin-top: .1rem;
   display: flex;
   align-items: center;
 }
@@ -47,14 +46,21 @@
   .navbar__navlinks {
     display: none;
     transform: translateX(350%);
-    animation: reveal 1s;
+    animation: reveal 1.5s;
     animation-delay: .2s;
     animation-fill-mode: forwards;
     list-style: none;
   }
   .navlinks-active{
+    position: absolute;
+    top: 2.5rem;
     display: flex;
     flex-direction: column;
+  }
+  .navbar__mobile {
+    margin-top: .1rem;
+    position: absolute;
+    top: 0%;
   }
 }
 

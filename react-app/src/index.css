@@ -49,7 +49,6 @@ a {
 a:visited {
   text-decoration: none;
 }
-/* Global Style for buttons to make dev work easier */
 .stdbutton {
   background-color: dodgerblue;
   color: #F7F7FF;
@@ -61,4 +60,10 @@ a:visited {
 }
 .stdbutton:hover {
   background-color: #135CA3;
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    background-color: white;
+  }
 }

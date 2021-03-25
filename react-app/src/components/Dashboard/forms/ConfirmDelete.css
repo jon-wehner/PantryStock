@@ -1,0 +1,11 @@
+.deleteForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteForm p {
+  font-size: 1rem;
+  font-family: "Hind Siliguri";
+}
