@@ -54,10 +54,10 @@ export default function ShoppingListItem({row, setShowModal}) {
         {errors && errors.map(error => <li className="error"key={error}>{error}</li>)}
         </ul>
         <h2>
-          {row.item.name}
+          Item: {row.item.name}
         </h2>
         <h2>
-        {row.item.category}
+        Found In: {row.item.category}
         </h2>
         <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
         <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>

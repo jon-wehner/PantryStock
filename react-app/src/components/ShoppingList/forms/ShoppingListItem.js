@@ -44,8 +44,12 @@ export default function ShoppingListItem({item, setShowModal, hideMenu}) {
   return (
     <form className="shoppingListForm" onSubmit={handleSubmit}>
       {errors && errors.map(error => <li key={error}>{error}</li>)}
-      {item.name}
-      {item.category}
+      <h2>
+      Item: {item.name}
+      </h2>
+      <h2>
+      Found In: {item.category}
+      </h2>
       <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
       <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>
         {measurements && measurements.map(measurement => <option
@@ -55,7 +59,7 @@ export default function ShoppingListItem({item, setShowModal, hideMenu}) {
                                           </option>)
                                           }
       </select>
-      <button>Add To List</button>
+      <button className="stdbutton">Add To List</button>
     </form>
   )
 };
