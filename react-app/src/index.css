@@ -3,13 +3,15 @@
 body {
   margin: 0;
   font-size: 62.5%;
+  background-color: #f7f7ff;
 }
 * {
   box-sizing: border-box;
   outline: none;
 }
 #root {
-  width:100%
+  width:100%;
+  background-color: #f7f7ff;
 }
 
 button {
@@ -43,6 +45,7 @@ input {
 }
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 a:visited {
   text-decoration: none;
