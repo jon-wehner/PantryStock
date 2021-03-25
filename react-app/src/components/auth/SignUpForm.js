@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { Redirect, useLocation } from 'react-router-dom';
 import { signUp } from '../../store/session'
-import './SignUpForm.css'
+import './AuthForm.css'
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const dispatch = useDispatch()
@@ -27,8 +27,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div className="signup__fieldset">
+    <form className="loginForm" onSubmit={onSignUp}>
+      <div className="formfield">
         <label>User Name</label>
         <input
           type="text"
@@ -37,7 +37,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={username}
         ></input>
       </div>
-      <div className="signup__fieldset">
+      <div className="formfield">
         <label>Email</label>
         <input
           type="text"
@@ -47,7 +47,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={email}
         ></input>
       </div>
-      <div className="signup__fieldset">
+      <div className="formfield">
         <label>Password</label>
         <input
           type="password"
@@ -57,7 +57,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={password}
         ></input>
       </div>
-      <div className="signup__fieldset">
+      <div className="formfield">
         <label>Repeat Password</label>
         <input
           type="password"
@@ -68,7 +68,9 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <div className="login__buttonContainer">
+        <button type="submit">Sign Up</button>
+      </div>
     </form>
   );
 };

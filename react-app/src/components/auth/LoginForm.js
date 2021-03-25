@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from 'react-redux'
-import "./LoginForm.css"
+import "./AuthForm.css"
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
+  const history = useHistory()
   const dispatch = useDispatch()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -20,6 +21,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       setErrors(user.errors);
     }
   };
+  const startSignup = (e) => {
+    history.push({
+      pathname: '/sign-up',
+      state: {
+        tempEmail: email
+      }
+    })
+  }
   const signInDemo = async (e) => {
     e.preventDefault(e)
     await dispatch(login('demo@aa.io', 'password'))
@@ -43,6 +52,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         {errors.map((error) => (
           <div className="error">{error}</div>
         ))}
+      </div>
+      <div className="signup__link">
+        <span>
+        Don't have an account? <button id="signuplink" onClick={startSignup}>Sign up.</button>
+        </span>
       </div>
       <div className="formfield">
         <label htmlFor="email">Email</label>

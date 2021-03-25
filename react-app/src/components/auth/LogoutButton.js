@@ -6,8 +6,8 @@ import './LogoutButton.css'
 const LogoutButton = ({setAuthenticated}) => {
   const dispatch = useDispatch()
   const onLogout = async (e) => {
-    await dispatch(logout());
     setAuthenticated(false);
+    await dispatch(logout());
   };
 
   return <button className="logoutbutton" onClick={onLogout}>Logout</button>;

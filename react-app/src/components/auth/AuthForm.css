@@ -23,7 +23,7 @@
   margin-bottom: .5rem;
 }
 .formfield label {
-  width: 8rem;
+  width: 12rem;
 }
 .login__buttonContainer {
   display: flex;
@@ -34,14 +34,32 @@
   color: #fff;
   font-family: "Hind Siliguri";
   font-size: 1.4rem;
-  width: 5rem;
-  height: 2.7rem;
+  width: 7rem;
+  height: 2.5rem;
 }
 .loginForm button:hover {
   background-color: #135CA3;
 }
 
+.signup__link {
+  display: flex;
+  justify-content: center;
+  margin-bottom: .5rem;
+}
+.signup__link span {
+  font-size: 1.2rem;
+}
+.signup__link span a {
+  color: dodgerblue;
+}
+
 #demoLogin {
   margin-left: .5rem;
   width: 8rem;
+}
+
+#signuplink {
+  background-color: #f7f7FF;
+  color: dodgerblue;
+  font-size: 1.2rem;
 }

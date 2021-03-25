@@ -29,6 +29,11 @@
   color: #474747;
   font-size: 1.25rem;
   margin-left: 1rem;
+  text-decoration: none;
+}
+.navbar__logo:visited {
+  text-decoration: none;
+  color: inherit;
 }
 .navlinks-toggle {
   display: inline-block;

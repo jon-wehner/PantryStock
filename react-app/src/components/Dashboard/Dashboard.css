@@ -7,6 +7,7 @@
   display: inline-block;
   font-size: 1.2rem;
   text-decoration: none;
+  font-family: "Hind Siliguri";
   color: inherit;
   margin-bottom: .75rem;
 }
@@ -31,6 +32,26 @@
 .shoppingList__buttons {
   font-size: 1.2rem;
   margin-left: 1rem;
+}
+.dashboard__title {
+  width: 10rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.dashboard__button {
+  display: block;
+  margin: 0 auto;
+  width: 12rem;
+}
+.pantryLink {
+  display: block;
+  margin: 0 auto;
+  font-size: 1rem;
+  font-family: "Hind Siliguri";
+  text-align: center;
+  width: 10rem;
+  color: #F7F7FF;
+
 }
 
 @media screen and (max-width: 768px) {
