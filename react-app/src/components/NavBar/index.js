@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom'
 import LogoutButton from '../auth/LogoutButton';
+import chard from './chard.png'
 import './NavBar.css'
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
@@ -18,7 +19,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <nav className="navbar" style={{ height: showNavLinks ? '12rem' : '6rem'}}>
       <div className="navbar__mobile">
         <Link to="/">
-          <h1 className="navbar__logo">PantryStock</h1>
+          <h1 className="navbar__logo">PantryStock </h1>
         </Link>
         <i className="fas fa-bars navlinks-toggle" onClick={toggleNavLinks}/>
       </div>
