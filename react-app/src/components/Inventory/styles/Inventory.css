@@ -1,4 +1,4 @@
-.shoppingList__container {
+.pantry {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,25 +9,19 @@
   background-color: #FDFFFC;
 }
 
-.shoppingList__container div ul {
+.pantry ul {
   width: 100%;
   padding: 0;
   margin: 0 auto;
   margin-bottom: 1.5rem;
 }
 
-.shoppingList__container div {
-  width: 50%;
-}
-
-.shoppingList__title {
-  font-size: 2rem;
+.pantry h2 {
   font-family: "Heebo";
-  font-weight: 700;
-  text-align: center;
+  font-size: 2rem;
 }
 
-.shoppingListItem {
+.pantryListItem {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -39,48 +33,26 @@
   border-radius: .6rem;
   max-width: 50rem;
   margin: 0 auto;
+  cursor: pointer;
 }
 
-.shoppingListItem:hover {
+.pantryListItem:hover {
   background-color: lightgray;
 }
-.shoppingListItem p {
-  margin: 0 auto;
+.pantryListItem p {
+  margin: 0;
   padding: inherit;
 }
 
-.shoppingListItem svg {
+.pantryListItem svg {
   font-size: 2rem;
   margin-left: 1rem;
   padding: inherit;
 }
-.shoppingListItem svg:hover {
+.pantryListItem svg:hover {
   font-size: 2.2rem;
 }
 
-.shoppingListItem svg:active {
+.pantryListItem svg:active {
   transform: translateY(.2rem);
 }
-
-#addToInv {
-  display: block;
-  font-size: 1.5rem;
-  margin: 0 auto;
-  text-align: center;
-  margin-bottom: 1rem;
-  width: 80%;
-}
-
-@media screen and (max-width: 768px) {
-  .shoppingList__container {
-    width:100%;
-  }
-  .shoppingListItem {
-    font-size: 1.2rem;
-    width:100%;
-  }
-  ul {
-    padding: 0;
-  }
-}
-
