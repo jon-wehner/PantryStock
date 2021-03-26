@@ -20,7 +20,7 @@ export default function ShoppingListRow ({row}) {
       <li className="shoppingListItem" onClick={() => setShowModal(true)}>
         <div>
           <p style={row.inCart ? {textDecoration: 'line-through'} : null}>
-            {row.quantity}
+            ({row.quantity})
             {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
             {row.item.name}
           </p>

@@ -43,7 +43,6 @@ export const addItemToInventory = (inventoryItem) => async (dispatch) => {
     const res = await fetch(url, options)
     if (!res.ok) throw res
     const inventory = await res.json()
-    console.log(inventory)
     if(!inventory.errors) {
       dispatch(setInventory(inventory.inventory))
     }
@@ -54,6 +53,50 @@ export const addItemToInventory = (inventoryItem) => async (dispatch) => {
   }
 };
 
+export const editInvItem = (inventoryItem) => async (dispatch) => {
+  const { itemId, measurementId, quantity, userId, expirationDate } = inventoryItem
+  const url = `/api/inventory/${userId}/${itemId}`;
+  const formData = new FormData()
+  formData.append('measurement_id', measurementId);
+  formData.append('quantity', quantity);
+  formData.append('expiration_date', expirationDate)
+  const options = {
+    method: 'PUT',
+    body: formData
+  }
+  try {
+    const res = await fetch(url, options)
+    if (!res.ok) throw res
+    const inventory = await res.json()
+    if(!inventory.errors) {
+      dispatch(setInventory(inventory.inventory))
+    }
+    return inventory
+  }
+  catch (err) {
+    return (err)
+  }
+};
+
+export const removeInvItem = (id, userId) => async (dispatch) => {
+  const url = `/api/inventory/${userId}/${id}`
+  const options = {
+    method: 'DELETE',
+  }
+  try {
+    const res = await fetch(url, options);
+    if(!res.ok) throw res
+    const inventory = await res.json()
+    if(!inventory.errors){
+      dispatch(setInventory(inventory.inventory))
+    }
+    return inventory
+  }
+  catch (err) {
+    return err
+  }
+}
+
 const initialState = {fridge: null,
                       pantry: null,
                       }
@@ -62,7 +105,6 @@ const inventoryReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_INVENTORY:
       newState = {...state};
-      console.log(action)
       newState.fridge = action.inventory.fridge;
       newState.pantry = action.inventory.pantry;
       return newState;

@@ -4,9 +4,9 @@
   align-items: center;
   width: 85%;
   min-height: 45rem;
-  margin: 0 auto;
-  margin-top: 3rem;
+  margin: 7rem auto;
   background-color: #FDFFFC;
+  border: 1px lightgray solid;
 }
 
 .pantryList {
@@ -55,4 +55,11 @@
 
 .pantryListItem svg:active {
   transform: translateY(.2rem);
+}
+
+@media screen and (max-width:768px) {
+  .pantry {
+    width: 100%;
+    border: none;
+  }
 }

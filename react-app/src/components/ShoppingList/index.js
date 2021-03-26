@@ -43,7 +43,7 @@ export default function ShoppingList() {
       {list &&
         <div>
           <p className="shoppingList__title" >{list.name}</p>
-          <ul>
+          <ul className="shoppingList__itemList">
             {list.items.map(row => <ShoppingListRow key={row.id} row={row} />)}
           </ul>
           {list.items.length > 0 &&

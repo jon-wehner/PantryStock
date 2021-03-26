@@ -49,9 +49,9 @@ function App() {
         <Route path="/" exact={true} authenticated={authenticated}>
           {authenticated ? <Dashboard authenticated={authenticated}/> : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>}
         </Route>
-        <Route path="/user/:id/inventory">
+        <ProtectedRoute path="/user/:id/inventory" authenticated={authenticated}>
           <Inventory />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </>
   );
