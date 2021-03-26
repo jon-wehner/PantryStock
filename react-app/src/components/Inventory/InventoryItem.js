@@ -3,10 +3,10 @@ import { Modal } from '../../context/Modal'
 import EditInventoryItem from './forms/EditInventoryItem'
 
 export default function InventoryItem({row}) {
-  const [showModal, setshowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   return (
     <>
-      <li className="pantryListItem" onClick={() => setshowModal(true)}>
+      <li className="pantryListItem" onClick={() => setShowModal(true)}>
         <p>
           ({row.quantity})
           {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
@@ -14,8 +14,8 @@ export default function InventoryItem({row}) {
         </p>
       </li>
       {showModal &&
-        <Modal onClose={() => setshowModal(false)}>
-          <EditInventoryItem row={row} setshowModal={setshowModal}/>
+        <Modal onClose={() => setShowModal(false)}>
+          <EditInventoryItem row={row} setShowModal={setShowModal}/>
         </Modal>
       }
     </>
