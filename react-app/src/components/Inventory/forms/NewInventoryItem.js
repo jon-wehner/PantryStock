@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { addItemToInventory } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items'
+import '../styles/InventoryForms.css'
 
 export default function NewInventoryItem({item, setShowModal}) {
   const dispatch = useDispatch();
@@ -41,10 +42,13 @@ export default function NewInventoryItem({item, setShowModal}) {
 
   if (!loaded) return null;
   return (
-    <form style={{ display: 'flex', flexDirection: 'column'}} onSubmit={handleSubmit}>
-      {errors && errors.map(error => <li key={error}>{error}</li>)}
-      {item.name}
-      {item.category}
+    <form className="inventoryForm" style={{ display: 'flex', flexDirection: 'column'}} onSubmit={handleSubmit}>
+      <ul className="errors">
+        {errors && errors.map(error => <li className="error" key={error}>{error}</li>)}
+      </ul>
+      <h2>
+        Item: {item.name}
+      </h2>
       <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
       <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>
         {measurements && measurements.map(measurement => <option
@@ -55,7 +59,7 @@ export default function NewInventoryItem({item, setShowModal}) {
                                           }
       </select>
       <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/>
-      <button>Add To Pantry</button>
+      <button className="stdbutton">Add To Pantry</button>
     </form>
   )
 };

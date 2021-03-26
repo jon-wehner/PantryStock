@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
 import { addEditShoppingListItem } from '../../../store/shoppingList'
 import { deleteShoppingListItem} from '../../../store/shoppingList'
-import './ShoppingListForms.css'
+import '../styles/ShoppingListForms.css'
 
 export default function ShoppingListItem({row, setShowModal}) {
   const dispatch = useDispatch();
