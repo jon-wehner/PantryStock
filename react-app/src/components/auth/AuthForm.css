@@ -1,5 +1,5 @@
 .error {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: red;
 }
 .loginForm {
@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   width: 70%;
-  margin: 0 auto;
+  margin: 1rem auto;
   font-family: "Hind Siliguri";
 }
 .errors__container {
@@ -15,15 +15,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
 }
 .formfield {
   display: flex;
   justify-content: center;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
 }
 .formfield label {
   width: 12rem;
+  font-size: 1.8rem;
+}
+.formfield input {
+  font-size: 1.8rem;
 }
 .login__buttonContainer {
   display: flex;
@@ -33,9 +37,10 @@
   background-color: dodgerblue;
   color: #fff;
   font-family: "Hind Siliguri";
-  font-size: 1.4rem;
-  width: 7rem;
-  height: 2.5rem;
+  font-size: 2rem;
+  width: 10rem;
+  height: 3rem;
+  margin-top: 1rem;
 }
 .loginForm button:hover {
   background-color: #135CA3;
@@ -44,12 +49,13 @@
 .signup__link {
   display: flex;
   justify-content: center;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
 }
 .signup__link span {
-  font-size: 1.2rem;
+  font-size: 2rem;
 }
-.signup__link span a {
+.signup__link span button {
+  font-size: 2rem;
   color: dodgerblue;
 }
 
@@ -61,5 +67,5 @@
 #signuplink {
   background-color: #f7f7FF;
   color: dodgerblue;
-  font-size: 1.2rem;
+  font-size: 2rem;
 }

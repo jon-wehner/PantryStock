@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { loadMeasurements } from '../../../store/items'
 import { addEditShoppingListItem } from '../../../store/shoppingList'
-import './ShoppingListForms.css'
+import '../styles/ShoppingListForms.css'
 
 export default function ShoppingListItem({item, setShowModal, hideMenu}) {
   const dispatch = useDispatch();

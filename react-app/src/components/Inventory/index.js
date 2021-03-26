@@ -2,8 +2,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserInventory } from '../../store/inventory';
+import InventoryItem from './InventoryItem'
 
 import SearchBar from '../SearchBar/SearchBar';
+import './styles/Inventory.css'
 
 export default function Inventory() {
   const dispatch = useDispatch();
@@ -19,21 +21,21 @@ export default function Inventory() {
   },[dispatch, userId])
 
   return (
-    <div>
+    <div className="pantry">
       <h1>Welcome to your pantry!</h1>
-      <h2>Fridge</h2>
+      <SearchBar inventory={true} />
+      <h2>Refrigerator/Freezer</h2>
       {fridge &&
-        <ul>
-          {fridge.map(el => <li key={el.id}>{el.item.name}</li>)}
+        <ul className="pantryList">
+          {fridge.map(el => <InventoryItem key={el.id} row={el} />)}
         </ul>
       }
       <h2>Pantry</h2>
         {pantry &&
-          <ul>
-            {pantry.map(el => <li key={el.id}>{el.item.name}</li>)}
+          <ul className="pantryList">
+            {pantry.map(el => <InventoryItem key={el.id} row={el} />)}
           </ul>
         }
-      <SearchBar inventory={true} />
     </div>
   )
 };
