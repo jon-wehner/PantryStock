@@ -44,6 +44,7 @@
   background-image: linear-gradient(to right bottom, rgba(224, 228, 221, 0.5), rgba(40, 180, 133, 0.8)),url(./images/pantry.jpg);
   clip-path: polygon(13% 0%, 100% 0%, 87% 70%, 0% 70%);
   height: 1000px;
+  animation: moveInLeft 2s ease-in-out 0s;
 }
 
 .signup__button {
@@ -65,6 +66,7 @@
   border-radius: 1rem;
   padding: .5rem;
   width: 30%;
+  animation: moveInRight 2s ease-in-out .25s;
 }
 
 @media screen and (max-width: 768px) {
@@ -106,3 +108,34 @@
     width: 100%;
   }
 }
+
+@keyframes moveInRight {
+  0%{
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  80% {
+    transform: translateX(-2.2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes moveInLeft {
+  0%{
+    opacity: 0;
+    transform: translateX(-1.0rem);
+  }
+  80% {
+    transform: translateX(8rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
