@@ -75,7 +75,7 @@ export default function EditInventoryItem({row, setShowModal}) {
         <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/> */}
         <button className="stdbutton">Edit Item</button>
       </form>
-      <button className="stdbutton" onClick={handleDelete} style={{backgroundColor: "red"}}>Delete Item</button>
+      <button className="stdbutton" id="deleteInvItem" onClick={handleDelete} style={{backgroundColor: "red"}}>Delete Item</button>
     </div>
   )
 };

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom'
 import LogoutButton from '../auth/LogoutButton';
-import chard from './chard.png'
 import './NavBar.css'
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
