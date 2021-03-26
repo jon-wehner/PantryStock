@@ -3,6 +3,7 @@
   flex-direction: column;
   font-family: "Hind Siliguri";
   font-size: 1.6rem;
+  width: 100%;
 }
 .inventoryForm h2 {
   font-family: "Heebo";
