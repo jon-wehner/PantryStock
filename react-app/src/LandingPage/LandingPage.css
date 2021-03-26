@@ -1,10 +1,20 @@
+.landpage__wrapper {
+  display: flex;
+  background-color: #FDFFFC;
+  margin-bottom: 0;
+}
 .landingpage__signup {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 75%;
   margin: 0 auto;
+  margin-bottom: 2rem;
+  background-color: white;
+}
+
+.landingpage__signup input {
+  font-size: 1.6rem;
 }
 
 .landpage__title {
@@ -12,7 +22,6 @@
   font-size: 2.4rem;
   font-weight: 700;
 }
-
 .landpage__text {
   font-size: 1.4rem;
   font-family: "Hind Siliguri";
@@ -24,10 +33,17 @@
   text-align: center;
 }
 .landpage__imagecontainer {
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 2rem;
   border-radius: .6rem;
+  margin: 2rem;
+  background-image: linear-gradient(to right bottom, rgba(224, 228, 221, 0.5), rgba(40, 180, 133, 0.8)),url(./images/pantry.jpg);
+  clip-path: polygon(13% 0%, 100% 0%, 87% 70%, 0% 70%);
+  height: 1000px;
 }
 
 .signup__button {
@@ -42,6 +58,13 @@
 }
 .signup__button:hover {
   background-color: #1873CC;
+}
+
+.landpage__background {
+  background-color: white;
+  border-radius: 1rem;
+  padding: .5rem;
+  width: 30%;
 }
 
 @media screen and (max-width: 768px) {
@@ -78,5 +101,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .landpage__background {
+    width: 100%;
   }
 }

@@ -4,10 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid lightgray;
-  background-color: #7FB7BE;
+  background-color: #264653;
   font-family: "Heebo", sans-serif;
-  margin-bottom: 1rem;
   transition: height .75s ease-in;
 }
 .navbar__mobile {
@@ -17,15 +15,15 @@
 .navlink button {
   display: inline-block;
   font-family: "Heebo";
+  color: #FDFFFC;
   font-size: 1.6rem;
   font-weight: 700;
-  color: rgb(71,71,71);
   margin-right: 1rem;
 }
 .navbar__logo {
   font-family: "Heebo", sans-serif;
   font-weight: 700;
-  color: #474747;
+  color: #FDFFFC;
   font-size: 2rem;
   margin-left: 1rem;
   text-decoration: none;
@@ -38,7 +36,6 @@
   display: inline-block;
   align-items: flex-start;
   font-size: 2rem;
-  color: #474747;
   margin-left: 1rem;
 }
 
@@ -53,7 +50,7 @@
   }
   .navlinks-active{
     position: absolute;
-    top: 2.5rem;
+    top: 3.5rem;
     display: flex;
     flex-direction: column;
   }
