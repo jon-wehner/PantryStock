@@ -59,7 +59,7 @@ def edit_delete_item(user_id, item_id):
         form['csrf_token'].data = request.cookies['csrf_token']
         form['item_id'].data = item.item.id
         if form.validate_on_submit():
-            item.expiration_date = form.data['expiration_date']
+            # item.expiration_date = form.data['expiration_date']
             item.quantity = form.data['quantity']
             measurement_id = form.data['measurement_id']
             db.session.add(item)

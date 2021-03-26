@@ -5,7 +5,7 @@ import { addItemToInventory } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items'
 import '../styles/InventoryForms.css'
 
-export default function NewInventoryItem({item, setShowModal}) {
+export default function NewInventoryItem({item, setShowModal, hideMenu}) {
   const dispatch = useDispatch();
   const { id: userId } = useParams();
   const measurements = useSelector(state => state.items.measurements);
@@ -37,6 +37,7 @@ export default function NewInventoryItem({item, setShowModal}) {
     }
     else {
       setShowModal(false)
+      hideMenu()
     }
   }
 
@@ -49,6 +50,7 @@ export default function NewInventoryItem({item, setShowModal}) {
       <h2>
         Item: {item.name}
       </h2>
+      <label>Quantity:</label>
       <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
       <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>
         {measurements && measurements.map(measurement => <option
@@ -58,7 +60,7 @@ export default function NewInventoryItem({item, setShowModal}) {
                                           </option>)
                                           }
       </select>
-      <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/>
+      {/* <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/> */}
       <button className="stdbutton">Add To Pantry</button>
     </form>
   )
