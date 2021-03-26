@@ -26,13 +26,20 @@ def add_item(user_id):
     form = InventoryItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        item = UserItem(
-            item_id=form.data['item_id'],
-            user_id=user_id,
-            expiration_date=form.data['expiration_date'],
-            quantity=form.data['quantity'],
-            measurement_id=form.data['measurement_id']
-        )
+        item_id = form.data['item_id']
+        measurement_id = form.data['measurement_id']
+        item = UserItem.query.filter(UserItem.item_id == item_id).filter(
+            UserItem.measurement_id == measurement_id).first()
+        if item:
+            item.quantity = item.quantity + form.data['quantity']
+        else:
+            item = UserItem(
+                item_id=form.data['item_id'],
+                user_id=user_id,
+                expiration_date=form.data['expiration_date'],
+                quantity=form.data['quantity'],
+                measurement_id=form.data['measurement_id']
+                )
         db.session.add(item)
     if form.errors:
         return {"errors": validation_errors_to_error_messages(form.errors)}
