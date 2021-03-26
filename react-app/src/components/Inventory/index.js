@@ -26,13 +26,13 @@ export default function Inventory() {
       <SearchBar inventory={true} />
       <h2>Refrigerator/Freezer</h2>
       {fridge &&
-        <ul >
+        <ul className="pantryList">
           {fridge.map(el => <InventoryItem key={el.id} row={el} />)}
         </ul>
       }
       <h2>Pantry</h2>
         {pantry &&
-          <ul>
+          <ul className="pantryList">
             {pantry.map(el => <InventoryItem key={el.id} row={el} />)}
           </ul>
         }
