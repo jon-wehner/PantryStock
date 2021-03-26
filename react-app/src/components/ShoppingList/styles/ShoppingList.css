@@ -9,7 +9,7 @@
   background-color: #FDFFFC;
 }
 
-.shoppingList__container div ul {
+.shoppingList__itemList {
   width: 100%;
   padding: 0;
   margin: 0 auto;
