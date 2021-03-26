@@ -5,11 +5,11 @@
 }
 .shoppingList a {
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   text-decoration: none;
   font-family: "Hind Siliguri";
   color: inherit;
-  margin-bottom: .75rem;
+  margin-bottom: 1.25rem;
 }
 .shoppingList a:visited {
   text-decoration: none;
@@ -17,11 +17,11 @@
 }
 
 .shoppingList a:hover {
-  transform: translateY(.075rem);
+  transform: translateY(.1rem);
 }
 
 .shoppingList a:active {
-  transform: translateY(.15rem);
+  transform: translateY(.25rem);
 }
 
 .dashboard__shoppingListContainer {
@@ -30,26 +30,26 @@
 }
 
 .shoppingList__buttons {
-  font-size: 1.2rem;
-  margin-left: 1rem;
+  font-size: 1.6rem;
+  margin-left: 1.4rem;
 }
 .dashboard__title {
-  width: 10rem;
+  width: 15rem;
   margin: 0 auto;
   text-align: center;
 }
 .dashboard__button {
   display: block;
   margin: 0 auto;
-  width: 12rem;
+  width: 16rem;
 }
 .pantryLink {
   display: block;
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-family: "Hind Siliguri";
   text-align: center;
-  width: 10rem;
+  width: 14rem;
   color: #F7F7FF;
 
 }
@@ -63,7 +63,7 @@
     justify-content: center;
   }
   .shoppingList a {
-    width: 8rem;
+    width: 12rem;
   }
   .dashboard__button {
     display: block;

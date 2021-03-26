@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Hind+Siliguri&family=Yantramanav&display=swap');
 
-body {
+html {
   margin: 0;
   font-size: 62.5%;
+  font-size: 10px;
   background-color: #f7f7ff;
+}
+body {
+  margin: 0;
 }
 * {
   box-sizing: border-box;
@@ -53,10 +57,10 @@ a:visited {
   background-color: dodgerblue;
   color: #F7F7FF;
   font-family: "Hind Siliguri";
-  font-size: 1rem;
+  font-size: 1.6rem;
   padding: .35rem;
   border-radius: .6rem;
-  width: 12rem;
+  width: 18rem;
 }
 .stdbutton:hover {
   background-color: #135CA3;
