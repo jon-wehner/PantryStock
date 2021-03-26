@@ -63,7 +63,8 @@ def add_shopping_list_item(id):
             ShoppingListItem.item_id == item_id).filter(
             ShoppingListItem.measurement_id == measurement_id).first()
         if shopping_list_item:
-            shopping_list_item.quantity = shopping_list_item.quantity + form.data['quantity']
+            shopping_list_item.quantity = (shopping_list_item.quantity +
+                                           form.data['quantity'])
         else:
             shopping_list_item = ShoppingListItem(
                 user_id=shopping_list.user_id,
