@@ -11,11 +11,10 @@
 .shoppingList {
   display: flex;
   justify-content: space-between;
-
 }
 .shoppingList a {
   display: inline-block;
-  font-size: 1.6rem;
+  font-size: 2rem;
   text-decoration: none;
   font-family: "Hind Siliguri";
   color: inherit;
@@ -27,11 +26,11 @@
 }
 
 .shoppingList a:hover {
-  transform: translateY(.1rem);
+  transform: translateY(.2rem);
 }
 
 .shoppingList a:active {
-  transform: translateY(.25rem);
+  transform: translateY(.4rem);
 }
 
 .dashboard__shoppingListContainer {
@@ -40,7 +39,7 @@
 }
 
 .shoppingList__buttons {
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-left: 1.4rem;
 }
 .dashboard__title {
@@ -56,7 +55,7 @@
 .pantryLink {
   display: block;
   margin: 0 auto;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-family: "Hind Siliguri";
   text-align: center;
   width: 14rem;

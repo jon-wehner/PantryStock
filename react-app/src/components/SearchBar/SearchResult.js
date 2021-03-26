@@ -15,12 +15,14 @@ export default function SearchResult ({item, inventory, hideMenu}) {
         <Modal onClose={() => {
           setShowModal(false)
           }}>
-          {inventory ? <NewInventoryItem item={item} setShowModal={setShowModal} />:
-                    <ShoppingListItem
-                      item={item}
-                      setShowModal={setShowModal}
-                      hideMenu={hideMenu}
-                      />          }
+            {inventory ? <NewInventoryItem item={item}
+                          setShowModal={setShowModal}
+                          hideMenu={hideMenu}/>:
+                        <ShoppingListItem
+                          item={item}
+                          setShowModal={setShowModal}
+                          hideMenu={hideMenu}
+                          />          }
         </Modal>
       }
     </>

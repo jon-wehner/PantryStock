@@ -57,13 +57,22 @@ def add_shopping_list_item(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         shopping_list = ShoppingList.query.get(id)
-        shopping_list_item = ShoppingListItem(
-            user_id=shopping_list.user_id,
-            item_id=form.data['item_id'],
-            shopping_list_id=id,
-            measurement_id=form.data['measurement_id'],
-            quantity=form.data['quantity']
-        )
+        item_id = form.data['item_id']
+        measurement_id = form.data['measurement_id']
+        shopping_list_item = ShoppingListItem.query.filter(
+            ShoppingListItem.item_id == item_id).filter(
+            ShoppingListItem.measurement_id == measurement_id).first()
+        if shopping_list_item:
+            shopping_list_item.quantity = (shopping_list_item.quantity +
+                                           form.data['quantity'])
+        else:
+            shopping_list_item = ShoppingListItem(
+                user_id=shopping_list.user_id,
+                item_id=form.data['item_id'],
+                shopping_list_id=id,
+                measurement_id=form.data['measurement_id'],
+                quantity=form.data['quantity']
+            )
         db.session.add(shopping_list_item)
         db.session.commit()
         return {shopping_list.id: shopping_list.to_dict()}

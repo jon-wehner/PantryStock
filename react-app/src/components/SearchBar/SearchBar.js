@@ -25,7 +25,6 @@ export default function SearchBar({inventory}) {
 
   const hideMenu = (e) => {
     setQuery("")
-    console.log('hi')
     setShowMenu(false)
   }
 

@@ -61,7 +61,7 @@ export default function EditInventoryItem({row, setShowModal}) {
         <h2>
           Item: {row.item.name}
         </h2>
-        <label>Quantity</label>
+        <label>Quantity:</label>
         <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
         <select value={measurementId} onChange={e => setMeasurementId(e.target.value) }>
           {measurements && measurements.map(measurement => <option
@@ -71,11 +71,11 @@ export default function EditInventoryItem({row, setShowModal}) {
                                             </option>)
                                             }
         </select>
-        <label>Expiration Date</label>
-        <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/>
+        {/* <label>Expiration Date</label>
+        <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/> */}
         <button className="stdbutton">Edit Item</button>
       </form>
-      <button className="stdbutton" onClick={handleDelete} style={{backgroundColor: "red"}}>Delete Item</button>
+      <button className="stdbutton" id="deleteInvItem" onClick={handleDelete} style={{backgroundColor: "red"}}>Delete Item</button>
     </div>
   )
 };

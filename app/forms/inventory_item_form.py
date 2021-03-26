@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 
 class InventoryItemForm(FlaskForm):
     item_id = IntegerField('item_id', validators=[DataRequired()])
-    expiration_date = DateField('expiration_date')
+    # expiration_date = DateField('expiration_date')
     quantity = FloatField('quantity', validators=[DataRequired()])
     measurement_id = IntegerField('measurement_id',
                                   validators=[DataRequired()])
