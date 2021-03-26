@@ -13,7 +13,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     history.push('/login')
   }
   return (
-    <nav className="navbar" style={{ height: showNavLinks ? '8rem' : '4rem'}}>
+    <nav className="navbar" style={{ height: showNavLinks ? '10rem' : '6rem'}}>
       <div className="navbar__mobile">
         <Link to="/">
           <h1 className="navbar__logo">PantryStock</h1>
