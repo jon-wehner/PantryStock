@@ -36,7 +36,7 @@ def add_item(user_id):
             item = UserItem(
                 item_id=form.data['item_id'],
                 user_id=user_id,
-                expiration_date=form.data['expiration_date'],
+                # expiration_date=form.data['expiration_date'],
                 quantity=form.data['quantity'],
                 measurement_id=form.data['measurement_id']
                 )
