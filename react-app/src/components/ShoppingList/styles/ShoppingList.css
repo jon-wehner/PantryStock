@@ -4,8 +4,8 @@
   align-items: center;
   width: 85%;
   min-height: 45rem;
-  margin: 0 auto;
-  margin-top: 3rem;
+  margin: 7rem auto;
+  border: 1px lightgray solid;
   background-color: #FDFFFC;
 }
 
@@ -39,6 +39,7 @@
   border-radius: .6rem;
   max-width: 50rem;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .shoppingListItem:hover {
@@ -68,12 +69,13 @@
   margin: 0 auto;
   text-align: center;
   margin-bottom: 1rem;
-  width: 80%;
+  width: 55%;
 }
 
 @media screen and (max-width: 768px) {
   .shoppingList__container {
     width:100%;
+    border: none;
   }
   .shoppingListItem {
     font-size: 1.2rem;
@@ -81,6 +83,9 @@
   }
   ul {
     padding: 0;
+  }
+  #addToInv {
+    width: 100%;
   }
 }
 

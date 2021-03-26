@@ -1,3 +1,13 @@
+.dashboard__wrapper {
+  margin:7rem auto;
+  width: 90%;
+  border: 1px lightgray solid;
+  height: 1000px;
+}
+.dashboard__wrapper h1 {
+  margin-top: 3rem;
+}
+
 .shoppingList {
   display: flex;
   justify-content: space-between;
@@ -55,9 +65,18 @@
 }
 
 @media screen and (max-width: 768px) {
+  .dashboard__wrapper {
+    border: none;
+    width: 100%;
+  }
   .dashboard__shoppingListContainer {
     width: 100%;
     margin: .5rem;
+  }
+  .dashboard__shoppingListContainer h1 {
+    margin: 1rem auto;
+    width: 95%;
+    text-align: center;
   }
   .shoppingList {
     justify-content: center;
