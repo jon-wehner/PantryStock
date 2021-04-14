@@ -50,7 +50,6 @@ export default function EditInventoryItem({row, setShowModal}) {
       setShowModal(false)
     }
   }
-
   if (!loaded) return null;
   return (
     <div className="editInvForm">

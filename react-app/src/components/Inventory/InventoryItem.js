@@ -1,9 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Modal } from '../../context/Modal'
 import EditInventoryItem from './forms/EditInventoryItem'
 
 export default function InventoryItem({row}) {
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const expires = useState("");
+
+  useEffect(() => {
+    const date = new Date()
+    console.log(row.expirationDate)
+    console.log((row.expirationDate - date)/1000/60/60/24)  })
   return (
     <>
       <li className="pantryListItem" onClick={() => setShowModal(true)}>
@@ -11,7 +17,7 @@ export default function InventoryItem({row}) {
           ({row.quantity})
           {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
           {row.item.name}
-
+          {row.expirationDate}
         </p>
       </li>
       {showModal &&
@@ -21,4 +27,4 @@ export default function InventoryItem({row}) {
       }
     </>
   )
-}
+};
