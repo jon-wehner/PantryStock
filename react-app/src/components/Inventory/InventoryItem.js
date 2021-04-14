@@ -11,6 +11,7 @@ export default function InventoryItem({row}) {
           ({row.quantity})
           {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
           {row.item.name}
+
         </p>
       </li>
       {showModal &&

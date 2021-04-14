@@ -32,9 +32,9 @@ export const addItemToInventory = (inventoryItem) => async (dispatch) => {
   formData.append('item_id', itemId)
   formData.append('measurement_id', measurementId)
   formData.append('quantity', quantity)
-  // if(inventoryItem.expirationDate) {
-  //   formData.append('expiration_date', inventoryItem.expirationDate)
-  // }
+  if(inventoryItem.expirationDate) {
+    formData.append('expiration_date', inventoryItem.expirationDate)
+  }
   const options = {
     method: 'POST',
     body: formData
@@ -59,7 +59,7 @@ export const editInvItem = (inventoryItem) => async (dispatch) => {
   const formData = new FormData()
   formData.append('measurement_id', measurementId);
   formData.append('quantity', quantity);
-  // formData.append('expiration_date', expirationDate)
+  formData.append('expiration_date', expirationDate)
   const options = {
     method: 'PUT',
     body: formData

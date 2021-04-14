@@ -13,7 +13,7 @@ export default function EditInventoryItem({row, setShowModal}) {
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState(row.measurement.id);
   const [quantity, setQuantity] = useState(row.quantity);
-  const [expirationDate, setExpirationDate] = useState(row.expirationDate)
+  const [expirationDate, setExpirationDate] = useState(row.expirationDate ? row.expirationDate : "")
   const [errors, setErrors] = useState("")
 
   useEffect(() => {
@@ -71,8 +71,8 @@ export default function EditInventoryItem({row, setShowModal}) {
                                             </option>)
                                             }
         </select>
-        {/* <label>Expiration Date</label>
-        <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/> */}
+        <label>Expiration Date</label>
+        <input type="date" value={expirationDate} onChange={e=> setExpirationDate(e.target.value)}/>
         <button className="stdbutton">Edit Item</button>
       </form>
       <button className="stdbutton" id="deleteInvItem" onClick={handleDelete} style={{backgroundColor: "red"}}>Delete Item</button>
