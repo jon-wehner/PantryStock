@@ -22,10 +22,6 @@
 }
 
 .pantryListItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   font-size: 1.6rem;
   list-style: none;
   font-family: "Hind Siliguri";
@@ -62,4 +58,29 @@
     width: 100%;
     border: none;
   }
+}
+
+.pantryTable td {
+  min-width: 7rem;
+  margin-left: 2rem;
+  text-align: left;
+}
+.pantryTable thead {
+  width: 25rem;
+}
+.pantryTable tr {
+  width: 40rem;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+.pantryTable thead th {
+  margin-left: 6.5rem;
+  font-size: 1.5rem;
+}
+
+caption {
+  font-family: "Heebo", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
 }

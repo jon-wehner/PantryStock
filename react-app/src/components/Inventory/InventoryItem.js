@@ -14,7 +14,7 @@ export default function InventoryItem({row}) {
             ({row.quantity})
           </span>
           <span>
-            {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
+            {` ${row.measurement.unit}${row.quantity > 1 ? 's ' : ' of '}`}
           </span>
         </td>
         <td>
