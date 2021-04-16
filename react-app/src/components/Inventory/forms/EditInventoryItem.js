@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { editInvItem, removeInvItem } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items'
+import { getTimeStamp } from '../../../utils';
 import '../styles/InventoryForms.css'
 
 export default function EditInventoryItem({row, setShowModal}) {
@@ -21,7 +22,12 @@ export default function EditInventoryItem({row, setShowModal}) {
     setLoaded(true)
   },[dispatch]);
 
+  //in react utils define a helper function that converts the date to midnight on the correct date in the user's time zone
+  //send that datetime string to the backend
+  //get integer days and store that in the db
+
   const handleSubmit = async (e) => {
+    console.log(getTimeStamp(expirationDate))
     setErrors("")
     e.preventDefault();
     const inventoryItem = {
@@ -29,7 +35,7 @@ export default function EditInventoryItem({row, setShowModal}) {
       measurementId,
       quantity,
       userId,
-      expirationDate
+      expirationDate: getTimeStamp(expirationDate)
     }
     const response = await dispatch(editInvItem(inventoryItem))
     if (response.errors) {

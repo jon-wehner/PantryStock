@@ -9,7 +9,8 @@ export default function InventoryItem({row}) {
   useEffect(() => {
     const date = new Date()
     console.log(row.expirationDate)
-    console.log((row.expirationDate - date)/1000/60/60/24)  })
+  });
+
   return (
     <>
       <li className="pantryListItem" onClick={() => setShowModal(true)}>
