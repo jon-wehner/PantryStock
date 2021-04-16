@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { addItemToInventory } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items'
+import { getTimeStamp } from '../../../utils';
 import '../styles/InventoryForms.css'
 
 export default function NewInventoryItem({item, setShowModal, hideMenu}) {
@@ -29,7 +30,7 @@ export default function NewInventoryItem({item, setShowModal, hideMenu}) {
       measurementId,
       quantity,
       userId,
-      expirationDate
+      expirationDate: getTimeStamp(expirationDate)
     }
     const response = await dispatch(addItemToInventory(inventoryItem))
     if (response.errors) {

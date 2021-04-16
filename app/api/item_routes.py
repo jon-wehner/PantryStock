@@ -24,7 +24,7 @@ def search_items():
 @login_required
 def categories():
     categories = Category.query.all()
-    return {category.id: category.to_dict() for category in categories}
+    return {"categories": [category.to_dict() for category in categories]}
 
 
 @item_routes.route('/measurements/')

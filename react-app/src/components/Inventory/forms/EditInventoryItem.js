@@ -22,10 +22,6 @@ export default function EditInventoryItem({row, setShowModal}) {
     setLoaded(true)
   },[dispatch]);
 
-  //in react utils define a helper function that converts the date to midnight on the correct date in the user's time zone
-  //send that datetime string to the backend
-  //get integer days and store that in the db
-
   const handleSubmit = async (e) => {
     setErrors("")
     e.preventDefault();
