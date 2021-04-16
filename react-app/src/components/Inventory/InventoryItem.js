@@ -5,7 +5,7 @@ import { getExpirationString } from '../../utils'
 
 export default function InventoryItem({row}) {
   const [showModal, setShowModal] = useState(false);
-
+  console.log()
   return (
     <>
       <li className="pantryListItem" onClick={() => setShowModal(true)}>

@@ -13,29 +13,33 @@ const getDaysToExpire = (date) => {
 
 const getExpirationString = (date) => {
   const days = getDaysToExpire(date)
-  switch (days) {
-    case days > 14:
-      return '2 Weeks+'
-    case days === 14:
-      return '2 Weeks'
-    case days > 7:
-      return '1 Week+'
-    case days >= 2:
-      return `${days} Days`
-    case days === 1:
-      return 'Tommorrow'
-    case days === 0:
-      return 'Today'
-    case days < 0:
-      return 'Expired'
-  }
 
+    if (days > 14) {
+      return '2 Weeks+'
+    }
+    else if (days === 14) {
+      return '2 Weeks'
+    }
+    else if (days > 7) {
+      return '1 Week+'
+    }
+    else if (days >= 2) {
+      return `${days} Days`
+    }
+    else if (days === 1) {
+      return 'Tommorrow'
+    }
+    else if (days === 0) {
+      return 'Today'
+    }
+    else {
+      return 'Expired'
+    }
 }
 
 const getTimeStamp = (date) => {
   const dateArr = splitDate(date)
   const expiration = new Date(...dateArr)
-  console.log(expiration.toISOString())
   return expiration.toISOString()
 }
 
