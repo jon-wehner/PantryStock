@@ -55,7 +55,6 @@ def edit_delete_item(user_id, item_id):
     user = User.query.get(user_id)
     item = UserItem.query.get(item_id)
     form = InventoryItemForm()
-    print(form.data['expiration_date'], '------------------')
     if request.method == 'PUT':
         form['csrf_token'].data = request.cookies['csrf_token']
         form['item_id'].data = item.item.id
