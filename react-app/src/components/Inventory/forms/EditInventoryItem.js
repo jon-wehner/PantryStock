@@ -27,7 +27,6 @@ export default function EditInventoryItem({row, setShowModal}) {
   //get integer days and store that in the db
 
   const handleSubmit = async (e) => {
-    console.log(getTimeStamp(expirationDate))
     setErrors("")
     e.preventDefault();
     const inventoryItem = {

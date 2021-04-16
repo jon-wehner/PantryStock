@@ -1,15 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Modal } from '../../context/Modal'
 import EditInventoryItem from './forms/EditInventoryItem'
+import { getExpirationString } from '../../utils'
 
 export default function InventoryItem({row}) {
   const [showModal, setShowModal] = useState(false);
-  const expires = useState("");
-
-  useEffect(() => {
-    const date = new Date()
-    console.log(row.expirationDate)
-  });
 
   return (
     <>
@@ -18,7 +13,7 @@ export default function InventoryItem({row}) {
           ({row.quantity})
           {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
           {row.item.name}
-          {row.expirationDate}
+          {row.expirationDate ? getExpirationString(row.expirationDate) : null}
         </p>
       </li>
       {showModal &&
