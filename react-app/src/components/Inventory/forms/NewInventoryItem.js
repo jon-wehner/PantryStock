@@ -60,7 +60,7 @@ export default function NewInventoryItem({item, setShowModal, hideMenu}) {
                                           </option>)
                                           }
       </select>
-      {/* <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/> */}
+      <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/>
       <button className="stdbutton">Add To Pantry</button>
     </form>
   )

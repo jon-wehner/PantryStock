@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { editInvItem, removeInvItem } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items'
+import { getTimeStamp } from '../../../utils';
 import '../styles/InventoryForms.css'
 
 export default function EditInventoryItem({row, setShowModal}) {
@@ -13,13 +14,17 @@ export default function EditInventoryItem({row, setShowModal}) {
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState(row.measurement.id);
   const [quantity, setQuantity] = useState(row.quantity);
-  const [expirationDate, setExpirationDate] = useState(row.expirationDate)
+  const [expirationDate, setExpirationDate] = useState(row.expirationDate ? row.expirationDate : "")
   const [errors, setErrors] = useState("")
 
   useEffect(() => {
     dispatch(loadMeasurements())
     setLoaded(true)
   },[dispatch]);
+
+  //in react utils define a helper function that converts the date to midnight on the correct date in the user's time zone
+  //send that datetime string to the backend
+  //get integer days and store that in the db
 
   const handleSubmit = async (e) => {
     setErrors("")
@@ -29,7 +34,7 @@ export default function EditInventoryItem({row, setShowModal}) {
       measurementId,
       quantity,
       userId,
-      expirationDate
+      expirationDate: getTimeStamp(expirationDate)
     }
     const response = await dispatch(editInvItem(inventoryItem))
     if (response.errors) {
@@ -50,7 +55,6 @@ export default function EditInventoryItem({row, setShowModal}) {
       setShowModal(false)
     }
   }
-
   if (!loaded) return null;
   return (
     <div className="editInvForm">
@@ -71,8 +75,8 @@ export default function EditInventoryItem({row, setShowModal}) {
                                             </option>)
                                             }
         </select>
-        {/* <label>Expiration Date</label>
-        <input type="date" value={expirationDate} onChange ={e=> setExpirationDate(e.target.value)}/> */}
+        <label>Expiration Date</label>
+        <input type="date" value={expirationDate} onChange={e=> setExpirationDate(e.target.value)}/>
         <button className="stdbutton">Edit Item</button>
       </form>
       <button className="stdbutton" id="deleteInvItem" onClick={handleDelete} style={{backgroundColor: "red"}}>Delete Item</button>
