@@ -8,14 +8,22 @@ export default function InventoryItem({row}) {
   console.log()
   return (
     <>
-      <li className="pantryListItem" onClick={() => setShowModal(true)}>
-        <p>
-          ({row.quantity})
-          {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
+      <tr className="pantryListItem" onClick={() => setShowModal(true)}>
+        <td>
+          <span>
+            ({row.quantity})
+          </span>
+          <span>
+            {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
+          </span>
+        </td>
+        <td>
           {row.item.name}
+        </td>
+        <td>
           {row.expirationDate ? getExpirationString(row.expirationDate) : null}
-        </p>
-      </li>
+        </td>
+      </tr>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
           <EditInventoryItem row={row} setShowModal={setShowModal}/>

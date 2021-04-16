@@ -38,21 +38,21 @@ export default function Inventory() {
       <SearchBar inventory={true} />
       <h2>Refrigerator/Freezer</h2>
       {fridge &&
-        <ul className="pantryList">
-          {categories.map(category => {
-            const categoryItems = fridge.filter(fridgeItem => fridgeItem.item.categoryId === category.id)
-            return <Category key={category.id} category={category} items={categoryItems} />
-          })}
-        </ul>
+          <section>
+            {categories.map(category => {
+              const categoryItems = fridge.filter(fridgeItem => fridgeItem.item.categoryId === category.id)
+              return <Category key={category.id} category={category} items={categoryItems} />
+            })}
+          </section>
       }
       <h2>Pantry</h2>
         {pantry &&
-          <ul className="pantryList">
+          <section>
             {categories.map(category => {
             const categoryItems = pantry.filter(pantryItem => pantryItem.item.categoryId === category.id)
             return <Category key={category.id} category={category} items={categoryItems} />
           })}
-          </ul>
+          </section>
         }
     </div>
   )

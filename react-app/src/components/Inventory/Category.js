@@ -4,13 +4,20 @@ export default function Category({category, items}) {
 
   if(!items.length) return null
   return (
-    <div>
-      <span>
+    <table className="pantryTable">
+      <caption>
         {category.name}
-      </span>
-      <ul>
+      </caption>
+      <thead>
+        <tr>
+          <th>Qty</th>
+          <th>Item</th>
+          <th>Expires</th>
+        </tr>
+      </thead>
+      <tbody>
         {items.map(el => <InventoryItem key={el.id} row={el} />)}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   )
 }
