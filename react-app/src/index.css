@@ -17,7 +17,6 @@ body {
   width:100%;
   background-color: #f7f7ff;
 }
-
 button {
   cursor: pointer;
   border: none;
@@ -32,7 +31,6 @@ button:active {
 h1 {
   font-family:   "Heebo";
 }
-
 label {
   font-family: "Hind Siliguri";
   font-size: 1.4rem;
@@ -70,4 +68,50 @@ a:visited {
   #root {
     background-color: white;
   }
+}
+
+.table-styled {
+  border-collapse: collapse;
+  min-width: 40rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, .2);
+  font-size: 1.6rem;
+  font-family: "Hind Siliguri", sans-serif;
+  overflow: hidden;
+  margin: 2.5rem 0;
+}
+.table-styled td ,
+.table-styled th {
+  padding: 1.2rem 1.5rem;
+}
+.table-styled thead tr {
+  background-color: #264653;
+  border-radius: .6rem .6rem 0 0;
+  color: #FDFFFC;
+  text-align: left;
+}
+.table-styled tbody tr {
+  border-bottom: thin solid #dddddd;
+  cursor: pointer;
+}
+.table-styled tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.table-styled tbody tr:last-of-type {
+  border-bottom: .2rem solid #264653;
+}
+.table-styled tbody tr:hover {
+  font-weight: 700;
+  background-color: lightgray;
+}
+.table-styled tr {
+  width: 40rem;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+caption {
+  font-family: "Heebo", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }

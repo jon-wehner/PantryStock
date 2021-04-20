@@ -1,20 +1,29 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { addItemToInventory } from "../../store/inventory"
+import { loadCategories } from "../../store/items"
 import { deleteShoppingListItem, loadOneShoppingList } from "../../store/shoppingList"
 import SearchBar from "../SearchBar/SearchBar"
-import ShoppingListRow from "./ShoppingListRow"
+import ShoppingListCategory from "./ShoppingListCategory"
 import './styles/ShoppingList.css'
 
 export default function ShoppingList() {
   const dispatch = useDispatch()
   const { id: shoppingListId } = useParams()
+  const [loaded, setLoaded] = useState(false)
+  const categories = useSelector(state => state.items.categories);
   const list = useSelector(state => state.shoppingLists[shoppingListId])
 
   useEffect(() => {
     dispatch(loadOneShoppingList(shoppingListId))
-  },[dispatch, shoppingListId])
+    if(!categories) {
+      dispatch(loadCategories())
+    }
+    else {
+      setLoaded(true)
+    }
+  },[dispatch, shoppingListId, categories])
 
   const transferList = async () => {
     const itemsInCart = []
@@ -37,15 +46,17 @@ export default function ShoppingList() {
     })
   }
 
+  if(!loaded) return null
   return (
     <div className="shoppingList__container">
       <SearchBar pantry={false}/>
       {list &&
         <div>
-          <p className="shoppingList__title" >{list.name}</p>
-          <ul className="shoppingList__itemList">
-            {list.items.map(row => <ShoppingListRow key={row.id} row={row} />)}
-          </ul>
+          <h1 className="shoppingList__title" >{list.name}</h1>
+          {categories.map(category => {
+            const categoryItems = list.items.filter(listItem => listItem.item.categoryId === category.id)
+            return <ShoppingListCategory key={category.id} category={category} items={categoryItems} />
+          })}
           {list.items.length > 0 &&
           <button id="addToInv"
             className="stdbutton"

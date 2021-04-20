@@ -7,7 +7,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 
 
-export default function ShoppingListRow ({row}) {
+export default function ShoppingListItem ({row}) {
   const dispatch = useDispatch()
   const [showModal, setShowModal] = useState(false)
 
@@ -18,8 +18,8 @@ export default function ShoppingListRow ({row}) {
   return (
     <>
       <li className="shoppingListItem" onClick={() => setShowModal(true)}>
-        <div>
-          <p style={row.inCart ? {textDecoration: 'line-through'} : null}>
+        <div style={row.inCart ? {textDecoration: 'line-through'} : null}>
+          <p>
             ({row.quantity})
             {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
             {row.item.name}

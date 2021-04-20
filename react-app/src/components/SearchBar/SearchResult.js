@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import ShoppingListItem from '../ShoppingList/forms/ShoppingListItem';
+import AddShoppingListItem from '../ShoppingList/forms/AddShoppingListItem';
 import NewInventoryItem from '../Inventory/forms/NewInventoryItem'
 
 export default function SearchResult ({item, inventory, hideMenu}) {
@@ -18,7 +18,7 @@ export default function SearchResult ({item, inventory, hideMenu}) {
             {inventory ? <NewInventoryItem item={item}
                           setShowModal={setShowModal}
                           hideMenu={hideMenu}/>:
-                        <ShoppingListItem
+                        <AddShoppingListItem
                           item={item}
                           setShowModal={setShowModal}
                           hideMenu={hideMenu}
