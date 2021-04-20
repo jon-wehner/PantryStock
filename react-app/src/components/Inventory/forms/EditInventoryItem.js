@@ -14,14 +14,24 @@ export default function EditInventoryItem({row, setShowModal}) {
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState(row.measurement.id);
   const [quantity, setQuantity] = useState(row.quantity);
-  const [expirationDate, setExpirationDate] = useState(row.expirationDate ? row.expirationDate : "")
+  const [expirationDate, setExpirationDate] = useState("")
   const [errors, setErrors] = useState("")
 
   useEffect(() => {
     dispatch(loadMeasurements())
     setLoaded(true)
-    console.log(typeof expirationDate)
   },[expirationDate, dispatch]);
+
+  useEffect(() => {
+    if (row.expirationDate) {
+      const date = new Date(row.expirationDate)
+      const year = date.getFullYear()
+      const month = date.getMonth()
+      const day = date.getDate()
+      const dateStr = `${year}-${month < 10 ? '0' : null}${month}-${day}`
+      setExpirationDate(dateStr)
+    }
+  }, [row.expirationDate])
 
   const handleSubmit = async (e) => {
     setErrors("")

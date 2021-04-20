@@ -5,7 +5,7 @@ import { getExpirationString, getQuantityString } from '../../services/utils'
 
 export default function InventoryItem({row}) {
   const [showModal, setShowModal] = useState(false);
-  console.log()
+
   return (
     <>
       <tr className="pantryListItem" onClick={() => setShowModal(true)}>
