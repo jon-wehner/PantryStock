@@ -30,7 +30,7 @@ export default function SearchBar({inventory}) {
 
   return (
     <div className="searchBar">
-      <input placeholder="Search for items" onChange={handleQuery}></input>
+      <input placeholder="Add an Item" onChange={handleQuery}></input>
       {results && showMenu &&
         <ul className="searchResults">
           {results && results.map(result => <SearchResult

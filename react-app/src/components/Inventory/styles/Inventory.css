@@ -8,58 +8,23 @@
   background-color: #FDFFFC;
   border: 1px lightgray solid;
 }
-
 .pantryList {
   width: 100%;
   padding: 0;
   margin: 0 auto;
   margin-bottom: 1.5rem;
 }
-
 .pantry h2 {
   font-family: "Heebo";
   font-size: 2rem;
 }
-
-.pantryListItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.6rem;
-  list-style: none;
-  font-family: "Hind Siliguri";
-  padding: .35rem;
-  border-radius: .6rem;
-  max-width: 50rem;
-  margin: 0 auto;
-  cursor: pointer;
-}
-
-.pantryListItem:hover {
-  background-color: lightgray;
-}
-.pantryListItem p {
-  margin: 0;
-  padding: inherit;
-}
-
-.pantryListItem svg {
-  font-size: 2rem;
-  margin-left: 1rem;
-  padding: inherit;
-}
-.pantryListItem svg:hover {
-  font-size: 2.2rem;
-}
-
-.pantryListItem svg:active {
-  transform: translateY(.2rem);
-}
-
 @media screen and (max-width:768px) {
   .pantry {
     width: 100%;
     border: none;
   }
+  .table-styled {
+    width: 100%;
+  }
 }
+

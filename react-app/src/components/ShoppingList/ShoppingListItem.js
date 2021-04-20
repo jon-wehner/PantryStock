@@ -5,9 +5,10 @@ import { addRemoveCart } from '../../store/shoppingList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
+import { getQuantityString } from '../../utils'
 
 
-export default function ShoppingListRow ({row}) {
+export default function ShoppingListItem ({row}) {
   const dispatch = useDispatch()
   const [showModal, setShowModal] = useState(false)
 
@@ -17,16 +18,18 @@ export default function ShoppingListRow ({row}) {
   }
   return (
     <>
-      <li className="shoppingListItem" onClick={() => setShowModal(true)}>
-        <div>
-          <p style={row.inCart ? {textDecoration: 'line-through'} : null}>
+      <tr className="shoppingListItem" onClick={() => setShowModal(true)}>
+        <td style={row.inCart ? {textDecoration: 'line-through'} : null}>
             ({row.quantity})
-            {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
+            {getQuantityString(row.quantity, row.measurement.unit)}
+        </td>
+        <td>
             {row.item.name}
-          </p>
-        </div>
-        <FontAwesomeIcon icon={faShoppingCart} onClick={toggleCart}/>
-      </li>
+        </td>
+        <td>
+          <FontAwesomeIcon icon={faShoppingCart} onClick={toggleCart}/>
+        </td>
+      </tr>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
           <EditShoppingListItem row={row} setShowModal={setShowModal}/>

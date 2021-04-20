@@ -42,11 +42,19 @@
 .navbar__navlinks div {
   display: flex;
 }
-#pantryNavLink {
+.pantryNavLink {
   background-color: #264653;
   font-size: 2rem;
   font-weight: 700;
   font-family: "Heebo";
+  margin: 0rem 1.5rem;
+}
+.pantryNavLink:active {
+  transform: translateY(.1rem);
+}
+.pantryNavLink:visited {
+  text-decoration: none;
+  color: #FDFFFC;
 }
 @media screen and (max-width: 767px) {
   .navbar__navlinks {

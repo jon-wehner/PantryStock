@@ -43,8 +43,17 @@ const getTimeStamp = (date) => {
   return expiration.toISOString()
 }
 
+const getQuantityString = (quantity, measurement) => {
+  let quantityString = " " + measurement
+  if (measurement !== "Each" && quantity > 1) {
+    quantityString += 's'
+  }
+  return quantityString += " of "
+}
+
 module.exports = {
   getDaysToExpire,
   getTimeStamp,
-  getExpirationString
+  getExpirationString,
+  getQuantityString
 };

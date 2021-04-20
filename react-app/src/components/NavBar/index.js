@@ -25,7 +25,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
       <ul className={"navbar__navlinks" + (showNavLinks ? " navlinks-active" : "")} >
         {authenticated ? (
           <div>
-            { user && <Link to={`/user/${user.id}/inventory`} className="pantryLink stdbutton" id="pantryNavLink">Your  Pantry</Link>}
+            <Link to="/" className="pantryNavLink">
+              Dashboard
+            </Link>
+            { user && <Link to={`/user/${user.id}/inventory`} className="pantryNavLink">Your  Pantry</Link>}
             < LogoutButton setAuthenticated={setAuthenticated} />
           </div>
         ) : <li className="navlink"><button type="none" onClick={login}>Login</button></li>}

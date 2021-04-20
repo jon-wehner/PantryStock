@@ -3,6 +3,7 @@
   width: 90%;
   border: 1px lightgray solid;
   height: 1000px;
+  background-color: #FDFFFC;
 }
 .dashboard__wrapper h1 {
   margin-top: 3rem;

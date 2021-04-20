@@ -6,9 +6,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 70%;
-  margin: 1rem auto;
+  width: 50%;
+  margin: 5rem auto;
   font-family: "Hind Siliguri";
+  background-color: #FDFFFC;
+  border-radius: .6rem;
+  padding: 2rem;
 }
 .errors__container {
   display: flex;
@@ -65,7 +68,7 @@
 }
 
 #signuplink {
-  background-color: #f7f7FF;
+  background-color: #FDFFFC;
   color: dodgerblue;
   font-size: 2rem;
 }
