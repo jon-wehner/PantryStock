@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { editInvItem, removeInvItem } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items'
-import { getTimeStamp } from '../../../utils';
+import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css'
 
 export default function EditInventoryItem({row, setShowModal}) {

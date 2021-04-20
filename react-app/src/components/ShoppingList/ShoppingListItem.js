@@ -5,7 +5,7 @@ import { addRemoveCart } from '../../store/shoppingList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
-import { getQuantityString } from '../../utils'
+import { getQuantityString } from '../../services/utils'
 
 
 export default function ShoppingListItem ({row}) {

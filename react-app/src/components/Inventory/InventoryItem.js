@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Modal } from '../../context/Modal'
 import EditInventoryItem from './forms/EditInventoryItem'
-import { getExpirationString, getQuantityString } from '../../utils'
+import { getExpirationString, getQuantityString } from '../../services/utils'
 
 export default function InventoryItem({row}) {
   const [showModal, setShowModal] = useState(false);
