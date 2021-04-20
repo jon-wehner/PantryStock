@@ -5,6 +5,7 @@ import { addRemoveCart } from '../../store/shoppingList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
+import { getQuantityString } from '../../utils'
 
 
 export default function ShoppingListItem ({row}) {
@@ -20,7 +21,7 @@ export default function ShoppingListItem ({row}) {
       <tr className="shoppingListItem" onClick={() => setShowModal(true)}>
         <td style={row.inCart ? {textDecoration: 'line-through'} : null}>
             ({row.quantity})
-            {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
+            {getQuantityString(row.quantity, row.measurement.unit)}
         </td>
         <td>
             {row.item.name}

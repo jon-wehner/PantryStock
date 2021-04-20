@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Modal } from '../../context/Modal'
 import EditInventoryItem from './forms/EditInventoryItem'
-import { getExpirationString } from '../../utils'
+import { getExpirationString, getQuantityString } from '../../utils'
 
 export default function InventoryItem({row}) {
   const [showModal, setShowModal] = useState(false);
@@ -10,12 +10,8 @@ export default function InventoryItem({row}) {
     <>
       <tr className="pantryListItem" onClick={() => setShowModal(true)}>
         <td>
-          <span>
             ({row.quantity})
-          </span>
-          <span>
-            {` ${row.measurement.unit}${row.quantity > 1 ? 's ' : ' of '}`}
-          </span>
+            {getQuantityString(row.quantity, row.measurement.unit)}
         </td>
         <td>
           {row.item.name}
