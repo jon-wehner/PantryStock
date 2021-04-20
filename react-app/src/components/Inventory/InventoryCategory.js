@@ -1,6 +1,6 @@
 import InventoryItem from './InventoryItem'
 
-export default function PantryCategory({category, items}) {
+export default function InventoryCategory({category, items}) {
 
   if(!items.length) return null
   return (

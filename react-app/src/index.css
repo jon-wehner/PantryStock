@@ -103,12 +103,6 @@ a:visited {
   font-weight: 700;
   background-color: lightgray;
 }
-.table-styled tr {
-  width: 40rem;
-  display: flex;
-  align-self: center;
-  justify-content: space-between;
-}
 caption {
   font-family: "Heebo", sans-serif;
   font-size: 1.8rem;

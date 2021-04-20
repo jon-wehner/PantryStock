@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserInventory } from '../../store/inventory';
-import PantryCategory from './PantryCategory'
+import InventoryCategory from './InventoryCategory'
 
 import SearchBar from '../SearchBar/SearchBar';
 import './styles/Inventory.css'
@@ -41,7 +41,7 @@ export default function Inventory() {
           <section>
             {categories.map(category => {
               const categoryItems = fridge.filter(fridgeItem => fridgeItem.item.categoryId === category.id)
-              return <PantryCategory key={category.id} category={category} items={categoryItems} />
+              return <InventoryCategory key={category.id} category={category} items={categoryItems} />
             })}
           </section>
       }
@@ -50,7 +50,7 @@ export default function Inventory() {
           <section>
             {categories.map(category => {
             const categoryItems = pantry.filter(pantryItem => pantryItem.item.categoryId === category.id)
-            return <PantryCategory key={category.id} category={category} items={categoryItems} />
+            return <InventoryCategory key={category.id} category={category} items={categoryItems} />
           })}
           </section>
         }

@@ -9,17 +9,6 @@
   background-color: #FDFFFC;
 }
 
-.shoppingList__itemList {
-  width: 100%;
-  padding: 0;
-  margin: 0 auto;
-  margin-bottom: 1.5rem;
-}
-
-.shoppingList__container div {
-  width: 50%;
-}
-
 .shoppingList__title {
   font-size: 2rem;
   font-family: "Heebo";
@@ -27,39 +16,16 @@
   text-align: center;
 }
 
-.shoppingListItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.6rem;
-  list-style: none;
-  font-family: "Hind Siliguri";
-  padding: .35rem;
-  border-radius: .6rem;
-  max-width: 50rem;
-  margin: 0 auto;
-  cursor: pointer;
-}
-
-.shoppingListItem:hover {
-  background-color: lightgray;
-}
-.shoppingListItem p {
-  margin: 0 auto;
-  padding: inherit;
-}
-
-.shoppingListItem svg {
-  font-size: 2rem;
+.shoppingListItem td svg {
+  font-size: 1.5rem;
   margin-left: 1rem;
-  padding: inherit;
+  box-sizing: border-box;
 }
-.shoppingListItem svg:hover {
-  font-size: 2.2rem;
+.shoppingListItem td svg:hover {
+  font-size: 1.8rem;
 }
 
-.shoppingListItem svg:active {
+.shoppingListItem td svg:active {
   transform: translateY(.2rem);
 }
 

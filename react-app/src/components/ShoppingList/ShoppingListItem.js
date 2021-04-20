@@ -17,16 +17,18 @@ export default function ShoppingListItem ({row}) {
   }
   return (
     <>
-      <li className="shoppingListItem" onClick={() => setShowModal(true)}>
-        <div style={row.inCart ? {textDecoration: 'line-through'} : null}>
-          <p>
+      <tr className="shoppingListItem" onClick={() => setShowModal(true)}>
+        <td style={row.inCart ? {textDecoration: 'line-through'} : null}>
             ({row.quantity})
             {` ${row.measurement.unit}${row.quantity > 1 ? 's of ' : ' of '}`}
+        </td>
+        <td>
             {row.item.name}
-          </p>
-        </div>
-        <FontAwesomeIcon icon={faShoppingCart} onClick={toggleCart}/>
-      </li>
+        </td>
+        <td>
+          <FontAwesomeIcon icon={faShoppingCart} onClick={toggleCart}/>
+        </td>
+      </tr>
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
           <EditShoppingListItem row={row} setShowModal={setShowModal}/>

@@ -13,7 +13,7 @@ export default function ShoppingListCategory({category, items}) {
             Qty
           </th>
           <th>Item</th>
-          <th>Expires</th>
+          <th>Add to Cart</th>
         </tr>
       </thead>
       <tbody>
