@@ -15,6 +15,7 @@ export default function ShoppingListItem({row, setShowModal}) {
   const [measurementId, setMeasurementId] = useState(row.measurement.id);
   const [quantity, setQuantity] = useState(row.quantity);
   const [errors, setErrors] = useState("")
+
   useEffect(() => {
     dispatch(loadMeasurements())
     setLoaded(true)
@@ -31,7 +32,6 @@ export default function ShoppingListItem({row, setShowModal}) {
       itemId: row.item.id,
       method: 'PUT'
     }
-    console.log(shoppingListItem)
     const res = await dispatch(addEditShoppingListItem(shoppingListItem))
     if (res.errors) {
       setErrors(res.errors)
