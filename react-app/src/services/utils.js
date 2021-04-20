@@ -39,8 +39,11 @@ export const getExpirationString = (date) => {
 
 export const getTimeStamp = (date) => {
   const dateArr = splitDate(date)
-  const expiration = new Date(...dateArr)
-  return expiration.toISOString()
+  let expiration = new Date(...dateArr)
+  expiration = expiration.toISOString()
+  const expirationString = expiration.slice(0, 19) + '-00:00'
+  console.log(expirationString)
+  return expirationString
 }
 
 export const getQuantityString = (quantity, measurement) => {

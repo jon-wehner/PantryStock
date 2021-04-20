@@ -20,7 +20,8 @@ export default function EditInventoryItem({row, setShowModal}) {
   useEffect(() => {
     dispatch(loadMeasurements())
     setLoaded(true)
-  },[dispatch]);
+    console.log(typeof expirationDate)
+  },[expirationDate, dispatch]);
 
   const handleSubmit = async (e) => {
     setErrors("")
@@ -30,7 +31,7 @@ export default function EditInventoryItem({row, setShowModal}) {
       measurementId,
       quantity,
       userId,
-      expirationDate: getTimeStamp(expirationDate)
+      expirationDate: expirationDate ? getTimeStamp(expirationDate) : null
     }
     const response = await dispatch(editInvItem(inventoryItem))
     if (response.errors) {

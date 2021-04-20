@@ -30,7 +30,7 @@ export default function NewInventoryItem({item, setShowModal, hideMenu}) {
       measurementId,
       quantity,
       userId,
-      expirationDate: getTimeStamp(expirationDate)
+      expirationDate: expirationDate ? getTimeStamp(expirationDate) : null
     }
     const response = await dispatch(addItemToInventory(inventoryItem))
     if (response.errors) {
