@@ -4,7 +4,7 @@ export default function Category({category, items}) {
 
   if(!items.length) return null
   return (
-    <table className="pantryTable">
+    <table className="table-styled">
       <caption>
         {category.name}
       </caption>
