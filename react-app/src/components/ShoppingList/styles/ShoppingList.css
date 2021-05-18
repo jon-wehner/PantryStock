@@ -6,12 +6,12 @@
   min-height: 45rem;
   margin: 7rem auto;
   border: 1px lightgray solid;
-  background-color: #FDFFFC;
+  background-color: #fdfffc;
 }
 
 .shoppingList__title {
   font-size: 2rem;
-  font-family: "Heebo";
+  font-family: 'Heebo';
   font-weight: 700;
   text-align: center;
 }
@@ -26,7 +26,7 @@
 }
 
 .shoppingListItem td svg:active {
-  transform: translateY(.2rem);
+  transform: translateY(0.2rem);
 }
 
 #addToInv {
@@ -40,12 +40,12 @@
 
 @media screen and (max-width: 768px) {
   .shoppingList__container {
-    width:100%;
+    width: 100%;
     border: none;
   }
   .shoppingListItem {
     font-size: 1.2rem;
-    width:100%;
+    width: 100%;
   }
   ul {
     padding: 0;
@@ -54,4 +54,3 @@
     width: 100%;
   }
 }
-

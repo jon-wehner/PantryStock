@@ -1,13 +1,13 @@
 .inventoryForm {
   display: flex;
   flex-direction: column;
-  font-family: "Hind Siliguri";
+  font-family: 'Hind Siliguri';
   font-size: 1.6rem;
   width: 100%;
 }
 .inventoryForm h2 {
-  font-family: "Heebo";
-  margin-bottom: .2rem;
+  font-family: 'Heebo';
+  margin-bottom: 0.2rem;
   margin-top: 0;
   font-weight: 700;
   font-size: 2rem;
@@ -23,14 +23,12 @@
   font-size: inherit;
   font-family: inherit;
   border-radius: 1rem;
-  padding: .3rem;
+  padding: 0.3rem;
 }
 .inventoryForm button {
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: 1.4rem;
-
 }
-
 #deleteInvItem {
   margin: 0 auto;
   display: block;

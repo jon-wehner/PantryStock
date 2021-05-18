@@ -14,7 +14,7 @@ body {
   outline: none;
 }
 #root {
-  width:100%;
+  width: 100%;
   background-color: #f7f7ff;
 }
 button {
@@ -23,26 +23,26 @@ button {
   font-family: inherit;
   background-color: transparent;
   padding: 0;
-  border-radius: .6rem;
+  border-radius: 0.6rem;
 }
 button:active {
-  transform: translateY(.1rem);
+  transform: translateY(0.1rem);
 }
 h1 {
-  font-family:   "Heebo";
+  font-family: 'Heebo';
 }
 label {
-  font-family: "Hind Siliguri";
+  font-family: 'Hind Siliguri';
   font-size: 1.4rem;
 }
 input {
   font-size: 1.2rem;
   font-family: inherit;
-  padding: .25rem .35rem;
-  background-color: #F7F7FF;
+  padding: 0.25rem 0.35rem;
+  background-color: #f7f7ff;
   border: 1px solid #d5d5d5;
-  font-family: "Hind Siliguri";
-  border-radius: .7rem;
+  font-family: 'Hind Siliguri';
+  border-radius: 0.7rem;
 }
 a {
   text-decoration: none;
@@ -53,15 +53,15 @@ a:visited {
 }
 .stdbutton {
   background-color: dodgerblue;
-  color: #F7F7FF;
-  font-family: "Hind Siliguri";
+  color: #f7f7ff;
+  font-family: 'Hind Siliguri';
   font-size: 1.6rem;
-  padding: .35rem;
-  border-radius: .6rem;
+  padding: 0.35rem;
+  border-radius: 0.6rem;
   width: 18rem;
 }
 .stdbutton:hover {
-  background-color: #135CA3;
+  background-color: #135ca3;
 }
 
 @media screen and (max-width: 768px) {
@@ -72,39 +72,44 @@ a:visited {
 
 .table-styled {
   border-collapse: collapse;
+  table-layout: fixed;
   min-width: 40rem;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, .2);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
   font-size: 1.6rem;
-  font-family: "Hind Siliguri", sans-serif;
+  font-family: 'Hind Siliguri', sans-serif;
   overflow: hidden;
   margin: 2.5rem 0;
 }
-.table-styled td ,
+.table-styled td,
 .table-styled th {
   padding: 1.2rem 1.5rem;
 }
 .table-styled thead tr {
   background-color: #264653;
-  border-radius: .6rem .6rem 0 0;
-  color: #FDFFFC;
+  border-radius: 0.6rem 0.6rem 0 0;
+  color: #fdfffc;
   text-align: left;
+}
+.table-styled thead tr th {
+  width: 33%;
 }
 .table-styled tbody tr {
   border-bottom: thin solid #dddddd;
   cursor: pointer;
+  text-align: left;
 }
 .table-styled tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 .table-styled tbody tr:last-of-type {
-  border-bottom: .2rem solid #264653;
+  border-bottom: 0.2rem solid #264653;
 }
 .table-styled tbody tr:hover {
   font-weight: 700;
   background-color: lightgray;
 }
 caption {
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
