@@ -1,98 +1,148 @@
-# Flask React Project
-
-This is the backend for the Flask React project.
-
-## Getting started
-
-1. Clone this repository (only this branch)
-
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
-
-2. Install dependencies
-
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
-
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
-
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
 ***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
+***
+*** To avoid retyping too much info. Do a search and replace for the following:
+*** jon-wehner, repo_name, twitter_handle, jonjwehner@gmail.com, project_title, project_description
+-->
 
-## Deploy to Heroku
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-   ```bash
-   heroku login
-   ```
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <!-- <a href="https://github.com/jon-wehner/PantryStock">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a> -->
 
-5. Login to the heroku container registry
+  <h3 align="center">Pantry Stock </h3>
 
-   ```bash
-   heroku container:login
-   ```
+  <p align="center">
+    A shopping list and kitchen inventory management app. 
+    <br />
+    <a href="https://github.com/jon-wehner/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/jon-wehner/repo_name">View Demo</a>
+    ·
+    <a href="https://github.com/jon-wehner/repo_name/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/jon-wehner/repo_name/issues">Request Feature</a>
+  </p>
+</p>
 
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+<!-- ABOUT THE PROJECT -->
 
-8. Release your docker container to heroku
+## About The Project
 
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
 
-9. set up your database:
+### Built With
 
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
+- Python[]()
+- Flask[]()
+- React[]()
 
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
+<!-- GETTING STARTED -->
 
-11. profit
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+
+_For more examples, please refer to the [Documentation](https://github.com/jon-wehner/PantryStock/wiki)_
+
+<!-- ROADMAP -->
+
+## Roadmap
+
+See the [open issues](https://github.com/jon-wehner/repo_name/issues) for a list of proposed features (and known issues).
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+Jon Wehner - jonjwehner@gmail.com
+
+Project Link: [https://pantrystock.herokuapp.com](https://pantrystock.herokuapp.com)
+
+<!-- ACKNOWLEDGEMENTS -->
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/jon-wehner/PantryStock.svg?style=for-the-badge
+[contributors-url]: https://github.com/jon-wehner/PantryStock/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jon-wehner/PantryStock.svg?style=for-the-badge
+[forks-url]: https://github.com/jon-wehner/PantryStock/network/members
+[stars-shield]: https://img.shields.io/github/stars/jon-wehner/PantryStock.svg?style=for-the-badge
+[stars-url]: https://github.com/jon-wehner/PantryStock/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jon-wehner/PantryStock.svg?style=for-the-badge
+[issues-url]: https://github.com/jon-wehner/PantryStock/issues
+[license-shield]: https://img.shields.io/github/license/jon-wehner/PantryStock.svg?style=for-the-badge
+[license-url]: https://github.com/jon-wehner/PantryStock/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/jon-wehner
