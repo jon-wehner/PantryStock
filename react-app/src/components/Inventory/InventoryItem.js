@@ -35,9 +35,11 @@ export default function InventoryItem({ row }) {
 
 InventoryItem.propTypes = {
   row: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
     expirationDate: PropTypes.string.isRequired,
     measurement: PropTypes.shape({
+      id: PropTypes.number.isRequired,
       unit: PropTypes.string.isRequired,
     }),
     item: PropTypes.shape({
