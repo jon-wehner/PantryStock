@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function LandingPageGetStarted() {
-  const [email, setEmail] = useState("")
-  const history = useHistory()
-  const startSignup = (e) => {
+  const [email, setEmail] = useState('');
+  const history = useHistory();
+  const startSignup = () => {
     history.push({
       pathname: '/sign-up',
       state: {
-        tempEmail: email
-      }
-    })
-  }
+        tempEmail: email,
+      },
+    });
+  };
   return (
     <div className="landpage__background">
       <div className="landpage__textbox">
@@ -20,10 +20,10 @@ export default function LandingPageGetStarted() {
       </div>
       <div className="landingpage__signup">
         <div className="fieldset__container">
-          <input className="form__textfield" placeholder="Enter Email" onChange={e => setEmail(e.target.value)}/>
+          <input className="form__textfield" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)} />
         </div>
-        <button className="signup__button  button" onClick={startSignup}>Get Started</button>
+        <button className="signup__button  button" type="submit" onClick={startSignup}>Get Started</button>
       </div>
     </div>
-  )
+  );
 }
