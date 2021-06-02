@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserInventory } from '../../store/inventory';
@@ -32,13 +32,13 @@ export default function Inventory() {
   return (
     <div className="pantry">
       <h1>Welcome to your pantry!</h1>
-      <SearchBar inventory={true} />
+      <SearchBar inventory />
       {fridge && (
         <section>
           {fridge.length ? <h2>Refrigerator/Freezer</h2> : <h2>Your refrigerator is empty.</h2>}
           {categories.map((category) => {
             const categoryItems = fridge.filter(
-              (fridgeItem) => fridgeItem.item.categoryId === category.id
+              (fridgeItem) => fridgeItem.item.categoryId === category.id,
             );
             return (
               <InventoryCategory key={category.id} category={category} items={categoryItems} />
@@ -51,7 +51,7 @@ export default function Inventory() {
           {pantry.length ? <h2>Pantry</h2> : <h2>Your pantry is empty.</h2>}
           {categories.map((category) => {
             const categoryItems = pantry.filter(
-              (pantryItem) => pantryItem.item.categoryId === category.id
+              (pantryItem) => pantryItem.item.categoryId === category.id,
             );
             return (
               <InventoryCategory key={category.id} category={category} items={categoryItems} />
