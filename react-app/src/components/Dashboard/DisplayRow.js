@@ -1,53 +1,62 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import DeleteButton from './DeleteButton'
-import{ editShoppingList } from '../../store/shoppingList'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
+import DeleteButton from './DeleteButton';
+import { editShoppingList } from '../../store/shoppingList';
 
-export default function DisplayRow ({shoppingList}) {
-  const dispatch = useDispatch()
+export default function DisplayRow({ shoppingList }) {
+  const dispatch = useDispatch();
 
-  const [edit, setEdit] = useState(false)
-  const [name, setName] = useState(shoppingList.name)
-  const [errors, setErrors] = useState("")
+  const [edit, setEdit] = useState(false);
+  const [name, setName] = useState(shoppingList.name);
+  const [errors, setErrors] = useState('');
 
-const showInput = e => {
-  e.preventDefault()
-  setEdit(true)
-}
+  const showInput = (e) => {
+    e.preventDefault();
+    setEdit(true);
+  };
 
-const updateName = e => {
-  setName(e.target.value)
-}
-
-const handleEnter = e => {
-  if (e.key === 'Enter') {
-    saveShoppingList(e)
-  }
-}
-const saveShoppingList = async e => {
-  e.preventDefault()
-  const newList =  await dispatch(editShoppingList(shoppingList.id, name, shoppingList.userId))
-  if (newList.errors) {
-    setErrors(newList.errors)
-  }
-  else {
-    setEdit(false)
-  }
-}
+  const updateName = (e) => {
+    setName(e.target.value);
+  };
+  const saveShoppingList = async (e) => {
+    e.preventDefault();
+    const newList = await dispatch(editShoppingList(shoppingList.id, name, shoppingList.userId));
+    if (newList.errors) {
+      setErrors(newList.errors);
+    } else {
+      setEdit(false);
+    }
+  };
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      saveShoppingList(e);
+    }
+  };
 
   return (
     <div className="shoppingList">
-      {errors && errors.map(error => <li key={error}>{error}</li>)}
-      {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter}></input>
+      {errors && errors.map((error) => <li key={error}>{error}</li>)}
+      {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} />
         : <Link to={`/shopping-lists/${shoppingList.id}`}>{shoppingList.name}</Link>}
-      <div style={{ marginLeft: '5rem'}}>
-        <button className="shoppingList__buttons" onClick={edit ? saveShoppingList : showInput}><FontAwesomeIcon icon={edit ? faSave : faEdit} /></button>
+      <div style={{ marginLeft: '5rem' }}>
+        <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
+          <FontAwesomeIcon icon={edit ? faSave : faEdit} />
+        </button>
         <DeleteButton id={shoppingList.id} />
       </div>
 
     </div>
-  )
+  );
 }
+
+DisplayRow.propTypes = {
+  shoppingList: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    userId: PropTypes.number,
+  }).isRequired,
+};
