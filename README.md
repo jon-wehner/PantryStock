@@ -29,11 +29,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/jon-wehner/repo_name">
+  <a href="https://github.com/jon-wehner/PantryStock">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Pantry Stock </h3>
 
   <p align="center">
     project_description
@@ -93,37 +93,13 @@ Here's a blank template to get started:
 
 <!-- GETTING STARTED -->
 
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/jon-wehner/repo_name.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/jon-wehner/PantryStock/wiki)_
 
 <!-- ROADMAP -->
 
@@ -159,11 +135,6 @@ Project Link: [https://github.com/jon-wehner/repo_name](https://github.com/jon-w
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## Acknowledgements
-
-- []()
-- []()
-- []()
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
