@@ -29,14 +29,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/jon-wehner/PantryStock">
+  <!-- <a href="https://github.com/jon-wehner/PantryStock">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
   <h3 align="center">Pantry Stock </h3>
 
   <p align="center">
-    project_description
+    A shopping list and kitchen inventory management app. 
     <br />
     <a href="https://github.com/jon-wehner/repo_name"><strong>Explore the docs »</strong></a>
     <br />
@@ -82,9 +82,9 @@
 
 ### Built With
 
-- []()
-- []()
-- []()
+- Python[]()
+- Flask[]()
+- React[]()
 
 <!-- GETTING STARTED -->
 
