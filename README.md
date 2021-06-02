@@ -131,7 +131,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Jon Wehner - jonjwehner@gmail.com
 
-Project Link: [https://github.com/jon-wehner/repo_name](https://github.com/jon-wehner/repo_name)
+Project Link: [https://pantrystock.herokuapp.com](https://pantrystock.herokuapp.com)
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -139,15 +139,15 @@ Project Link: [https://github.com/jon-wehner/repo_name](https://github.com/jon-w
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/jon-wehner/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/jon-wehner/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jon-wehner/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/jon-wehner/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/jon-wehner/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/jon-wehner/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jon-wehner/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/jon-wehner/repo/issues
-[license-shield]: https://img.shields.io/github/license/jon-wehner/repo.svg?style=for-the-badge
-[license-url]: https://github.com/jon-wehner/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/jon-wehner/PantryStock.svg?style=for-the-badge
+[contributors-url]: https://github.com/jon-wehner/PantryStock/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jon-wehner/PantryStock.svg?style=for-the-badge
+[forks-url]: https://github.com/jon-wehner/PantryStock/network/members
+[stars-shield]: https://img.shields.io/github/stars/jon-wehner/PantryStock.svg?style=for-the-badge
+[stars-url]: https://github.com/jon-wehner/PantryStock/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jon-wehner/PantryStock.svg?style=for-the-badge
+[issues-url]: https://github.com/jon-wehner/PantryStock/issues
+[license-shield]: https://img.shields.io/github/license/jon-wehner/PantryStock.svg?style=for-the-badge
+[license-url]: https://github.com/jon-wehner/PantryStock/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jon-wehner
