@@ -32,5 +32,5 @@ InventoryCategory.propTypes = {
     name: PropTypes.string.isRequired,
     fridge: PropTypes.bool.isRequired,
     categoryId: PropTypes.number.isRequired,
-  })).isRequired,
+  }).isRequired).isRequired,
 };
