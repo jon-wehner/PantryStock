@@ -55,8 +55,8 @@ export default function DisplayRow({ shoppingList }) {
 
 DisplayRow.propTypes = {
   shoppingList: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    userId: PropTypes.number,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    userId: PropTypes.number.isRequired,
   }).isRequired,
 };

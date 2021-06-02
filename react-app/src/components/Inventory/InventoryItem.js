@@ -1,17 +1,20 @@
-import { useState } from 'react'
-import { Modal } from '../../context/Modal'
-import EditInventoryItem from './forms/EditInventoryItem'
-import { getExpirationString, getQuantityString } from '../../services/utils'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Modal } from '../../context/Modal';
+import EditInventoryItem from './forms/EditInventoryItem';
+import { getExpirationString, getQuantityString } from '../../services/utils';
 
-export default function InventoryItem({row}) {
+export default function InventoryItem({ row }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <tr className="pantryListItem" onClick={() => setShowModal(true)}>
         <td>
-            ({row.quantity})
-            {getQuantityString(row.quantity, row.measurement.unit)}
+          (
+          {row.quantity}
+          )
+          {getQuantityString(row.quantity, row.measurement.unit)}
         </td>
         <td>
           {row.item.name}
@@ -20,11 +23,28 @@ export default function InventoryItem({row}) {
           {row.expirationDate ? getExpirationString(row.expirationDate) : null}
         </td>
       </tr>
-      {showModal &&
+      {showModal
+        && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditInventoryItem row={row} setShowModal={setShowModal}/>
+          <EditInventoryItem row={row} setShowModal={setShowModal} />
         </Modal>
-      }
+        )}
     </>
-  )
+  );
+}
+
+InventoryItem.propTypes = {
+  row: PropTypes.shape({
+    quantity: PropTypes.number.isRequired,
+    expirationDate: PropTypes.string.isRequired,
+    measurement: PropTypes.shape({
+      unit: PropTypes.string.isRequired,
+    }),
+    item: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      fridge: PropTypes.bool.isRequired,
+      categoryId: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
