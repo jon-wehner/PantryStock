@@ -50,5 +50,8 @@ export default function SearchBar({ inventory }) {
 }
 
 SearchBar.propTypes = {
-  inventory: PropTypes.bool.isRequired,
+  inventory: PropTypes.bool,
+};
+SearchBar.defaultProps = {
+  inventory: null,
 };
