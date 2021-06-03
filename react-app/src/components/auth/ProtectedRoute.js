@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-children-prop */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const ProtectedRoute = props => {
+function ProtectedRoute({ authenticated, children }) {
   return (
-    <Route {...props}>
-      {(props.authenticated)? props.children  : <Redirect to="/login" />}
+    <Route authenticated={authenticated} children={children}>
+      {(authenticated) ? children : <Redirect to="/login" />}
     </Route>
-  )
-};
-
+  );
+}
 
 export default ProtectedRoute;

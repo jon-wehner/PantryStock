@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCategories } from '../../store/items';
 import { loadUserShoppingLists } from '../../store/shoppingList';
@@ -27,11 +27,15 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard__wrapper">
-      <h1 className="dashboard__title">hi {user && user.username}!</h1>
+      <h1 className="dashboard__title">
+        Hello,
+        {user && user.username}
+        !
+      </h1>
       {showShoppingListForm ? (
         <ShoppingListForm setShowForm={setShowShoppingListForm} />
       ) : (
-        <button className="stdbutton dashboard__button" onClick={revealForm}>
+        <button type="button" className="stdbutton dashboard__button" onClick={revealForm}>
           New Shopping List
         </button>
       )}

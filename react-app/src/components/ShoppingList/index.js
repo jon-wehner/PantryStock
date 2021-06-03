@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { addItemToInventory } from '../../store/inventory';
 import { loadCategories } from '../../store/items';
 import { deleteShoppingListItem, loadOneShoppingList } from '../../store/shoppingList';
@@ -32,11 +32,12 @@ export default function ShoppingList() {
       }
     });
     await itemsInCart.forEach((item) => {
-      item.userId = list.userId;
-      item.itemId = item.item.id;
-      delete item.item;
-      item.measurementId = item.measurement.id;
-      delete item.measurement;
+      const newItem = item;
+      newItem.userId = list.userId;
+      newItem.itemId = item.item.id;
+      delete newItem.item;
+      newItem.measurementId = item.measurement.id;
+      delete newItem.measurement;
 
       dispatch(addItemToInventory(item));
     });
@@ -54,14 +55,14 @@ export default function ShoppingList() {
           <h1 className="shoppingList__title">{list.name}</h1>
           {categories.map((category) => {
             const categoryItems = list.items.filter(
-              (listItem) => listItem.item.categoryId === category.id
+              (listItem) => listItem.item.categoryId === category.id,
             );
             return (
               <ShoppingListCategory key={category.id} category={category} items={categoryItems} />
             );
           })}
           {list.items.length > 0 && (
-            <button id="addToInv" className="stdbutton" onClick={transferList}>
+            <button type="button" id="addToInv" className="stdbutton" onClick={transferList}>
               Add items in cart to Inventory
             </button>
           )}

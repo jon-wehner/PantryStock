@@ -1,7 +1,9 @@
-import ShoppingListItem from './ShoppingListItem'
+import React from 'react';
+import PropTypes from 'prop-types';
+import ShoppingListItem from './ShoppingListItem';
 
-export default function ShoppingListCategory({category, items}) {
-  if (!items.length) return null
+export default function ShoppingListCategory({ category, items }) {
+  if (!items.length) return null;
   return (
     <table className="table-styled">
       <caption>
@@ -17,8 +19,20 @@ export default function ShoppingListCategory({category, items}) {
         </tr>
       </thead>
       <tbody>
-        {items.map(el => <ShoppingListItem key={el.id} row={el} />)}
+        {items.map((el) => <ShoppingListItem key={el.id} row={el} />)}
       </tbody>
     </table>
-  )
+  );
 }
+
+ShoppingListCategory.propTypes = {
+  category: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    fridge: PropTypes.bool.isRequired,
+    categoryId: PropTypes.number.isRequired,
+  })).isRequired,
+};
