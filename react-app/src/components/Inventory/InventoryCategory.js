@@ -28,9 +28,12 @@ InventoryCategory.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    fridge: PropTypes.bool.isRequired,
-    categoryId: PropTypes.number.isRequired,
-  }).isRequired).isRequired,
+    id: PropTypes.number,
+    name: PropTypes.string,
+    fridge: PropTypes.bool,
+    categoryId: PropTypes.number,
+  })),
+};
+InventoryCategory.defaultProps = {
+  items: null,
 };

@@ -10,19 +10,19 @@ import './styles/ShoppingList.css';
 
 export default function ShoppingList() {
   const dispatch = useDispatch();
-  const { id: shoppingListId } = useParams();
+  const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
   const categories = useSelector((state) => state.items.categories);
-  const list = useSelector((state) => state.shoppingLists[shoppingListId]);
+  const list = useSelector((state) => state.shoppingLists[id]);
 
   useEffect(() => {
-    dispatch(loadOneShoppingList(shoppingListId));
+    dispatch(loadOneShoppingList(id));
     if (!categories) {
       dispatch(loadCategories());
     } else {
       setLoaded(true);
     }
-  }, [dispatch, shoppingListId, categories]);
+  }, [dispatch, id, categories]);
 
   const transferList = async () => {
     const itemsInCart = [];
@@ -42,7 +42,7 @@ export default function ShoppingList() {
       dispatch(addItemToInventory(item));
     });
     await itemsInCart.forEach((item) => {
-      dispatch(deleteShoppingListItem(item.id, shoppingListId));
+      dispatch(deleteShoppingListItem(item.id, id));
     });
   };
 
