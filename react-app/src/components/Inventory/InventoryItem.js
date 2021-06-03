@@ -37,7 +37,7 @@ InventoryItem.propTypes = {
   row: PropTypes.shape({
     id: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
-    expirationDate: PropTypes.string.isRequired,
+    expirationDate: PropTypes.string,
     measurement: PropTypes.shape({
       id: PropTypes.number.isRequired,
       unit: PropTypes.string.isRequired,

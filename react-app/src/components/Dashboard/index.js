@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCategories } from '../../store/items';
 import { loadUserShoppingLists } from '../../store/shoppingList';
-import { getUserInventory } from '../../store/inventory';
 import ShoppingListForm from './forms/ShoppingListForm';
 import ShoppingListDisplay from './ShoppingListDisplay';
 import './Dashboard.css';
@@ -16,7 +15,6 @@ export default function Dashboard() {
     if (user) {
       dispatch(loadCategories());
       dispatch(loadUserShoppingLists(user.id));
-      dispatch(getUserInventory(user.id));
     }
   }, [user, dispatch]);
 
