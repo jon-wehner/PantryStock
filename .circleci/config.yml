@@ -1,0 +1,43 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.4.0
+  node: circleci/node@4.1
+  heroku: circleci/heroku@1.2.6
+jobs: 
+  test-frontend:
+    executor: node/default
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
+      - run:
+          name: install packages
+          command: npm install --prefix react-app
+      - run:
+          name: Run React Tests
+          command: npm test --prefix react-app
+  build-test-backend:
+    executor: python/default
+    steps:
+      - checkout
+      - python/install-packages:
+          args: pytest
+          pkg-manager: pipenv
+      - run: 
+          command: |
+            pipenv run pytest --version
+          name: Run tests
+workflows:
+  test-and-deploy:
+    jobs:
+      - test-frontend
+      - build-test-backend
+      - heroku/push-docker-image:
+          requires:
+            - test-frontend
+            - build-test-backend
+          filters: 
+            branches:
+              only: main
