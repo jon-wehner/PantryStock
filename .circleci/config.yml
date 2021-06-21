@@ -2,8 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.4.0
-  node: circleci/node@4.1
-  heroku: circleci/heroku@1.2.6
+  node: circleci/node@4.1  
 jobs: 
   test-frontend:
     executor: node/default
@@ -24,19 +23,28 @@ jobs:
       - checkout
       - python/install-packages:
           args: pytest
-          pkg-manager: pipenv
-      - setup_remote_docker:
-          version: 19.03.13
+          pkg-manager: pipenv      
       - run: 
           command: |
             pipenv run pytest --version
           name: Run tests
+  deploy:    
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Build and push Docker image to Heroku
+          command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a pantrystock web
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a pantrystock web
 workflows:
   test-and-deploy:
     jobs:
       - test-frontend
-      - build-test-backend
-      - heroku/push-docker-image:
+      - build-test-backend      
+      - deploy:
           requires:
             - test-frontend
             - build-test-backend
