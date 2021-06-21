@@ -12,11 +12,11 @@ jobs:
         keys:
           -node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
       - run:
-        name: install packages
-        command: npm run install --prefix react-app
+          name: install packages
+          command: npm install --prefix react-app
       - run:
-        name: Run React Tests
-        npm run test --prefix react-app
+          name: Run React Tests
+          npm test --prefix react-app
   build-test-backend:
     executor: python/default
     steps:
