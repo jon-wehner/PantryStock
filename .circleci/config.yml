@@ -9,14 +9,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          -node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
+          keys:
+            - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
       - run:
           name: install packages
           command: npm install --prefix react-app
       - run:
           name: Run React Tests
-          npm test --prefix react-app
+          command: npm test --prefix react-app
   build-test-backend:
     executor: python/default
     steps:
