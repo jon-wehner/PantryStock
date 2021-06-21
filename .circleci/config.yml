@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   python: circleci/python@1.4.0
   node: circleci/node@4.1
+  heroku: circleci/heroku@1.2.6
 jobs: 
   test-frontend:
     executor: node/default
@@ -33,3 +34,10 @@ workflows:
     jobs:
       - test-frontend
       - build-test-backend
+      - heroku/push-docker-image:
+          requires:
+            - test-frontend
+            - build-test-backend
+          filters: 
+            branches:
+              only: main
