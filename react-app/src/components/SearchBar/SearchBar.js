@@ -10,6 +10,8 @@ export default function SearchBar({ inventory }) {
   const [query, setQuery] = useState('');
   const [showMenu, setShowMenu] = useState(false);
   const results = useSelector((state) => state.items.results);
+  // TODO: Refactor search delay to remove return statement
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
     async function handleSearch() {
       await dispatch(searchItems(query));
@@ -17,7 +19,7 @@ export default function SearchBar({ inventory }) {
     }
     if (query) {
       const timeout = setTimeout(handleSearch, 500);
-      clearTimeout(timeout);
+      return () => clearTimeout(timeout);
     }
   }, [query, dispatch]);
   const handleQuery = (e) => {

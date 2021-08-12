@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getUserInventory } from '../../store/inventory';
 import InventoryCategory from './InventoryCategory';
-
 import SearchBar from '../SearchBar/SearchBar';
 import './styles/Inventory.css';
 import { loadCategories } from '../../store/items';
 
-export default function Inventory() {
+export default function Inventory({ userId }) {
   const dispatch = useDispatch();
-  const { id: userId } = useParams();
-
   const [loaded, setLoaded] = useState(false);
-
   const categories = useSelector((state) => state.items.categories);
   const fridge = useSelector((state) => state.inventory.fridge);
   const pantry = useSelector((state) => state.inventory.pantry);
@@ -62,3 +58,7 @@ export default function Inventory() {
     </div>
   );
 }
+
+Inventory.propTypes = {
+  userId: PropTypes.instanceOf.isRequired,
+};

@@ -35,7 +35,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             <Link to="/" className="pantryNavLink">
               Dashboard
             </Link>
-            { user && <Link to={`/user/${user.id}/inventory`} className="pantryNavLink">Your  Pantry</Link>}
+            { user && <Link to="/inventory" className="pantryNavLink">Your  Pantry</Link>}
             <LogoutButton setAuthenticated={setAuthenticated} />
           </div>
         ) : <li className="navlink"><button type="button" onClick={login}>Login</button></li>}

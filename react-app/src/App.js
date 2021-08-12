@@ -15,12 +15,14 @@ function App() {
   const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     (async () => {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
+        setUserId(user.id);
       }
       setLoaded(true);
     })();
@@ -43,15 +45,15 @@ function App() {
         <Route path="/sign-up" exact>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <ProtectedRoute path="/shopping-lists/:id" exact authenticated={authenticated}>
+        <ProtectedRoute path="/shopping-lists" exact authenticated={authenticated}>
           <ShoppingList />
         </ProtectedRoute>
         <Route path="/" exact authenticated={authenticated}>
           {authenticated ? <Dashboard authenticated={authenticated} />
             : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated} />}
         </Route>
-        <ProtectedRoute path="/user/:id/inventory" authenticated={authenticated}>
-          <Inventory />
+        <ProtectedRoute path="/inventory" authenticated={authenticated}>
+          <Inventory userId={userId} />
         </ProtectedRoute>
       </Switch>
     </>
