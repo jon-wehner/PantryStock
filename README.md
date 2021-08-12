@@ -106,7 +106,7 @@ For testing, the pytest assertion library is used on the backend. Pytest simplif
 <!-- ROADMAP -->
 
 ## Roadmap
-
+This was a fun app to build. I feel that developing this really helped me solidify my understanding of the React Library, and I greatly expended my knowledge of CI/CD and testing. The next steps will be a minor UI overhaul to improve user experience on all types of devices. I also hope to implement a recipes feature that will allow users to better understand the flow of items through their kitchen. 
 See the [open issues](https://github.com/jon-wehner/repo_name/issues) for a list of proposed features (and known issues).
 
 <!-- CONTACT -->
