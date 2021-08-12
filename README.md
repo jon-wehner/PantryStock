@@ -52,15 +52,8 @@
       <ul>
         <li><a href="#built-with">Tech Stack</a></li>
       </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
+    </li>    
+    <li><a href="#Frontend Technologies">Frontend Technologies</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -72,47 +65,31 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+PantryStock is a fullstack application that assists users with managing the ingredients in their kitchen, making shopping lists, and reducing their food waste. 
+I made this application both as a learning experience and to create something I could personally use to take control of my pantry.
 
+### Tech Stack
 
-### Built With
-
+- Postgres[]()
 - Python[]()
 - Flask[]()
 - React[]()
+- Redux[]()
 
-<!-- GETTING STARTED -->
+<!-- ## Application Architecture Overview -->
+<!-- CHART GOES HERE -->
+## Frontend Technologies
 
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-
-_For more examples, please refer to the [Documentation](https://github.com/jon-wehner/PantryStock/wiki)_
+### React
+PantryStock is a React heavy application. The application makes heavy use of React's component tree and virtualDOM features to update components without page refreshes. The app was conceived to be equally usable on mobile devices and desktops. Using React's virtualDOM, only the elements that have changed need to be re-rendered, saving mobile user's bandwidth, and most importantly, their time. 
+### Redux
+PantryStock relies on the redux library for app-wide state management. 
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
 See the [open issues](https://github.com/jon-wehner/repo_name/issues) for a list of proposed features (and known issues).
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 
@@ -121,8 +98,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Jon Wehner - jonjwehner@gmail.com
 
 Project Link: [https://pantrystock.herokuapp.com](https://pantrystock.herokuapp.com)
-
-<!-- ACKNOWLEDGEMENTS -->
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
