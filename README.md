@@ -93,7 +93,7 @@ The UI was styled with CSS3. This was purely a personal choice, I wanted to furt
 ## Backend Technologies
 
 ### Postgres
-PantryStock uses the PostgreSQL database to store application data. Postgres is an open-source and highly regarded relational database system. The system is very well document and has an active development community. I chose a relational database because I felt it was right for the scale of the application, and the enforced schema validation of relational databases helps reduce data anamolies. 
+PantryStock uses the PostgreSQL database to store application data. Postgres is an open-source and highly regarded relational database system. The system is very well document and has an active development community. One reason that I chose to use a r relational database  over a NoSQL databse is that I felt it was right for the scale of the application, and the enforced schema validation helps reduce data anamolies. 
 
 ### Flask
 Flask is a powerful but unopinionated framework. Flask doesn't include anything that it doesn't, allowing developers which database to use, which user auth libraries to use. I decided to use flask_sqclachemy and SQLalchemy to setup my database abstraction layer. These tools automate a lot of the repetitive SQL and reduce development time. 
