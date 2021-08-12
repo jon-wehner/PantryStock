@@ -22,10 +22,9 @@ function App() {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
+        setUserId(user.id);
       }
       setLoaded(true);
-      setUserId(user.id);
-      console.log(userId);
     })();
   }, [dispatch]);
 

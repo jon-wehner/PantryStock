@@ -8,7 +8,6 @@ import './styles/Inventory.css';
 import { loadCategories } from '../../store/items';
 
 export default function Inventory({ userId }) {
-  console.log(userId);
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const categories = useSelector((state) => state.items.categories);
