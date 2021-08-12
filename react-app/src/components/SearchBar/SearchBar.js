@@ -17,15 +17,18 @@ export default function SearchBar({ inventory }) {
       await dispatch(searchItems(query));
       setShowMenu(true);
     }
+    let timeout;
     if (query) {
-      const timeout = setTimeout(handleSearch, 500);
-      return () => clearTimeout(timeout);
+      timeout = setTimeout(handleSearch, 500);
     }
+    return () => clearTimeout(timeout);
   }, [query, dispatch]);
   const handleQuery = (e) => {
     setQuery(e.target.value);
+    setTimeout(() => {
+      if (e.target.value === '') setShowMenu(false);
+    }, 1000);
   };
-
   const hideMenu = () => {
     setQuery('');
     setShowMenu(false);
@@ -33,7 +36,7 @@ export default function SearchBar({ inventory }) {
 
   return (
     <div className="searchBar">
-      <input placeholder="Add an Item" onChange={handleQuery} />
+      <input placeholder="Add an Item" value={query} onChange={handleQuery} />
       {results && showMenu
         && (
         <ul className="searchResults">
