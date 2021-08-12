@@ -33,19 +33,13 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-  <h3 align="center">Pantry Stock </h3>
+  <h1 align="center">Pantry Stock </h3>
 
   <p align="center">
-    A shopping list and kitchen inventory management app. 
+    PantryStock is a shopping list and and kitchen inventory solution the helps users reduce their food waste at home. 
+    <br />    
     <br />
-    <a href="https://github.com/jon-wehner/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/jon-wehner/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/jon-wehner/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/jon-wehner/repo_name/issues">Request Feature</a>
+    <a href="https://pantrystock.herokuapp.com">View Demo</a>    
   </p>
 </p>
 
@@ -56,7 +50,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Tech Stack</a></li>
       </ul>
     </li>
     <li>
