@@ -22,9 +22,10 @@ function App() {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
-        setUserId(user.id);
       }
       setLoaded(true);
+      setUserId(user.id);
+      console.log(userId);
     })();
   }, [dispatch]);
 
@@ -52,8 +53,8 @@ function App() {
           {authenticated ? <Dashboard authenticated={authenticated} />
             : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated} />}
         </Route>
-        <ProtectedRoute path="/inventory" userId={userId} authenticated={authenticated}>
-          <Inventory />
+        <ProtectedRoute path="/inventory" authenticated={authenticated}>
+          <Inventory userId={userId} />
         </ProtectedRoute>
       </Switch>
     </>
