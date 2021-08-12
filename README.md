@@ -87,7 +87,21 @@ PantryStock is a React heavy application. The application makes heavy use of Rea
 PantryStock relies on the redux library for app-wide state management. Redux-thunk is used for making API calls to the backend. As the app needs queries user data, it is put into the store to be made available to all components. This reduces the total API calls that the client needs to make and improves overall application performance. 
 
 ### CSS
-The UI was styled with CSS3. This was purely a personal choice, I wanted to improve my understanding of the language.
+The UI was styled with CSS3. This was purely a personal choice, I wanted to further my understanding of vanilla CSS. 
+
+## Backend Technologies
+
+### Postgres
+PantryStock uses the PostgreSQL database to store application data. Postgres is an open-source and highly regarded relational database system. The system is very well document and has an active development community. I chose a relational database because I felt it was right for the scale of the application, and the enforced schema validation of relational databases helps reduce data anamolies. 
+
+### Flask
+Flask is a powerful but unopinionated framework. Flask doesn't include anything that it doesn't, allowing developers which database to use, which user auth libraries to use. I decided to use flask_sqclachemy and SQLalchemy to setup my database abstraction layer. These tools automate a lot of the repetitive SQL and reduce development time. 
+
+## CI/CD, Testing, Deployment
+
+The app has a ci/cd pipeline setup on CircleCI to automate testing and deployment. This greatly streamlines the development and makes it easier to collaborate with multiple coders. The app is deployed to the Heroku platform on any successful merge to the main branch.
+
+For testing, the pytest assertion library is used on the backend. Pytest simplifies writing unit tests to verify that the backend functions are still performing as expected. React Testing Library and jest have been implemented for front end testing. Jest is a popular JavaScript testing framework that comes standard with a create-react-app build. React Testing Library was recently added to test front end components. React Testing Library encourages developers to test components as users will use them, improving the user experience and accessibility of the app. 
 
 <!-- ROADMAP -->
 
