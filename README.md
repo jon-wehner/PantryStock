@@ -55,6 +55,7 @@
     </li>    
     <li><a href="#Frontend Technologies">Frontend Technologies</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href=">
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -83,7 +84,10 @@ I made this application both as a learning experience and to create something I 
 ### React
 PantryStock is a React heavy application. The application makes heavy use of React's component tree and virtualDOM features to update components without page refreshes. The app was conceived to be equally usable on mobile devices and desktops. Using React's virtualDOM, only the elements that have changed need to be re-rendered, saving mobile user's bandwidth, and most importantly, their time. 
 ### Redux
-PantryStock relies on the redux library for app-wide state management. 
+PantryStock relies on the redux library for app-wide state management. Redux-thunk is used for making API calls to the backend. As the app needs queries user data, it is put into the store to be made available to all components. This reduces the total API calls that the client needs to make and improves overall application performance. 
+
+### CSS
+The UI was styled with CSS3. This was purely a personal choice, I wanted to improve my understanding of the language.
 
 <!-- ROADMAP -->
 
