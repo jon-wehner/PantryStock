@@ -17,6 +17,7 @@
 *** See the bottom of this document for the declaration of the reference variables
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
+*** TODO: RUN THROUGH CODE AND FIND A GOOD SNIPPET
 -->
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -105,10 +106,13 @@ For testing, the pytest assertion library is used on the backend. Pytest simplif
 
 <!-- ROADMAP -->
 
-## Roadmap
-This was a fun app to build. I feel that developing this really helped me solidify my understanding of the React Library, and I greatly expended my knowledge of CI/CD and testing. The next steps will be a minor UI overhaul to improve user experience on all types of devices. I also hope to implement a recipes feature that will allow users to better understand the flow of items through their kitchen. 
+## Conclusion and Roadmap
+The next steps will be a minor UI overhaul to improve user experience on all types of devices. I also hope to implement a recipes feature that will allow users to better understand the flow of items through their kitchen. A long term goal is to port the front end to React Native and create a mobile app. Mobile development is something that I have been interested in for awhile. I think this app is responsive for mobile devices, but releasing on the app store would really take the user experience to the next level.  
 See the [open issues](https://github.com/jon-wehner/repo_name/issues) for a list of proposed features (and known issues).
 
+I greatly enjoyed building this application and can't wait to add to it. This was my first time developing a project by myself using Python/Flask on the backend and I greatly improved my understanding of the language. I really started to enjoy using the React library when creating this application. React is an awesome thing that was given to the JavaScript community and I can't wait to keep learning even more about it. I also had a lot of fun integrating the CI/CD and testing tools that are now part of the project. I have a much better idea of what it takes to ship a production grade application after developing this application.
+
+Thanks for stopping by, I hope you enjoyed learning about this application.
 <!-- CONTACT -->
 
 ## Contact
