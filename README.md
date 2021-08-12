@@ -17,6 +17,7 @@
 *** See the bottom of this document for the declaration of the reference variables
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
+*** TODO: RUN THROUGH CODE AND FIND A GOOD SNIPPET
 -->
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -33,19 +34,13 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-  <h3 align="center">Pantry Stock </h3>
+  <h1 align="center">Pantry Stock </h3>
 
   <p align="center">
-    A shopping list and kitchen inventory management app. 
+    PantryStock is a shopping list and and kitchen inventory solution the helps users reduce their food waste at home. 
+    <br />    
     <br />
-    <a href="https://github.com/jon-wehner/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/jon-wehner/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/jon-wehner/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/jon-wehner/repo_name/issues">Request Feature</a>
+    <a href="https://pantrystock.herokuapp.com">View Demo</a>    
   </p>
 </p>
 
@@ -56,18 +51,12 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Tech Stack</a></li>
       </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
+    </li>    
+    <li><a href="#Frontend Technologies">Frontend Technologies</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href=">
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -78,48 +67,52 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+PantryStock is a fullstack application that assists users with managing the ingredients in their kitchen, making shopping lists, and reducing their food waste. 
+I made this application both as a learning experience and to create something I could personally use to take control of my pantry.
 
+### Tech Stack
 
-### Built With
-
+- Postgres[]()
 - Python[]()
 - Flask[]()
 - React[]()
+- Redux[]()
 
-<!-- GETTING STARTED -->
+<!-- ## Application Architecture Overview -->
+<!-- CHART GOES HERE -->
+## Frontend Technologies
 
+### React
+PantryStock is a React heavy application. The application makes heavy use of React's component tree and virtualDOM features to update components without page refreshes. The app was conceived to be equally usable on mobile devices and desktops. Using React's virtualDOM, only the elements that have changed need to be re-rendered, saving mobile user's bandwidth, and most importantly, their time. 
+### Redux
+PantryStock relies on the redux library for app-wide state management. Redux-thunk is used for making API calls to the backend. As the app needs queries user data, it is put into the store to be made available to all components. This reduces the total API calls that the client needs to make and improves overall application performance. 
 
-<!-- USAGE EXAMPLES -->
+### CSS
+The UI was styled with CSS3. This was purely a personal choice, I wanted to further my understanding of vanilla CSS. 
 
-## Usage
+## Backend Technologies
 
+### Postgres
+PantryStock uses the PostgreSQL database to store application data. Postgres is an open-source and highly regarded relational database system. The system is very well document and has an active development community. I chose a relational database because I felt it was right for the scale of the application, and the enforced schema validation of relational databases helps reduce data anamolies. 
 
-_For more examples, please refer to the [Documentation](https://github.com/jon-wehner/PantryStock/wiki)_
+### Flask
+Flask is a powerful but unopinionated framework. Flask doesn't include anything that it doesn't, allowing developers which database to use, which user auth libraries to use. I decided to use flask_sqclachemy and SQLalchemy to setup my database abstraction layer. These tools automate a lot of the repetitive SQL and reduce development time. 
+
+## CI/CD, Testing, Deployment
+
+The app has a ci/cd pipeline setup on CircleCI to automate testing and deployment. This greatly streamlines the development and makes it easier to collaborate with multiple coders. The app is deployed to the Heroku platform on any successful merge to the main branch.
+
+For testing, the pytest assertion library is used on the backend. Pytest simplifies writing unit tests to verify that the backend functions are still performing as expected. React Testing Library and jest have been implemented for front end testing. Jest is a popular JavaScript testing framework that comes standard with a create-react-app build. React Testing Library was recently added to test front end components. React Testing Library encourages developers to test components as users will use them, improving the user experience and accessibility of the app. 
 
 <!-- ROADMAP -->
 
-## Roadmap
-
+## Conclusion and Roadmap
+The next steps will be a minor UI overhaul to improve user experience on all types of devices. I also hope to implement a recipes feature that will allow users to better understand the flow of items through their kitchen. A long term goal is to port the front end to React Native and create a mobile app. Mobile development is something that I have been interested in for awhile. I think this app is responsive for mobile devices, but releasing on the app store would really take the user experience to the next level.  
 See the [open issues](https://github.com/jon-wehner/repo_name/issues) for a list of proposed features (and known issues).
 
-<!-- CONTRIBUTING -->
+I greatly enjoyed building this application and can't wait to add to it. This was my first time developing a project by myself using Python/Flask on the backend and I greatly improved my understanding of the language. I really started to enjoy using the React library when creating this application. React is an awesome thing that was given to the JavaScript community and I can't wait to keep learning even more about it. I also had a lot of fun integrating the CI/CD and testing tools that are now part of the project. I have a much better idea of what it takes to ship a production grade application after developing this application.
 
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
+Thanks for stopping by, I hope you enjoyed learning about this application.
 <!-- CONTACT -->
 
 ## Contact
@@ -127,8 +120,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Jon Wehner - jonjwehner@gmail.com
 
 Project Link: [https://pantrystock.herokuapp.com](https://pantrystock.herokuapp.com)
-
-<!-- ACKNOWLEDGEMENTS -->
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
