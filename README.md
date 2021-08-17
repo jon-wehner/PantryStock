@@ -54,7 +54,8 @@
         <li><a href="#built-with">Tech Stack</a></li>
       </ul>
     </li>    
-    <li><a href="#Frontend Technologies">Frontend Technologies</a></li>
+    <li><a href="#Frontend-Technologies">Frontend Technologies</a></li>
+    <li><a href="#Backend-Technologies">Backend Technologies</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href=">
     <li><a href="#contributing">Contributing</a></li>
