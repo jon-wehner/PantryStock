@@ -60,5 +60,5 @@ export default function Inventory({ userId }) {
 }
 
 Inventory.propTypes = {
-  userId: PropTypes.instanceOf.isRequired,
+  userId: PropTypes.number.isRequired,
 };
