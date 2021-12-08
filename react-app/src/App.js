@@ -45,7 +45,7 @@ function App() {
         <Route path="/sign-up" exact>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <ProtectedRoute path="/shopping-lists" exact authenticated={authenticated}>
+        <ProtectedRoute path="/shopping-lists/:id" exact authenticated={authenticated}>
           <ShoppingList />
         </ProtectedRoute>
         <Route path="/" exact authenticated={authenticated}>
