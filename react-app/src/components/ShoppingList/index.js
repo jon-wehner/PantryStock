@@ -45,8 +45,7 @@ export default function ShoppingList() {
       dispatch(deleteShoppingListItem(item.id, id));
     });
   };
-  // eslint-disable-next-line no-debugger
-  debugger;
+
   if (!loaded) return null;
   return (
     <div className="shoppingList__container">

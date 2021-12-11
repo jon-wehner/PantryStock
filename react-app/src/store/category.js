@@ -13,16 +13,13 @@ export const loadCategories = () => async (dispatch) => {
   }
 };
 
-const initialState = {
-  categories: null,
-};
+const initialState = null;
 
 const categoryReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_CATEGORIES:
-      newState = { ...state };
-      newState.categories = action.categories;
+      newState = action.categories;
       return newState;
     default:
       return state;
