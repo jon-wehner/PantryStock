@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addItemToInventory } from '../../store/inventory';
-import { loadCategories } from '../../store/items';
+import { loadCategories } from '../../store/categories';
 import { deleteShoppingListItem, loadOneShoppingList } from '../../store/shoppingList';
 import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';

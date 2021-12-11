@@ -12,6 +12,6 @@ describe('Shopping List Component', () => {
         <ShoppingList />
       </MemoryRouter>,
     );
-    expect(screen.getByText('Shopping List')).toBeInTheDocument();
+    expect(screen.getByText(/Shopping List/i)).toBeInTheDocument();
   });
 });

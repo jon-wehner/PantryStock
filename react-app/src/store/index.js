@@ -8,12 +8,14 @@ import sessionReducer from './session';
 import itemReducer from './items';
 import shoppingListReducer from './shoppingList';
 import inventoryReducer from './inventory';
+import categoryReducer from './categories';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   items: itemReducer,
   shoppingLists: shoppingListReducer,
   inventory: inventoryReducer,
+  categories: categoryReducer,
 });
 
 let enhancer;
