@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addItemToInventory } from '../../store/inventory';
-import { loadCategories } from '../../store/categories';
+import { loadCategories } from '../../store/category';
 import { deleteShoppingListItem, loadOneShoppingList } from '../../store/shoppingList';
 import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';
@@ -12,7 +12,7 @@ export default function ShoppingList() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
-  const categories = useSelector((state) => state.items.categories);
+  const categories = useSelector((state) => state.categories);
   const list = useSelector((state) => state.shoppingLists[id]);
 
   useEffect(() => {
@@ -45,7 +45,8 @@ export default function ShoppingList() {
       dispatch(deleteShoppingListItem(item.id, id));
     });
   };
-
+  // eslint-disable-next-line no-debugger
+  debugger;
   if (!loaded) return null;
   return (
     <div className="shoppingList__container">

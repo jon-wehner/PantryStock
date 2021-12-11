@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCategories } from '../../store/categories';
+import { loadCategories } from '../../store/category';
 import { loadUserShoppingLists } from '../../store/shoppingList';
 import ShoppingListForm from './forms/ShoppingListForm';
 import ShoppingListDisplay from './ShoppingListDisplay';

@@ -5,12 +5,12 @@ import { getUserInventory } from '../../store/inventory';
 import InventoryCategory from './InventoryCategory';
 import SearchBar from '../SearchBar/SearchBar';
 import './styles/Inventory.css';
-import { loadCategories } from '../../store/items';
+import { loadCategories } from '../../store/category';
 
 export default function Inventory({ userId }) {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-  const categories = useSelector((state) => state.items.categories);
+  const categories = useSelector((state) => state.categories);
   const fridge = useSelector((state) => state.inventory.fridge);
   const pantry = useSelector((state) => state.inventory.pantry);
 

@@ -8,7 +8,7 @@ import sessionReducer from './session';
 import itemReducer from './items';
 import shoppingListReducer from './shoppingList';
 import inventoryReducer from './inventory';
-import categoryReducer from './categories';
+import categoryReducer from './category';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
