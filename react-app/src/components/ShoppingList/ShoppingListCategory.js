@@ -31,8 +31,19 @@ ShoppingListCategory.propTypes = {
   }).isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    fridge: PropTypes.bool.isRequired,
-    categoryId: PropTypes.number.isRequired,
+    inCart: PropTypes.bool.isRequired,
+    item: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      fridge: PropTypes.bool.isRequired,
+      categoryId: PropTypes.number.isRequired,
+      category: PropTypes.string.isRequired,
+    }),
+    measurement: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      unit: PropTypes.string.isRequired,
+    }),
+    quantity: PropTypes.number.isRequired,
+    shoppingListId: PropTypes.number.isRequired,
   })).isRequired,
 };

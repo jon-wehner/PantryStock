@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../store';
 
 const testState = {
+  inventory: { fridge: null, pantry: null },
   shoppingLists: {
     1: {
       id: 1,
@@ -12,7 +13,7 @@ const testState = {
         {
           id: 1,
           inCart: false,
-          item: {
+          items: {
             category: 'Produce',
             categoryId: 1,
             fridge: false,

@@ -6,7 +6,6 @@ import NewInventoryItem from '../Inventory/forms/NewInventoryItem';
 
 export default function SearchResult({ item, inventory, hideMenu }) {
   const [showModal, setShowModal] = useState(false);
-
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
       setShowModal(true);
@@ -57,6 +56,9 @@ SearchResult.propTypes = {
     fridge: PropTypes.bool.isRequired,
     categoryId: PropTypes.number.isRequired,
   }).isRequired,
-  inventory: PropTypes.bool.isRequired,
+  inventory: PropTypes.bool,
   hideMenu: PropTypes.func.isRequired,
+};
+SearchResult.defaultProps = {
+  inventory: null,
 };
