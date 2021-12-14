@@ -23,7 +23,6 @@ export default function ShoppingList() {
       setLoaded(true);
     }
   }, [dispatch, id, categories]);
-
   const transferList = async () => {
     const itemsInCart = [];
     list.items.forEach((item) => {
@@ -39,7 +38,7 @@ export default function ShoppingList() {
       newItem.measurementId = item.measurement.id;
       delete newItem.measurement;
 
-      dispatch(addItemToInventory(item));
+      dispatch(addItemToInventory(newItem));
     });
     await itemsInCart.forEach((item) => {
       dispatch(deleteShoppingListItem(item.id, id));

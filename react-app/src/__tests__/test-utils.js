@@ -13,7 +13,7 @@ const testState = {
         {
           id: 1,
           inCart: false,
-          items: {
+          item: {
             category: 'Produce',
             categoryId: 1,
             fridge: false,
