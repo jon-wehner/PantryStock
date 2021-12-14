@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addItemToInventory } from '../../store/inventory';
-import { loadCategories } from '../../store/items';
+import { loadCategories } from '../../store/category';
 import { deleteShoppingListItem, loadOneShoppingList } from '../../store/shoppingList';
 import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';
@@ -12,7 +12,7 @@ export default function ShoppingList() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
-  const categories = useSelector((state) => state.items.categories);
+  const categories = useSelector((state) => state.categories);
   const list = useSelector((state) => state.shoppingLists[id]);
 
   useEffect(() => {
@@ -23,7 +23,6 @@ export default function ShoppingList() {
       setLoaded(true);
     }
   }, [dispatch, id, categories]);
-
   const transferList = async () => {
     const itemsInCart = [];
     list.items.forEach((item) => {
@@ -39,7 +38,7 @@ export default function ShoppingList() {
       newItem.measurementId = item.measurement.id;
       delete newItem.measurement;
 
-      dispatch(addItemToInventory(item));
+      dispatch(addItemToInventory(newItem));
     });
     await itemsInCart.forEach((item) => {
       dispatch(deleteShoppingListItem(item.id, id));

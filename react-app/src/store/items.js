@@ -1,27 +1,15 @@
 const SET_RESULTS = 'items/setResults';
-const SET_CATEGORIES = 'items/setCategories';
 const SET_MEASUREMENTS = 'items/setMeasurements';
 
 const setResults = (items) => ({
   type: SET_RESULTS,
   items,
 });
-const setCategories = (categories) => ({
-  type: SET_CATEGORIES,
-  categories,
-});
+
 const setMeasurements = (measurements) => ({
   type: SET_MEASUREMENTS,
   measurements,
 });
-
-export const loadCategories = () => async (dispatch) => {
-  const res = await fetch('/api/items/categories/');
-  if (res.ok) {
-    const obj = await res.json();
-    dispatch(setCategories(obj.categories));
-  }
-};
 
 export const loadMeasurements = () => async (dispatch) => {
   const res = await fetch('/api/items/measurements/');
@@ -50,7 +38,6 @@ export const searchItems = (query) => async (dispatch) => {
   }
 };
 const initialState = {
-  categories: null,
   results: null,
 };
 const itemReducer = (state = initialState, action) => {
@@ -59,10 +46,6 @@ const itemReducer = (state = initialState, action) => {
     case SET_RESULTS:
       newState = { ...state };
       newState.results = Object.values(action.items);
-      return newState;
-    case SET_CATEGORIES:
-      newState = { ...state };
-      newState.categories = action.categories;
       return newState;
     case SET_MEASUREMENTS:
       newState = { ...state };

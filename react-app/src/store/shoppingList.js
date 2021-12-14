@@ -95,6 +95,7 @@ export const addEditShoppingListItem = (shoppingListItem) => async (dispatch) =>
   const {
     id, measurementId, quantity, shoppingListId, itemId, method,
   } = shoppingListItem;
+
   const formData = new FormData();
   formData.append('item_id', itemId);
   formData.append('measurement_id', measurementId);
