@@ -38,7 +38,7 @@
     ]
   },
   "jest": {
-    "testMatch" : [
+    "testMatch": [
       "**/__tests__/*.test.js"
     ]
   },
@@ -46,6 +46,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.4",
