@@ -14,7 +14,7 @@ export default function SearchResult({ item, inventory, hideMenu }) {
 
   return (
     <>
-      <li>
+      <li data-testid="searchResult">
         <button
           onClick={() => setShowModal(true)}
           onKeyPress={handleEnter}
