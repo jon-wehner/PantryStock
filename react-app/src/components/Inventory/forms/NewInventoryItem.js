@@ -5,11 +5,11 @@ import { addItemToInventory } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
+import PackageSizeSelect from '../../PackageSizeSelect';
 
 export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
-  const measurements = useSelector((state) => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState('');
@@ -56,17 +56,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
         Quantity:
         <input id="NewInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
       </label>
-      <select value={measurementId} onChange={(e) => setMeasurementId(e.target.value)}>
-        <option value="">Select Package Size</option>
-        {measurements && measurements.map((measurement) => (
-          <option
-            value={measurement.id}
-            key={measurement.id}
-          >
-            {measurement.unit}
-          </option>
-        ))}
-      </select>
+      <PackageSizeSelect setMeasurmentId={setMeasurementId} />
       <label htmlFor="expirationDate">
         Expiration Date:
         <input type="date" name="expirationDate" value={expirationDate} onChange={(e) => setExpirationDate(e.target.value)} />
