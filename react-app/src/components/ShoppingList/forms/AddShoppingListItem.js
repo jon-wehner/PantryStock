@@ -75,10 +75,7 @@ AddShoppingListItem.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     fridge: PropTypes.bool.isRequired,
-    category: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
+    category: PropTypes.string.isRequired,
   }).isRequired,
   setShowModal: PropTypes.func.isRequired,
   hideMenu: PropTypes.func.isRequired,
