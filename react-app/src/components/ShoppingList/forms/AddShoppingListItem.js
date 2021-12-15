@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loadMeasurements } from '../../../store/items';
 import { addEditShoppingListItem } from '../../../store/shoppingList';
 import '../styles/ShoppingListForms.css';
+import PackageSizeSelect from '../../PackageSizeSelect';
 
 export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
   const dispatch = useDispatch();
   const { id: shoppingListId } = useParams();
-  const measurements = useSelector((state) => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);
-  const [measurementId, setMeasurementId] = useState(1);
+  const [measurementId, setMeasurementId] = useState('');
   const [quantity, setQuantity] = useState('');
   const [errors, setErrors] = useState('');
 
@@ -55,16 +55,7 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
         {item.category}
       </h2>
       <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-      <select value={measurementId} onChange={(e) => setMeasurementId(e.target.value)}>
-        {measurements && measurements.map((measurement) => (
-          <option
-            value={measurement.id}
-            key={measurement.id}
-          >
-            {measurement.unit}
-          </option>
-        ))}
-      </select>
+      <PackageSizeSelect setMeasurementId={setMeasurementId} />
       <button type="submit" className="stdbutton">Add To List</button>
     </form>
   );
@@ -75,10 +66,7 @@ AddShoppingListItem.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     fridge: PropTypes.bool.isRequired,
-    category: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
+    category: PropTypes.string.isRequired,
   }).isRequired,
   setShowModal: PropTypes.func.isRequired,
   hideMenu: PropTypes.func.isRequired,

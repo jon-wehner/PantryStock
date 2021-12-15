@@ -45,6 +45,13 @@ const testState = {
     { id: 10, name: 'Coffee & Tea' },
     { id: 11, name: 'Condiments' },
   ],
+  items: {
+    results: [
+      {
+        category: 'Produce', categoryId: 1, fridge: true, id: 1, name: 'Lettuce',
+      },
+    ],
+  },
 };
 const Wrapper = ({ children }) => <Provider store={configureStore(testState)}>{children}</Provider>;
 

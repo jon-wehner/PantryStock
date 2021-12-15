@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addItemToInventory } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
+import PackageSizeSelect from '../../PackageSizeSelect';
 
 export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   const dispatch = useDispatch();
-  const { id: userId } = useParams();
-  const measurements = useSelector((state) => state.items.measurements);
+  const userId = useSelector((state) => state.session.user.id);
 
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState('');
@@ -57,17 +56,11 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
         Quantity:
         <input id="NewInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
       </label>
-      <select value={measurementId} onChange={(e) => setMeasurementId(e.target.value)}>
-        {measurements && measurements.map((measurement) => (
-          <option
-            value={measurement.id}
-            key={measurement.id}
-          >
-            {measurement.unit}
-          </option>
-        ))}
-      </select>
-      <input type="date" value={expirationDate} onChange={(e) => setExpirationDate(e.target.value)} />
+      <PackageSizeSelect setMeasurmentId={setMeasurementId} />
+      <label htmlFor="expirationDate">
+        Expiration Date:
+        <input type="date" name="expirationDate" value={expirationDate} onChange={(e) => setExpirationDate(e.target.value)} />
+      </label>
       <button type="submit" className="stdbutton">Add To Pantry</button>
     </form>
   );
