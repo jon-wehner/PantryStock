@@ -43,7 +43,7 @@ function LoginForm({ authenticated, setAuthenticated }) {
   };
 
   if (authenticated) {
-    return navigate('/');
+    navigate('/');
   }
 
   return (

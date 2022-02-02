@@ -15,7 +15,7 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [userId, setUserId] = useState('');
-
+  console.log(authenticated);
   useEffect(() => {
     (async () => {
       const user = await dispatch(authenticate());
