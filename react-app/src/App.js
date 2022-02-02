@@ -13,9 +13,8 @@ import Inventory from './components/Inventory';
 function App() {
   const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [userId, setUserId] = useState('');
-  console.log(authenticated);
+
   useEffect(() => {
     (async () => {
       const user = await dispatch(authenticate());
@@ -23,13 +22,8 @@ function App() {
         setAuthenticated(true);
         setUserId(user.id);
       }
-      setLoaded(true);
     })();
   }, [dispatch]);
-
-  if (!loaded) {
-    return null;
-  }
 
   return (
     <>
