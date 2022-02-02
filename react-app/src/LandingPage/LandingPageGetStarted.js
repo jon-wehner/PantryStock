@@ -5,12 +5,14 @@ export default function LandingPageGetStarted() {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
   const startSignup = () => {
-    navigate({
-      to: '/sign-up',
-      state: {
-        tempEmail: email,
+    navigate(
+      '/signup',
+      {
+        state: {
+          tempEmail: email,
+        },
       },
-    });
+    );
   };
   return (
     <div className="landpage__background">
