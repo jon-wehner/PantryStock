@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css';
 
-const NavBar = ({ authenticated, setAuthenticated }) => {
+function NavBar({ authenticated, setAuthenticated }) {
   const user = useSelector((state) => state.session.user);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [showNavLinks, setShowNavLinks] = useState(false);
   const toggleNavLinks = () => {
     setShowNavLinks(!showNavLinks);
   };
   const login = () => {
-    history.push('/login');
+    navigate('/login');
   };
 
   const handleEnter = (e) => {
@@ -42,7 +42,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
       </ul>
     </nav>
   );
-};
+}
 
 NavBar.propTypes = {
   authenticated: PropTypes.bool.isRequired,

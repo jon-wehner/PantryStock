@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../store/session';
 import './LogoutButton.css';
 
-const LogoutButton = ({ setAuthenticated }) => {
+function LogoutButton({ setAuthenticated }) {
   const dispatch = useDispatch();
   const onLogout = async () => {
     setAuthenticated(false);
@@ -12,7 +12,7 @@ const LogoutButton = ({ setAuthenticated }) => {
   };
 
   return <button type="button" className="logoutbutton" onClick={onLogout}>Logout</button>;
-};
+}
 
 LogoutButton.propTypes = {
   setAuthenticated: PropTypes.func.isRequired,

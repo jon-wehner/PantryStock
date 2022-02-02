@@ -69,7 +69,6 @@ export const authenticate = () => async (dispatch) => {
 };
 
 const initialState = { user: null };
-
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {

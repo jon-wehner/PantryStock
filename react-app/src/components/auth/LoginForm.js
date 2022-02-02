@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../store/session';
 import './AuthForm.css';
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
-  const history = useHistory();
+function LoginForm({ authenticated, setAuthenticated }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -22,8 +22,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
   const startSignup = () => {
-    history.push({
-      pathname: '/sign-up',
+    navigate({
+      to: '/sign-up',
       state: {
         tempEmail: email,
       },
@@ -43,7 +43,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return navigate('/');
   }
 
   return (
@@ -90,7 +90,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       </div>
     </form>
   );
-};
+}
 
 LoginForm.propTypes = {
   authenticated: PropTypes.bool.isRequired,
