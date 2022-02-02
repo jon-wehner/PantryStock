@@ -53,7 +53,9 @@ const testState = {
     ],
   },
 };
-const Wrapper = ({ children }) => <Provider store={configureStore(testState)}>{children}</Provider>;
+function Wrapper({ children }) {
+  return <Provider store={configureStore(testState)}>{children}</Provider>;
+}
 
 const customRender = (ui, options) => render(ui, { wrapper: Wrapper, ...options });
 
