@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function LandingPageGetStarted() {
   const [email, setEmail] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
   const startSignup = () => {
-    history.push({
-      pathname: '/sign-up',
+    navigate.push({
+      to: '/sign-up',
       state: {
         tempEmail: email,
       },

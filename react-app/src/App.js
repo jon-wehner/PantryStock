@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
 import ShoppingList from './components/ShoppingList';
 import { authenticate } from './store/session';
 import LandingPage from './LandingPage';
@@ -35,27 +34,43 @@ function App() {
   return (
     <>
       <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
-      <Switch>
-        <Route path="/login" exact>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <ProtectedRoute path="/shopping-lists/:id" exact authenticated={authenticated}>
-          <ShoppingList />
-        </ProtectedRoute>
-        <Route path="/" exact authenticated={authenticated}>
-          {authenticated ? <Dashboard authenticated={authenticated} />
+      <Routes>
+        <Route
+          path="/login"
+          element={(
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          )}
+        />
+        <Route
+          path="/sign-up"
+          element={(
+            <SignUpForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+            )}
+        />
+        <Route
+          path="/shopping-lists"
+          element={(
+            <ShoppingList />
+          )}
+        />
+        <Route
+          path="/"
+          authenticated={authenticated}
+          element={authenticated ? <Dashboard authenticated={authenticated} />
             : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated} />}
-        </Route>
-        <ProtectedRoute path="/inventory" authenticated={authenticated}>
-          <Inventory userId={userId} />
-        </ProtectedRoute>
-      </Switch>
+        />
+        <Route
+          path="/inventory"
+          authenticated={authenticated}
+          element={<Inventory userId={userId} />}
+        />
+      </Routes>
     </>
   );
 }
