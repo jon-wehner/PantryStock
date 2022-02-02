@@ -33,6 +33,7 @@ function LoginForm({ authenticated, setAuthenticated }) {
     e.preventDefault(e);
     await dispatch(login('demo@aa.io', 'password'));
     setAuthenticated(true);
+    navigate('/');
   };
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -43,7 +44,7 @@ function LoginForm({ authenticated, setAuthenticated }) {
   };
 
   if (authenticated) {
-    return navigate('/');
+    navigate('/');
   }
 
   return (

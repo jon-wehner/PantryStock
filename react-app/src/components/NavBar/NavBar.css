@@ -7,7 +7,6 @@
   background-color: #264653;
   font-family: 'Heebo', sans-serif;
   transition: height 0.75s ease-in;
-  animation: opacity 1s ease-in;
 }
 .navbar__mobile {
   display: flex;
