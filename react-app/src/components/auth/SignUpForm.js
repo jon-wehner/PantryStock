@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Redirect, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { signUp } from '../../store/session';
 import './AuthForm.css';
 
-const SignUpForm = ({ authenticated, setAuthenticated }) => {
+function SignUpForm({ authenticated, setAuthenticated }) {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState(location.state.tempEmail);
   const [password, setPassword] = useState('');
@@ -24,7 +25,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    navigate('/');
   }
 
   return (
@@ -85,7 +86,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       </div>
     </form>
   );
-};
+}
 
 SignUpForm.propTypes = {
   authenticated: PropTypes.bool.isRequired,

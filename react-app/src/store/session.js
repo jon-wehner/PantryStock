@@ -60,6 +60,7 @@ export const authenticate = () => async (dispatch) => {
       'Content-Type': 'application/json',
     },
   });
+  console.log(response);
   if (response.ok) {
     const user = await response.json();
     dispatch(setUser(user));
@@ -69,9 +70,9 @@ export const authenticate = () => async (dispatch) => {
 };
 
 const initialState = { user: null };
-
 const sessionReducer = (state = initialState, action) => {
   let newState;
+  console.log(action);
   switch (action.type) {
     case SET_USER:
       newState = { ...state };

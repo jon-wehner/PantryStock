@@ -20,7 +20,8 @@
     ],
     "rules": {
         "react/jsx-filename-extension": "off",
-        "no-debugger": "warn"
+        "no-debugger": "warn",
+        "default-param-last": "off"
     },
     "overrides": [
         {

@@ -5,7 +5,7 @@ export default function LandingPageGetStarted() {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
   const startSignup = () => {
-    navigate.push({
+    navigate({
       to: '/sign-up',
       state: {
         tempEmail: email,
