@@ -48,7 +48,7 @@ function App() {
             )}
         />
         <Route
-          path="/shopping-lists"
+          path="/shopping-lists/:id"
           element={(
             <ShoppingList />
           )}
