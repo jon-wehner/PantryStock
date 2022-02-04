@@ -37,12 +37,31 @@ describe('The App Component', () => {
         </Routes>
       </MemoryRouter>,
     );
+
     expect(screen.getByText(/Login/i));
     fireEvent.click(screen.getByText(/Login/i));
+
     const demoLoginButton = screen.getByText(/Demo/i);
     expect(demoLoginButton);
     fireEvent.click(demoLoginButton);
+
     await waitForElementToBeRemoved(demoLoginButton);
     expect(screen.getByText(/Hello/i));
+  });
+});
+
+describe('Landing page', () => {
+  it('allows users to enter their email go to the signup page', async () => {
+    render(
+      <MemoryRouter initialEntries={['/']} initialIndex={0}>
+        <Routes>
+          <Route path="*" element={<App />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    const email = 'test@test.com';
+    fireEvent.change(screen.getByPlaceholderText(/Enter Email/i), { target: { value: email } });
+    fireEvent.click(screen.getByText(/Get Started/i));
+    expect(screen.getByDisplayValue(email));
   });
 });
