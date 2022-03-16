@@ -8,9 +8,9 @@
   justify-content: center;
   width: 50%;
   margin: 5rem auto;
-  font-family: "Hind Siliguri";
-  background-color: #FDFFFC;
-  border-radius: .6rem;
+  font-family: 'Hind Siliguri';
+  background-color: #fdfffc;
+  border-radius: 1.2rem;
   padding: 2rem;
 }
 .errors__container {
@@ -18,15 +18,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
 }
 .formfield {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .formfield label {
-  width: 12rem;
+  display: flex;
+  flex-direction: column;
   font-size: 1.8rem;
 }
 .formfield input {
@@ -39,20 +40,19 @@
 .loginForm button {
   background-color: dodgerblue;
   color: #fff;
-  font-family: "Hind Siliguri";
+  font-family: 'Hind Siliguri';
   font-size: 2rem;
-  width: 10rem;
+  width: 12rem;
   height: 3rem;
   margin-top: 1rem;
 }
 .loginForm button:hover {
-  background-color: #135CA3;
+  background-color: #135ca3;
 }
 
 .signup__link {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 .signup__link span {
   font-size: 2rem;
@@ -63,12 +63,12 @@
 }
 
 #demoLogin {
-  margin-left: .5rem;
-  width: 8rem;
+  margin-left: 0.5rem;
 }
 
 #signuplink {
-  background-color: #FDFFFC;
+  background-color: #fdfffc;
+  text-align: left;
   color: dodgerblue;
   font-size: 2rem;
 }
