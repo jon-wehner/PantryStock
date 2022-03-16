@@ -56,6 +56,7 @@ def edit_delete_item(user_id, item_id):
         if form.validate_on_submit():
             item.expiration_date = form.data['expiration_date']
             item.quantity = form.data['quantity']
+            item.measurement_id = form.data['measurement_id']
             db.session.add(item)
     if request.method == 'DELETE':
         db.session.delete(item)
