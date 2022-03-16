@@ -50,7 +50,7 @@ function LoginForm({ authenticated }) {
     <form className="loginForm" onSubmit={onLogin}>
       <div className="errors__container">
         {errors.map((error) => (
-          <div className="error">{error}</div>
+          <div className="error" key={error}>{error.split(':')[1]}</div>
         ))}
       </div>
       <div className="signup__link">
