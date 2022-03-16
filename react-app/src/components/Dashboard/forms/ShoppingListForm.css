@@ -18,12 +18,14 @@
 }
 .errors {
   width: 50%;
-  margin: 1rem auto;
+  padding: 0;
+  margin: 0.5rem auto;
   text-align: center;
 }
 
 .errors li {
   list-style: none;
+  font-family: 'Hind Siliguri';
   margin: 0 auto;
   width: 50%;
   font-size: 1.6rem;
