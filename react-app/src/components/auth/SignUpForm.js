@@ -32,7 +32,7 @@ function SignUpForm({ authenticated, setAuthenticated }) {
     <form className="loginForm" onSubmit={onSignUp}>
       <div className="formfield">
         <label htmlFor="SignupUserName">
-          User Name
+          Username
           <input
             id="SignupUserName"
             type="text"
