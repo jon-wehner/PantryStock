@@ -34,7 +34,7 @@ def add_item(user_id):
             expiration_date=form.data['expiration_date'],
             quantity=form.data['quantity'],
             measurement_id=form.data['measurement_id']
-            )
+        )
         db.session.add(item)
     if form.errors:
         return {"errors": validation_errors_to_error_messages(form.errors)}
@@ -55,9 +55,7 @@ def edit_delete_item(user_id, item_id):
         form['item_id'].data = item.item.id
         if form.validate_on_submit():
             item.expiration_date = form.data['expiration_date']
-            print(item.expiration_date)
             item.quantity = form.data['quantity']
-            measurement_id = form.data['measurement_id']
             db.session.add(item)
     if request.method == 'DELETE':
         db.session.delete(item)

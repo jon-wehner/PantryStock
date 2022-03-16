@@ -57,7 +57,9 @@ export const editInvItem = (inventoryItem) => async (dispatch) => {
   const formData = new FormData();
   formData.append('measurement_id', measurementId);
   formData.append('quantity', quantity);
-  formData.append('expiration_date', expirationDate);
+  if (expirationDate) {
+    formData.append('expiration_date', expirationDate);
+  }
   const options = {
     method: 'PUT',
     body: formData,
