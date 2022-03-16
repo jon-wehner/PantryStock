@@ -6,7 +6,7 @@ import './ShoppingListForm.css';
 export default function ShoppingListForm() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const [name, setName] = useState('Shopping List Name');
+  const [name, setName] = useState('');
   const [errors, setErrors] = useState('');
 
   const handleSubmit = async (e) => {
@@ -23,8 +23,10 @@ export default function ShoppingListForm() {
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
         )}
-      <input value={name} onChange={(e) => setName(e.target.value)} />
-      <button type="submit" className="stdbutton">Create Shopping List</button>
+      <div>
+        <input placeholder="Enter shopping list name" onChange={(e) => setName(e.target.value)} />
+        <button type="submit" className="stdbutton">Create Shopping List</button>
+      </div>
     </form>
   );
 }

@@ -21,6 +21,7 @@ export default function Dashboard() {
     <div className="dashboard__wrapper">
       <h1 className="dashboard__title">
         Hello,
+        { ' ' }
         {user && user.username}
         !
       </h1>
