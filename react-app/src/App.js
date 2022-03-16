@@ -14,6 +14,7 @@ function App() {
   const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const [userId, setUserId] = useState('');
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -22,9 +23,10 @@ function App() {
         setAuthenticated(true);
         setUserId(user.id);
       }
+      setLoaded(true);
     })();
   }, [dispatch]);
-
+  if (!loaded) return null;
   return (
     <>
       <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />

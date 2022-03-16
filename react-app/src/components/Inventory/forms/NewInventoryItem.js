@@ -56,7 +56,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
         Quantity:
         <input id="NewInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
       </label>
-      <PackageSizeSelect setMeasurmentId={setMeasurementId} />
+      <PackageSizeSelect setMeasurementId={setMeasurementId} />
       <label htmlFor="expirationDate">
         Expiration Date:
         <input type="date" name="expirationDate" value={expirationDate} onChange={(e) => setExpirationDate(e.target.value)} />
