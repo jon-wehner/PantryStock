@@ -11,7 +11,7 @@ export default function DisplayRow({ shoppingList }) {
   const dispatch = useDispatch();
 
   const [edit, setEdit] = useState(false);
-  const [name, setName] = useState(shoppingList.name);
+  const [name, setName] = useState('');
   const [errors, setErrors] = useState('');
 
   const showInput = (e) => {

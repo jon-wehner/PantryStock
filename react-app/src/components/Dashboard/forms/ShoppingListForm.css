@@ -1,35 +1,48 @@
 .shoppingList__form {
   margin: 0 auto;
-  width:15%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   font-size: 1.8rem;
 }
-.shoppingList__form input {
-  font-size: 1.5rem;
-}
-.shoppingList input {
-  font-size: 1.5rem;
-}
-.shoppingList__form button {
-  width: 65%;
+.shoppingList__form div {
   margin: 0 auto;
-  margin-top: 1rem;
+}
+.shoppingList__form input {
+  /* margin: 0 auto; */
+  font-size: 1.5rem;
+  /* width: 45%; */
+}
+.shoppingList__form input::placeholder {
+  text-align: center;
+}
+.shoppingList__form div button {
+  /* margin: 0 auto; */
+  margin: 0.5rem;
 }
 .errors {
-  width: 100%
+  width: 50%;
+  padding: 0;
+  margin: 0.5rem auto;
+  text-align: center;
 }
 
 .errors li {
+  list-style: none;
+  font-family: 'Hind Siliguri';
+  margin: 0 auto;
+  width: 50%;
   font-size: 1.6rem;
   color: red;
 }
 
 @media screen and (max-width: 768px) {
-  form {
-    width:100%;
+  .shoppingList__form,
+  .shoppingList__form div input,
+  .shoppingList__form div button {
+    width: 100%;
   }
-  form button {
-    width: 80%;
+  .shoppingList__form div button {
+    margin: 0.5rem 0 0.5rem;
   }
 }
