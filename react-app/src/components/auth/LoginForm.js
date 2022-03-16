@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { login } from '../../store/session';
 import './AuthForm.css';
 
-function LoginForm({ authenticated, setAuthenticated }) {
+function LoginForm({ authenticated }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
@@ -16,7 +16,7 @@ function LoginForm({ authenticated, setAuthenticated }) {
     e.preventDefault();
     const user = await dispatch(login(email, password));
     if (!user.errors) {
-      setAuthenticated(true);
+      navigate('/');
     } else {
       setErrors(user.errors);
     }
@@ -32,7 +32,6 @@ function LoginForm({ authenticated, setAuthenticated }) {
   const signInDemo = async (e) => {
     e.preventDefault(e);
     await dispatch(login('demo@aa.io', 'password'));
-    setAuthenticated(true);
     navigate('/');
   };
   const updateEmail = (e) => {
@@ -95,7 +94,6 @@ function LoginForm({ authenticated, setAuthenticated }) {
 
 LoginForm.propTypes = {
   authenticated: PropTypes.bool.isRequired,
-  setAuthenticated: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
