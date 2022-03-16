@@ -3,16 +3,15 @@ import { useSelector } from 'react-redux';
 import DisplayRow from './DisplayRow';
 
 export default function ShoppingListDisplay() {
-  const user = useSelector((state) => state.session.user);
   const shoppingLists = useSelector((state) => state.shoppingLists);
 
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (user && shoppingLists) {
+    if (shoppingLists) {
       setLoaded(true);
     }
-  }, [user, shoppingLists]);
+  }, [shoppingLists]);
 
   if (!loaded) return null;
   return (

@@ -68,17 +68,25 @@ export const authenticate = () => async (dispatch) => {
   return response.json();
 };
 
-const initialState = { user: null };
+const initialState = {
+  username: null,
+  email: null,
+  id: null,
+};
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_USER:
       newState = { ...state };
-      newState.user = action.user;
+      newState.username = action.user.username;
+      newState.email = action.user.email;
+      newState.id = action.user.id;
       return newState;
     case REMOVE_USER:
       newState = { ...state };
-      newState.user = action.user;
+      newState.username = null;
+      newState.email = null;
+      newState.id = null;
       return newState;
     default:
       return state;

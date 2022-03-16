@@ -9,7 +9,7 @@ import PackageSizeSelect from '../../PackageSizeSelect';
 
 export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.id);
 
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState('');

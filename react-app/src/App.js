@@ -21,12 +21,11 @@ function App() {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
-        setUserId(user.id);
       }
       setLoaded(true);
     })();
-  }, [dispatch]);
-  if (!loaded) return null;
+  }, [dispatch, userId]);
+  // if (!loaded) return null;
   return (
     <>
       <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />

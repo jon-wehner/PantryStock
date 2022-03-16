@@ -8,7 +8,7 @@ import '../styles/InventoryForms.css';
 
 export default function EditInventoryItem({ row, setShowModal }) {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.id);
   const measurements = useSelector((state) => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);

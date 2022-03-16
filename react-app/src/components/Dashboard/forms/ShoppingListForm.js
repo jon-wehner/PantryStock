@@ -5,13 +5,13 @@ import './ShoppingListForm.css';
 
 export default function ShoppingListForm() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const userId = useSelector((state) => state.session.id);
   const [name, setName] = useState('');
   const [errors, setErrors] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const shoppingList = await dispatch(createShoppingList(name, user.id));
+    const shoppingList = await dispatch(createShoppingList(name, userId));
     setErrors(shoppingList.errors);
   };
 

@@ -6,7 +6,7 @@ import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css';
 
 function NavBar({ authenticated, setAuthenticated }) {
-  const user = useSelector((state) => state.session.user);
+  const userId = useSelector((state) => state.session.id);
   const navigate = useNavigate();
   const [showNavLinks, setShowNavLinks] = useState(false);
   const toggleNavLinks = () => {
@@ -35,7 +35,7 @@ function NavBar({ authenticated, setAuthenticated }) {
             <Link to="/" className="pantryNavLink">
               Dashboard
             </Link>
-            { user && <Link to="/inventory" className="pantryNavLink">Your  Pantry</Link>}
+            { userId && <Link to="/inventory" className="pantryNavLink">Your  Pantry</Link>}
             <LogoutButton setAuthenticated={setAuthenticated} />
           </div>
         ) : <li className="navlink"><button type="button" onClick={login}>Login</button></li>}

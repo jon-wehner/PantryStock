@@ -8,21 +8,22 @@ import './Dashboard.css';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const userName = useSelector((state) => state.session.username);
+  const userId = useSelector((state) => state.session.id);
 
   useEffect(() => {
-    if (user) {
+    if (userName) {
       dispatch(loadCategories());
-      dispatch(loadUserShoppingLists(user.id));
+      dispatch(loadUserShoppingLists(userId));
     }
-  }, [user, dispatch]);
+  }, [userName, dispatch]);
 
   return (
     <div className="dashboard__wrapper">
       <h1 className="dashboard__title">
         Hello,
         { ' ' }
-        {user && user.username}
+        {userName}
         !
       </h1>
       <ShoppingListForm />
