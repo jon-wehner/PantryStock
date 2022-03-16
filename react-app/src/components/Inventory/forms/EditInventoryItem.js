@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { editInvItem, removeInvItem } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
@@ -9,7 +8,7 @@ import '../styles/InventoryForms.css';
 
 export default function EditInventoryItem({ row, setShowModal }) {
   const dispatch = useDispatch();
-  const { id: userId } = useParams();
+  const userId = useSelector((state) => state.session.id);
   const measurements = useSelector((state) => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);
@@ -91,7 +90,7 @@ export default function EditInventoryItem({ row, setShowModal }) {
           Expiration Date
           <input id="EditInventoryItemExpiration" type="date" value={expirationDate} onChange={(e) => setExpirationDate(e.target.value)} />
         </label>
-        <button type="button" className="stdbutton">Edit Item</button>
+        <button type="submit" className="stdbutton">Edit Item</button>
       </form>
       <button type="button" className="stdbutton" id="deleteInvItem" onClick={handleDelete} style={{ backgroundColor: 'red' }}>Delete Item</button>
     </div>
@@ -102,7 +101,7 @@ EditInventoryItem.propTypes = {
   row: PropTypes.shape({
     id: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
-    expirationDate: PropTypes.string.isRequired,
+    expirationDate: PropTypes.string,
     measurement: PropTypes.shape({
       id: PropTypes.number.isRequired,
       unit: PropTypes.string.isRequired,

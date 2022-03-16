@@ -9,7 +9,7 @@ import PackageSizeSelect from '../../PackageSizeSelect';
 
 export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.id);
 
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState('');
@@ -56,7 +56,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
         Quantity:
         <input id="NewInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
       </label>
-      <PackageSizeSelect setMeasurmentId={setMeasurementId} />
+      <PackageSizeSelect setMeasurementId={setMeasurementId} />
       <label htmlFor="expirationDate">
         Expiration Date:
         <input type="date" name="expirationDate" value={expirationDate} onChange={(e) => setExpirationDate(e.target.value)} />

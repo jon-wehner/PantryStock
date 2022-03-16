@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function PackageSizeSelect({ setMeasurementId }) {
   const measurements = useSelector((state) => state.items.measurements);
+
   return (
     <select onChange={(e) => setMeasurementId(e.target.value)}>
       <option value="">Select Package Size</option>

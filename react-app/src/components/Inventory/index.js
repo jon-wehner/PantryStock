@@ -15,7 +15,9 @@ export default function Inventory({ userId }) {
   const pantry = useSelector((state) => state.inventory.pantry);
 
   useEffect(() => {
-    dispatch(getUserInventory(userId));
+    if (userId) {
+      dispatch(getUserInventory(userId));
+    }
 
     if (!categories) {
       dispatch(loadCategories());
@@ -60,5 +62,8 @@ export default function Inventory({ userId }) {
 }
 
 Inventory.propTypes = {
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.number,
+};
+Inventory.defaultProps = {
+  userId: null,
 };
