@@ -4,23 +4,25 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { signUp } from '../../store/session';
 import './AuthForm.css';
+import FormErrors from '../FormErrors';
 
 function SignUpForm({ authenticated, setAuthenticated }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
+  const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState(location.state.tempEmail);
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const user = await dispatch(signUp(username, email, password));
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+    const user = await dispatch(signUp(username, email, password, repeatPassword));
+    if (!user.errors) {
+      setAuthenticated(true);
+    } else {
+      setErrors(user.errors);
     }
   };
 
@@ -30,6 +32,7 @@ function SignUpForm({ authenticated, setAuthenticated }) {
 
   return (
     <form className="loginForm" onSubmit={onSignUp}>
+      <FormErrors errors={errors} />
       <div className="formfield">
         <label htmlFor="SignupUserName">
           Username
@@ -77,7 +80,6 @@ function SignUpForm({ authenticated, setAuthenticated }) {
             autoComplete="new-password"
             onChange={(e) => setRepeatPassword(e.target.value)}
             value={repeatPassword}
-            required
           />
         </label>
       </div>

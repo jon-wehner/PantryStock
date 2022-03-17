@@ -6,13 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
 import DeleteButton from './DeleteButton';
 import { editShoppingList } from '../../store/shoppingList';
+import FormErrors from '../FormErrors';
 
 export default function DisplayRow({ shoppingList }) {
   const dispatch = useDispatch();
 
   const [edit, setEdit] = useState(false);
-  const [name, setName] = useState('');
-  const [errors, setErrors] = useState('');
+  const [name, setName] = useState(shoppingList.name);
+  const [errors, setErrors] = useState([]);
 
   const showInput = (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ export default function DisplayRow({ shoppingList }) {
     setName(e.target.value);
   };
   const saveShoppingList = async (e) => {
+    setErrors([]);
     e.preventDefault();
     const newList = await dispatch(editShoppingList(shoppingList.id, name, shoppingList.userId));
     if (newList.errors) {
@@ -39,7 +41,7 @@ export default function DisplayRow({ shoppingList }) {
 
   return (
     <div className="shoppingList">
-      {errors && errors.map((error) => <li key={error}>{error}</li>)}
+      {errors && <FormErrors errors={errors} />}
       {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} />
         : <Link to={`/shopping-lists/${shoppingList.id}`}>{shoppingList.name}</Link>}
       <div style={{ marginLeft: '5rem' }}>

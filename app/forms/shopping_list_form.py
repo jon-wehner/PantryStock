@@ -4,5 +4,6 @@ from wtforms.validators import DataRequired
 
 
 class ShoppingListForm(FlaskForm):
-    name = StringField('name', validators=[DataRequired()])
+    name = StringField('name', validators=[DataRequired(
+        'Please enter a shopping list name')])
     user_id = StringField('user_id', validators=[DataRequired()])

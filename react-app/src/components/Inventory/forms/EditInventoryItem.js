@@ -5,6 +5,7 @@ import { editInvItem, removeInvItem } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
+import FormErrors from '../../FormErrors';
 
 export default function EditInventoryItem({ row, setShowModal }) {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function EditInventoryItem({ row, setShowModal }) {
   const [measurementId, setMeasurementId] = useState(row.measurement.id);
   const [quantity, setQuantity] = useState(row.quantity);
   const [expirationDate, setExpirationDate] = useState('');
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(loadMeasurements());
@@ -34,7 +35,7 @@ export default function EditInventoryItem({ row, setShowModal }) {
   }, [row.expirationDate]);
 
   const handleSubmit = async (e) => {
-    setErrors('');
+    setErrors([]);
     e.preventDefault();
     const inventoryItem = {
       itemId: row.id,
@@ -64,9 +65,7 @@ export default function EditInventoryItem({ row, setShowModal }) {
   return (
     <div className="editInvForm">
       <form className="inventoryForm" style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>
-        <ul className="errors">
-          {errors && errors.map((error) => <li className="error" key={error}>{error}</li>)}
-        </ul>
+        <FormErrors errors={errors} />
         <h2>
           Item:
           {' '}

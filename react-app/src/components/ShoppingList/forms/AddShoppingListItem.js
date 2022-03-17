@@ -6,6 +6,7 @@ import { loadMeasurements } from '../../../store/items';
 import { addEditShoppingListItem } from '../../../store/shoppingList';
 import '../styles/ShoppingListForms.css';
 import PackageSizeSelect from '../../PackageSizeSelect';
+import FormErrors from '../../FormErrors';
 
 export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(loadMeasurements());
@@ -22,7 +23,7 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
-    setErrors('');
+    setErrors([]);
     e.preventDefault();
     const shoppingListItem = {
       measurementId,
@@ -43,7 +44,7 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
   if (!loaded) return null;
   return (
     <form className="shoppingListForm" onSubmit={handleSubmit}>
-      {errors && errors.map((error) => <li key={error}>{error}</li>)}
+      <FormErrors errors={errors} />
       <h2>
         Item:
         {' '}

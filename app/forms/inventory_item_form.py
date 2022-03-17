@@ -10,6 +10,7 @@ class InventoryItemForm(FlaskForm):
         format="%Y-%m-%dT%H:%M:%S.000z",
         validators=[Optional()
                     ])
-    quantity = FloatField('quantity', validators=[DataRequired()])
-    measurement_id = IntegerField('measurement_id',
-                                  validators=[DataRequired()])
+    quantity = FloatField('quantity', validators=[
+        DataRequired('Please enter a quantity')])
+    measurement_id = IntegerField('measurement_id', validators=[
+        DataRequired('Please enter a package size')])

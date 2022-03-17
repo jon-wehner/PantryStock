@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../store/session';
 import './AuthForm.css';
+import FormErrors from '../FormErrors';
 
 function LoginForm({ authenticated }) {
   const navigate = useNavigate();
@@ -22,12 +23,14 @@ function LoginForm({ authenticated }) {
     }
   };
   const startSignup = () => {
-    navigate({
-      to: '/sign-up',
-      state: {
-        tempEmail: email,
+    navigate(
+      '/sign-up',
+      {
+        state: {
+          tempEmail: email,
+        },
       },
-    });
+    );
   };
   const signInDemo = async (e) => {
     e.preventDefault(e);
@@ -48,16 +51,12 @@ function LoginForm({ authenticated }) {
 
   return (
     <form className="loginForm" onSubmit={onLogin}>
-      <div className="errors__container">
-        {errors.map((error) => (
-          <div className="error">{error}</div>
-        ))}
-      </div>
+      <FormErrors errors={errors} />
       <div className="signup__link">
         <span>
           Don&apos;t have an account?
           {' '}
-          <button type="button" id="signuplink" onClick={startSignup}>Sign up.</button>
+          <button type="button" id="signuplink" onClick={() => startSignup()}>Sign up.</button>
         </span>
       </div>
       <div className="formfield">

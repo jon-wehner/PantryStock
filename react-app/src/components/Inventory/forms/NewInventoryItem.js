@@ -6,6 +6,7 @@ import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
 import PackageSizeSelect from '../../PackageSizeSelect';
+import FormErrors from '../../FormErrors';
 
 export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   const [measurementId, setMeasurementId] = useState('');
   const [quantity, setQuantity] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(loadMeasurements());
@@ -23,7 +24,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
-    setErrors('');
+    setErrors([]);
     e.preventDefault();
     const inventoryItem = {
       itemId: item.id,
@@ -32,9 +33,9 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
       userId,
       expirationDate: expirationDate ? getTimeStamp(expirationDate) : null,
     };
-    const response = await dispatch(addItemToInventory(inventoryItem));
-    if (response.errors) {
-      setErrors(response.errors);
+    const res = await dispatch(addItemToInventory(inventoryItem));
+    if (res.errors) {
+      setErrors(res.errors);
     } else {
       setShowModal(false);
       hideMenu();
@@ -44,9 +45,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
   if (!loaded) return null;
   return (
     <form className="inventoryForm" style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>
-      <ul className="errors">
-        {errors && errors.map((error) => <li className="error" key={error}>{error}</li>)}
-      </ul>
+      <FormErrors errors={errors} />
       <h2>
         Item:
         {' '}
