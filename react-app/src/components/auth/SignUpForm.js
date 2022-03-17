@@ -31,62 +31,68 @@ function SignUpForm({ authenticated, setAuthenticated }) {
   }
 
   return (
-    <form className="loginForm" onSubmit={onSignUp}>
-      <FormErrors errors={errors} />
-      <div className="formfield">
-        <label htmlFor="SignupUserName">
-          Username
-          <input
-            id="SignupUserName"
-            type="text"
-            name="username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </label>
-      </div>
-      <div className="formfield">
-        <label htmlFor="SignupEmail">
-          Email
-          <input
-            id="SignupEmail"
-            type="text"
-            name="email"
-            autoComplete="username"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-        </label>
-      </div>
-      <div className="formfield">
-        <label htmlFor="SignupPassword">
-          Password
-          <input
-            id="SignupPassword"
-            type="password"
-            name="password"
-            autoComplete="new-password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-        </label>
-      </div>
-      <div className="formfield">
-        <label htmlFor="SignupRepeatPassword">
-          Repeat Password
-          <input
-            type="password"
-            name="repeat_password"
-            autoComplete="new-password"
-            onChange={(e) => setRepeatPassword(e.target.value)}
-            value={repeatPassword}
-          />
-        </label>
-      </div>
-      <div className="login__buttonContainer">
-        <button type="submit">Sign Up</button>
-      </div>
-    </form>
+    <div className="auth__wrapper">
+      <form className="loginForm" onSubmit={onSignUp}>
+        <FormErrors errors={errors} />
+        <div className="formfield">
+          <label htmlFor="SignupUserName">
+            Username
+            <input
+              id="SignupUserName"
+              type="text"
+              name="username"
+              placeholder="user"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+            />
+          </label>
+        </div>
+        <div className="formfield">
+          <label htmlFor="SignupEmail">
+            Email
+            <input
+              id="SignupEmail"
+              type="text"
+              name="email"
+              autoComplete="username"
+              placeholder="example@email.com"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+          </label>
+        </div>
+        <div className="formfield">
+          <label htmlFor="SignupPassword">
+            Password
+            <input
+              id="SignupPassword"
+              type="password"
+              name="password"
+              autoComplete="new-password"
+              placeholder="*******"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </label>
+        </div>
+        <div className="formfield">
+          <label htmlFor="SignupRepeatPassword">
+            Repeat Password
+            <input
+              type="password"
+              name="repeat_password"
+              placeholder="*******"
+              onChange={(e) => setRepeatPassword(e.target.value)}
+              value={repeatPassword}
+            />
+          </label>
+        </div>
+        <div className="login__buttonContainer">
+          <button type="submit">Sign Up</button>
+        </div>
+      </form>
+      <div className="auth__image" />
+    </div>
   );
 }
 
