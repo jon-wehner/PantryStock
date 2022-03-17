@@ -1,3 +1,18 @@
+.auth__wrapper {
+  background-color: #fdfffc;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+.auth__image {
+  background-image: url(../images/brooke-lark-jUPOXXRNdcA-unsplash.jpg);
+  height: 100%;
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+}
 .error {
   font-size: 1.8rem;
   color: red;
@@ -7,7 +22,7 @@
   flex-direction: column;
   justify-content: center;
   width: 50%;
-  margin: 5rem auto;
+  /* margin: 5rem auto; */
   font-family: 'Hind Siliguri';
   background-color: #fdfffc;
   border-radius: 1.2rem;
@@ -64,4 +79,16 @@
   text-align: left;
   color: dodgerblue;
   font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .auth__image {
+    height: 0;
+    width: 0;
+  }
+  .loginForm {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
 }
