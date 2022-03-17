@@ -48,10 +48,12 @@ export default function ShoppingList() {
   if (!loaded) return null;
   return (
     <div className="dashboard__wrapper">
-      <SearchBar pantry={false} />
       {list && (
         <div>
-          <h1 className="shoppingList__title">{list.name}</h1>
+          <div>
+            <SearchBar pantry={false} />
+            <h1 className="shoppingList__title">{list.name}</h1>
+          </div>
           {!list.length && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
           {categories.map((category) => {
             const categoryItems = list.items.filter(
