@@ -1,11 +1,10 @@
-.pantry {
+#pantry {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 85%;
   min-height: 45rem;
   margin: 7rem auto;
-  background-color: #FDFFFC;
+  background-color: #fdfffc;
   border: 1px lightgray solid;
 }
 .pantryList {
@@ -14,11 +13,12 @@
   margin: 0 auto;
   margin-bottom: 1.5rem;
 }
-.pantry h2 {
-  font-family: "Heebo";
+.pantryHeading {
+  font-family: 'Heebo';
   font-size: 2rem;
+  margin: 0 auto;
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .pantry {
     width: 100%;
     border: none;
@@ -27,4 +27,3 @@
     width: 100%;
   }
 }
-

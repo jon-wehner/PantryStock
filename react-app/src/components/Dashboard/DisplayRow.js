@@ -41,10 +41,10 @@ export default function DisplayRow({ shoppingList }) {
 
   return (
     <div className="shoppingList">
-      {errors && <FormErrors errors={errors} />}
       {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} />
         : <Link to={`/shopping-lists/${shoppingList.id}`}>{shoppingList.name}</Link>}
-      <div style={{ marginLeft: '5rem' }}>
+      {errors && <FormErrors errors={errors} />}
+      <div>
         <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
           <FontAwesomeIcon icon={edit ? faSave : faEdit} />
         </button>
