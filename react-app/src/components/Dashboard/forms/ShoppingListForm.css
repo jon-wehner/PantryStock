@@ -9,15 +9,12 @@
   margin: 0 auto;
 }
 .shoppingList__form input {
-  /* margin: 0 auto; */
   font-size: 1.5rem;
-  /* width: 45%; */
 }
 .shoppingList__form input::placeholder {
   text-align: center;
 }
 .shoppingList__form div button {
-  /* margin: 0 auto; */
   margin: 0.5rem;
 }
 .errors {

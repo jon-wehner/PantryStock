@@ -114,3 +114,15 @@ caption {
   font-weight: 600;
   margin-bottom: 1rem;
 }
+.errors__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.error {
+  font-family: 'Hind Siliguri', 'sans-serif';
+  font-size: 1.8rem;
+  font-weight: 500;
+}
