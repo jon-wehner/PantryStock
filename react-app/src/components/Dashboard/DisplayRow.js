@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +10,7 @@ import FormErrors from '../FormErrors';
 
 export default function DisplayRow({ shoppingList }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(shoppingList.name);
@@ -38,20 +39,19 @@ export default function DisplayRow({ shoppingList }) {
       saveShoppingList(e);
     }
   };
+  const goToList = () => {
+    navigate(`../shopping-lists/${shoppingList.id}`);
+  };
 
   return (
-    <div className="shoppingList">
+    <button className="shoppingList" type="button" onClick={goToList}>
       {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} />
-        : <Link to={`/shopping-lists/${shoppingList.id}`}>{shoppingList.name}</Link>}
+        : shoppingList.name}
       {errors && <FormErrors errors={errors} />}
       <div>
-        <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
-          <FontAwesomeIcon icon={edit ? faSave : faEdit} />
-        </button>
-        <DeleteButton id={shoppingList.id} />
+        {shoppingList.items.length}
       </div>
-
-    </div>
+    </button>
   );
 }
 

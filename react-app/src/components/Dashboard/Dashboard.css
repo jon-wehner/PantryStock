@@ -5,11 +5,11 @@
   display: flex;
   justify-content: space-between;
   background-color: #f7f7ff;
-  margin: 1rem;
+  margin: 1rem auto;
   border: 1px solid lightgray;
   border-radius: 1.2rem;
   padding: 1rem;
-  width: 100%;
+  width: 90%;
 }
 .shoppingList:hover {
   background-color: gray;
