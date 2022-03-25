@@ -15,6 +15,8 @@ export default function ShoppingList() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
+  const [edit, setEdit] = useState(false);
+
   const categories = useSelector((state) => state.categories);
   const list = useSelector((state) => state.shoppingLists[id]);
 
@@ -26,6 +28,7 @@ export default function ShoppingList() {
       setLoaded(true);
     }
   }, [dispatch, id, categories]);
+
   const transferList = async () => {
     const itemsInCart = [];
     list.items.forEach((item) => {
