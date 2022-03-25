@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import { addItemToInventory } from '../../store/inventory';
 import { loadCategories } from '../../store/category';
 import { deleteShoppingListItem, loadOneShoppingList } from '../../store/shoppingList';
+import DeleteButton from './DeleteButton';
 import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';
 import './styles/ShoppingList.css';
@@ -53,6 +56,10 @@ export default function ShoppingList() {
           <div>
             <SearchBar pantry={false} />
             <h1 className="shoppingList__title">{list.name}</h1>
+            <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
+              <FontAwesomeIcon icon={edit ? faSave : faEdit} />
+            </button>
+            <DeleteButton id={shoppingList.id} />
           </div>
           {!list.length && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
           {categories.map((category) => {

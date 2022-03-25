@@ -49,7 +49,9 @@ export default function DisplayRow({ shoppingList }) {
         : shoppingList.name}
       {errors && <FormErrors errors={errors} />}
       <div>
-        {shoppingList.items.length}
+        {shoppingList && shoppingList.items.length}
+        {' '}
+        items
       </div>
     </button>
   );
