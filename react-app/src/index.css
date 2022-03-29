@@ -78,7 +78,7 @@ a:visited {
   border-collapse: collapse;
   margin: 1rem auto;
   table-layout: fixed;
-  min-width: 40rem;
+  width: 75%;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
   font-size: 1.6rem;
   font-family: 'Hind Siliguri', sans-serif;
