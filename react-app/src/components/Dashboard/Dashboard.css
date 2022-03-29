@@ -23,10 +23,7 @@
   margin-bottom: 1.25rem;
 }
 .shoppingList:hover {
-  transform: translateY(0.2rem);
-}
-.shoppingList:active {
-  transform: translateY(0.4rem);
+  transform: translateY(-0.3rem);
 }
 .dashboard__shoppingListContainer {
   width: 100%;

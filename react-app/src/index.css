@@ -43,7 +43,6 @@ input {
   border: 1px solid #d5d5d5;
   font-family: 'Hind Siliguri';
   border-radius: 0.7rem;
-  text-align: center;
 }
 a {
   text-decoration: none;
@@ -62,7 +61,7 @@ a:visited {
   width: 18rem;
 }
 .stdbutton:hover {
-  background-color: #135ca3;
+  background-color: #00bfff;
 }
 
 .dashboard__wrapper {

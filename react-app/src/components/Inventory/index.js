@@ -29,11 +29,11 @@ export default function Inventory({ userId }) {
   if (!loaded) return null;
   return (
     <div className="dashboard__wrapper" id="pantry">
-      <h1 className="pantryHeading">Welcome to your pantry!</h1>
+      <h1 className="pantryHeading">My Pantry</h1>
       <SearchBar inventory />
       {fridge && (
         <section>
-          {fridge.length ? <h2 className="pantryHeading">Refrigerator/Freezer</h2> : <h2 className="pantryHeading">Your refrigerator is empty.</h2>}
+          {fridge.length ? <h2 className="pantryHeading">Refrigerator/Freezer</h2> : <h2 className="pantryHeading">Refrigerator is empty.</h2>}
           {categories.map((category) => {
             const categoryItems = fridge.filter(
               (fridgeItem) => fridgeItem.item.categoryId === category.id,
@@ -46,7 +46,7 @@ export default function Inventory({ userId }) {
       )}
       {pantry && (
         <section>
-          {pantry.length ? <h2 className="pantryHeading">Pantry</h2> : <h2 className="pantryHeading">Your pantry is empty.</h2>}
+          {pantry.length ? <h2 className="pantryHeading">Pantry</h2> : <h2 className="pantryHeading">Pantry is empty.</h2>}
           {categories.map((category) => {
             const categoryItems = pantry.filter(
               (pantryItem) => pantryItem.item.categoryId === category.id,

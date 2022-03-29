@@ -14,7 +14,7 @@
 .pantryHeading {
   font-family: 'Heebo';
   font-size: 2rem;
-  margin: 0 auto;
+  margin: 1rem auto;
   text-align: center;
 }
 @media screen and (max-width: 768px) {

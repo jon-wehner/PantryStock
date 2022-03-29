@@ -35,7 +35,7 @@ function NavBar({ authenticated, setAuthenticated }) {
             <Link to="/" className="pantryNavLink">
               Dashboard
             </Link>
-            { userId && <Link to="/inventory" className="pantryNavLink">Your  Pantry</Link>}
+            { userId && <Link to="/inventory" className="pantryNavLink">My  Pantry</Link>}
             <LogoutButton setAuthenticated={setAuthenticated} />
           </div>
         ) : <li className="navlink"><button type="button" onClick={login}>Login</button></li>}
