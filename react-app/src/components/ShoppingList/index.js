@@ -84,32 +84,30 @@ export default function ShoppingList() {
   if (!loaded) return null;
   return (
     <div className="dashboard__wrapper">
-      {list && (
-        <div>
-          <div>
-            <SearchBar pantry={false} />
-            {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} /> : <h1 className="shoppingList__title">{list.name}</h1>}
-            {errors && <FormErrors errors={errors} />}
-            <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
-              <FontAwesomeIcon icon={edit ? faSave : faEdit} />
-            </button>
-            <DeleteButton id={list.id} />
-          </div>
-          {!list.length && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
-          {categories.map((category) => {
-            const categoryItems = list.items.filter(
-              (listItem) => listItem.item.categoryId === category.id,
-            );
-            return (
-              <ShoppingListCategory key={category.id} category={category} items={categoryItems} />
-            );
-          })}
-          {list.items.length > 0 && (
-            <button type="button" id="addToInv" className="stdbutton" onClick={transferList}>
-              Add items in cart to Inventory
-            </button>
-          )}
-        </div>
+      <SearchBar pantry={false} />
+      <div id="editList">
+        {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} /> : <h1 className="shoppingList__title">{list.name}</h1>}
+      </div>
+      {errors && <FormErrors errors={errors} />}
+      <div className="shoppingList__buttonContainer">
+        <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
+          <FontAwesomeIcon icon={edit ? faSave : faEdit} />
+        </button>
+        <DeleteButton id={list.id} />
+      </div>
+      {!list.length && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
+      {categories.map((category) => {
+        const categoryItems = list.items.filter(
+          (listItem) => listItem.item.categoryId === category.id,
+        );
+        return (
+          <ShoppingListCategory key={category.id} category={category} items={categoryItems} />
+        );
+      })}
+      {list.items.length > 0 && (
+        <button type="button" id="addToInv" className="stdbutton" onClick={transferList}>
+          Add items in cart to Inventory
+        </button>
       )}
     </div>
   );

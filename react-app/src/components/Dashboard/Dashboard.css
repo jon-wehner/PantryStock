@@ -1,5 +1,5 @@
 .dashboard__wrapper h1 {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 .shoppingList {
   display: flex;
@@ -40,10 +40,6 @@
 }
 .dashboard__shoppingListContainer h1 {
   text-align: center;
-}
-.shoppingList__buttons {
-  font-size: 2rem;
-  margin-left: 1.4rem;
 }
 .dashboard__title {
   width: 15rem;
