@@ -1,40 +1,36 @@
 .dashboard__wrapper h1 {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 .shoppingList {
   display: flex;
   justify-content: space-between;
+  background-color: #f7f7ff;
+  margin: 1rem auto;
+  border: 1px solid lightgray;
+  border-radius: 1.2rem;
+  padding: 1rem;
+  width: 90%;
 }
-.shoppingList a {
-  display: inline-block;
-  font-size: 2.2rem;
+.shoppingList:hover {
+  background-color: #cccccc;
+}
+.shoppingList {
+  font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   font-family: 'Hind Siliguri';
-  text-decoration: underline;
   color: inherit;
   margin-bottom: 1.25rem;
 }
-.shoppingList a:visited {
-  text-decoration: none;
-  color: inherit;
-}
-.shoppingList a:hover {
-  transform: translateY(0.2rem);
-}
-.shoppingList a:active {
-  transform: translateY(0.4rem);
+.shoppingList:hover {
+  transform: translateY(-0.3rem);
 }
 .dashboard__shoppingListContainer {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
 }
 .dashboard__shoppingListContainer h1 {
   text-align: center;
-}
-.shoppingList__buttons {
-  font-size: 2rem;
-  margin-left: 1.4rem;
 }
 .dashboard__title {
   width: 15rem;

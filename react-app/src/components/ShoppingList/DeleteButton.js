@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from '../../context/Modal';
-import ConfirmDelete from './forms/ConfirmDelete';
+import ConfirmDelete from '../Dashboard/forms/ConfirmDelete';
 
 export default function DeleteButton({ id }) {
   const [showModal, setShowModal] = useState(false);
