@@ -21,7 +21,6 @@ export default function ShoppingList() {
   const [loaded, setLoaded] = useState(false);
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState('');
-  const [showInput, setShowInput] = useState(false);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -30,6 +29,7 @@ export default function ShoppingList() {
       dispatch(loadCategories());
     } else {
       setLoaded(true);
+      setName(list.name);
     }
   }, [dispatch, id, categories]);
 
@@ -41,6 +41,21 @@ export default function ShoppingList() {
       setErrors(newList.errors);
     } else {
       setEdit(false);
+    }
+  };
+
+  const showInput = (e) => {
+    e.preventDefault();
+    setEdit(true);
+  };
+
+  const updateName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      saveShoppingList(e);
     }
   };
 
@@ -73,7 +88,7 @@ export default function ShoppingList() {
         <div>
           <div>
             <SearchBar pantry={false} />
-            <h1 className="shoppingList__title">{list.name}</h1>
+            {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} /> : <h1 className="shoppingList__title">{list.name}</h1>}
             {errors && <FormErrors errors={errors} />}
             <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
               <FontAwesomeIcon icon={edit ? faSave : faEdit} />

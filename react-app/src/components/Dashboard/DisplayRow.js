@@ -5,14 +5,6 @@ import PropTypes from 'prop-types';
 export default function DisplayRow({ shoppingList }) {
   const navigate = useNavigate();
 
-  const updateName = (e) => {
-    setName(e.target.value);
-  };
-  // const handleEnter = (e) => {
-  //   if (e.key === 'Enter') {
-  //     saveShoppingList(e);
-  //   }
-  // };
   const goToList = () => {
     navigate(`../shopping-lists/${shoppingList.id}`);
   };
