@@ -76,13 +76,13 @@ a:visited {
 
 .table-styled {
   border-collapse: collapse;
+  margin: 1rem auto;
   table-layout: fixed;
   min-width: 40rem;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
   font-size: 1.6rem;
   font-family: 'Hind Siliguri', sans-serif;
   overflow: hidden;
-  margin: 2.5rem 0;
 }
 .table-styled td,
 .table-styled th {
