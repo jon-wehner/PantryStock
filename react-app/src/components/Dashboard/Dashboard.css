@@ -12,26 +12,20 @@
   width: 90%;
 }
 .shoppingList:hover {
-  background-color: gray;
+  background-color: #cccccc;
 }
-.shoppingList a {
-  display: inline-block;
-  font-size: 2.2rem;
+.shoppingList {
+  font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   font-family: 'Hind Siliguri';
-  text-decoration: underline;
   color: inherit;
   margin-bottom: 1.25rem;
 }
-.shoppingList a:visited {
-  text-decoration: none;
-  color: inherit;
-}
-.shoppingList a:hover {
+.shoppingList:hover {
   transform: translateY(0.2rem);
 }
-.shoppingList a:active {
+.shoppingList:active {
   transform: translateY(0.4rem);
 }
 .dashboard__shoppingListContainer {

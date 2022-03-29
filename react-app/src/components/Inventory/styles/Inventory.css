@@ -4,8 +4,6 @@
   align-items: center;
   min-height: 45rem;
   margin: 7rem auto;
-  background-color: #fdfffc;
-  border: 1px lightgray solid;
 }
 .pantryList {
   width: 100%;
@@ -17,6 +15,7 @@
   font-family: 'Heebo';
   font-size: 2rem;
   margin: 0 auto;
+  text-align: center;
 }
 @media screen and (max-width: 768px) {
   .pantry {

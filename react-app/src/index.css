@@ -38,11 +38,12 @@ label {
 input {
   font-size: 1.2rem;
   font-family: inherit;
-  padding: 0.25rem 0.35rem;
+  padding: 0.35rem;
   background-color: #f7f7ff;
   border: 1px solid #d5d5d5;
   font-family: 'Hind Siliguri';
   border-radius: 0.7rem;
+  text-align: center;
 }
 a {
   text-decoration: none;
@@ -70,14 +71,8 @@ a:visited {
   border: 1px lightgray solid;
   border-radius: 0.75rem;
   height: 1000px;
-  background-color: lightgray;
+  background-color: #eeeeee;
   box-shadow: 0 0px px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-}
-
-@media screen and (max-width: 768px) {
-  #root {
-    background-color: white;
-  }
 }
 
 .table-styled {
@@ -135,4 +130,18 @@ caption {
   font-family: 'Hind Siliguri', 'sans-serif';
   font-size: 1.8rem;
   font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  #root {
+    background-color: white;
+  }
+  .dashboard__wrapper {
+    width: 100%;
+    margin: 0;
+  }
+  .table-styled {
+    width: 95%;
+    margin: 0 auto;
+    min-width: 0;
+  }
 }
