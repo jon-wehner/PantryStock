@@ -5,20 +5,24 @@ import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import { addItemToInventory } from '../../store/inventory';
 import { loadCategories } from '../../store/category';
-import { deleteShoppingListItem, loadOneShoppingList } from '../../store/shoppingList';
+import { deleteShoppingListItem, loadOneShoppingList, editShoppingList } from '../../store/shoppingList';
 import DeleteButton from './DeleteButton';
 import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';
+import FormErrors from '../FormErrors';
 import './styles/ShoppingList.css';
 
 export default function ShoppingList() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [loaded, setLoaded] = useState(false);
-  const [edit, setEdit] = useState(false);
-
   const categories = useSelector((state) => state.categories);
   const list = useSelector((state) => state.shoppingLists[id]);
+
+  const [loaded, setLoaded] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [name, setName] = useState('');
+  const [showInput, setShowInput] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(loadOneShoppingList(id));
@@ -28,6 +32,17 @@ export default function ShoppingList() {
       setLoaded(true);
     }
   }, [dispatch, id, categories]);
+
+  const saveShoppingList = async (e) => {
+    setErrors([]);
+    e.preventDefault();
+    const newList = await dispatch(editShoppingList(list.id, name, list.userId));
+    if (newList.errors) {
+      setErrors(newList.errors);
+    } else {
+      setEdit(false);
+    }
+  };
 
   const transferList = async () => {
     const itemsInCart = [];
@@ -59,10 +74,11 @@ export default function ShoppingList() {
           <div>
             <SearchBar pantry={false} />
             <h1 className="shoppingList__title">{list.name}</h1>
+            {errors && <FormErrors errors={errors} />}
             <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
               <FontAwesomeIcon icon={edit ? faSave : faEdit} />
             </button>
-            <DeleteButton id={shoppingList.id} />
+            <DeleteButton id={list.id} />
           </div>
           {!list.length && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
           {categories.map((category) => {
