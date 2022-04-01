@@ -63,6 +63,7 @@ function App() {
           element={<Inventory userId={userId} />}
         />
       </Routes>
+      <div className="footer" />
     </>
   );
 }
