@@ -95,7 +95,7 @@ export default function ShoppingList() {
         </button>
         <DeleteButton id={list.id} />
       </div>
-      {!list.length && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
+      {list && list.length === 0 && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
       {categories.map((category) => {
         const categoryItems = list.items.filter(
           (listItem) => listItem.item.categoryId === category.id,

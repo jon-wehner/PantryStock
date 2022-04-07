@@ -22,7 +22,7 @@ function NavBar({ authenticated, setAuthenticated }) {
     }
   };
   return (
-    <nav className="navbar" style={{ height: showNavLinks ? '12rem' : '6rem' }}>
+    <nav className="navbar" style={{ height: showNavLinks ? '14rem' : '6rem' }}>
       <div className="navbar__mobile">
         <Link to="/">
           <h1 className="navbar__logo">PantryStock </h1>
