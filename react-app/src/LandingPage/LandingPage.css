@@ -112,10 +112,10 @@
 @keyframes moveInRight {
   0%{
     opacity: 0;
-    transform: translateX(1.5rem);
+    transform: translateX(1rem);
   }
   80% {
-    transform: translateX(-2.2rem);
+    transform: translateX(-1rem);
   }
 
   100% {
@@ -130,7 +130,7 @@
     transform: translateX(-1.0rem);
   }
   80% {
-    transform: translateX(8rem);
+    transform: translateX(2rem);
   }
 
   100% {
