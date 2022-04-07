@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import LandingPage from './LandingPage';
 import Dashboard from './components/Dashboard';
 import Inventory from './components/Inventory';
+import Footer from './components/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ function App() {
           element={<Inventory userId={userId} />}
         />
       </Routes>
-      <div className="footer" />
+      <Footer />
     </>
   );
 }

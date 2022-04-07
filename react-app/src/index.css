@@ -68,9 +68,14 @@ a:visited {
   width: 65%;
   border: 1px lightgray solid;
   border-radius: 0.75rem;
-  height: 1000px;
+  height: 90%;
   background-color: #eeeeee;
   box-shadow: 0 0px px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.footer {
+  background-color: #264653;
+  height: 25%;
 }
 
 .table-styled {
