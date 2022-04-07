@@ -165,7 +165,10 @@ caption {
   }
   .table-styled {
     width: 95%;
-    margin: 0 auto;
+    margin: 1rem auto;
     min-width: 0;
+  }
+  .table-styled tbody tr td  {
+    font-size: 1.4rem;
   }
 }

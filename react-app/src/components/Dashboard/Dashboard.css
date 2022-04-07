@@ -67,7 +67,7 @@
     text-align: center;
   }
   .shoppingList {
-    justify-content: center;
+    justify-content: space-between;
   }
   .shoppingList a {
     width: 12rem;
