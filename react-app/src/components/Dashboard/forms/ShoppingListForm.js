@@ -13,7 +13,9 @@ export default function ShoppingListForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const shoppingList = await dispatch(createShoppingList(name, userId));
-    setErrors(shoppingList.errors);
+    if (shoppingList.errors) {
+      setErrors(shoppingList.errors);
+    }
   };
 
   return (

@@ -16,21 +16,21 @@ export default function ShoppingList() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const categories = useSelector((state) => state.categories);
-  const list = useSelector((state) => state.shoppingLists[id]);
-
-  const [loaded, setLoaded] = useState(false);
+  const shoppingLists = useSelector((state) => state.shoppingLists);
+  const list = shoppingLists[id];
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState('');
   const [errors, setErrors] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(loadOneShoppingList(id));
     if (!categories) {
       dispatch(loadCategories());
     } else {
-      setLoaded(true);
-      setName(list.name);
+      setName(list?.name);
     }
+    if (!loaded) setLoaded(true);
   }, [dispatch, id, categories]);
 
   const saveShoppingList = async (e) => {
@@ -80,20 +80,18 @@ export default function ShoppingList() {
       dispatch(deleteShoppingListItem(item.id, id));
     });
   };
-
-  if (!loaded) return null;
   return (
     <div className="dashboard__wrapper">
       <SearchBar pantry={false} />
       <div id="editList">
-        {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} /> : <h1 className="shoppingList__title">{list.name}</h1>}
+        {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} /> : <h1 className="shoppingList__title">{list?.name}</h1>}
       </div>
       {errors && <FormErrors errors={errors} />}
       <div className="shoppingList__buttonContainer">
         <button className="shoppingList__buttons" type="button" onClick={edit ? saveShoppingList : showInput}>
           <FontAwesomeIcon icon={edit ? faSave : faEdit} />
         </button>
-        <DeleteButton id={list.id} />
+        {list && <DeleteButton id={list.id} />}
       </div>
       {list && list.length === 0 && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
       {categories.map((category) => {
@@ -104,7 +102,7 @@ export default function ShoppingList() {
           <ShoppingListCategory key={category.id} category={category} items={categoryItems} />
         );
       })}
-      {list.items.length > 0 && (
+      {list && list.items.length > 0 && (
         <button type="button" id="addToInv" className="stdbutton" onClick={transferList}>
           Add items in cart to Inventory
         </button>

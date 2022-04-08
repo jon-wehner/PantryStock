@@ -10,7 +10,6 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.session.username);
   const userId = useSelector((state) => state.session.id);
-
   useEffect(() => {
     if (userName) {
       dispatch(loadCategories());

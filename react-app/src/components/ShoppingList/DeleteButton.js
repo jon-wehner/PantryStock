@@ -14,7 +14,7 @@ export default function DeleteButton({ id }) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ConfirmDelete id={id} setShowModal={setShowModal} />
+          <ConfirmDelete id={id} />
         </Modal>
       )}
     </>

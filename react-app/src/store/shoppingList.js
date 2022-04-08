@@ -161,8 +161,7 @@ const shoppingListReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case SET_SHOPPING_LISTS:
-      newState = { ...state, ...action.shoppingLists };
-      return newState;
+      return { ...state, ...action.shoppingLists };
     case EDIT_SHOPPING_LIST:
       newState = { ...state };
       newState[action.shoppingList.id] = action.shoppingList;

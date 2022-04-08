@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { deleteShoppingList } from '../../../store/shoppingList';
 import './ConfirmDelete.css';
 
-export default function ConfirmDelete({ id, setShowModal }) {
+export default function ConfirmDelete({ id }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigate('/', { replace: true });
     await dispatch(deleteShoppingList(id));
-    setShowModal(false);
   };
   return (
     <form className="deleteForm" onSubmit={handleSubmit}>
@@ -21,5 +24,4 @@ export default function ConfirmDelete({ id, setShowModal }) {
 
 ConfirmDelete.propTypes = {
   id: PropTypes.number.isRequired,
-  setShowModal: PropTypes.func.isRequired,
 };
