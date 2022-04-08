@@ -13,9 +13,12 @@ body {
   outline: none;
 }
 #root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   background-color: white;
-  height: 100vh;
+  min-height: 100vh;
 }
 button {
   cursor: pointer;
@@ -69,20 +72,19 @@ a:visited {
   width: 65%;
   border: 1px lightgray solid;
   border-radius: 0.75rem;
-  min-height: 800px;
+  min-height: 1100px;
   background-color: #eeeeee;
   box-shadow: 0 0px px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 .footer {
-  position: absolute;
-  bottom: 0%;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   background-color: #264653;
-  height: 7rem;
+  height: 14rem;
+  padding: 3rem;
 }
 
 #portfolioLink {
@@ -100,7 +102,7 @@ a:visited {
 
 .table-styled {
   border-collapse: collapse;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   table-layout: fixed;
   width: 75%;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
