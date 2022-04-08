@@ -31,7 +31,7 @@ export default function ShoppingList() {
       setName(list?.name);
     }
     if (!loaded) setLoaded(true);
-  }, [dispatch, id, categories, list]);
+  }, [dispatch, id, categories]);
 
   const saveShoppingList = async (e) => {
     setErrors([]);
