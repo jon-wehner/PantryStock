@@ -43,7 +43,7 @@
   margin: 2rem;
   background-image: linear-gradient(to right bottom, rgba(224, 228, 221, 0.5), rgba(40, 180, 133, 0.8)),url(./images/pantry.jpg);
   clip-path: polygon(13% 0%, 100% 0%, 87% 70%, 0% 70%);
-  height: 900px;
+  height: 1000px;
   animation: moveInLeft 2s ease-in-out 0s;
 }
 
