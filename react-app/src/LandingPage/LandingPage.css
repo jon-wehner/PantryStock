@@ -43,7 +43,7 @@
   margin: 2rem;
   background-image: linear-gradient(to right bottom, rgba(224, 228, 221, 0.5), rgba(40, 180, 133, 0.8)),url(./images/pantry.jpg);
   clip-path: polygon(13% 0%, 100% 0%, 87% 70%, 0% 70%);
-  height: 1000px;
+  height: 1100px;
   animation: moveInLeft 2s ease-in-out 0s;
 }
 
@@ -77,14 +77,19 @@
     font-size: 1rem;
     margin: 0 auto;
   }
+  .landpage__imagecontainer {
+    height: 600px;
+    clip-path: none;
+    padding: .5rem;
+  }
   .landpage__textbox {
     width: 100%;
   }
   .landpage__title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .landpage__text {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .landingpage__signup {
     flex-direction: column;
@@ -96,7 +101,7 @@
   }
   .signup__button {
     margin: 0 auto;
-    margin-top: 1rem;
+    margin-top: 1.2rem;
   }
   .fieldset__container {
     width: 100%;
