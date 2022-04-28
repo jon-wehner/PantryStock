@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Hind+Siliguri&family=Yantramanav&display=swap');
 
+:root {
+  --std-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
 html {
   margin: 0;
   font-size: 62.5%;
@@ -105,10 +109,14 @@ a:visited {
   margin: 1.5rem auto;
   table-layout: fixed;
   width: 75%;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  border-radius: 1.2rem;
+  box-shadow: var(--std-shadow);
   font-size: 1.6rem;
   font-family: 'Hind Siliguri', sans-serif;
   overflow: hidden;
+}
+.table-styled thead {
+  border-radius: 1.2rem;
 }
 .table-styled td,
 .table-styled th {
@@ -116,7 +124,6 @@ a:visited {
 }
 .table-styled thead tr {
   background-color: #264653;
-  border-radius: 0.6rem 0.6rem 0 0;
   color: #fdfffc;
   text-align: left;
 }
