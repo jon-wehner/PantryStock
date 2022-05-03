@@ -1,9 +1,9 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.4.0
-  node: circleci/node@4.1  
-jobs: 
+  python: circleci/python@2.0.3
+  node: circleci/node@5.0.2
+jobs:
   test-frontend:
     executor: node/default
     steps:
@@ -23,12 +23,12 @@ jobs:
       - checkout
       - python/install-packages:
           args: pytest
-          pkg-manager: pipenv      
-      - run: 
+          pkg-manager: pipenv
+      - run:
           command: |
             pipenv run pytest --version
           name: Run tests
-  deploy:    
+  deploy:
     machine: true
     steps:
       - checkout
@@ -43,11 +43,11 @@ workflows:
   test-and-deploy:
     jobs:
       - test-frontend
-      - build-test-backend      
+      - build-test-backend
       - deploy:
           requires:
             - test-frontend
             - build-test-backend
-          filters: 
+          filters:
             branches:
               only: main
