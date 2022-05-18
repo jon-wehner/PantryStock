@@ -17,6 +17,9 @@ jobs:
       - run:
           name: Run React Tests
           command: npm test --prefix react-app
+      - reun:
+          name: Run Playwright Tests
+          command: npx playwright test
   build-test-backend:
     executor: python/default
     steps:
