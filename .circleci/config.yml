@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Run React Tests
           command: npm test --prefix react-app
-      - reun:
+      - run:
           name: Run Playwright Tests
           command: npx playwright test
   build-test-backend:
