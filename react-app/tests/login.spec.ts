@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const playwrightUrl = process.env.NODE_ENV === 'production' ? process.env.STAGING_URL : 'http://127.0.0.1:3000';
+const playwrightUrl = process.env.NODE_ENV === 'staging' ? process.env.STAGING_URL : 'http://127.0.0.1:3000';
 
 test.describe('Login', () => {
   test.beforeEach(async ({ page }) => {
