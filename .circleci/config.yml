@@ -4,9 +4,6 @@ orbs:
   python: circleci/python@2.0.3
   node: circleci/node@5.0.2
 jobs:
-  build:
-    docker:
-      - image:
   test-frontend:
     executor: node/default
     steps:
@@ -22,7 +19,7 @@ jobs:
           command: npm test --prefix react-app
       - run:
           name: Install playwright browsers
-          command: npx install-deps
+          command: npx playwright install-deps
       - run:
           name: Run Playwright Tests
           command: cd react-app && npx playwright test
