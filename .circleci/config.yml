@@ -57,8 +57,8 @@ workflows:
     jobs:
       - build
       - deploy-to-staging:
-        requires:
-          - build
+          requires:
+            - build
       - test-frontend
       - build-test-backend
       - deploy:
