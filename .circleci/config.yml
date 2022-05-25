@@ -16,6 +16,7 @@ jobs:
       - heroku/install
       - heroku/push-docker-image:
           app-name: $HEROKU_STAGING_NAME
+          process-types: web
           recursive: true
   test-frontend:
     executor: node/default
