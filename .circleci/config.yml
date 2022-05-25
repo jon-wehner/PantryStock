@@ -1,9 +1,23 @@
 version: 2.1
 
 orbs:
+  heroku: circleci/heroku@1.2.6
   python: circleci/python@2.0.3
   node: circleci/node@5.0.2
 jobs:
+  deploy-to-staging:
+    docker:
+      - image: cimg/base:2022.05
+    steps:
+      - setup_remote_docker:
+          version: 20.10.14
+      - checkout
+      - heroku/install
+      - heroku/push-docker-image:
+          app-name: $HEROKU_STAGING_NAME
+          process-types: web
+      - heroku/release-docker-image:
+          app-name: $HEROKU_STAGING_NAME
   test-frontend:
     executor: node/default
     steps:
@@ -17,9 +31,6 @@ jobs:
       - run:
           name: Run React Tests
           command: npm test --prefix react-app
-      - run:
-          name: Run Playwright Tests
-          command: cd react-app && npx playwright test
   build-test-backend:
     executor: python/default
     steps:
@@ -31,6 +42,14 @@ jobs:
           command: |
             pipenv run pytest --version
           name: Run tests
+  run-playwright-tests:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.22.0-focal
+    steps:
+      - checkout
+      - run: cd react-app && npm install
+      - run: cd react-app && npx playwright install
+      - run: cd react-app && npx playwright test
   deploy:
     machine: true
     steps:
@@ -40,17 +59,22 @@ jobs:
           command: |
             sudo curl https://cli-assets.heroku.com/install.sh | sh
             HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a pantrystock web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a pantrystock web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
 workflows:
   test-and-deploy:
     jobs:
+      - deploy-to-staging
       - test-frontend
       - build-test-backend
+      - run-playwright-tests:
+          requires:
+            - deploy-to-staging
       - deploy:
           requires:
             - test-frontend
             - build-test-backend
+            - run-playwright-tests
           filters:
             branches:
               only: main
