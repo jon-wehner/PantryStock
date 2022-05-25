@@ -6,9 +6,11 @@ orbs:
   node: circleci/node@5.0.2
 jobs:
   deploy-to-staging:
-    machine: true
-    executor: heroku/default
+    docker:
+      - image: cimg/base:2022.05
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
       - checkout
       - heroku/install
       - heroku/push-docker-image:
