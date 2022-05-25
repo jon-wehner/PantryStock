@@ -5,12 +5,8 @@ orbs:
   python: circleci/python@2.0.3
   node: circleci/node@5.0.2
 jobs:
-  build:
-    machine: true
-    steps:
-      - checkout
-      - run: docker build .
   deploy-to-staging:
+    machine: true
     executor: heroku/default
     steps:
       - checkout
@@ -50,8 +46,8 @@ jobs:
           command: |
             sudo curl https://cli-assets.heroku.com/install.sh | sh
             HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a pantrystock web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a pantrystock web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
 workflows:
   test-and-deploy:
     jobs:
