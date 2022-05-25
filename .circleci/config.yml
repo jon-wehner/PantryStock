@@ -15,6 +15,7 @@ jobs:
       - run: docker build .
       - heroku/install
       - heroku/push-docker-image:
+          api-key: $HEROKU_API_KEY
           app-name: $HEROKU_STAGING_NAME
   test-frontend:
     executor: node/default
