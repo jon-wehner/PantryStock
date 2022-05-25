@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+const playwrightUrl = process.env.NODE_ENV === 'production' ? process.env.STAGING_URL : 'http://127.0.0.1:3000';
+
 test.describe('Login', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://127.0.0.1:3000');
+    await page.goto(playwrightUrl);
     await page.locator('text=Login').click();
   });
   test('user should be able to navigate to the login page', async ({ page }) => {

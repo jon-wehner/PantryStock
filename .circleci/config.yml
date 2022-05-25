@@ -1,9 +1,16 @@
 version: 2.1
 
 orbs:
+  heroku: circleci/heroku@1.2.6
   python: circleci/python@2.0.3
   node: circleci/node@5.0.2
 jobs:
+  deploy-to-staging:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/push-docker-image
+          app-name: $HEROKU_STAGING_NAME
   test-frontend:
     executor: node/default
     steps:
@@ -17,15 +24,6 @@ jobs:
       - run:
           name: Run React Tests
           command: npm test --prefix react-app
-      - run:
-          name: Install playwright browsers
-          command: cd react-app && npx playwright install --with-deps
-      - run:
-          name: Start app
-          command: cd react-app && npm start
-      - run:
-          name: Run Playwright Tests
-          command: cd react-app && npx playwright test
   build-test-backend:
     executor: python/default
     steps:
