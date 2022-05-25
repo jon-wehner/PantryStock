@@ -5,6 +5,11 @@ orbs:
   python: circleci/python@2.0.3
   node: circleci/node@5.0.2
 jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: docker build .
   deploy-to-staging:
     executor: heroku/default
     steps:
