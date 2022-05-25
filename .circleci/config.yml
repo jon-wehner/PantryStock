@@ -19,10 +19,10 @@ jobs:
           command: npm test --prefix react-app
       - run:
           name: Install playwright browsers
-          command: npx playwright install-deps
+          command: cd react-app && npx playwright install
       - run:
           name: Run Playwright Tests
-          command: cd react-app && npx playwright test
+          command: npx playwright test
   build-test-backend:
     executor: python/default
     steps:
