@@ -12,6 +12,7 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - checkout
+      - run: docker build .
       - heroku/install
       - heroku/push-docker-image:
           app-name: $HEROKU_STAGING_NAME
