@@ -22,7 +22,7 @@ jobs:
           command: cd react-app && npx playwright install
       - run:
           name: Run Playwright Tests
-          command: npx playwright test
+          command: cd react-app && npx playwright test
   build-test-backend:
     executor: python/default
     steps:
