@@ -6,8 +6,11 @@ orbs:
   node: circleci/node@5.0.2
 jobs:
   deploy-to-staging:
-    executor: heroku/default
+    docker:
+      - image: cimg/base:2022.05
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
       - checkout
       - heroku/install
       - heroku/push-docker-image:
@@ -45,8 +48,8 @@ jobs:
           command: |
             sudo curl https://cli-assets.heroku.com/install.sh | sh
             HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a pantrystock web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a pantrystock web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
 workflows:
   test-and-deploy:
     jobs:
