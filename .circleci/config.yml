@@ -67,7 +67,7 @@ workflows:
       - deploy-to-staging
       - test-frontend
       - build-test-backend
-      - run-playwright-tests
+      - run-playwright-tests:
           requires:
             - deploy-to-staging
       - deploy:
