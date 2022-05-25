@@ -68,10 +68,13 @@ workflows:
       - test-frontend
       - build-test-backend
       - run-playwright-tests
+          requires:
+            - deploy-to-staging
       - deploy:
           requires:
             - test-frontend
             - build-test-backend
+            - run-playwright-tests
           filters:
             branches:
               only: main
