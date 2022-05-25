@@ -4,6 +4,9 @@ orbs:
   python: circleci/python@2.0.3
   node: circleci/node@5.0.2
 jobs:
+  build:
+    docker:
+      - image:
   test-frontend:
     executor: node/default
     steps:
