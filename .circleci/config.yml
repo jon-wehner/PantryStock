@@ -9,7 +9,8 @@ jobs:
     executor: heroku/default
     steps:
       - checkout
-      - heroku/push-docker-image
+      - heroku/install
+      - heroku/push-docker-image:
           app-name: $HEROKU_STAGING_NAME
   test-frontend:
     executor: node/default
@@ -49,6 +50,7 @@ jobs:
 workflows:
   test-and-deploy:
     jobs:
+      - deploy-to-staging
       - test-frontend
       - build-test-backend
       - deploy:
