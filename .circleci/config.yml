@@ -56,7 +56,9 @@ workflows:
   test-and-deploy:
     jobs:
       - build
-      - deploy-to-staging
+      - deploy-to-staging:
+        requires:
+          - build
       - test-frontend
       - build-test-backend
       - deploy:
