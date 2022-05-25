@@ -21,6 +21,9 @@ jobs:
           name: Install playwright browsers
           command: cd react-app && npx playwright install --with-deps
       - run:
+          name: Start app
+          command: cd react-app && npm start
+      - run:
           name: Run Playwright Tests
           command: cd react-app && npx playwright test
   build-test-backend:
