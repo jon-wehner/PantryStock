@@ -16,6 +16,7 @@ jobs:
       - heroku/install
       - heroku/push-docker-image:
           app-name: $HEROKU_STAGING_NAME
+          recursive: true
   test-frontend:
     executor: node/default
     steps:
@@ -54,7 +55,10 @@ jobs:
 workflows:
   test-and-deploy:
     jobs:
-      - deploy-to-staging
+      - build
+      - deploy-to-staging:
+          requires:
+            - build
       - test-frontend
       - build-test-backend
       - deploy:
