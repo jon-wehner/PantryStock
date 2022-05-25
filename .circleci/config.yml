@@ -19,7 +19,7 @@ jobs:
           command: npm test --prefix react-app
       - run:
           name: Install playwright browsers
-          command: cd react-app && npx playwright install
+          command: cd react-app && npx playwright install --with-deps
       - run:
           name: Run Playwright Tests
           command: cd react-app && npx playwright test
