@@ -51,16 +51,18 @@ jobs:
       - run: npx playwright install
       - run: npx playwright test
   deploy:
-    machine: true
+    docker:
+      - image: cimg/base:2022.05
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
       - checkout
-      - run:
-          name: Build and push Docker image to Heroku
-          command: |
-            sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
+      - heroku/install
+      - heroku/push-docker-image:
+          app-name: $HEROKU_APP_NAME
+          process-types: web
+      - heroku/release-docker-image:
+          app-name: $HEROKU_APP_NAME
 workflows:
   test-and-deploy:
     jobs:
