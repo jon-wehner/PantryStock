@@ -66,10 +66,16 @@ jobs:
 workflows:
   test-and-deploy:
     jobs:
-      - deploy-to-staging
+      - deploy-to-staging:
+          filters:
+            branches:
+              only: main
       - test-frontend
       - build-test-backend
       - run-playwright-tests:
+          filters:
+            branches:
+              only: main
           requires:
             - deploy-to-staging
             - test-frontend
