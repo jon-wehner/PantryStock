@@ -47,9 +47,9 @@ jobs:
       - image: mcr.microsoft.com/playwright:v1.22.0-focal
     steps:
       - checkout
-      - run: cd react-app && npm install
-      - run: cd react-app && npx playwright install
-      - run: cd react-app && npx playwright test
+      - run: npm install
+      - run: npx playwright install
+      - run: npx playwright test
   deploy:
     machine: true
     steps:
@@ -70,6 +70,8 @@ workflows:
       - run-playwright-tests:
           requires:
             - deploy-to-staging
+            - test-frontend
+            - build-test-backend
       - deploy:
           requires:
             - test-frontend
