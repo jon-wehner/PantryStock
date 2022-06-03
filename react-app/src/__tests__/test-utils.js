@@ -48,7 +48,11 @@ const testState = {
   items: {
     results: [
       {
-        category: 'Produce', categoryId: 1, fridge: true, id: 1, name: 'Lettuce',
+        category: 'Produce',
+        categoryId: 1,
+        fridge: true,
+        id: 1,
+        name: 'Lettuce',
       },
     ],
   },
