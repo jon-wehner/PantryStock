@@ -8,9 +8,7 @@ import configureStore from './store';
 import { ModalProvider } from './context/Modal';
 
 const store = configureStore();
-if (process.env.NODE_ENV !== 'production') {
-  window.store = store;
-}
+
 function AppContainer() {
   return (
     <Provider store={store}>
