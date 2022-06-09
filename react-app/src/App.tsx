@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import ShoppingList from './components/ShoppingList';
 import { authenticate } from './store/session';
 import LandingPage from './LandingPage';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard/index';
 import Inventory from './components/Inventory';
 import Footer from './components/Footer';
 
