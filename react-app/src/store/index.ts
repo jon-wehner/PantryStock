@@ -5,7 +5,6 @@ import {
 } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { logger } from 'redux-logger';
-import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import itemReducer from './items';
 import shoppingListReducer from './shoppingList';
@@ -24,6 +23,8 @@ export const reducer = {
 
 export const store = configureStore({ 
   reducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger) 
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
-})
+

@@ -1,6 +1,8 @@
 {
     "env": {
-        "es2021": true
+      "browser": true,
+      "es2021": true,
+      "jest": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -36,8 +38,7 @@
         "react/jsx-filename-extension": [2, {
           "extensions": [
             ".jsx",
-            ".tsx",
-            ".js"
+            ".tsx"
           ]
         }],
         "react/require-default-props": 0,
