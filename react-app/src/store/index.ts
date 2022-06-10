@@ -3,6 +3,8 @@
 import {
   createStore, combineReducers, applyMiddleware, compose,
 } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { logger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import itemReducer from './items';
@@ -10,24 +12,18 @@ import shoppingListReducer from './shoppingList';
 import inventoryReducer from './inventory';
 import categoryReducer from './category';
 
-const rootReducer = combineReducers({
+
+
+export const reducer = {
   session: sessionReducer,
   items: itemReducer,
   shoppingLists: shoppingListReducer,
   inventory: inventoryReducer,
   categories: categoryReducer,
-});
+};
 
-let enhancer;
+export const store = configureStore({ 
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger) 
 
-if (process.env.NODE_ENV === 'production') {
-  enhancer = applyMiddleware(thunk);
-} else {
-  const logger = require('redux-logger').default;
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  enhancer = composeEnhancers(applyMiddleware(thunk, logger));
-}
-
-const configureStore = (preloadedState) => createStore(rootReducer, preloadedState, enhancer);
-
-export default configureStore;
+})
