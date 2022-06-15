@@ -69,7 +69,13 @@ export const authenticate = () => async (dispatch) => {
   return response.json();
 };
 
-const initialState = {
+interface sessionState {
+  username: null | string[],
+  email: null | string[],
+  id: null | string[],
+}
+
+const initialState: sessionState = {
   username: null,
   email: null,
   id: null,

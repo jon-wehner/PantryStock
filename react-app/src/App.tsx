@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from './hooks';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -10,11 +11,12 @@ import LandingPage from './LandingPage';
 import Dashboard from './components/Dashboard/index';
 import Inventory from './components/Inventory';
 import Footer from './components/Footer';
+import { RootState } from './store';
 
 function App() {
   const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
-  const userId = useSelector((state) => state.session.id);
+  const userId = useAppSelector((state) => state.session.id);
 
   useEffect(() => {
     (async () => {
