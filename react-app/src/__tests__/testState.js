@@ -1,9 +1,3 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import configureStore from '../store';
-
 const testState = {
   inventory: { fridge: null, pantry: null },
   shoppingLists: {
@@ -57,12 +51,5 @@ const testState = {
     ],
   },
 };
-function Wrapper({ children }) {
-  return <Provider store={configureStore(testState)}>{children}</Provider>;
-}
 
-const customRender = (ui, options) => render(ui, { wrapper: Wrapper, ...options });
-
-export * from '@testing-library/react';
-
-export { customRender as render };
+export default testState;

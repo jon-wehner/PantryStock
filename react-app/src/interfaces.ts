@@ -26,3 +26,11 @@ export interface ShoppingList {
   name: string,
   userId: number
 }
+
+export interface CartItem {
+  userId: number,
+  itemId: number,
+  measurementId: number,
+  inCart: boolean,
+  item: Item
+}

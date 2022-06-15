@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addItemToInventory } from '../../store/inventory';
 import { loadCategories } from '../../store/category';
 import { deleteShoppingListItem, loadOneShoppingList, editShoppingList } from '../../store/shoppingList';
@@ -11,13 +11,15 @@ import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';
 import FormErrors from '../FormErrors';
 import './styles/ShoppingList.css';
+import { CartItem } from '../../interfaces';
 
 export default function ShoppingList() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { id } = useParams();
-  const categories = useSelector((state) => state.categories);
-  const shoppingLists = useSelector((state) => state.shoppingLists);
-  const list = shoppingLists[id];
+  const shoppingListId = id ? parseInt(id, 10) : 0;
+  const categories = useAppSelector((state) => state.categories);
+  const shoppingLists = useAppSelector((state) => state.shoppingLists);
+  const list = shoppingLists[shoppingListId];
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState('');
   const [errors, setErrors] = useState([]);
@@ -60,25 +62,27 @@ export default function ShoppingList() {
   };
 
   const transferList = async () => {
-    const itemsInCart = [];
-    list.items.forEach((item) => {
-      if (item.inCart) {
-        itemsInCart.push(item);
-      }
-    });
-    await itemsInCart.forEach((item) => {
-      const newItem = item;
-      newItem.userId = list.userId;
-      newItem.itemId = item.item.id;
-      delete newItem.item;
-      newItem.measurementId = item.measurement.id;
-      delete newItem.measurement;
+    const itemsInCart: [CartItem] | [] = [];
+    if (list.length) {
+      list.items.forEach((item: CartItem) => {
+        if (item.inCart) {
+          itemsInCart.push(item);
+        }
+      });
+      await itemsInCart.forEach((item) => {
+        const newItem = item;
+        newItem.userId = list.userId;
+        newItem.itemId = item.item.id;
+        delete newItem.item;
+        newItem.measurementId = item.measurement.id;
+        delete newItem.measurement;
 
-      dispatch(addItemToInventory(newItem));
-    });
-    await itemsInCart.forEach((item) => {
-      dispatch(deleteShoppingListItem(item.id, id));
-    });
+        dispatch(addItemToInventory(newItem));
+      });
+      await itemsInCart.forEach((item) => {
+        dispatch(deleteShoppingListItem(item.id, id));
+      });
+    }
   };
   return (
     <div className="dashboard__wrapper">
