@@ -4,10 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
-import configureStore from './store';
+import { store } from './store';
 import { ModalProvider } from './context/Modal';
-
-const store = configureStore();
 
 function AppContainer() {
   return (
