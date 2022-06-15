@@ -34,3 +34,8 @@ export interface CartItem {
   inCart: boolean,
   item: Item
 }
+
+export interface Measurement {
+  id: number,
+  unit: string
+}

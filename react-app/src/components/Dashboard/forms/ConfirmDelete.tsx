@@ -1,12 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks';
 import { deleteShoppingList } from '../../../store/shoppingList';
 import './ConfirmDelete.css';
 
-export default function ConfirmDelete({ id }) {
-  const dispatch = useDispatch();
+interface ConfirmDeleteProps {
+  id: number
+}
+export default function ConfirmDelete({ id }: ConfirmDeleteProps) {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,7 +23,3 @@ export default function ConfirmDelete({ id }) {
     </form>
   );
 }
-
-ConfirmDelete.propTypes = {
-  id: PropTypes.number.isRequired,
-};

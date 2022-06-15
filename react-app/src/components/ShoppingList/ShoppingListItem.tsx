@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../hooks';
 import { Modal } from '../../context/Modal';
 import EditShoppingListItem from './forms/EditShoppingListItem';
 import { addRemoveCart } from '../../store/shoppingList';
 import { getQuantityString } from '../../services/utils';
 
 export default function ShoppingListItem({ row }) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState(false);
 
   const toggleCart = (e) => {

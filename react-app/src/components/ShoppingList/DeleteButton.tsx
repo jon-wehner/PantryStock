@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from '../../context/Modal';
 import ConfirmDelete from '../Dashboard/forms/ConfirmDelete';
 
-export default function DeleteButton({ id }) {
+interface DeleteButtonProps {
+  id: number
+}
+export default function DeleteButton({ id }: DeleteButtonProps) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -20,6 +22,3 @@ export default function DeleteButton({ id }) {
     </>
   );
 }
-DeleteButton.propTypes = {
-  id: PropTypes.number.isRequired,
-};
