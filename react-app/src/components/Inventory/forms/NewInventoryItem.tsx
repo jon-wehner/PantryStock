@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { addItemToInventory } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
 import PackageSizeSelect from '../../PackageSizeSelect';
 import FormErrors from '../../FormErrors';
+import { Item } from '../../../interfaces';
 
-export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.id);
+interface NewInventoryItemProps {
+  item: Item,
+  setShowModal: Function,
+  hideMenu: Function
+}
+export default function NewInventoryItem({ item, setShowModal, hideMenu }: NewInventoryItemProps) {
+  const dispatch = useAppDispatch();
+  const userId = useAppSelector((state) => state.session.id);
 
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState('');
@@ -64,14 +69,3 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }) {
     </form>
   );
 }
-
-NewInventoryItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    fridge: PropTypes.bool.isRequired,
-    categoryId: PropTypes.number.isRequired,
-  }).isRequired,
-  setShowModal: PropTypes.func.isRequired,
-  hideMenu: PropTypes.func.isRequired,
-};

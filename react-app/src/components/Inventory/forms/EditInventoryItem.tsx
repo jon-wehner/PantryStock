@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { editInvItem, removeInvItem } from '../../../store/inventory';
 import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
 import FormErrors from '../../FormErrors';
+import { InventoryItemInterface } from '../../../interfaces';
 
-export default function EditInventoryItem({ row, setShowModal }) {
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.id);
-  const measurements = useSelector((state) => state.items.measurements);
+interface EditInventoryItemProps {
+  row: InventoryItemInterface,
+  setShowModal: Function
+}
+
+export default function EditInventoryItem({ row, setShowModal }: EditInventoryItemProps) {
+  const dispatch = useAppDispatch();
+  const userId = useAppSelector((state) => state.session.id);
+  const measurements = useAppSelector((state) => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState(row.measurement.id);
@@ -53,7 +58,7 @@ export default function EditInventoryItem({ row, setShowModal }) {
   };
 
   const handleDelete = async () => {
-    setErrors('');
+    setErrors([]);
     const response = await dispatch(removeInvItem(row.id, userId));
     if (response.errors) {
       setErrors(response.errors);
@@ -73,9 +78,9 @@ export default function EditInventoryItem({ row, setShowModal }) {
         </h2>
         <label htmlFor="EditInventoryItemQuantity">
           Quantity:
-          <input id="EditInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+          <input id="EditInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />
         </label>
-        <select value={measurementId} onChange={(e) => setMeasurementId(e.target.value)}>
+        <select value={measurementId} onChange={(e) => setMeasurementId(parseInt(e.target.value, 10))}>
           {measurements && measurements.map((measurement) => (
             <option
               value={measurement.id}
@@ -95,22 +100,3 @@ export default function EditInventoryItem({ row, setShowModal }) {
     </div>
   );
 }
-
-EditInventoryItem.propTypes = {
-  row: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-    expirationDate: PropTypes.string,
-    measurement: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      unit: PropTypes.string.isRequired,
-    }),
-    item: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      fridge: PropTypes.bool.isRequired,
-      categoryId: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-  setShowModal: PropTypes.func.isRequired,
-};

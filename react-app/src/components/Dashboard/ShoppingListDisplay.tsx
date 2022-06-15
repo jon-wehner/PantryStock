@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
+import { ShoppingList } from '../../interfaces';
 import DisplayRow from './DisplayRow';
 
 export default function ShoppingListDisplay() {
-  const shoppingLists = useSelector((state) => state.shoppingLists);
+  const shoppingLists: [ShoppingList] = useAppSelector((state) => state.shoppingLists);
 
   const [loaded, setLoaded] = useState(false);
 

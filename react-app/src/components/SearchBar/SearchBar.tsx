@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { searchItems } from '../../store/items';
 import SearchResult from './SearchResult';
 import './SearchBar.css';
 
-export default function SearchBar({ inventory }) {
-  const dispatch = useDispatch();
+interface SearchBarProps {
+  inventory: boolean
+}
+export default function SearchBar({ inventory }: SearchBarProps) {
+  const dispatch = useAppDispatch();
   const [query, setQuery] = useState('');
   const [showMenu, setShowMenu] = useState(false);
-  const results = useSelector((state) => state.items.results);
+  const results = useAppSelector((state) => state.items.results);
   // TODO: Refactor search delay to remove return statement
   // eslint-disable-next-line consistent-return
   useEffect(() => {
@@ -53,10 +55,3 @@ export default function SearchBar({ inventory }) {
     </div>
   );
 }
-
-SearchBar.propTypes = {
-  inventory: PropTypes.bool,
-};
-SearchBar.defaultProps = {
-  inventory: null,
-};

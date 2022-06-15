@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useAppDispatch } from '../../../hooks';
 import { loadMeasurements } from '../../../store/items';
 import { addEditShoppingListItem } from '../../../store/shoppingList';
 import '../styles/ShoppingListForms.css';
 import PackageSizeSelect from '../../PackageSizeSelect';
 import FormErrors from '../../FormErrors';
+import { Item } from '../../../interfaces';
 
-export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
-  const dispatch = useDispatch();
+interface AddShoppingListItemProps {
+  item: Item,
+  setShowModal: Function,
+  hideMenu: Function,
+}
+export default function AddShoppingListItem({ item, setShowModal, hideMenu }: AddShoppingListItemProps) {
+  const dispatch = useAppDispatch();
   const { id: shoppingListId } = useParams();
 
   const [loaded, setLoaded] = useState(false);
@@ -61,14 +66,3 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }) {
     </form>
   );
 }
-
-AddShoppingListItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    fridge: PropTypes.bool.isRequired,
-    category: PropTypes.string.isRequired,
-  }).isRequired,
-  setShowModal: PropTypes.func.isRequired,
-  hideMenu: PropTypes.func.isRequired,
-};
