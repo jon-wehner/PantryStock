@@ -19,16 +19,16 @@ export default function SearchBar({ inventory }: SearchBarProps) {
       await dispatch(searchItems(query));
       setShowMenu(true);
     }
-    let timeout;
+    let timeout: NodeJS.Timeout;
     if (query) {
       timeout = setTimeout(handleSearch, 500);
     }
     return () => clearTimeout(timeout);
   }, [query, dispatch]);
-  const handleQuery = (e) => {
-    setQuery(e.target.value);
+  const handleQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
     setTimeout(() => {
-      if (e.target.value === '') setShowMenu(false);
+      if (event.target.value === '') setShowMenu(false);
     }, 1000);
   };
   const hideMenu = () => {

@@ -102,9 +102,8 @@ export const removeInvItem = (id, userId) => async (dispatch: AppDispatch) => {
 interface inventoryState {
   fridge: InventoryItemInterface[]
   pantry: InventoryItemInterface[]
-
-
 }
+
 const initialState: inventoryState = {
   fridge: [],
   pantry: [],

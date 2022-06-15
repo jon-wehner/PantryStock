@@ -16,7 +16,7 @@ function LoginForm({ authenticated }: LoginFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onLogin = async (e) => {
+  const onLogin = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = await dispatch(login(email, password));
     if (!user.errors) {
@@ -35,19 +35,11 @@ function LoginForm({ authenticated }: LoginFormProps) {
       },
     );
   };
-  const signInDemo = async (e) => {
-    e.preventDefault(e);
+  const signInDemo = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
     await dispatch(login('demo@aa.io', 'password'));
     navigate('/');
   };
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
   if (authenticated) {
     navigate('/');
   }
@@ -71,7 +63,7 @@ function LoginForm({ authenticated }: LoginFormProps) {
               type="text"
               placeholder="example@email.com"
               value={email}
-              onChange={updateEmail}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </label>
         </div>
@@ -83,7 +75,7 @@ function LoginForm({ authenticated }: LoginFormProps) {
               type="password"
               placeholder="*********"
               value={password}
-              onChange={updatePassword}
+              onChange={(event) => setPassword(event.target.value)}
             />
           </label>
         </div>

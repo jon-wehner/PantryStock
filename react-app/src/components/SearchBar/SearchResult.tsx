@@ -11,7 +11,7 @@ interface SearchResultProps {
 }
 export default function SearchResult({ item, inventory, hideMenu }: SearchResultProps) {
   const [showModal, setShowModal] = useState(false);
-  const handleEnter = (e) => {
+  const handleEnter = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       setShowModal(true);
     }

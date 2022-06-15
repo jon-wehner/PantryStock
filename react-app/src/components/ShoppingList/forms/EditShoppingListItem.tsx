@@ -28,7 +28,7 @@ export default function EditShoppingListItem({ row, setShowModal }: EditShopping
     setLoaded(true);
   }, [dispatch]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     setErrors([]);
     e.preventDefault();
     const shoppingListItem = {

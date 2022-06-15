@@ -11,7 +11,7 @@ export default function ConfirmDelete({ id }: ConfirmDeleteProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate('/', { replace: true });
     await dispatch(deleteShoppingList(id));

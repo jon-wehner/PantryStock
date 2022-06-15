@@ -1,3 +1,5 @@
+import { Item, Measurement } from '../interfaces';
+
 const SET_RESULTS = 'items/setResults';
 const SET_MEASUREMENTS = 'items/setMeasurements';
 
@@ -37,8 +39,15 @@ export const searchItems = (query) => async (dispatch) => {
     return err;
   }
 };
-const initialState = {
-  results: null,
+
+interface ItemState {
+  results: Item[],
+  measurements: Measurement[]
+}
+
+const initialState: ItemState = {
+  results: [],
+  measurements: [],
 };
 const itemReducer = (state = initialState, action) => {
   let newState;

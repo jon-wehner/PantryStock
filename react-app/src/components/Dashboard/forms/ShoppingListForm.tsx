@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { createShoppingList } from '../../../store/shoppingList';
 import FormErrors from '../../FormErrors';
 import './ShoppingListForm.css';
 
 export default function ShoppingListForm() {
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.id);
+  const dispatch = useAppDispatch();
+  const userId = useAppSelector((state) => state.session.id);
   const [name, setName] = useState('');
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const shoppingList = await dispatch(createShoppingList(name, userId));
     if (shoppingList.errors) {

@@ -25,7 +25,7 @@ function SignUpForm({ authenticated, setAuthenticated }: SignUpFormProps) {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
-  const onSignUp = async (e) => {
+  const onSignUp = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = await dispatch(signUp(username, email, password, repeatPassword));
     if (!user.errors) {

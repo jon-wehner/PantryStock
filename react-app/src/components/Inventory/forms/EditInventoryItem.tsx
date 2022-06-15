@@ -5,7 +5,7 @@ import { loadMeasurements } from '../../../store/items';
 import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
 import FormErrors from '../../FormErrors';
-import { InventoryItemInterface } from '../../../interfaces';
+import { InventoryItemInterface, Measurement } from '../../../interfaces';
 
 interface EditInventoryItemProps {
   row: InventoryItemInterface,
@@ -81,7 +81,7 @@ export default function EditInventoryItem({ row, setShowModal }: EditInventoryIt
           <input id="EditInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />
         </label>
         <select value={measurementId} onChange={(e) => setMeasurementId(parseInt(e.target.value, 10))}>
-          {measurements && measurements.map((measurement) => (
+          {measurements && measurements.map((measurement: Measurement) => (
             <option
               value={measurement.id}
               key={measurement.id}

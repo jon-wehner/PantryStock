@@ -11,7 +11,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';
 import FormErrors from '../FormErrors';
 import './styles/ShoppingList.css';
-import { CartItem } from '../../interfaces';
+import { CartItem, Category, ShoppingListInterface } from '../../interfaces';
 
 export default function ShoppingList() {
   const dispatch = useAppDispatch();
@@ -19,13 +19,12 @@ export default function ShoppingList() {
   const shoppingListId = id ? parseInt(id, 10) : 0;
   const categories = useAppSelector((state) => state.categories);
   const shoppingLists = useAppSelector((state) => state.shoppingLists);
-  const list = shoppingLists[shoppingListId];
+  const list: ShoppingListInterface = shoppingLists[shoppingListId];
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState('');
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
-  console.log(shoppingLists);
   useEffect(() => {
     dispatch(loadOneShoppingList(id));
     if (!categories) {
@@ -36,9 +35,8 @@ export default function ShoppingList() {
     if (!loaded) setLoaded(true);
   }, [dispatch, id, categories]);
 
-  const saveShoppingList = async (e) => {
+  const saveShoppingList = async () => {
     setErrors([]);
-    e.preventDefault();
     const newList = await dispatch(editShoppingList(list.id, name, list.userId));
     if (newList.errors) {
       setErrors(newList.errors);
@@ -47,34 +45,28 @@ export default function ShoppingList() {
     }
   };
 
-  const showInput = (e) => {
-    e.preventDefault();
+  const showInput = () => {
     setEdit(true);
   };
 
-  const updateName = (e) => {
+  const updateName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
-  const handleEnter = (e) => {
+  const handleEnter = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      saveShoppingList(e);
+      saveShoppingList();
     }
   };
 
   const transferList = async () => {
-    if (list.length) {
-      const itemsInCart = list.items.forEach((item: CartItem) => {
-        if (item.inCart) {
-          itemsInCart.push(item);
-        }
-      });
+    if (list.items.length) {
+      const itemsInCart = list.items.filter((item) => item.inCart);
       await itemsInCart.forEach((item) => {
-        const newItem = item;
-        newItem.userId = list.userId;
-        newItem.itemId = item.item.id;
+        const newItem: CartItem = {
+          ...item, userId: list.userId, itemId: item.item.id, measurementId: item.measurement.id,
+        };
         delete newItem.item;
-        newItem.measurementId = item.measurement.id;
         delete newItem.measurement;
 
         dispatch(addItemToInventory(newItem));
@@ -97,8 +89,8 @@ export default function ShoppingList() {
         </button>
         {list && <DeleteButton id={list.id} />}
       </div>
-      {list && list.length === 0 && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
-      {categories && list && categories.map((category) => {
+      {list && list.items.length === 0 && <h1 className="shoppingList__title">This list has no items, add some!</h1>}
+      {categories && list && categories.map((category: Category) => {
         const categoryItems = list.items.filter(
           (listItem) => listItem.item.categoryId === category.id,
         );

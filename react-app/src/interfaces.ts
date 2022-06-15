@@ -20,26 +20,10 @@ export interface InventoryItemInterface {
   item: Item
 }
 
-export interface ShoppingList {
-  id: number,
-  items: [Item],
-  name: string,
-  userId: number
-}
-
-export interface CartItem {
-  userId: number,
-  itemId: number,
-  measurementId: number,
-  inCart: boolean,
-  item: Item
-}
-
 export interface Measurement {
   id: number,
   unit: string
 }
-
 export interface ShoppingListItemInterface {
   id: number,
   quantity: number,
@@ -47,4 +31,23 @@ export interface ShoppingListItemInterface {
   shoppingListId: number,
   measurement: Measurement,
   item: Item
+}
+
+export interface ShoppingListInterface {
+  id: number,
+  items: ShoppingListItemInterface[],
+  name: string,
+  userId: number
+}
+
+export interface CartItem {
+  id: number,
+  quantity: number,
+  inCart: boolean,
+  shoppingListId: number,
+  userId: number,
+  measurementId: number
+  itemId: number
+  measurement?: Measurement,
+  item?: Item
 }
