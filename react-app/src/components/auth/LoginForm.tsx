@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useAppDispatch } from '../../hooks';
 import { login } from '../../store/session';
 import './AuthForm.css';
 import FormErrors from '../FormErrors';
 
-function LoginForm({ authenticated }) {
+interface LoginFormProps {
+  authenticated: boolean
+}
+
+function LoginForm({ authenticated }: LoginFormProps) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -93,9 +96,5 @@ function LoginForm({ authenticated }) {
     </div>
   );
 }
-
-LoginForm.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
-};
 
 export default LoginForm;

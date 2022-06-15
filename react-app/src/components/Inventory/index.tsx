@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getUserInventory } from '../../store/inventory';
 import InventoryCategory from './InventoryCategory';
 import SearchBar from '../SearchBar/SearchBar';
 import './styles/Inventory.css';
 import { loadCategories } from '../../store/category';
 
-export default function Inventory({ userId }) {
-  const dispatch = useDispatch();
+interface InventoryProps {
+  userId: number
+}
+export default function Inventory({ userId }: InventoryProps) {
+  const dispatch = useAppDispatch();
   const [loaded, setLoaded] = useState(false);
-  const categories = useSelector((state) => state.categories);
-  const fridge = useSelector((state) => state.inventory.fridge);
-  const pantry = useSelector((state) => state.inventory.pantry);
+  const categories = useAppSelector((state) => state.categories);
+  const fridge = useAppSelector((state) => state.inventory.fridge);
+  const pantry = useAppSelector((state) => state.inventory.pantry);
 
   useEffect(() => {
     if (userId) {
@@ -60,10 +62,3 @@ export default function Inventory({ userId }) {
     </div>
   );
 }
-
-Inventory.propTypes = {
-  userId: PropTypes.number,
-};
-Inventory.defaultProps = {
-  userId: null,
-};

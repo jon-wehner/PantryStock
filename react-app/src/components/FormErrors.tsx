@@ -1,7 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-export default function FormErrors({ errors }) {
+interface FormErrorsProps {
+  errors: [string]
+}
+
+export default function FormErrors({ errors }: FormErrorsProps) {
   return (
     <div className="errors__container">
       {errors.map((error) => (
@@ -11,7 +14,3 @@ export default function FormErrors({ errors }) {
 
   );
 }
-
-FormErrors.propTypes = {
-  errors: PropTypes.arrayOf(PropTypes.string).isRequired,
-};

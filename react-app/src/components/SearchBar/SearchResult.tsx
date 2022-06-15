@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Modal } from '../../context/Modal';
 import AddShoppingListItem from '../ShoppingList/forms/AddShoppingListItem';
 import NewInventoryItem from '../Inventory/forms/NewInventoryItem';
+import { Item } from '../../interfaces';
 
-export default function SearchResult({ item, inventory, hideMenu }) {
+interface SearchResultProps {
+  item: Item,
+  inventory: boolean,
+  hideMenu: Function
+}
+export default function SearchResult({ item, inventory, hideMenu }: SearchResultProps) {
   const [showModal, setShowModal] = useState(false);
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
@@ -48,17 +53,3 @@ export default function SearchResult({ item, inventory, hideMenu }) {
     </>
   );
 }
-
-SearchResult.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    fridge: PropTypes.bool.isRequired,
-    categoryId: PropTypes.number.isRequired,
-  }).isRequired,
-  inventory: PropTypes.bool,
-  hideMenu: PropTypes.func.isRequired,
-};
-SearchResult.defaultProps = {
-  inventory: null,
-};

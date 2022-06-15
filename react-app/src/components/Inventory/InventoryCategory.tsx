@@ -1,8 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import InventoryItem from './InventoryItem';
+import { InventoryItemInterface } from '../../interfaces';
 
-export default function InventoryCategory({ category, items }) {
+interface InventoryCategoryProps {
+  category: {
+    name: string
+  },
+  items: [InventoryItemInterface]
+}
+export default function InventoryCategory({ category, items }: InventoryCategoryProps) {
   if (!items.length) return null;
   return (
     <table className="table-styled">
@@ -22,18 +28,3 @@ export default function InventoryCategory({ category, items }) {
     </table>
   );
 }
-
-InventoryCategory.propTypes = {
-  category: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    fridge: PropTypes.bool,
-    categoryId: PropTypes.number,
-  })),
-};
-InventoryCategory.defaultProps = {
-  items: null,
-};

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Modal } from '../../context/Modal';
 import EditInventoryItem from './forms/EditInventoryItem';
 import { getExpirationString, getQuantityString } from '../../services/utils';
+import { InventoryItemInterface } from '../../interfaces';
 
-export default function InventoryItem({ row }) {
+interface InventoryItemProps {
+  row: InventoryItemInterface
+}
+export default function InventoryItem({ row }: InventoryItemProps) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -32,21 +35,3 @@ export default function InventoryItem({ row }) {
     </>
   );
 }
-
-InventoryItem.propTypes = {
-  row: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-    expirationDate: PropTypes.string,
-    measurement: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      unit: PropTypes.string.isRequired,
-    }),
-    item: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      fridge: PropTypes.bool.isRequired,
-      categoryId: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-};

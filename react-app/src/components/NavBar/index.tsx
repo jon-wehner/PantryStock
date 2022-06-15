@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useAppSelector } from '../../hooks';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css';
 
 function NavBar({ authenticated, setAuthenticated }) {
-  const userId = useSelector((state) => state.session.id);
+  const userId = useAppSelector((state) => state.session.id);
   const navigate = useNavigate();
   const [showNavLinks, setShowNavLinks] = useState(false);
   const toggleNavLinks = () => {

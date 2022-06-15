@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useAppDispatch } from '../../hooks';
 import { signUp } from '../../store/session';
 import './AuthForm.css';
 import FormErrors from '../FormErrors';
 
-function SignUpForm({ authenticated, setAuthenticated }) {
-  const dispatch = useDispatch();
+interface SignUpFormProps {
+  authenticated: boolean,
+  setAuthenticated: Function,
+}
+
+interface LocationState {
+  tempEmail: string
+}
+
+function SignUpForm({ authenticated, setAuthenticated }: SignUpFormProps) {
+  const dispatch = useAppDispatch();
   const location = useLocation();
+  const state = location.state as LocationState;
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState(location.state.tempEmail);
+  const [email, setEmail] = useState(state.tempEmail);
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
@@ -95,10 +104,5 @@ function SignUpForm({ authenticated, setAuthenticated }) {
     </div>
   );
 }
-
-SignUpForm.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
-  setAuthenticated: PropTypes.func.isRequired,
-};
 
 export default SignUpForm;

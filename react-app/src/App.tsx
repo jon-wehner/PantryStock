@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useAppSelector } from './hooks';
+import { useAppSelector, useAppDispatch } from './hooks';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -11,10 +10,9 @@ import LandingPage from './LandingPage';
 import Dashboard from './components/Dashboard/index';
 import Inventory from './components/Inventory';
 import Footer from './components/Footer';
-import { RootState } from './store';
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const userId = useAppSelector((state) => state.session.id);
 
@@ -35,7 +33,6 @@ function App() {
           element={(
             <LoginForm
               authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
             />
           )}
         />
@@ -56,13 +53,11 @@ function App() {
         />
         <Route
           path="/"
-          authenticated={authenticated}
-          element={authenticated ? <Dashboard authenticated={authenticated} />
-            : <LandingPage authenticated={authenticated} setAuthenticated={setAuthenticated} />}
+          element={authenticated ? <Dashboard />
+            : <LandingPage />}
         />
         <Route
           path="/inventory"
-          authenticated={authenticated}
           element={<Inventory userId={userId} />}
         />
       </Routes>
