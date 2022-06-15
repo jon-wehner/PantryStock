@@ -1,17 +1,10 @@
 import React from 'react';
-import { Category, Item, Measurement } from '../../interfaces';
+import { Category, ShoppingListItemInterface } from '../../interfaces';
 import ShoppingListItem from './ShoppingListItem';
 
 interface ShoppingListCategoryProps {
   category: Category,
-  items: [{
-    id: number,
-    inCart: boolean,
-    item: Item
-    measurement: Measurement,
-    quantity: number,
-    shoppingListId: number
-  }],
+  items: ShoppingListItemInterface[]
 }
 export default function ShoppingListCategory({ category, items }: ShoppingListCategoryProps) {
   if (!items.length) return null;

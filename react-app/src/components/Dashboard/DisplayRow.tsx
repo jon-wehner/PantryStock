@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingList } from '../../interfaces';
+import { ShoppingListInterface } from '../../interfaces';
 
 interface DisplayRowProps {
-  shoppingList: ShoppingList
+  shoppingList: ShoppingListInterface
 }
 export default function DisplayRow({ shoppingList }: DisplayRowProps) {
   const navigate = useNavigate();

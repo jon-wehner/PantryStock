@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../../hooks';
-import { ShoppingList } from '../../interfaces';
+import { ShoppingListInterface } from '../../interfaces';
 import DisplayRow from './DisplayRow';
 
-export default function ShoppingListDisplay() {
-  const shoppingLists: [ShoppingList] = useAppSelector((state) => state.shoppingLists);
+export default function ShoppingListInterfaceDisplay() {
+  const shoppingLists: ShoppingListInterface[] = useAppSelector((state) => state.shoppingLists);
 
   const [loaded, setLoaded] = useState(false);
 

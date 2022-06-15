@@ -15,7 +15,7 @@ export default function ShoppingListItem({ row }: ShoppingListItemProps) {
   const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState(false);
 
-  const toggleCart = (e) => {
+  const toggleCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     dispatch(addRemoveCart(row.id, row.shoppingListId));
   };
