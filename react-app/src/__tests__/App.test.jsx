@@ -51,7 +51,7 @@ describe('The App Component', () => {
 });
 
 describe('Landing page', () => {
-  it('allows users to enter their email go to the signup page', async () => {
+  it('allows users to enter their email and go to the signup page', async () => {
     render(
       <MemoryRouter initialEntries={['/']} initialIndex={0}>
         <Routes>
