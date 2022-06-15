@@ -2,12 +2,22 @@ export interface Category {
   id: number,
   name: string
 }
+
+export interface User {
+  id: number,
+  email: string,
+  username: string
+}
 export interface Item {
   id: number,
   name: string,
   fridge: boolean,
   categoryId: number
   category?: Category
+}
+export interface Measurement {
+  id: number,
+  unit: string
 }
 export interface InventoryItemInterface {
   id: number,
@@ -20,10 +30,16 @@ export interface InventoryItemInterface {
   item: Item
 }
 
-export interface Measurement {
-  id: number,
-  unit: string
+export interface NewInventoryItemInterface {
+  itemId: number,
+  measurementId: number,
+  quantity: number,
+  userId: number | null,
+  expirationDate: string | null
+  measurement?: Measurement,
+  item?: Item
 }
+
 export interface ShoppingListItemInterface {
   id: number,
   quantity: number,
@@ -31,6 +47,15 @@ export interface ShoppingListItemInterface {
   shoppingListId: number,
   measurement: Measurement,
   item: Item
+}
+
+export interface ShoppingListItemData {
+  id: number | null,
+  measurementId: number,
+  quantity: number,
+  shoppingListId: string | undefined,
+  itemId: number,
+  method: string
 }
 
 export interface ShoppingListInterface {

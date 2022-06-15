@@ -8,13 +8,17 @@ export default function ShoppingListForm() {
   const dispatch = useAppDispatch();
   const userId = useAppSelector((state) => state.session.id);
   const [name, setName] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(['']);
 
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const shoppingList = await dispatch(createShoppingList(name, userId));
-    if (shoppingList.errors) {
-      setErrors(shoppingList.errors);
+    if (userId) {
+      const shoppingList = await dispatch(createShoppingList(name, userId));
+      if (shoppingList.errors) {
+        setErrors(shoppingList.errors);
+      }
+    } else {
+      setErrors(['Something Went Wrong Please Refresh']);
     }
   };
 

@@ -1,21 +1,25 @@
 import { AnyAction } from 'redux';
 import { AppDispatch } from '.';
-import { InventoryItemInterface } from '../interfaces';
+import { InventoryItemInterface, NewInventoryItemInterface } from '../interfaces';
 
+interface inventoryState {
+  fridge: InventoryItemInterface[]
+  pantry: InventoryItemInterface[]
+}
 const SET_INVENTORY = 'inventory/set';
 
-const setInventory = (inventory) => ({
+const setInventory = (inventory: inventoryState) => ({
   type: SET_INVENTORY,
   inventory,
 });
 
-export const getUserInventory = (id) => async (dispatch: AppDispatch) => {
+export const getUserInventory = (id: number) => async (dispatch: AppDispatch) => {
   const url = `/api/inventory/${id}`;
   try {
     const res = await fetch(url);
     if (!res.ok) throw res;
     const inventory = await res.json();
-    if (!res.errors) {
+    if (!inventory.errors) {
       dispatch(setInventory(inventory.inventory));
     }
     return inventory;
@@ -24,15 +28,15 @@ export const getUserInventory = (id) => async (dispatch: AppDispatch) => {
   }
 };
 
-export const addItemToInventory = (inventoryItem) => async (dispatch: AppDispatch) => {
+export const addItemToInventory = (inventoryItem: NewInventoryItemInterface) => async (dispatch: AppDispatch) => {
   const {
     itemId, measurementId, quantity, userId,
   } = inventoryItem;
   const url = `/api/inventory/${userId}`;
   const formData = new FormData();
-  formData.append('item_id', itemId);
-  formData.append('measurement_id', measurementId);
-  formData.append('quantity', quantity);
+  formData.append('item_id', itemId.toString());
+  formData.append('measurement_id', measurementId.toString());
+  formData.append('quantity', quantity.toString());
   if (inventoryItem.expirationDate) {
     formData.append('expiration_date', inventoryItem.expirationDate);
   }
@@ -53,14 +57,14 @@ export const addItemToInventory = (inventoryItem) => async (dispatch: AppDispatc
   }
 };
 
-export const editInvItem = (inventoryItem) => async (dispatch: AppDispatch) => {
+export const editInvItem = (inventoryItem: NewInventoryItemInterface) => async (dispatch: AppDispatch) => {
   const {
     itemId, measurementId, quantity, userId, expirationDate,
   } = inventoryItem;
   const url = `/api/inventory/${userId}/${itemId}`;
   const formData = new FormData();
-  formData.append('measurement_id', measurementId);
-  formData.append('quantity', quantity);
+  formData.append('measurement_id', measurementId.toString());
+  formData.append('quantity', quantity.toString());
   if (expirationDate) {
     formData.append('expiration_date', expirationDate);
   }
@@ -81,7 +85,7 @@ export const editInvItem = (inventoryItem) => async (dispatch: AppDispatch) => {
   }
 };
 
-export const removeInvItem = (id, userId) => async (dispatch: AppDispatch) => {
+export const removeInvItem = (id: number, userId: number | null) => async (dispatch: AppDispatch) => {
   const url = `/api/inventory/${userId}/${id}`;
   const options = {
     method: 'DELETE',
@@ -98,11 +102,6 @@ export const removeInvItem = (id, userId) => async (dispatch: AppDispatch) => {
     return err;
   }
 };
-
-interface inventoryState {
-  fridge: InventoryItemInterface[]
-  pantry: InventoryItemInterface[]
-}
 
 const initialState: inventoryState = {
   fridge: [],

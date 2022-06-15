@@ -18,8 +18,8 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }: Ad
   const { id: shoppingListId } = useParams();
 
   const [loaded, setLoaded] = useState(false);
-  const [measurementId, setMeasurementId] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [measurementId, setMeasurementId] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }: Ad
     setErrors([]);
     e.preventDefault();
     const shoppingListItem = {
+      id: null,
       measurementId,
       quantity,
       shoppingListId,
@@ -51,16 +52,12 @@ export default function AddShoppingListItem({ item, setShowModal, hideMenu }: Ad
     <form className="shoppingListForm" onSubmit={handleSubmit}>
       <FormErrors errors={errors} />
       <h2>
-        Item:
-        {' '}
-        {item.name}
+        {`Item: ${item.name}`}
       </h2>
       <h2>
-        Found In:
-        {' '}
-        {item.category}
+        {`Found In: ${item.category}`}
       </h2>
-      <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+      <input type="number" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />
       <PackageSizeSelect setMeasurementId={setMeasurementId} />
       <button type="submit" className="stdbutton">Add To List</button>
     </form>

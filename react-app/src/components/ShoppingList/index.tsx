@@ -11,7 +11,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import ShoppingListCategory from './ShoppingListCategory';
 import FormErrors from '../FormErrors';
 import './styles/ShoppingList.css';
-import { CartItem, Category, ShoppingListInterface } from '../../interfaces';
+import { Category, NewInventoryItemInterface, ShoppingListInterface } from '../../interfaces';
 
 export default function ShoppingList() {
   const dispatch = useAppDispatch();
@@ -26,7 +26,9 @@ export default function ShoppingList() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(loadOneShoppingList(id));
+    if (id) {
+      dispatch(loadOneShoppingList(parseInt(id, 10)));
+    }
     if (!categories) {
       dispatch(loadCategories());
     } else {
@@ -60,11 +62,11 @@ export default function ShoppingList() {
   };
 
   const transferList = async () => {
-    if (list.items.length) {
+    if (list.items.length && id) {
       const itemsInCart = list.items.filter((item) => item.inCart);
       await itemsInCart.forEach((item) => {
-        const newItem: CartItem = {
-          ...item, userId: list.userId, itemId: item.item.id, measurementId: item.measurement.id,
+        const newItem: NewInventoryItemInterface = {
+          ...item, userId: list.userId, itemId: item.item.id, measurementId: item.measurement.id, expirationDate: null,
         };
         delete newItem.item;
         delete newItem.measurement;
@@ -72,7 +74,7 @@ export default function ShoppingList() {
         dispatch(addItemToInventory(newItem));
       });
       await itemsInCart.forEach((item) => {
-        dispatch(deleteShoppingListItem(item.id, id));
+        dispatch(deleteShoppingListItem(item.id, parseInt(id, 10)));
       });
     }
   };

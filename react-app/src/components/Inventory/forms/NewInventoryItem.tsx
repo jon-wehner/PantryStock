@@ -6,7 +6,7 @@ import { getTimeStamp } from '../../../services/utils';
 import '../styles/InventoryForms.css';
 import PackageSizeSelect from '../../PackageSizeSelect';
 import FormErrors from '../../FormErrors';
-import { Item } from '../../../interfaces';
+import { Item, NewInventoryItemInterface } from '../../../interfaces';
 
 interface NewInventoryItemProps {
   item: Item,
@@ -18,8 +18,8 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }: NewIn
   const userId = useAppSelector((state) => state.session.id);
 
   const [loaded, setLoaded] = useState(false);
-  const [measurementId, setMeasurementId] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [measurementId, setMeasurementId] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   const [expirationDate, setExpirationDate] = useState('');
   const [errors, setErrors] = useState([]);
 
@@ -31,7 +31,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }: NewIn
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     setErrors([]);
     e.preventDefault();
-    const inventoryItem = {
+    const inventoryItem: NewInventoryItemInterface = {
       itemId: item.id,
       measurementId,
       quantity,
@@ -58,7 +58,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }: NewIn
       </h2>
       <label htmlFor="NewInventoryItemQuantity">
         Quantity:
-        <input id="NewInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+        <input id="NewInventoryItemQuantity" type="number" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />
       </label>
       <PackageSizeSelect setMeasurementId={setMeasurementId} />
       <label htmlFor="expirationDate">

@@ -11,7 +11,7 @@ export default function Dashboard() {
   const userName = useAppSelector((state) => state.session.username);
   const userId = useAppSelector((state) => state.session.id);
   useEffect(() => {
-    if (userName) {
+    if (userName && userId) {
       dispatch(loadCategories());
       dispatch(loadUserShoppingLists(userId));
     }

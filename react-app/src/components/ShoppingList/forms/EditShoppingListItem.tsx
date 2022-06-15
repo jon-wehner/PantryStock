@@ -47,9 +47,11 @@ export default function EditShoppingListItem({ row, setShowModal }: EditShopping
     }
   };
   const deleteItem = async () => {
-    const res = await dispatch(deleteShoppingListItem(row.id, shoppingListId));
-    if (!res.errors) {
-      setShowModal(false);
+    if (shoppingListId) {
+      const res = await dispatch(deleteShoppingListItem(row.id, parseInt(shoppingListId, 10)));
+      if (!res.errors) {
+        setShowModal(false);
+      }
     }
   };
   if (!loaded) return null;
@@ -58,14 +60,10 @@ export default function EditShoppingListItem({ row, setShowModal }: EditShopping
       <form className="shoppingListForm" onSubmit={handleSubmit}>
         <FormErrors errors={errors} />
         <h2>
-          Item:
-          {' '}
-          {row.item.name}
+          {`Item: ${row.item.name}`}
         </h2>
         <h2>
-          Found In:
-          {' '}
-          {row.item.category}
+          {`Found In: ${row.item.category}`}
         </h2>
         <input type="number" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />
         <select value={measurementId} onChange={(e) => setMeasurementId(parseInt(e.target.value, 10))}>

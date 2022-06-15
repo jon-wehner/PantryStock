@@ -1,29 +1,33 @@
+import { AnyAction } from 'redux';
+import { ShoppingListInterface, ShoppingListItemData } from '../interfaces';
+import { AppDispatch } from '.';
+
 const SET_SHOPPING_LISTS = 'shoppingLists/set';
 const EDIT_SHOPPING_LIST = 'shoppingLists/edit';
 const REMOVE_SHOPPING_LIST = 'shoppingLists/remove';
 
-const setShoppingLists = (shoppingLists) => ({
+const setShoppingLists = (shoppingLists: ShoppingListInterface[]) => ({
   type: SET_SHOPPING_LISTS,
   shoppingLists,
 });
-const updateShoppingList = (shoppingList) => ({
+const updateShoppingList = (shoppingList: ShoppingListInterface[]) => ({
   type: EDIT_SHOPPING_LIST,
   shoppingList,
 });
 
-const removeList = (id) => ({
+const removeList = (id: number) => ({
   type: REMOVE_SHOPPING_LIST,
   id,
 });
 
-export const loadOneShoppingList = (id) => async (dispatch) => {
+export const loadOneShoppingList = (id: number) => async (dispatch: AppDispatch) => {
   const res = await fetch(`/api/shopping-lists/${id}`);
   if (res.ok) {
     const shoppingList = await res.json();
     dispatch(setShoppingLists(shoppingList));
   }
 };
-export const loadUserShoppingLists = (userId) => async (dispatch) => {
+export const loadUserShoppingLists = (userId: number) => async (dispatch: AppDispatch) => {
   const res = await fetch(`/api/users/${userId}/shopping-lists/`);
   const shoppingLists = await res.json();
   if (res.ok) {
@@ -32,10 +36,10 @@ export const loadUserShoppingLists = (userId) => async (dispatch) => {
   return shoppingLists;
 };
 
-export const createShoppingList = (name, userId) => async (dispatch) => {
+export const createShoppingList = (name: string, userId: number) => async (dispatch: AppDispatch) => {
   const formData = new FormData();
   formData.append('name', name);
-  formData.append('user_id', userId);
+  formData.append('user_id', userId.toString());
   const options = {
     method: 'POST',
     body: formData,
@@ -53,10 +57,10 @@ export const createShoppingList = (name, userId) => async (dispatch) => {
   }
 };
 
-export const editShoppingList = (id, name, userId) => async (dispatch) => {
+export const editShoppingList = (id: number, name: string, userId: number) => async (dispatch: AppDispatch) => {
   const formData = new FormData();
   formData.append('name', name);
-  formData.append('user_id', userId);
+  formData.append('user_id', userId.toString());
   const options = {
     method: 'PUT',
     body: formData,
@@ -75,9 +79,9 @@ export const editShoppingList = (id, name, userId) => async (dispatch) => {
 };
 
 // eslint-disable-next-line consistent-return
-export const deleteShoppingList = (id) => async (dispatch) => {
+export const deleteShoppingList = (id:number) => async (dispatch: AppDispatch) => {
   const formData = new FormData();
-  formData.append('id', id);
+  formData.append('id', id.toString());
   const options = {
     method: 'DELETE',
     body: formData,
@@ -91,15 +95,15 @@ export const deleteShoppingList = (id) => async (dispatch) => {
   }
 };
 
-export const addEditShoppingListItem = (shoppingListItem) => async (dispatch) => {
+export const addEditShoppingListItem = (shoppingListItem: ShoppingListItemData) => async (dispatch: AppDispatch) => {
   const {
-    id, measurementId, quantity, shoppingListId, itemId, method,
+    measurementId, quantity, shoppingListId, itemId, method,
   } = shoppingListItem;
 
   const formData = new FormData();
-  formData.append('item_id', itemId);
-  formData.append('measurement_id', measurementId);
-  formData.append('quantity', quantity);
+  formData.append('item_id', itemId.toString());
+  formData.append('measurement_id', measurementId.toString());
+  formData.append('quantity', quantity.toString());
   const options = {
     method,
     body: formData,
@@ -108,6 +112,7 @@ export const addEditShoppingListItem = (shoppingListItem) => async (dispatch) =>
   if (method === 'POST') {
     url = `/api/shopping-lists/${shoppingListId}/items`;
   } else {
+    const { id } = shoppingListItem;
     url = `/api/shopping-lists/${shoppingListId}/items/${id}`;
   }
 
@@ -124,7 +129,7 @@ export const addEditShoppingListItem = (shoppingListItem) => async (dispatch) =>
   }
 };
 
-export const deleteShoppingListItem = (id, shoppingListId) => async (dispatch) => {
+export const deleteShoppingListItem = (id: number, shoppingListId: number) => async (dispatch: AppDispatch) => {
   const url = `/api/shopping-lists/${shoppingListId}/items/${id}`;
   const options = {
     method: 'DELETE',
@@ -140,7 +145,7 @@ export const deleteShoppingListItem = (id, shoppingListId) => async (dispatch) =
   }
 };
 
-export const addRemoveCart = (id, shoppingListId) => async (dispatch) => {
+export const addRemoveCart = (id: number, shoppingListId: number) => async (dispatch: AppDispatch) => {
   const url = `/api/shopping-lists/${shoppingListId}/items/${id}`;
   const options = {
     method: 'PATCH',
@@ -156,9 +161,10 @@ export const addRemoveCart = (id, shoppingListId) => async (dispatch) => {
   }
 };
 
-const initialState = {};
-const shoppingListReducer = (state = initialState, action) => {
-  let newState = {};
+const initialState: {[index: number] : ShoppingListInterface} = {};
+
+const shoppingListReducer = (state = initialState, action: AnyAction) => {
+  let newState: {[index: number] : ShoppingListInterface} = {};
   switch (action.type) {
     case SET_SHOPPING_LISTS:
       return { ...state, ...action.shoppingLists };

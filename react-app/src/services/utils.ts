@@ -1,17 +1,10 @@
-const splitDate = (date) => {
-  const arr = date.split('-');
-  arr[1] = parseInt(arr[1], 10) - 1;
-  return arr;
-};
-
-export const getDaysToExpire = (date) => {
+export const getDaysToExpire = (date: string) => {
   const expiration = new Date(date);
-  const daysToExpire = Math.ceil((expiration - Date.now()) / (1000 * 60 * 60 * 24));
-
+  const daysToExpire = Math.ceil((expiration.getTime() - new Date().getTime()) / (1000 * 3600 * 60 * 24));
   return daysToExpire;
 };
 
-export const getExpirationString = (date) => {
+export const getExpirationString = (date: string) => {
   const days = getDaysToExpire(date);
 
   if (days > 14) {
@@ -36,14 +29,13 @@ export const getExpirationString = (date) => {
   return 'Expired';
 };
 
-export const getTimeStamp = (date) => {
-  const dateArr = splitDate(date);
-  let expiration = new Date(...dateArr);
-  expiration = expiration.toISOString();
-  return expiration;
+export const getTimeStamp = (date: string) => {
+  const expiration = new Date(date);
+  const expirationString = expiration.toISOString();
+  return expirationString;
 };
 
-export const getQuantityString = (quantity, measurement) => {
+export const getQuantityString = (quantity: number, measurement: string) => {
   let quantityString = ` ${measurement}`;
   if (measurement !== 'Each' && quantity > 1) {
     quantityString += 's';

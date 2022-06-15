@@ -1,19 +1,21 @@
+import { AnyAction } from 'redux';
+import { AppDispatch } from '.';
 import { Item, Measurement } from '../interfaces';
 
 const SET_RESULTS = 'items/setResults';
 const SET_MEASUREMENTS = 'items/setMeasurements';
 
-const setResults = (items) => ({
+const setResults = (items: Item[]) => ({
   type: SET_RESULTS,
   items,
 });
 
-const setMeasurements = (measurements) => ({
+const setMeasurements = (measurements: Measurement[]) => ({
   type: SET_MEASUREMENTS,
   measurements,
 });
 
-export const loadMeasurements = () => async (dispatch) => {
+export const loadMeasurements = () => async (dispatch: AppDispatch) => {
   const res = await fetch('/api/items/measurements/');
   if (res.ok) {
     const { measurements } = await res.json();
@@ -21,7 +23,7 @@ export const loadMeasurements = () => async (dispatch) => {
   }
 };
 
-export const searchItems = (query) => async (dispatch) => {
+export const searchItems = (query: string) => async (dispatch: AppDispatch) => {
   const options = {
     method: 'PUT',
     headers: {
@@ -49,7 +51,7 @@ const initialState: ItemState = {
   results: [],
   measurements: [],
 };
-const itemReducer = (state = initialState, action) => {
+const itemReducer = (state = initialState, action: AnyAction) => {
   let newState;
   switch (action.type) {
     case SET_RESULTS:
