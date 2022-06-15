@@ -25,6 +25,7 @@ export default function ShoppingList() {
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
+  console.log(shoppingLists);
   useEffect(() => {
     dispatch(loadOneShoppingList(id));
     if (!categories) {
@@ -62,9 +63,8 @@ export default function ShoppingList() {
   };
 
   const transferList = async () => {
-    const itemsInCart: [CartItem] | [] = [];
     if (list.length) {
-      list.items.forEach((item: CartItem) => {
+      const itemsInCart = list.items.forEach((item: CartItem) => {
         if (item.inCart) {
           itemsInCart.push(item);
         }
@@ -86,7 +86,7 @@ export default function ShoppingList() {
   };
   return (
     <div className="dashboard__wrapper">
-      <SearchBar pantry={false} />
+      <SearchBar inventory={false} />
       <div id="editList">
         {edit ? <input value={name} onChange={updateName} onKeyPress={handleEnter} /> : <h1 className="shoppingList__title">{list?.name}</h1>}
       </div>
