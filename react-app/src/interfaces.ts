@@ -39,3 +39,12 @@ export interface Measurement {
   id: number,
   unit: string
 }
+
+export interface ShoppingListItemInterface {
+  id: number,
+  quantity: number,
+  inCart: boolean,
+  shoppingListId: number,
+  measurement: Measurement,
+  item: Item
+}

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch } from '../../hooks';
@@ -7,8 +6,12 @@ import { Modal } from '../../context/Modal';
 import EditShoppingListItem from './forms/EditShoppingListItem';
 import { addRemoveCart } from '../../store/shoppingList';
 import { getQuantityString } from '../../services/utils';
+import { ShoppingListItemInterface } from '../../interfaces';
 
-export default function ShoppingListItem({ row }) {
+interface ShoppingListItemProps {
+  row: ShoppingListItemInterface
+}
+export default function ShoppingListItem({ row }: ShoppingListItemProps) {
   const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState(false);
 
@@ -20,7 +23,7 @@ export default function ShoppingListItem({ row }) {
     <>
       <tr
         className="shoppingListItem"
-        style={row.inCart ? { backgroundColor: '#86CD82' } : null}
+        style={row.inCart ? { backgroundColor: '#86CD82' } : { backgroundColor: '#f7f7ff' }}
         onClick={() => setShowModal(true)}
       >
         <td>
@@ -42,22 +45,3 @@ export default function ShoppingListItem({ row }) {
     </>
   );
 }
-
-ShoppingListItem.propTypes = {
-  row: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-    inCart: PropTypes.bool.isRequired,
-    shoppingListId: PropTypes.number.isRequired,
-    measurement: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      unit: PropTypes.string.isRequired,
-    }),
-    item: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      fridge: PropTypes.bool.isRequired,
-      categoryId: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-};

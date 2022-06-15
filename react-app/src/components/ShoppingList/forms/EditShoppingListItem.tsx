@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { loadMeasurements } from '../../../store/items';
 import { addEditShoppingListItem, deleteShoppingListItem } from '../../../store/shoppingList';
 
 import '../styles/ShoppingListForms.css';
 import FormErrors from '../../FormErrors';
+import { ShoppingListItemInterface } from '../../../interfaces';
 
-export default function EditShoppingListItem({ row, setShowModal }) {
-  const dispatch = useDispatch();
+interface EditShoppingListItemProps {
+  row: ShoppingListItemInterface,
+  setShowModal: Function
+}
+
+export default function EditShoppingListItem({ row, setShowModal }: EditShoppingListItemProps) {
+  const dispatch = useAppDispatch();
   const { id: shoppingListId } = useParams();
-  const measurements = useSelector((state) => state.items.measurements);
+  const measurements = useAppSelector((state) => state.items.measurements);
 
   const [loaded, setLoaded] = useState(false);
   const [measurementId, setMeasurementId] = useState(row.measurement.id);
@@ -62,8 +67,8 @@ export default function EditShoppingListItem({ row, setShowModal }) {
           {' '}
           {row.item.category}
         </h2>
-        <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-        <select value={measurementId} onChange={(e) => setMeasurementId(e.target.value)}>
+        <input type="number" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />
+        <select value={measurementId} onChange={(e) => setMeasurementId(parseInt(e.target.value, 10))}>
           {measurements && measurements.map((measurement) => (
             <option
               value={measurement.id}
@@ -79,23 +84,3 @@ export default function EditShoppingListItem({ row, setShowModal }) {
     </div>
   );
 }
-
-EditShoppingListItem.propTypes = {
-  row: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-    inCart: PropTypes.bool.isRequired,
-    shoppingListId: PropTypes.number.isRequired,
-    measurement: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      unit: PropTypes.string.isRequired,
-    }).isRequired,
-    item: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      fridge: PropTypes.bool.isRequired,
-      category: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  setShowModal: PropTypes.func.isRequired,
-};
