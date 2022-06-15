@@ -39,7 +39,7 @@ export default function EditInventoryItem({ row, setShowModal }: EditInventoryIt
     }
   }, [row.expirationDate]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     setErrors([]);
     e.preventDefault();
     const inventoryItem = {

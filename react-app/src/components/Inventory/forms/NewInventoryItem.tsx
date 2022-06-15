@@ -28,7 +28,7 @@ export default function NewInventoryItem({ item, setShowModal, hideMenu }: NewIn
     setLoaded(true);
   }, [dispatch]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     setErrors([]);
     e.preventDefault();
     const inventoryItem = {

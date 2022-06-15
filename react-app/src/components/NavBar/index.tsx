@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { useAppSelector } from '../../hooks';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css';
 
-function NavBar({ authenticated, setAuthenticated }) {
+interface NavBarProps {
+  authenticated: boolean,
+  setAuthenticated: Function
+}
+function NavBar({ authenticated, setAuthenticated }: NavBarProps) {
   const userId = useAppSelector((state) => state.session.id);
   const navigate = useNavigate();
   const [showNavLinks, setShowNavLinks] = useState(false);
@@ -43,10 +46,5 @@ function NavBar({ authenticated, setAuthenticated }) {
     </nav>
   );
 }
-
-NavBar.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
-  setAuthenticated: PropTypes.func.isRequired,
-};
 
 export default NavBar;

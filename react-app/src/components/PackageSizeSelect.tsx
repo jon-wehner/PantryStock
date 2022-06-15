@@ -1,9 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useAppSelector } from '../hooks';
 
-export default function PackageSizeSelect({ setMeasurementId }) {
-  const measurements = useSelector((state) => state.items.measurements);
+interface PackageSizeSelectProps {
+  setMeasurementId: Function
+}
+export default function PackageSizeSelect({ setMeasurementId }: PackageSizeSelectProps) {
+  const measurements = useAppSelector((state) => state.items.measurements);
 
   return (
     <select onChange={(e) => setMeasurementId(e.target.value)}>
@@ -19,7 +21,3 @@ export default function PackageSizeSelect({ setMeasurementId }) {
     </select>
   );
 }
-
-PackageSizeSelect.propTypes = {
-  setMeasurementId: PropTypes.func.isRequired,
-};
