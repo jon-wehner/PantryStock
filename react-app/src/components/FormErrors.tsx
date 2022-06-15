@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface FormErrorsProps {
-  errors: [string] | never[]
+  errors: string[]
 }
 
 export default function FormErrors({ errors }: FormErrorsProps) {

@@ -6,7 +6,7 @@ interface InventoryCategoryProps {
   category: {
     name: string
   },
-  items: [InventoryItemInterface]
+  items: InventoryItemInterface[]
 }
 export default function InventoryCategory({ category, items }: InventoryCategoryProps) {
   if (!items.length) return null;

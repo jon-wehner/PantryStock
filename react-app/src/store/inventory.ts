@@ -1,3 +1,7 @@
+import { AnyAction } from 'redux';
+import { AppDispatch } from '.';
+import { InventoryItemInterface } from '../interfaces';
+
 const SET_INVENTORY = 'inventory/set';
 
 const setInventory = (inventory) => ({
@@ -5,7 +9,7 @@ const setInventory = (inventory) => ({
   inventory,
 });
 
-export const getUserInventory = (id) => async (dispatch) => {
+export const getUserInventory = (id) => async (dispatch: AppDispatch) => {
   const url = `/api/inventory/${id}`;
   try {
     const res = await fetch(url);
@@ -20,7 +24,7 @@ export const getUserInventory = (id) => async (dispatch) => {
   }
 };
 
-export const addItemToInventory = (inventoryItem) => async (dispatch) => {
+export const addItemToInventory = (inventoryItem) => async (dispatch: AppDispatch) => {
   const {
     itemId, measurementId, quantity, userId,
   } = inventoryItem;
@@ -49,7 +53,7 @@ export const addItemToInventory = (inventoryItem) => async (dispatch) => {
   }
 };
 
-export const editInvItem = (inventoryItem) => async (dispatch) => {
+export const editInvItem = (inventoryItem) => async (dispatch: AppDispatch) => {
   const {
     itemId, measurementId, quantity, userId, expirationDate,
   } = inventoryItem;
@@ -77,7 +81,7 @@ export const editInvItem = (inventoryItem) => async (dispatch) => {
   }
 };
 
-export const removeInvItem = (id, userId) => async (dispatch) => {
+export const removeInvItem = (id, userId) => async (dispatch: AppDispatch) => {
   const url = `/api/inventory/${userId}/${id}`;
   const options = {
     method: 'DELETE',
@@ -95,11 +99,17 @@ export const removeInvItem = (id, userId) => async (dispatch) => {
   }
 };
 
-const initialState = {
-  fridge: null,
-  pantry: null,
+interface inventoryState {
+  fridge: InventoryItemInterface[]
+  pantry: InventoryItemInterface[]
+
+
+}
+const initialState: inventoryState = {
+  fridge: [],
+  pantry: [],
 };
-const inventoryReducer = (state = initialState, action) => {
+const inventoryReducer = (state = initialState, action: AnyAction) => {
   let newState;
   switch (action.type) {
     case SET_INVENTORY:

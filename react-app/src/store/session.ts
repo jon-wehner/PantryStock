@@ -72,7 +72,7 @@ export const authenticate = () => async (dispatch) => {
 interface sessionState {
   username: null | string[],
   email: null | string[],
-  id: null | string[],
+  id: null | number,
 }
 
 const initialState: sessionState = {
