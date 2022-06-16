@@ -1,6 +1,6 @@
 export const getDaysToExpire = (date: string) => {
   const expiration = new Date(date);
-  const daysToExpire = Math.ceil((expiration.getTime() - new Date().getTime()) / (1000 * 360 * 60 * 24));
+  const daysToExpire = Math.ceil((expiration.getTime() - new Date().getTime()) / (1000 * 3600 * 24));
   return daysToExpire;
 };
 
