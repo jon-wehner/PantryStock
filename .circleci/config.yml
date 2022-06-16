@@ -30,7 +30,7 @@ jobs:
           command: npm install --prefix react-app
       - run:
           name: Run React Tests
-          command: NODE_ENV=testing npm test --prefix react-app
+          command: npm test --prefix react-app
   build-test-backend:
     executor: python/default
     steps:
