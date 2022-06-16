@@ -32,7 +32,7 @@ export const getExpirationString = (date: string) => {
 export const getTimeStamp = (date: string) => {
   const expiration = new Date(date);
   const offset = expiration.getTimezoneOffset() * 60000;
-  const offsetTime = Date.parse(date) + 2 * offset;
+  const offsetTime = Date.parse(date) + offset;
   const expirationString = new Date(offsetTime).toISOString();
   return expirationString;
 };
