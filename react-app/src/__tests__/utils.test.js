@@ -3,7 +3,7 @@ import { getDaysToExpire, getTimeStamp } from '../services/utils';
 describe('getTimeStamp Function', () => {
   test('Given a date string, returns correct string in zulu time', () => {
     const testString = '2022-06-16';
-    const adjString = '2022-06-16T07:00:00.000Z';
+    const adjString = process.env.NODE_ENV === 'testing' ? '2022-06-16T07:00:00.000Z' : '2022-06-16T07:00:00.000Z';
     expect(getTimeStamp(testString)).toEqual(adjString);
   });
 });
