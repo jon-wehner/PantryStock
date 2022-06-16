@@ -22,7 +22,7 @@ const testState = {
           shoppingListId: 1,
         },
       ],
-      name: 'Shopping List',
+      name: 'testList',
       userId: 1,
     },
   },

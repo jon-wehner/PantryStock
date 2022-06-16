@@ -8,7 +8,7 @@ export default function ShoppingListForm() {
   const dispatch = useAppDispatch();
   const userId = useAppSelector((state) => state.session.id);
   const [name, setName] = useState('');
-  const [errors, setErrors] = useState(['']);
+  const [errors, setErrors] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();

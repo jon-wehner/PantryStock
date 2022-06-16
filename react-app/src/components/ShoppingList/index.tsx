@@ -26,9 +26,7 @@ export default function ShoppingList() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (id) {
-      dispatch(loadOneShoppingList(parseInt(id, 10)));
-    }
+    dispatch(loadOneShoppingList(shoppingListId));
     if (!categories) {
       dispatch(loadCategories());
     } else {
