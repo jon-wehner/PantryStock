@@ -1,24 +1,11 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { screen, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { render } from './test-utils';
+import {
+  render, screen, fireEvent, waitForElementToBeRemoved, handlers,
+} from './test-utils';
 import App from '../App';
-
-const handlers = [
-  rest.get('/api/auth/', (req, res, ctx) => res(ctx.json({
-    email: 'demo@aa.io',
-    id: 1,
-    username: 'Demo',
-  }), ctx.delay(150))),
-  rest.post('/api/auth/login', (req, res, ctx) => res(ctx.json({
-    email: 'demo@aa.io',
-    id: 1,
-    username: 'Demo',
-  }), ctx.delay(150))),
-];
 
 const server = setupServer(...handlers);
 
