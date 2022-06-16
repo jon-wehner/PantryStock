@@ -45,7 +45,8 @@
   },
   "jest": {
     "testMatch": [
-      "**/__tests__/*.test.jsx"
+      "**/__tests__/*.test.jsx",
+      "**/__tests__/*.test.js"
     ]
   },
   "proxy": "http://localhost:5000",

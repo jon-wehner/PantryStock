@@ -30,11 +30,12 @@ export default function EditInventoryItem({ row, setShowModal }: EditInventoryIt
 
   useEffect(() => {
     if (row.expirationDate) {
+      // creates a proper string for the value field on the calendar
       const date = new Date(row.expirationDate);
       const year = date.getFullYear();
       const month = date.getMonth();
       const day = date.getDate();
-      const dateStr = `${year}-${month < 10 ? '0' : null}${month}-${day}`;
+      const dateStr = `${year}-${month < 9 ? '0' : ''}${month + 1}-${day}`;
       setExpirationDate(dateStr);
     }
   }, [row.expirationDate]);

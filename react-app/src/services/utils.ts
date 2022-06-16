@@ -1,6 +1,6 @@
 export const getDaysToExpire = (date: string) => {
   const expiration = new Date(date);
-  const daysToExpire = Math.ceil((expiration.getTime() - new Date().getTime()) / (1000 * 3600 * 60 * 24));
+  const daysToExpire = Math.ceil((expiration.getTime() - new Date().getTime()) / (1000 * 3600 * 24));
   return daysToExpire;
 };
 
@@ -31,7 +31,9 @@ export const getExpirationString = (date: string) => {
 
 export const getTimeStamp = (date: string) => {
   const expiration = new Date(date);
-  const expirationString = expiration.toISOString();
+  const offset = expiration.getTimezoneOffset() * 60000;
+  const offsetTime = Date.parse(date) + offset;
+  const expirationString = new Date(offsetTime).toISOString();
   return expirationString;
 };
 
