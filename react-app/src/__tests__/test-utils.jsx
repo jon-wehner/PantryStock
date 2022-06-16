@@ -31,7 +31,7 @@ export const handlers = [
   }), ctx.delay(150))),
   rest.get('/api/items/categories', (req, res, ctx) => res(ctx.json(testState), ctx.delay(150))),
   rest.get('/api/shopping-lists/1', (req, res, ctx) => res(ctx.json(testState.shoppingLists[1]), ctx.delay(150))),
-  rest.get('/api/users/1/shopping-lists', (req, res, ctx) => res(ctx.json({ lists: testState.shoppingLists }), ctx.delay(150))),
+  rest.get('/api/users/1/shopping-lists', (req, res, ctx) => res(ctx.json(testState.shoppingLists), ctx.delay(150))),
 ];
 
 export * from '@testing-library/react';

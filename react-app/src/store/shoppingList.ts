@@ -31,7 +31,7 @@ export const loadUserShoppingLists = (userId: number) => async (dispatch: AppDis
   const res = await fetch(`/api/users/${userId}/shopping-lists/`);
   const shoppingLists = await res.json();
   if (res.ok) {
-    dispatch(setShoppingLists(shoppingLists.lists));
+    dispatch(setShoppingLists(shoppingLists));
   }
   return shoppingLists;
 };

@@ -26,6 +26,6 @@ def load_shopping_lists(id):
     user = User.query.get(id)
     if user:
         shopping_lists = ShoppingList.query.filter_by(user_id=id)
-        return {"lists": {shopping_list.id: shopping_list.to_dict() for
-                shopping_list in shopping_lists}}
+        return {shopping_list.id: shopping_list.to_dict() for
+                shopping_list in shopping_lists}
     return {"error": "User Not Found"}
