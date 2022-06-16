@@ -7,19 +7,6 @@ import {
 } from './test-utils';
 import App from '../App';
 
-// const handlers = [
-//   rest.get('/api/auth/', (req, res, ctx) => res(ctx.json({
-//     email: 'demo@aa.io',
-//     id: 1,
-//     username: 'Demo',
-//   }), ctx.delay(150))),
-//   rest.post('/api/auth/login', (req, res, ctx) => res(ctx.json({
-//     email: 'demo@aa.io',
-//     id: 1,
-//     username: 'Demo',
-//   }), ctx.delay(150))),
-// ];
-
 const server = setupServer(...handlers);
 
 beforeAll(() => server.listen());

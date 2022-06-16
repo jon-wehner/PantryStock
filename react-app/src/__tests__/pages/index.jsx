@@ -6,6 +6,7 @@ import {
 import App from '../../App';
 import testState from '../testState';
 
+// logs the user in and renders the first shopping list
 export default async function renderShoppingList() {
   render(
     <MemoryRouter initialEntries={['/']} initialIndex={0}>
