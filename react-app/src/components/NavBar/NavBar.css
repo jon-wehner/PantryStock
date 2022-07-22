@@ -57,6 +57,10 @@
   text-decoration: none;
   color: #fdfffc;
 }
+.pantryNavLink:active {
+  text-decoration: none;
+  color: #fdfffc;
+}
 @media screen and (max-width: 767px) {
   .navbar__navlinks {
     display: none;
