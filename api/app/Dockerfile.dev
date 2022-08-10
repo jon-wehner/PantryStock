@@ -3,7 +3,7 @@ FROM python:3.8
 WORKDIR /usr/src/app
 
 ENV FLASK_APP=.
-ENV FLASK_ENV=development
+ENV FLASK_DEBUG=true
 ENV SQLALCHEMY_ECHO=True
 
 COPY . .
