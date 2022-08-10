@@ -50,19 +50,6 @@ jobs:
       - run: cd react-app && npm install
       - run: cd react-app && npx playwright install
       - run: cd react-app && npx playwright test
-  deploy:
-    docker:
-      - image: cimg/base:2022.05
-    steps:
-      - setup_remote_docker:
-          version: 20.10.14
-      - checkout
-      - heroku/install
-      - heroku/push-docker-image:
-          app-name: $HEROKU_APP_NAME
-          process-types: web
-      - heroku/release-docker-image:
-          app-name: $HEROKU_APP_NAME
 workflows:
   test-and-deploy:
     jobs:
@@ -74,11 +61,3 @@ workflows:
             - deploy-to-staging
             - test-frontend
             - build-test-backend
-      - deploy:
-          requires:
-            - test-frontend
-            - build-test-backend
-            - run-playwright-tests
-          filters:
-            branches:
-              only: main
