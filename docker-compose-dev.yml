@@ -10,7 +10,7 @@ services:
   api:
     build:
       dockerfile: Dockerfile.dev
-      context: ./app
+      context: ./api
   react-app:
     build:
       dockerfile: Dockerfile.dev

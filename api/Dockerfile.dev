@@ -2,7 +2,7 @@ FROM python:3.8
 
 WORKDIR /usr/src/app
 
-ENV FLASK_APP=.
+ENV FLASK_APP=app
 ENV FLASK_DEBUG=true
 ENV SQLALCHEMY_ECHO=True
 
