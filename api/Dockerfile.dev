@@ -1,0 +1,15 @@
+FROM python:3.10
+
+WORKDIR /usr/src/app
+
+ENV FLASK_APP=app
+ENV FLASK_DEBUG=true
+ENV SQLALCHEMY_ECHO=True
+
+COPY . .
+RUN pip install -r requirements.txt
+RUN pip install psycopg2
+
+EXPOSE 5000
+
+CMD flask run
