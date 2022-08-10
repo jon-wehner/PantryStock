@@ -1,0 +1,19 @@
+version: '3'
+services:
+  nginx:
+    restart: always
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3050:80'
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./app
+  react-app:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./react-app
+    environment:
+      - WDS_SOCKET_PORT=0
