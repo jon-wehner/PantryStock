@@ -9,7 +9,7 @@ flask-jwt-extended==3.24.1
 flask-login==0.5.0
 flask-migrate==2.5.3
 flask-sqlalchemy==2.4.4
-flask-wtf==0.14.3
+flask-wtf==1.0.1
 gunicorn==20.0.4
 idna==3.3
 itsdangerous==2.1.2
